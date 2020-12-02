@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0EA63B86-FB8B-4603-9983-FD7B1408F2C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sihirdar.WebServiceV3</RootNamespace>
+    <AssemblyName>Sihirdar.WebServiceV3</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\PlayedTimeMultiplers.cs" />
+    <Compile Include="Model\PlayerStatsSummaryConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\RiotApi\Cache.cs" />
+    <Compile Include="Provider\RiotApi\ChampionEndpoint\Champion.cs" />
+    <Compile Include="Provider\RiotApi\ChampionEndpoint\ChampionList.cs" />
+    <Compile Include="Provider\RiotApi\ChampionMasteryEndpoint\ChampionMastery.cs" />
+    <Compile Include="Provider\RiotApi\CurrentGameEndpoint\BannedChampion.cs" />
+    <Compile Include="Provider\RiotApi\CurrentGameEndpoint\CurrentGame.cs" />
+    <Compile Include="Provider\RiotApi\CurrentGameEndpoint\Mastery.cs" />
+    <Compile Include="Provider\RiotApi\CurrentGameEndpoint\Observer.cs" />
+    <Compile Include="Provider\RiotApi\CurrentGameEndpoint\Participant.cs" />
+    <Compile Include="Provider\RiotApi\CurrentGameEndpoint\Rune.cs" />
+    <Compile Include="Provider\RiotApi\FeaturedGamesEndpoint\FeaturedGames.cs" />
+    <Compile Include="Provider\RiotApi\GameEndpoint\Game.cs" />
+    <Compile Include="Provider\RiotApi\GameEndpoint\Player.cs" />
+    <Compile Include="Provider\RiotApi\GameEndpoint\RawStat.cs" />
+    <Compile Include="Provider\RiotApi\GameEndpoint\RecentGames.cs" />
+    <Compile Include="Provider\RiotApi\Http\Interfaces\IRateLimitedRequester.cs" />
+    <Compile Include="Provider\RiotApi\Http\Interfaces\IRequester.cs" />
+    <Compile Include="Provider\RiotApi\Http\RateLimitedRequester.cs" />
+    <Compile Include="Provider\RiotApi\Http\RateLimiter.cs" />
+    <Compile Include="Provider\RiotApi\Http\Requester.cs" />
+    <Compile Include="Provider\RiotApi\Http\RequesterBase.cs" />
+    <Compile Include="Provider\RiotApi\Http\Requesters.cs" />
+    <Compile Include="Provider\RiotApi\Interfaces\ICache.cs" />
+    <Compile Include="Provider\RiotApi\Interfaces\IRiotApi.cs" />
+    <Compile Include="Provider\RiotApi\Interfaces\IStaticRiotApi.cs" />
+    <Compile Include="Provider\RiotApi\Interfaces\IStatusRiotApi.cs" />
+    <Compile Include="Provider\RiotApi\Interfaces\ITournamentRiotApi.cs" />
+    <Compile Include="Provider\RiotApi\LeagueEndpoint\Enums\Converters\CharArrayConverter.cs" />
+    <Compile Include="Provider\RiotApi\LeagueEndpoint\Enums\Converters\TierConverter.cs" />
+    <Compile Include="Provider\RiotApi\LeagueEndpoint\Enums\Tier.cs" />
+    <Compile Include="Provider\RiotApi\LeagueEndpoint\League.cs" />
+    <Compile Include="Provider\RiotApi\LeagueEndpoint\LeagueEntry.cs" />
+    <Compile Include="Provider\RiotApi\LeagueEndpoint\MiniSeries.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\BannedChampion.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\AscendedType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\BuildingType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\CapturedPoint.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\AscendedTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\BuildingTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\CapturedPointConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\EventTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\LaneTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\LevelUpTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\MonsterSubTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\MonsterTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\SeasonConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\TowerTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Converters\WardTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\EventType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\LaneType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\LevelUpType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\MonsterSubType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\MonsterType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\Season.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\TowerType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Enums\WardType.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Event.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Frame.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Mastery.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\MatchDetail.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\MatchSummary.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Participant.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\ParticipantFrame.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\ParticipantIdentity.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\ParticipantStats.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\ParticipantTimeline.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\ParticipantTimelineData.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Player.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Position.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Rune.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Team.cs" />
+    <Compile Include="Provider\RiotApi\MatchEndpoint\Timeline.cs" />
+    <Compile Include="Provider\RiotApi\MatchListEndPoint\MatchList.cs" />
+    <Compile Include="Provider\RiotApi\MatchListEndPoint\MatchReference.cs" />
+    <Compile Include="Provider\RiotApi\MatchListEndPoint\Queue.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\DateTimeConverterFromLong.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\DateTimeConverterFromString.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\DateTimeConverterFromStringTimestamp.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\GameTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\LaneConverter.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\MapTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\PlatformConverter.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\RegionConverter.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\RoleConverter.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\TimeSpanConverterFromMS.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Converters\TimeSpanConverterFromS.cs" />
+    <Compile Include="Provider\RiotApi\Misc\CultureInfoExtensions.cs" />
+    <Compile Include="Provider\RiotApi\Misc\GameMode.cs" />
+    <Compile Include="Provider\RiotApi\Misc\GameType.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Lane.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Language.cs" />
+    <Compile Include="Provider\RiotApi\Misc\MapType.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Platform.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Region.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Role.cs" />
+    <Compile Include="Provider\RiotApi\Misc\Util.cs" />
+    <Compile Include="Provider\RiotApi\RiotApi.cs" />
+    <Compile Include="Provider\RiotApi\RiotApiConfig.cs" />
+    <Compile Include="Provider\RiotApi\RiotSharpException.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\BlockItemStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\BlockStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\Cache\ChampionListStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\Cache\ChampionStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\ChampionListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\ChampionSpellStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\ChampionStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\ChampionStatsStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\Enums\Converters\TagStaticListConverter.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\Enums\TagStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\InfoStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\LevelTipStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\PassiveStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\RecommendedStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Champion\SkinStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\DataRequested.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\ImageStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\Cache\ItemListStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\Cache\ItemStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\GoldStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\GroupStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\ItemListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\ItemStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Item\ItemTreeStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\LanguageStrings\Cache\LanguageStringsStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\LanguageStrings\LanguageStringsStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Map\Cache\MapsStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Map\MapsStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Map\MapStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\Cache\MasteryListStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\Cache\MasteryStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\MasteryListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\MasteryStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\MasteryTreeItemStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\MasteryTreeListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Mastery\MasteryTreeStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\MetadataStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\ProfileIcons\Cache\ProfileIconsStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\ProfileIcons\ProfileIconListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\ProfileIcons\ProfileIconStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Realm\Cache\RealmStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Realm\RealmStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Rune\Cache\RuneListStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Rune\Cache\RuneStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Rune\RuneListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\Rune\RuneStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\SpellVarStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\StatsStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\SummonerSpell\Cache\SummonerSpellListStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\SummonerSpell\Cache\SummonerSpellStaticWrapper.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\SummonerSpell\SummonerSpell.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\SummonerSpell\SummonerSpellListStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticDataEndpoint\SummonerSpell\SummonerSpellStatic.cs" />
+    <Compile Include="Provider\RiotApi\StaticRiotApi.cs" />
+    <Compile Include="Provider\RiotApi\StatusEndpoint\Incident.cs" />
+    <Compile Include="Provider\RiotApi\StatusEndpoint\Message.cs" />
+    <Compile Include="Provider\RiotApi\StatusEndpoint\Service.cs" />
+    <Compile Include="Provider\RiotApi\StatusEndpoint\Shard.cs" />
+    <Compile Include="Provider\RiotApi\StatusEndpoint\ShardStatus.cs" />
+    <Compile Include="Provider\RiotApi\StatusEndpoint\Translation.cs" />
+    <Compile Include="Provider\RiotApi\StatusRiotApi.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\Mastery.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\MasteryPage.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\MasteryPages.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\RunePage.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\RunePages.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\RuneSlot.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\Summoner.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\SummonerBase.cs" />
+    <Compile Include="Provider\RiotApi\SummonerEndpoint\SummonerBaseList.cs" />
+    <Compile Include="Provider\RiotApi\TeamEndpoint\MatchHistorySummary.cs" />
+    <Compile Include="Provider\RiotApi\TeamEndpoint\MessageOfDay.cs" />
+    <Compile Include="Provider\RiotApi\TeamEndpoint\Roster.cs" />
+    <Compile Include="Provider\RiotApi\TeamEndpoint\Team.cs" />
+    <Compile Include="Provider\RiotApi\TeamEndpoint\TeamMemberInfo.cs" />
+    <Compile Include="Provider\RiotApi\TeamEndpoint\TeamStatDetail.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\Converters\TournamentMapTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\Converters\TournamentPickTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\Converters\TournamentSpectatorTypeConverter.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\TournamentEventType.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\TournamentMapType.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\TournamentPickType.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\Enums\TournamentSpectatorType.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\TournamentCodeDetail.cs" />
+    <Compile Include="Provider\RiotApi\TournamentEndpoint\TournamentLobbyEvent.cs" />
+    <Compile Include="Provider\RiotApi\TournamentRiotApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

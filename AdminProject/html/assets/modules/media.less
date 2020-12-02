@@ -1,0 +1,605 @@
+﻿@import "variables.less";
+
+#page-content {
+    .media-page {
+        .latest-video {
+            width: 100%;
+            height: auto;
+            padding: 20px 0 0 0 !important;
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            .video-background {
+                width: 100%;
+                height: 487px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.8) !important;
+                background-size: cover !important;
+                -webkit-filter: blur(3px);
+                -moz-filter: blur(3px);
+                -o-filter: blur(3px);
+                -ms-filter: blur(3px);
+                filter: blur(3px);
+                z-index: 4;
+                overflow: hidden;
+            }
+
+            .background-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 487px;
+                background: rgba(0,0,0,0.76);
+                z-index: 5;
+                border-bottom: 1px solid @darkgray;
+                overflow: hidden;
+            }
+
+            .video-item {
+                height: 418px;
+                max-height: 418px;
+                margin: 0 auto;
+                padding: 0;
+                border: 1px solid @darkgray;
+                background-color: #000;
+                background-position: center top !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+                z-index: 14;
+                position: relative;
+                transition: 0.3s;
+
+
+
+                .video-container {
+                    width: 100%;
+                    height: 100%;
+
+                    .carousel {
+                        width: 100%;
+                        height: 100%;
+
+                        .carousel-inner {
+                            height: 100%;
+                        }
+
+                        .item {
+                            width: 100%;
+                            height: 100%;
+                            background-size: cover !important;
+                        }
+
+                        .carousel-caption {
+                            padding-bottom: 0;
+                            margin-bottom: 0;
+                            text-shadow: 1px 1px 1px #000;
+
+                            h3 {
+                                .ff_bold(16px);
+                            }
+
+                            p {
+                                .ff_regular(13px);
+                            }
+                        }
+
+                        .carousel-control {
+                            width: auto;
+                            height: auto;
+                            font-size: 30px;
+
+                            &.left {
+                                left: 15px;
+                            }
+
+                            &.right {
+                                right: 35px;
+                            }
+
+                            .fa {
+                                position: absolute;
+                                top: 50%;
+                                z-index: 5;
+                                display: inline-block;
+                                margin-top: 3px;
+                            }
+                        }
+                    }
+
+                    a {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        color: @white;
+
+                        .play-overlay {
+                            color: @white;
+                            background: none;
+
+                            i {
+                                font-size: 90px !important;
+                                margin: -35px 0 0 -45px !important;
+                            }
+                        }
+
+                        &:hover, &:focus {
+                            text-decoration: none;
+                        }
+                    }
+
+                    iframe {
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                    }
+
+                    .scroll-controls {
+                        display: none;
+                    }
+                }
+
+                &.video-pip-on {
+                    .video-container {
+                        width: 300px;
+                        height: 170px;
+                        display: block;
+                        z-index: 10;
+                        position: fixed;
+                        bottom: 10px;
+                        right: 10px;
+                        animation-name: imamHatiplerKapatilsin;
+                        animation-duration: 0.3s;
+                        animation-timing-function: ease;
+                        animation-direction: alternate;
+
+                        .scroll-controls {
+                            width: 300px;
+                            padding: 7px 10px;
+                            position: absolute;
+                            top: -32px;
+                            left: 0;
+                            background: @lol-color;
+                            display: block;
+                            border-width: 1px 1px 0 1px;
+
+                            a {
+                                width: 32px;
+                                height: 30px;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                background: #751465;
+                                text-align: center;
+                                line-height: 32px;
+
+
+                                i {
+                                    font-size: 17px;
+                                }
+                            }
+
+                            p {
+                                width: 250px;
+                                float: left;
+                                margin: 0;
+                                padding: 0;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                .ff_regular(13px);
+                                color: #FFF;
+                            }
+                        }
+
+                        .video-title {
+                            display: none;
+                        }
+
+                        .play-overlay {
+                            i {
+                                font-size: 70px !important;
+                                margin: -30px 0 0 -30px !important;
+                            }
+                        }
+
+                        iframe {
+                            width: 100%;
+                            height: 100%;
+                            border: 0;
+                        }
+                    }
+
+                    @keyframes imamHatiplerKapatilsin {
+                        0% {
+                            bottom: -25%;
+                            right: 10px;
+                        }
+
+
+                        100% {
+                            width: 300px;
+                            bottom: 10px !important;
+                            right: 10px;
+                        }
+                    }
+                }
+            }
+
+            .video-nav {
+                height: 418px;
+                z-index: 14;
+
+                a {
+                    width: 100%;
+                    height: 120px;
+                    margin-top: 162px;
+                    background: @white;
+                    display: table;
+                    background-size: cover !important;
+                    position: relative;
+                    opacity: .8;
+                    transition: .3s;
+
+                    div {
+                        display: table-cell;
+                        vertical-align: middle;
+                        background: rgba(0,0,0,.4);
+
+                        p {
+                            max-height: 66px;
+                            padding: 0 15px 0 15px;
+                            font-size: 18px;
+                            color: @white;
+                            overflow: hidden;
+                        }
+                    }
+
+                    span {
+                        width: 100%;
+                        height: 20px;
+                        position: absolute;
+                        bottom: -20px;
+                        left: 0;
+                        padding: 0 10px;
+                        background: @media-color;
+                        color: @white;
+                        .ff_regular(12px, 20px);
+
+                        i {
+                            margin: 0 5px;
+                        }
+                    }
+
+                    &:hover, &:focus {
+                        opacity: 1;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .video-buttons {
+                min-height: 49px;
+                background: rgba(0,0,0,0.5);
+                border: 1px solid @darkgray;
+                border-top: none;
+                z-index: 15;
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    color: @white;
+                    text-align: center;
+                    line-height: 48px;
+                    margin: 0;
+                    padding: 0;
+
+                    i {
+                        margin-right: 10px;
+                    }
+
+                    em {
+                        font-style: normal;
+                    }
+
+                    &.selected {
+                        color: @media-color;
+                    }
+
+                    &:hover, &:focus {
+                        color: @media-color;
+                        text-decoration: none;
+                    }
+                }
+
+                div {
+                    border-right: 1px solid @darkgray;
+
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+
+            .video-content {
+                width: 100%;
+                height: auto;
+                background: #000;
+
+                .video-detail {
+                    margin: 20px auto;
+
+                    .game {
+                        margin: 10px 0 7px 0;
+                        .ff_bold(13px);
+                        color: @lol-color;
+                        text-transform: uppercase;
+                    }
+
+                    .title {
+                        margin: 0 0 7px 0;
+                        padding: 0 10px 0 0;
+                        .ff_bold(25px);
+                        color: @white;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+
+                    .description {
+                        color: #CCC;
+                        .ff_regular(13px);
+                    }
+                }
+
+                .video-comments {
+                    display: none;
+                    margin: 20px auto;
+
+                    .facebook-comments-area {
+                        background: #000;
+                        max-height: 500px;
+                        overflow: auto;
+                    }
+                }
+            }
+        }
+
+        .box-module {
+            height: auto;
+            margin-bottom: 20px;
+            padding: 0;
+
+            .module-title {
+                width: 100%;
+                display: inline-block;
+            }
+
+            .video-search {
+                background: #000;
+                height: 60px;
+                margin: 15px 0;
+            }
+
+            .module-content {
+                width: 100%;
+                height: auto;
+                background: #000;
+
+                .video-filtering {
+                    .form-group {
+                        label {
+                            margin-bottom: 7px;
+                            .ff_bold(14px);
+                            text-transform: uppercase;
+                            color:@media-color !important;
+                        }
+
+                        select {
+                            border: 1px solid #dedede;
+                            padding: 0 10px;
+                            background-size: 0 2px,100% 0px;
+                            .ff_regular(13px);
+                        }
+                    }
+                }
+
+                .video-list {
+                    width: 100%;
+                    float: left;
+                    padding-bottom: 20px;
+
+                    .video {
+                        float: left;
+                        margin: 15px 0 0 0;
+
+                        .video-item {
+                            width: 100%;
+                            height: 180px;
+                            float: left;
+                            border: 1px solid @darkgray;
+                            background: #000;
+                            position: relative;
+                            overflow: hidden;
+                            background-size: cover !important;
+                            background-repeat: no-repeat !important;
+                            background-position: center top !important;
+
+                            img {
+                                margin: 0 auto;
+                            }
+                        }
+
+                        .video-text {
+                            width: 100%;
+                            float: left;
+
+                            p {
+                                width: 100%;
+                                margin: 5px 0;
+                                padding: 0 15px 0 0;
+                                font-size: 15px;
+                                display: inline-block;
+                                text-transform: uppercase;
+                            }
+
+                            em {
+                                width: 100%;
+                                height: 45px;
+                                display: block;
+                                color: @white;
+                                .ff_regular(13px);
+                                font-style: normal;
+                            }
+                        }
+                    }
+
+                    .flexible-color {
+                        color: @media-color;
+                    }
+                }
+
+                .load-videos-btn {
+                    width: 96%;
+                    float: left;
+                    height: 45px;
+                    margin: 15px 2% 20px 2%;
+                    padding: 0;
+                    line-height: 45px;
+                    background: @media-color;
+                    color: @white;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                .no-video {
+                    width: 96%;
+                    float: left;
+                    height: 45px;
+                    margin: 15px 2% 20px 2%;
+                    padding: 0;
+                    line-height: 45px;
+                    color: @media-color;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-align: center;
+                    font-size: 17px;
+                    display: none;
+                }
+            }
+        }
+
+        @media screen and (min-width: 991px) and (max-width: 1199px) {
+        }
+
+        @media screen and (min-width: 1px) and (max-width: 991px) {
+            .video-background {
+                height: 797px !important;
+            }
+
+            .background-overlay {
+                height: 797px !important;
+            }
+
+            .video-nav {
+                width: 100%;
+                height: 140px !important;
+                float: none !important;
+                margin-bottom: 15px;
+
+                a {
+                    margin: 0 0 0 0 !important;
+                }
+            }
+        }
+
+        @media screen and (min-width: 1px) and (max-width: 765px) {
+            .latest-video {
+                .video-item {
+                    a {
+                        .video-title {
+                            padding: 0 10px;
+                            font-size: 30px !important;
+                        }
+                    }
+                }
+
+                .video-buttons {
+                    div {
+                        width: 25%;
+                        float: left;
+
+                        em {
+                            display: none;
+                        }
+
+                        i {
+                            margin: 0;
+                        }
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ADDTHIS CONFIG
+
+.addthis_inline_share_toolbox_yndq {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.at-expanded-menu {
+    position: fixed !important;
+    top: 0 !important;
+
+    #at-expanded-menu-hd {
+        display: none !important;
+    }
+
+    .at-expanded-menu-top-services-header, #at-expanded-menu-load-btn, .at-branding-logo {
+        display: none !important;
+    }
+}
+
+.at-expanded-menu-branding {
+    display: none !important;
+}
+
+#at-expanded-menu-host .at-expanded-menu-round .at-expanded-menu-button-label {
+    .ff_regular(13px) !important;
+    font-weight: normal !important;
+    letter-spacing: unset !important;
+}
+
+#at20mc {
+    display: none !important;
+}
+
+#at-expanded-menu-top-service-list-container li {
+    width: 54px !important;
+    height: 54px !important;
+    margin-bottom: 40px !important;
+
+    .at-expanded-menu-button {
+        width: 54px !important;
+
+        .at-icon-wrapper {
+            width: 54px !important;
+            height: 54px !important;
+            border-radius: 0 !important;
+        }
+    }
+}

@@ -1,0 +1,246 @@
+﻿@using PagedList
+@using AdminProject.Models
+@using Sihirdar.DataAccessLayer
+@model StaticPagedList<CategoryGalleryViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var backgroundPic = "html/assets/img/temp/latest-video-temp.jpg";
+    var gallery = ViewBag.FirstGallery as GalleryNavigateViewModel;
+    if (gallery != null)
+    {
+        var firstGallery = gallery.FirstGallery;
+        if (firstGallery != null)
+        {
+            backgroundPic = firstGallery.Pictures.Count > 0 ? "/Content/Gallery/" + firstGallery.Pictures[0].Picture : "/html/assets/img/temp/latest-video-temp.jpg";
+        }
+    }
+}
+
+<div id="page-content">
+    <div class="interaction-boxes media-page">
+        <div class="latest-video container-fluid no-padding">
+            <div class="video-background" style="background: url(@backgroundPic) no-repeat center;"></div>
+            <div class="background-overlay"></div>
+            <div class="container">
+                <div class="video-nav prev col-md-2 no-padding">
+                    @{
+
+                        if (gallery != null && gallery.PrevGallery != null)
+                        {
+                            var item = gallery.PrevGallery;
+                            <a href="/fotograf-galerileri/@ViewBag.Category.Url/@item.Url/detay" title="@item.Name" style="background: url(/Content/Gallery/@(item.Picture)) no-repeat center;">
+                                <div>
+                                    <p class="multi-ellipsis text-left">@item.Name</p>
+                                </div>
+                                <span class="text-left"><i class="fa fa-chevron-left"></i> Önceki Galeri</span>
+                            </a>
+                        }
+                    }
+                </div>
+                <div class="video-nav next col-md-2 pull-right no-padding">
+                    @{
+                        if (gallery != null && gallery.NextGallery != null)
+                        {
+                            var item = gallery.NextGallery;
+                            <a href="/fotograf-galerileri/@ViewBag.Category.Url/@item.Url/detay" title="@item.Name" style="background: url(/Content/Gallery/@(item.Picture)) no-repeat center;">
+                                <div>
+                                    <p class="multi-ellipsis text-left">@item.Name</p>
+                                </div>
+                                <span class="text-right">Sonraki Galeri <i class="fa fa-chevron-right"></i></span>
+                            </a>
+                        }
+                    }
+                </div>
+
+                <div class="video-item col-md-8">
+                    <div class="video-container">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                @{
+                                    var likedCount = 0;
+                                    if (gallery != null)
+                                    {
+                                        var firstGallery = gallery.FirstGallery;
+                                        if (firstGallery != null)
+                                        {
+                                            var step = 0;
+                                            foreach (var galleryItem in firstGallery.Pictures)
+                                            {
+                                                var classStyle = step == 0 ? "item active" : "item";
+
+                                                <div class="@classStyle" style="background: url('/Content/Gallery/@galleryItem.Picture');">
+                                                    <div class="carousel-caption">
+                                                        <h3>@galleryItem.Name</h3>
+                                                        <p>
+                                                            @galleryItem.Description
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                step++;
+
+                                                ViewBag.Type = "article";
+                                                ViewBag.Description = "Galeri detayını sihidarvadisi.com üzerinde görüntüleyebilirsiniz.";
+                                                ViewBag.Image = "Gallery/" + galleryItem.Picture;
+                                                ViewBag.Url = Request.RawUrl;
+                                            }
+
+                                            likedCount = firstGallery.LikedCount;
+
+                                            <input type="hidden" id="ContentId" value="@firstGallery.Id" />
+                                            <input type="hidden" id="ContentUrl" value="@firstGallery.Url" />
+                                            <input type="hidden" id="ContentGameType" value="@firstGallery.ContentType" />
+
+                                            if (ViewBag.LikeId != null)
+                                            {
+                                                <input type="hidden" id="LikeId" value="@ViewBag.LikeId" />
+                                            }
+                                        }
+                                    }
+                                }
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="fa fa-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="fa fa-chevron-right"></span>
+                            </a>
+                        </div> <!-- Carousel -->
+                    </div>
+                </div>
+
+                <div class="col-md-12 no-padding">
+                    <div class="video-buttons col-md-8 col-centered no-padding">
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Beğen" class="btn" id="like-button"><i class="fa @(ViewBag.CheckLiked ? "fa-heart" : "fa-heart-o")" aria-hidden="true"></i> <em>BEĞEN (<b>@likedCount</b>)</em></a></div>
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Paylaş" class="btn"><div class="addthis_inline_share_toolbox_yndq"></div><i class="fa fa-share-alt" aria-hidden="true"></i> <em>PAYLAŞ</em></a></div>
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Detay" class="btn selected" onclick="$(this).openVideoTab('.video-detail');"><i class="fa fa-align-left" aria-hidden="true"></i> <em>GALERİ DETAYI</em></a></div>
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Yorumlar" class="btn" onclick="$(this).openVideoTab('.video-comments');"><i class="fa fa-comments" aria-hidden="true"></i> <em>YORUMLAR</em></a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-content">
+                <div class="container">
+                    <div class="col-md-8 col-centered tab video-detail no-padding">
+                        @{
+                            if (gallery != null && gallery.FirstGallery != null)
+                            {
+                                var item = gallery.FirstGallery;
+
+                                <h5 class="game flexible-color">@item.GameType</h5>
+                                <h4 class="title">@item.Subject</h4>
+                                <div class="description">
+                                    @Html.Raw(item.Description)
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <div class="col-md-8 col-centered tab video-comments no-padding">
+                        <div class="facebook-comments-area">
+                            <div id="fb-root"></div>
+                            <script>
+                                $(document).ready(function () {
+                                    (function (d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=244843595925420";
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));
+
+                                    var pageUrl = window.location.href;
+                                    var fbComments = '<div class="fb-comments" data-href="' + pageUrl + '" data-width="100%" data-colorscheme="dark" data-numposts="5"></div>';
+                                    $('.facebook-comments-area').append(fbComments);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.latest-video -->
+
+        @if (ViewBag.CenterAdvert != null)
+        {
+            var advert = (CategoryAdvertDto)ViewBag.CenterAdvert;
+
+            <div class="reklam-728x90 margin-top-15">
+                @if (advert.AdType == AdvertTypes.Image)
+                {
+                    <center>
+                        <a href="/advert/redirect?guid=@advert.Guid"><img src="/Content/File/@advert.FilePath" alt="" /></a>
+                    </center>
+                }
+                else
+                {
+                    @Html.Raw(advert.Code)
+                }
+            </div>
+        }
+        else
+        {
+
+        <!-- /.reklam-728x90 -->
+        }
+
+        <div class="container">
+            <div class="box-module col-md-12 margin-top-15">
+                <div class="module-title flexible-border">TÜM FOTOĞRAF GALERİLERİ</div>
+
+                <div class="module-content no-padding">
+                    <div class="video-filtering col-md-12 no-padding">
+                        <div class="form-group col-sm-3 no-padding no-margin">
+                            <label for="game-select" class="col-md-12 control-label">Oyun Seçiniz:</label>
+                            <div class="col-md-12">
+                                @Html.DropDownList("gameTypeGallery", ViewBag.GameType as SelectList, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+
+                        @*<div class="form-group col-sm-3 pull-right no-padding no-margin">
+                                <label for="sorting-select" class="col-md-12 control-label">Sırala:</label>
+
+                                <div class="col-md-12">
+                                    @Html.DropDownList("sorting-select", ViewBag.FilterType as SelectList, new { @class = "form-control", id = "sorting-select" })
+                                </div>
+                            </div>*@
+                    </div>
+
+                    <input type="hidden" id="gallery-category-url" value="@ViewBag.Category.Url" />
+                    <div class="video-list" id="list-videos">
+                        @if (Model.TotalItemCount > 0)
+                        {
+                            foreach (var itemViewModel in Model)
+                            {
+                                <div class="video col-md-3">
+                                    <div class="video-item" style="background:url(/Content/Gallery/@(itemViewModel.Picture));">
+                                        <a class="play-inside-box" href="/fotograf-galerileri/@ViewBag.Category.Url/@itemViewModel.Url/detay"></a>
+                                    </div>
+
+                                    <div class="video-text">
+                                        <p class="flexible-color">@itemViewModel.GameTypeText</p>
+                                        <em class="multi-ellipsis">@itemViewModel.Subject</em>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="no-video">Gösterilecek hiç birşey bulamadık :/</div>
+                        }
+                    </div>
+                    @if (Model.TotalItemCount > 0)
+                    {
+                        <a href="javascript:;" id="load-gallery" class="col-md-12 btn btn-default btn-block load-videos-btn">Daha Fazla Görüntüle</a>
+                        <div class="no-video">Daha fazla galeri bulamadık :/</div>
+                    }
+                </div>
+            </div>
+        </div><!-- /.gallery-list -->
+    </div>
+</div>
+
+<input type="hidden" value="#41909b" id="page-color-code" />

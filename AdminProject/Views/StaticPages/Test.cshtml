@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="vadi--posts">
+	<style>
+		.color--background {
+			background-color: #f00;
+		}
+	</style>
+	<div class="container">
+		<div class="row">
+			<section class="col-md-9">
+				<h1 class="vadi--posts--title">Testler</h1>
+				<div class="vadi--posts--list">
+
+					<a href="/araclar/testler/lol-bilginizi-olcuyoruz" title="League of Legends Bilginizi Ölçüyoruz" class="vadi--posts--post">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12 text-xs-center text-sm-left">
+								<span class="vadi--posts--post--game color--background">League of Legends</span>
+								<img src="~/Content/test/lol/4/lol-bilginizi-olcuyoruz_thumb.png" alt="League of Legends Bilginizi Ölçüyoruz" class="vadi--posts--post--image">
+							</div>
+							<div class="col-sm-9 col-xs-12 text-xs-center text-sm-left">
+								<header class="vadi--posts--post--header">
+									<div class="vadi--posts--post--title">League of Legends Bilginizi Ölçüyoruz</div>
+								</header>
+								<p class="vadi--posts--post--description multi-ellipsis">League of Legends hakkında ne kadar bilgilisin? Bunu ölçmek istemez misin?</p>
+							</div>
+						</div>
+					</a>
+
+					<a href="/araclar/testler/aslinda-hangi-kumedesin" title="Aslında Hangi Kümedesin?" class="vadi--posts--post">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12 text-xs-center text-sm-left">
+								<span class="vadi--posts--post--game color--background">League of Legends</span>
+								<img src="~/Content/test/lol/3/aslinda-hangi-kumedesin_thumb.png" alt="Aslında Hangi Kümedesin?" class="vadi--posts--post--image">
+							</div>
+							<div class="col-sm-9 col-xs-12 text-xs-center text-sm-left">
+								<header class="vadi--posts--post--header">
+									<div class="vadi--posts--post--title">Aslında Hangi Kümedesin?</div>
+								</header>
+								<p class="vadi--posts--post--description multi-ellipsis">Vadi'nin bizce en önemli pozisyonu olan destek rolü hakkında neler düşünüyorsun?</p>
+							</div>
+						</div>
+					</a>
+
+					<a href="/araclar/testler/hangi-mid-sampiyonusun" title="Hangi Mid Şampiyonusun?" class="vadi--posts--post">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12 text-xs-center text-sm-left">
+								<span class="vadi--posts--post--game color--background">League of Legends</span>
+								<img src="/html/assets/img/test-2-answers/orta_koridor_kapak_thumb.png" alt="Hangi Mid Şampiyonusun?" class="vadi--posts--post--image">
+							</div>
+							<div class="col-sm-9 col-xs-12 text-xs-center text-sm-left">
+								<header class="vadi--posts--post--header">
+									<div class="vadi--posts--post--title">Hangi Mid Şampiyonusun?</div>
+								</header>
+								<p class="vadi--posts--post--description multi-ellipsis">Vadi'nin En önemli pozisyonu olan orta koridorda bakalım kimle eşleşeceksin ? Testi hemen çöz kimliğini bul!</p>
+							</div>
+						</div>
+					</a>
+
+					<a href="/araclar/testler/lolde-hangi-nisancisin" title="LoL'de Hangi Nişancısın?" class="vadi--posts--post">
+						<div class="row">
+							<div class="col-sm-3 col-xs-12 text-xs-center text-sm-left">
+								<span class="vadi--posts--post--game color--background">League of Legends</span>
+								<img src="/html/assets/img/test-1-answers/nisancilar_kapak_thumb.png" alt="LoL'de Hangi Nişancısın?" class="vadi--posts--post--image">
+							</div>
+							<div class="col-sm-9 col-xs-12 text-xs-center text-sm-left">
+								<header class="vadi--posts--post--header">
+									<div class="vadi--posts--post--title">LoL'de Hangi Nişancısın?</div>
+								</header>
+								<p class="vadi--posts--post--description multi-ellipsis">Gamer People'nde sana en yakın olan Nişancı karakteri öğrenmek için hemen testi çözmeye başla. Çıkan sonuçları arkadaşlarınla paylaşarak ...</p>
+							</div>
+						</div>
+					</a>
+
+				</div>
+			</section>
+            <aside class="col-md-3">
+                @{Html.RenderAction("GetTopContent", "Partial");}
+            </aside>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="#f00" id="page-color-code" />

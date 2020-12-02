@@ -1,0 +1,78 @@
+﻿@using PagedList.Mvc
+@model AdminProject.Models.WriterDetailDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "Yazar hakkında bilgilere ve paylaşmış olduğu içeriklere tıklayarak ulaşın";
+    ViewBag.Image = "default-share-img.jpg";
+}
+
+<div id="page-content">
+    <div class="interaction-boxes news-page container margin-top-15">
+        <div class="row">
+            <div class="box-module col-md-9">
+                <div class="module-title flexible-border">YAZAR PROFİLİ</div>
+                <div class="module-content no-padding">
+                    <ul class="news-list">
+                        @{
+                            var writer = Model.Writer;
+                            <li style="width:100%;">
+                                <div class="col-sm-4 news-img no-padding" style="background:url('@(string.IsNullOrEmpty(writer.Picture) ? "/html/assets/img/no-image-user.png" : "/Content/" + writer.Picture)')"></div>
+                                <div class="col-sm-8 news-content">
+                                    <h5 class="game flexible-color">YAZAR</h5>
+                                    <h4 class="title">@writer.Name</h4>
+                                    <p class="description multi-ellipsis">@writer.Motto</p>
+                                    <a href="@(string.IsNullOrEmpty(writer.Facebook) ? "#" : writer.Facebook)" class="btn btn-default btn-raised read-more"><i class="fa fa-facebook no-margin" aria-hidden="true"></i></a>
+                                    <a href="@(string.IsNullOrEmpty(writer.Twitter) ? "#" : writer.Twitter)" class="btn btn-default btn-raised read-more"><i class="fa fa-twitter no-margin" aria-hidden="true"></i></a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="module-title flexible-border">YAZARA AİT HABERLER & MAKALELER</div>
+                <div class="module-content no-padding">
+                    <ul class="news-list">
+                        @if (Model.Contents != null)
+                        {
+                            if (Model.Contents.Count > 0)
+                            {
+                                foreach (var itemViewModel in Model.Contents)
+                                {
+                                    <li style="width:100%;">
+                                        <div class="col-sm-4 news-img no-padding" style="background:url('/Content/@(itemViewModel.PictureName)_315x198.jpg')"></div>
+                                        <div class="col-sm-8 news-content">
+                                            <h5 class="game flexible-color">@itemViewModel.GameType</h5>
+                                            <h4 class="title">@itemViewModel.Subject</h4>
+                                            <h6 class="author flexible-color">@itemViewModel.EditorName / <em class="date">@string.Format("{0:dd MMMM yyyy}", itemViewModel.CreateDate)</em></h6>
+                                            <p class="description multi-ellipsis">@Html.Raw(itemViewModel.Description)</p>
+                                            <a href="/haber/@itemViewModel.Url" class="btn btn-default btn-raised read-more" title="@itemViewModel.Subject"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                    <ul class="pagination pull-right">
+                        @Html.PagedListPager(Model.Contents, page => string.Format("/yazar/{0}?page={1}", Model.Writer.Username, page), new PagedListRenderOptions
+                        {
+                            LinkToFirstPageFormat = AdminProject.Resources.HtmlLang.pagerLinkFirstPageFormat,
+                            LinkToPreviousPageFormat = AdminProject.Resources.HtmlLang.pagerLinkPreviousPageFormat,
+                            LinkToNextPageFormat = AdminProject.Resources.HtmlLang.pagerLinkNextPageFormat,
+                            LinkToLastPageFormat = AdminProject.Resources.HtmlLang.pagerLinkLastPageFormat
+                        })
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box-module col-md-3">
+                @{
+                    Html.RenderAction("GetTopContent", "Partial");
+                }
+            </div>
+        </div>
+    </div>
+</div><!-- /#page-content -->
+<input type="hidden" value="#962b84" id="page-color-code" />

@@ -1,0 +1,31 @@
+﻿@using AdminProject.Models
+@model IList<WidgetContentViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PingContentPage</title>
+</head>
+<body style="width:300px;">
+    <div class="module-content no-padding">
+        <ul class="popular-news-list">
+            @foreach (var item in (List<WidgetContentViewModel>)Model)
+            {
+                <li>
+                    <a href="//gamerpeople.com/haber/@item.CategoryUrl/@item.ContentUrl" target="_blank" title="@item.Name">
+                        <img src="@(string.IsNullOrEmpty(item.ContentUrl) ? "//gamerpeople.com/html/assets/img/no-image-mini-post.png" : "//gamerpeople.com/Content/" + item.ContentUrl + "_120x80.jpg")" alt="@item.Name" class="img-responsive" />
+                        <em class="flexible-color">@item.GameType</em>
+                        <p class="multi-ellipsis">@item.Name</p>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

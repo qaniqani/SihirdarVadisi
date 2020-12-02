@@ -1,0 +1,60 @@
+﻿@model List<Sihirdar.DataAccessLayer.Infrastructure.Models.PictureSizeDetail>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add Size";
+}
+
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        Sizes
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <div class="form-group">
+                        <label for="Width">Selected Size Subject</label>
+                        <br />
+                        @ViewBag.Size.Name
+                    </div>
+                    <div class="clearfix"></div>
+                    <table class="table-striped footable-res footable metro-blue">
+                        <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Witdh</th>
+                            <th>Height</th>
+                            <th>Options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            foreach (var size in Model)
+                            {
+                                <tr>
+                                    <td>@size.Name </td>
+                                    <td>@size.Width</td>
+                                    <td>@size.Height</td>
+                                    <td style="width:100px;">
+                                        <a href="/Admin/PictureSize/EditSize/@size.SizeId?sizeId=@size.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                        <a href="/Admin/PictureSize/DeleteSize/@size.SizeId?sizeId=@size.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,143 @@
+﻿@using reCAPTCHA.MVC
+@model AdminProject.Models.TournamentSaveModelDto
+@{
+    ViewBag.Title = "Turnuva Kayıt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="//www.google.com/recaptcha/api.js?hl=tr" async defer></script>
+
+<div id="page-content">
+    <div class="interaction-boxes calendar-tools-page container margin-top-15">
+        <div class="row">
+            <div class="col-md-12 no-padding">
+                <div class="box-module col-md-12">
+                    <div class="module-title flexible-border">TURNUVA KAYIT</div>
+                    <div class="module-content no-padding" style="overflow:visible !important;">
+                        <div class="page-detail no-padding">
+                            <style>
+                                .turnuva-kayit {
+                                    padding-bottom: 30px;
+                                }
+                                .turnuva-kayit input, .turnuva-kayit select {
+                                    width: 100%;
+                                    font-weight: normal;
+                                    font-family: "Open Sans";
+                                }
+                                .turnuva-kayit input {
+                                    color: #fff;
+                                    font-size: 14px !important;
+                                }
+                                .turnuva-kayit h3 {
+                                    font-size: 25px;
+                                    line-height: normal;
+                                    font-style: normal;
+                                    color: #fff;
+                                }
+                                .turnuva-kayit label {
+                                    font-size: 14px !important;
+                                    font-family: "Open Sans";
+                                    color: #fff !important;
+                                }
+                            </style>
+                            <div class="col-md-8 col-md-offset-2 turnuva-kayit">
+                                <h3>Turnuva Kayıt Formu</h3>
+
+                                <form action="/turnuva-kayit" method="post" class="form row">
+                                    <input type="hidden" name="Id" value="@(Model == null ? 0 : Model.Id)" />
+                                    @Html.HiddenFor(model => model.Id)
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <select name="GameName">
+                                                <option value="Arena of Valor" selected="selected">Arena of Valor</option>
+                                                @*<option value="CS:Go">CS:Go</option><option value="LOL">LOL</option>*@
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Takim Ismi</label>
+                                            @Html.TextBoxFor(model => model.TeamName, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>1. Oyuncu Isim</label>
+                                            @Html.TextBoxFor(model => model.Username1, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>2. Oyuncu Isim</label>
+                                            @Html.TextBoxFor(model => model.Username2, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>3. Oyuncu Isim</label>
+                                            @Html.TextBoxFor(model => model.Username3, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>4. Oyuncu Isim</label>
+                                            @Html.TextBoxFor(model => model.Username4, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>5. Oyuncu Isim</label>
+                                            @Html.TextBoxFor(model => model.Username5, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>1. Yedek Oyuncu Ismi</label>
+                                            @Html.TextBoxFor(model => model.BackupUsername1, new {@class = "form-control input-sm", placeholder = "(varsa)", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>2. Yedek Oyuncu Ismi</label>
+                                            @Html.TextBoxFor(model => model.BackupUsername2, new {@class = "form-control input-sm", placeholder = "(varsa)", maxlength = "100"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>1. Oyuncu Nick</label>
+                                            @Html.TextBoxFor(model => model.UserNick1, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>2. Oyuncu Nick</label>
+                                            @Html.TextBoxFor(model => model.UserNick2, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>3. Oyuncu Nick</label>
+                                            @Html.TextBoxFor(model => model.UserNick3, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>4. Oyuncu Nick</label>
+                                            @Html.TextBoxFor(model => model.UserNick4, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>5. Oyuncu Nick</label>
+                                            @Html.TextBoxFor(model => model.UserNick5, new {@class = "form-control input-sm validate[required]", placeholder = "*", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>1. Yedek Oyuncu Nicki</label>
+                                            @Html.TextBoxFor(model => model.BackupUserNick1, new {@class = "form-control input-sm", placeholder = "(varsa)", maxlength = "100"})
+                                        </div>
+                                        <div class="form-group">
+                                            <label>2. Yedek Oyuncu Nicki</label>
+                                            @Html.TextBoxFor(model => model.BackupUserNick2, new {@class = "form-control input-sm", placeholder = "(varsa)", maxlength = "100"})
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Kaptan Telefon Numarası</label>
+                                            @Html.TextBoxFor(model => model.Phone, new {@class = "form-control input-sm validate[custom[phone]]", placeholder = "*", maxlength = "100"})
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.Recaptcha()
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-success btn-raised full-width no-margin" style="width: 100%;" value="GÖNDER"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

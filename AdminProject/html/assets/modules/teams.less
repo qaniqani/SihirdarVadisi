@@ -1,0 +1,370 @@
+﻿@import "variables.less";
+
+#page-content {
+    .teams-page {
+        .box-module {
+            height: auto;
+            margin-bottom: 20px;
+
+            .module-content {
+                width: 100%;
+                height: auto;
+                background: none;
+
+                .pagination {
+                    margin: 0 auto;
+
+                    li {
+                        width: auto;
+                        height: auto;
+                        border: 0 none;
+
+                        a {
+                            border-radius: 0;
+                            color: @darkgray;
+                        }
+                    }
+                }
+
+                .teams-detail {
+                    width: 100%;
+                    float: left;
+                    background: #000;
+
+                    .team-filter {
+                        margin-bottom: 10px;
+                        padding: 10px 15px 0 15px !important;
+
+                        label {
+                            font-size: 13px;
+                        }
+
+                        .form-control {
+                            background-position: center bottom,center calc(100% - 0px);
+                        }
+
+                        .btn {
+                            color: @white;
+                            border: 1px solid #CCC;
+                            margin-top: 38px;
+                            border-radius: 0;
+                        }
+
+                        select {
+                            margin-top: 10px;
+                            border: 1px solid #CCC;
+                            border-bottom: 0 none;
+                            padding: 0 10px;
+                        }
+                    }
+
+                    .alphabet-title {
+                        margin: 0;
+                        .ff_bold(45px);
+                        color: @white;
+                        border-bottom: 5px solid @darkgray;
+                    }
+
+                    .teams-list {
+                        width: 100%;
+                        float: left;
+                        margin-bottom: 25px;
+                        padding: 0 15px;
+
+                        ul {
+                            margin: 15px 0;
+                            padding: 0;
+
+                            li {
+                                width: 23%;
+                                float: left;
+                                margin-left: 2%;
+                                margin-top: 5px;
+                                list-style: square;
+                                background: #000;
+
+                                a {
+                                    .ff_regular(12px);
+                                    color: #CCC;
+
+                                    &:hover, &:focus {
+                                        text-decoration: underline;
+                                        color: @white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .team-img {
+                        width: 100%;
+                        height: 450px;
+                        float: left;
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                        background-position: center top !important;
+                    }
+
+                    .teams-content {
+                        width: 100%;
+                        float: left;
+                        padding: 15px;
+                        .ff_regular(13px);
+
+                        .game {
+                            margin: 10px 0 7px 0;
+                            .ff_bold(14px);
+                            color: @lol-color;
+                        }
+
+                        .title {
+                            margin: 0 0 7px 0;
+                            padding: 0 10px 0 0;
+                            .ff_bold(28px);
+                            color: @white;
+                        }
+
+                        .description {
+                            margin-top: 20px;
+                            color: #CCC;
+                            .ff_regular(13px) !important;
+                            font-style: normal !important;
+                            overflow: hidden;
+
+                            h1, h2, h3, h4, h5, h6 {
+                                color: @white;
+                                .ff_bold(20px);
+                            }
+                        }
+
+                        .share-box {
+                            width: 50px;
+                            height: 250px;
+                            float: left;
+                            margin: 10px 15px 0 0;
+
+                            p {
+                                font-style: italic;
+
+                                i {
+                                    margin-right: 5px;
+                                }
+                            }
+
+                            .addthis_inline_share_toolbox {
+                                a {
+                                    margin-right: 5px !important;
+                                    background: none !important;
+                                    border: 1px solid @darkgray;
+
+                                    &:hover, &:focus {
+                                        margin-left: -5px;
+                                        margin-top: 4px !important;
+                                        margin-bottom: 1px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .team-navigation {
+                        a {
+                            width: 100%;
+                            height: auto;
+                            float: left;
+                            padding: 13px 35px;
+                            text-align: center;
+                            color: @white;
+                            opacity: .5;
+                            position: relative;
+                            transition: 0.3s;
+
+                            i {
+                                width: 30px;
+                                height: 30px;
+                                position: absolute;
+                                top: 22px;
+                                right: 0;
+                                color: @black;
+                                background: #FFF;
+                                line-height: 30px;
+                                font-size: 15px;
+                            }
+
+                            p {
+                                margin: 5px 0;
+                                padding: 0;
+                            }
+
+                            p:nth-child(2) {
+                                font-size: 15px;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+
+                            &:hover, &:focus {
+                                text-decoration: none;
+                                opacity: 1;
+                            }
+                        }
+
+                        .next-news {
+                            background: #050505;
+                        }
+
+                        .prev-news {
+                            background: #111;
+
+                            i {
+                                left: 0;
+                                right: auto;
+                            }
+                        }
+                    }
+                }
+
+                ul.popular-teams-list {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        width: 100%;
+                        height: 100px;
+                        margin: 0;
+                        padding: 10px;
+                        color: @white;
+                        list-style: none;
+                        border: 1px solid @darkgray;
+                        border-bottom: 0 none;
+                        overflow: hidden;
+                        background: #000;
+
+                        a {
+                            color: @white;
+
+                            &:hover, &:focus {
+                                text-decoration: none;
+                            }
+                        }
+
+                        em {
+                            font-style: normal;
+                            .ff_bold(13px);
+                        }
+
+                        p {
+                            padding-top: 5px;
+                            .ff_bold(13px);
+                            height: 60px;
+                            overflow: hidden;
+                        }
+
+                        img {
+                            height: 80px;
+                            float: left;
+                            padding: 0 10px 0 0;
+                        }
+
+                        &.callbacks_here {
+                            background: @lol-color;
+                            transition: 0.3s;
+                        }
+
+                        &:hover {
+                            text-decoration: none;
+                            background: #111 !important;
+                        }
+
+                        &:last-child {
+                            border-bottom: 1px solid @darkgray;
+                        }
+
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 991px) and (max-width: 1199px) {
+            ul.popular-teams-list {
+                margin: 0;
+                padding: 0;
+
+                li {
+
+                    img {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 765px) and (max-width: 991px) {
+            .teams-detail {
+                .team-navigation {
+                    a {
+                        border-top: 1px solid @darkgray;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 1px) and (max-width: 765px) {
+            ul.teams-list {
+                li {
+                    height: auto !important;
+                    padding-bottom: 15px;
+
+                    .news-img {
+                        height: 300px !important;
+                        border: 0 none !important;
+                    }
+
+                    .news-content {
+                        .title {
+                            white-space: unset !important;
+                        }
+
+                        .description {
+                            height: auto !important;
+                        }
+                    }
+                }
+            }
+
+            .teams-detail {
+                .teams-list {
+                    ul li {
+                        width: 48% !important;
+                    }
+                }
+
+                .teams-content {
+                    .share-box {
+                        width: 100% !important;
+                        height: 60px !important;
+
+                        .addthis_inline_share_toolbox {
+                            a {
+                                transition: 0 !important;
+
+                                &:hover, &:focus {
+                                    margin-left: 0 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .team-navigation {
+                    a {
+                        border-top: 1px solid @darkgray;
+                    }
+                }
+            }
+        }
+    }
+}

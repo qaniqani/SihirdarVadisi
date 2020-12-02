@@ -1,0 +1,157 @@
+﻿@using AdminProject.Helpers
+@using AdminProject.Models
+@using Sihirdar.DataAccessLayer.Infrastructure.Models
+@model Advert
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add";
+}
+
+<script type="text/javascript">
+    function adTypeChange() {
+        var adType = $("#AdType").val();
+        if (adType == "0" || adType == "1" || adType == "3") {
+            $("#advertCode").show();
+            $("#advertFile").hide();
+        }
+        else if (adType == "2") {
+            $("#advertCode").hide();
+            $("#advertFile").show();
+        }
+    }
+
+    $(document).ready(function () {
+        adTypeChange();
+
+        $("#AdType")
+            .change(function() {
+                adTypeChange();
+            });
+        $("#sortable li div").click(function () {
+            var text = $(this).text();
+            var id = $(this).attr("data-id");
+            var categoryType = $(this).attr("data-categoryType");
+            //ESportCalendar = 8,
+            //Gallery = 7,
+            //Video = 6,
+            //Story = 5,
+            //Static = 4,
+            //ToolLOLHour = 3,
+            //ToolLOLChamp = 2,
+            //TeamPage = 1,
+            //DownloadGuide = 0,
+
+            $("#CategoryName").text(text);
+            $("#CategoryId").val(id);
+
+            $("#embeddedCodeBox").hide();
+            if (categoryType == "6") {
+                $("#embeddedCodeBox").show();
+            }
+        });
+    });
+</script>
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>Advert</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#basic">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="basic">
+                    <form role="form" action="/Admin/Advert/Add" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="CategoryId">Selected Category</label>
+                            @Html.HiddenFor(model => model.CategoryId, new { @Value = "0" })
+                            <i style="display:block" id="CategoryName">Not selected category</i>
+                        </div>
+                        <div class="form-group">
+                            <label for="AdLocation">Location</label>
+                            @Html.DropDownListFor(model => model.AdLocation, ViewBag.AdvertLocationList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="AdType">Advert Type</label>
+                            @Html.DropDownListFor(model => model.AdType, ViewBag.AdvertList as SelectList, new { id = "AdType", @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control validate[required]]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="AdGuid">Guid</label>
+                            @Html.TextBoxFor(model => model.AdGuid, new { @class = "form-control validate[required]]" })
+                        </div>
+                        <div id="advertCode">
+                            <div class="form-group">
+                                <label for="AdCode">Embedded Code</label>
+                                @Html.TextAreaFor(model => model.AdCode, new { id = "AdCode", @class = "form-update" })
+                            </div>
+                        </div>
+                        <div id="advertFile">
+                            <div class="form-group">
+                                <label for="AdLink">Link</label>
+                                @Html.TextBoxFor(model => model.AdLink, new { id = "AdLink", @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="AdFilePath">File Path</label>
+                                @Html.TextBoxFor(model => model.AdFilePath, new { id = "AdFilePath", @class = "form-control", type = "file" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="StartDate">Start Date</label>
+
+                            <div class="datetimepicker1 input-group date">
+                                @Html.TextBoxFor(model => model.StartDate, "{0:dd.MM.yyyy HH:mm:ss}", new { placeholder = "dd.MM.yyyy HH:mm:ss", @class = "form-control validate[required]]", @data_format = "dd.MM.yyyy hh:mm" })
+                                <span class="input-group-addon add-on">
+                                    <i style="font-style:normal;" data-time-icon="entypo-clock" data-date-icon="entypo-calendar">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="EndDate">End Date</label>
+                            <div class="datetimepicker1 input-group date">
+                                @Html.TextBoxFor(model => model.EndDate, "{0:dd.MM.yyyy HH:mm:ss}", new { placeholder = "dd.MM.yyyy HH:mm:ss", @class = "form-control validate[required]]", @data_format = "dd.MM.yyyy hh:mm" })
+                                <span class="input-group-addon add-on">
+                                    <i style="font-style:normal;" data-time-icon="entypo-clock" data-date-icon="entypo-calendar">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="SequenceNr">Sequence Nr</label>
+                            @Html.TextBoxFor(model => model.SequenceNr, new { @class = "form-control validate[required]]", type = "number" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>Categories (The category for live and homepage is not selected.)</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#menus">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="menus">
+                    @Html.Raw(Utility.RenderMenu(ViewBag.Menu as IEnumerable<MenuItem>).Insert(3, " id=\"sortable\""))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

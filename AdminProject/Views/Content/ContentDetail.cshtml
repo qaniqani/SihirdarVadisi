@@ -1,0 +1,92 @@
+﻿@model AdminProject.Models.ContentDetailViewModel
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = Model.Content.Name;
+	ViewBag.Description = Model.Content.Description;
+	ViewBag.Image = Model.Content.Url + "_945x450.jpg";
+	ViewBag.Type = "article";
+	ViewBag.Url = Request.RawUrl;
+}
+
+<div id="page-content">
+	<div class="container">
+		<div class="row">
+			<section class="col-md-9">
+				<article class="vadi--post" itemscope itemtype="http://schema.org/NewsArticle">
+					<!-- News -->
+					<h1 class="vadi--post--title" itemprop="headline">@Model.Content.Name</h1>
+					<h2 class="vadi--post--detail">
+						<i class="fa fa-gamepad"></i>@Model.Content.GameType <i class="fa fa-user-circle-o"></i>@Model.Editor.NameSurname <i class="fa fa-clock-o"></i><time>@string.Format("{0:dd MMMM yyyy}", Model.Content.CreateDate)</time>
+					</h2>
+					<div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+						<img class="vadi--post--image" src="@(string.IsNullOrEmpty(Model.Content.Url) ? "/html/assets/img/no-image-big-post.png" : "/Content/" + Model.Content.Url + "_945x450.jpg")" alt="" title=""  width="100%" />
+						<meta itemprop="url" content="https://gamerpeople.com/Content/@(Model.Content.Url)_945x450.jpg">
+						<meta itemprop="width" content="945">
+						<meta itemprop="height" content="450">
+					</div>
+					<div class="vadi--post--content">@Html.Raw(Model.Content.Detail)</div>
+					<div class="vadi--post--tags">
+						<strong>Etiketler:</strong>
+						@if (Model.Content.Tags.Any())
+						{
+							foreach (var item in Model.Content.Tags)
+							{
+								if (!string.IsNullOrEmpty(item))
+								{
+									<a href="/etiket/@item" title="@item Hakkında Sonuçlar" class="">@item</a>
+								}
+							}
+						}
+					</div>
+
+					<!-- Author -->
+					<div class="vadi--post--author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+									<img class="vadi--post--author--avatar" src="@(string.IsNullOrEmpty(Model.Editor.Picture) ? "/html/assets/img/no-image-user.png" : "/Content/" + Model.Editor.Picture)" alt="@Model.Editor.NameSurname" />
+									<meta itemprop="url" content="https://gamerpeople.com/Content/@(Model.Editor.Picture)">
+									<meta itemprop="width" content="960">
+									<meta itemprop="height" content="960">
+								</div>
+							</div>
+							<div class="col-xs-8 col-sm-10">
+								<div class="vadi--post--author--name" itemprop="name">@Model.Editor.NameSurname</div>
+								<div class="vadi--post--author--title">@Model.Editor.Title</div>
+								<div class="vadi--post--author--motto hidden-xs">@Model.Editor.Motto</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Next/Prev News -->
+					<div class="vadi--post--closest">
+						@if (Model.PrevContent != null)
+						{
+							<a class="vadi--post--closest--link vadi--post--closest--prev" href="@Model.PrevContent.Url" title="@Model.PrevContent.Name">
+								<span><i class="fa fa-chevron-left"></i> Önceki Haber</span>
+								<h2>@Model.PrevContent.Name</h2>
+							</a>
+						}
+
+						@if (Model.NextContent != null)
+						{
+							<a class="vadi--post--closest--link vadi--post--closest--next" href="@Model.NextContent.Url" title="@Model.NextContent.Name">
+								<span>Sonraki Haber <i class="fa fa-chevron-right"></i></span>
+								<h2>@Model.NextContent.Name</h2>
+							</a>
+						}
+					</div>
+
+					<!-- Comments -->
+					<div class="vadi--post--comments">
+						<div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="100%" data-colorscheme="dark" data-order-by="reverse_time"></div>
+					</div>
+				</article>
+			</section>
+			<aside class="col-md-3">
+				@{ Html.RenderAction("GetTopContent", "Partial"); }
+			</aside>
+		</div>
+	</div>
+</div><!-- /#page-content --><!--input type="hidden" value="@ViewBag.Category.ColorCode" id="page-color-code" /-->

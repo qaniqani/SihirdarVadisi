@@ -1,0 +1,82 @@
+﻿@using AdminProject.Areas.Admin.Models
+@model Sihirdar.DataAccessLayer.Infrastructure.Models.Content
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Crop";
+}
+
+<script type="text/javascript" src="/assets/js/cropper/cropper.js"></script>
+<script type="text/javascript" src="/assets/js/cropper/main.js"></script>
+<link href="/assets/css/cropper.css" rel="stylesheet" />
+
+
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>Content Picture Crop</h6>
+                </div>
+                <div class="body-nest" id="basic">
+                    <div class="col-md-12 size-buttons">
+                        @* Size List *@
+                        @foreach (var size in (List<PictureSizeItemDto>)Session["Sizes"])
+                        {
+                            <a class="@(size.Selected ? "btn btn-warning" : "btn btn-danger")" href="?width=@size.Width&height=@size.Height">Size: @size.Name</a>
+                            if (size.Selected)
+                            {
+                                <style>
+                                    .preview {
+                                        width: @(size.Selected ? size.Width.ToString()+"px" : "") !important;
+                                        height: @(size.Selected ? size.Height.ToString()+"px" : "") !important;
+                                        margin:10px 0 !important;
+                                    }
+
+                                    .size-buttons a { margin-right:10px; }
+                                </style>
+                            }
+                        }
+                        @* cropBox Sizes *@
+                        <input type="hidden" id="hfCropWidth" value="@ViewBag.SelectedSize.Width" />
+                        <input type="hidden" id="hfCropHeight" value="@ViewBag.SelectedSize.Height" />
+                        <input type="hidden" id="hfIndex" value="@ViewBag.SelectedIndex" />
+                        <input type="hidden" id="hfSizeId" value="@ViewBag.SelectedSize.SizeId" />
+                        <input type="hidden" id="hfId" value="@Model.Id" />
+                        <input type="hidden" id="hfName" value="@Model.Url" />
+                    </div>
+
+                    <div class="col-md-12" style="margin:20px 0 0 0;">
+                        <img id="previewImage" src="/Content/@(Model.Picture + ".jpg")" alt="@Model.Name">
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-12">
+                        <h4 class="tile-title">Preview Image</h4>
+                        <div class="preview"></div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <button id="browserCrop" type="submit" class="btn btn-success" style="margin-bottom:15px;">Crop and Save</button>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .cropper-container {
+        width: 100% !important;
+        overflow: hidden;
+    }
+</style>

@@ -1,0 +1,127 @@
+﻿<div class="box-module col-md-12 no-padding-left margin-top-20" ng-controller="LoLTimePlayedCtrl">
+    <div class="module-title flexible-border margin-bottom-05">ARAÇLAR</div>
+    <div class="module-content no-padding">
+        <div class="news-detail">
+            <div class="news-img" style="width:100%; height:auto;"><img src="/App/Assets/Themes/img/header-lol-kac-saat.png" alt="" style="width:100%;" /></div>
+            <div class="news-content">
+                <div class="share-box">
+                    <div class="addthis_inline_share_toolbox"></div>
+                </div>
+                <h5 class="game flexible-color">LEAGUE OF LEGENDS</h5>
+                <h4 class="title">KAÇ SAAT LOL OYNADIN?</h4>
+                <div class="description">
+
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-0-300.jpg" id="ringoImage" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-300-600.jpg" id="ringoImage1" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-600-900.jpg" id="ringoImage2" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-900-1200.jpg" id="ringoImage3" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-1200-1500.jpg" id="ringoImage4" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-1500-1800.jpg" id="ringoImage5" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-1800-2100.jpg" id="ringoImage6" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-2100-2400.jpg" id="ringoImage7" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-2400-2700.jpg" id="ringoImage8" /></div>
+                    <div class="hidden"><img src="/App/Assets/Themes/img/fb-share/a-2700-3000.jpg" id="ringoImage9" /></div>
+
+                    <p>Tahmin yürütmekten ciğerin mi soldu? <br /><br /> Bırak o ölçümleri biz yapalım sen o matematik yerine YGS'ye hazırlan. <br /><br /> Hangi oyun modunda ne kadar vakit geçirmişsin kaç saat oynamışsın bu aracımız ile sonuçlara ulaşabilirsiniz.</p>
+
+                    <div class="lol-time-played margin-top-15">
+                        <div class="col-md-12">
+                            <form name="appForm" ng-hide="showResultError">
+                                <div class="col-sm-12 margin-bottom-05" ng-show="appForm.$invalid">
+                                    <p style="color:red;">* Sorgulama yapabilmek için lütfen, "Sihirdar Adınızı (Nick)" girin ve Doğrulama kutucuğunu işaretleyin. </p>
+                                </div>
+
+                                <div class="col-sm-6 form-group" ng-hide="showResult">
+                                    <label>Sihirdar Adı Giriniz</label>
+                                    <input type="text" class="form-control" ng-model="selectedUserName" placeholder="" maxlength="70" required />
+                                </div>
+
+                                <div class="col-sm-6 form-group" ng-hide="showResult">
+                                    <label>Server Seçiniz</label>
+                                    <select class="form-control" ng-model="selectedServer" ng-options="server as server.label for server in servers"></select>
+                                </div>
+
+                                <div class="col-sm-6" ng-if="appForm.$invalid">
+                                    <re-captcha ng-model='appVm.chaptcha'></re-captcha>
+                                </div>
+
+                                <div class="col-md-12" ng-hide="showResult">
+                                    <button ng-click="getLolTime();" ng-show="!appForm.$invalid" class="btn btn-success btn-raised btn-block">Kontrol Et</button>
+                                </div>
+                            </form>
+   
+
+                            <div class="col-md-12" ng-show="showResult || showResultError">
+                                <a href="/kac-saat-lol-oynadin" target="_self" class="btn btn-info btn-raised btn-block">YENİ SORGU YAP</a>
+                            </div>
+
+                            <div class="col-md-12" style="margin-top:20px;" ng-show="showResult">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>MOD</th>
+                                        <th class="text-center">OYNAMA SAYISI</th>
+                                        <th class="text-center">OYNADIĞINIZ SAAT</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="result in results.playerStatDetail">
+                                        <td>{{result.name}}</td>
+                                        <td class="text-center">{{result.win}}</td>
+                                        <td class="text-center">{{result.time}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Toplam:</strong></td>
+                                        <td class="text-center">{{results.gameTime}} oyun</td>
+                                        <td class="text-center">{{results.playedGameTime}} saat / {{results.playedGameDay}} gün</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12" ng-show="showResult">
+                                <a href="javascript:void(0);" class="ogBtn" ng-click="shareBtn();" ng-show="!imgPending">Facebook ile Paylaş</a>
+
+                                <a href="javascript:void(0);" class="ogBtn" ng-show="imgPending" style="height:auto !important;">
+                                    Görseli Facebook'ta paylaşman için hazırlıyoruz.
+                                    <img src="/App/Assets/Themes/img/fb-pre.gif" style="display:block; margin:-2px auto 10px auto;" />
+                                </a>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="alert alert-danger margin-top-10" ng-show="showResultError">
+                                    <p class="text-center">Sihirdar Adınızı (Nick) bulanamadı! Lütfen tekrar deneyiniz.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .ogBtn {
+        width: 100%;
+        height: 45px;
+        text-align: center;
+        float: left;
+        background: #49639e;
+        color: #FFF;
+        font-size: 16px;
+        line-height: 45px;
+        margin-top: 10px;
+    }
+
+    .ogBtn:hover, ogBtn:focus {
+        text-decoration: none;
+        color: #FFF;
+    }
+
+    .ogBtn:focus {
+        text-decoration: none;
+        color: #FFF;
+    }
+</style>

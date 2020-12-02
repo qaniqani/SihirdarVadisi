@@ -1,0 +1,66 @@
+﻿@using Sihirdar.DataAccessLayer
+@model IEnumerable<Sihirdar.DataAccessLayer.Infrastructure.Models.AovSpell>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        Spells
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <p class="lead well">Please note that other languages when the data update.</p>
+                    <table class="table-striped footable-res footable metro-blue" data-page-size="20">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Num</th>
+                                <th>Status</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var spell in Model)
+                                {
+                                    <tr>
+                                        <td>@spell.Name</td>
+                                        <td>@spell.Num</td>
+                                        <td>
+                                            <span class="@(spell.Status == StatusTypes.Active ? "status-metro status-active" : "status-metro status-suspended")">
+                                                @(spell.Status == StatusTypes.Active ? "Active" : "Deactive")
+                                            </span>
+                                        </td>
+                                        <td style="width:100px;">
+                                            <a href="/Admin/AovSpell/Edit/@spell.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                            <a href="/Admin/AovSpell/Delete/@spell.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="pagination pagination-centered"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

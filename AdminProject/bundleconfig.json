@@ -1,0 +1,134 @@
+[
+  {
+    "outputFileName": "html/assets/libs/jetmenu.min.css",
+    "inputFiles": [
+      "html/assets/libs/jetmenu.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/bootstrap-material-design.min.min.css",
+    "inputFiles": [
+      "html/assets/libs/bootstrap-material-design.min.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/jquery.pireloader.min.css",
+    "inputFiles": [
+      "html/assets/libs/jquery.pireloader.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/magnific-popup.min.css",
+    "inputFiles": [
+      "html/assets/libs/magnific-popup.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/responsiveslides.min.css",
+    "inputFiles": [
+      "html/assets/libs/responsiveslides.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/timetable.min.css",
+    "inputFiles": [
+      "html/assets/libs/timetable.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/validationEngine.jquery.min.css",
+    "inputFiles": [
+      "html/assets/libs/validationEngine.jquery.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/vertical.news.slider.min.css",
+    "inputFiles": [
+      "html/assets/libs/vertical.news.slider.css"
+    ]
+  },
+  {
+    "outputFileName": "html/assets/libs/bootstrap-material-design.min.css",
+    "inputFiles": [
+      "html/assets/libs/bootstrap-material-design.css"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/fuckadblock.min.js",
+    "inputFiles": [
+      "html/scripts/libs/fuckadblock.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/jetmenu.min.js",
+    "inputFiles": [
+      "html/scripts/libs/jetmenu.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/jquery.fitvids.min.js",
+    "inputFiles": [
+      "html/scripts/libs/jquery.fitvids.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/jquery.magnific-popup.min.js",
+    "inputFiles": [
+      "html/scripts/libs/jquery.magnific-popup.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/jquery.pireloader.min.js",
+    "inputFiles": [
+      "html/scripts/libs/jquery.pireloader.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/jquery.validationEngine.min.js",
+    "inputFiles": [
+      "html/scripts/libs/jquery.validationEngine.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/material.min.js",
+    "inputFiles": [
+      "html/scripts/libs/material.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/responsiveslides.min.js",
+    "inputFiles": [
+      "html/scripts/libs/responsiveslides.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/timetable.min.js",
+    "inputFiles": [
+      "html/scripts/libs/timetable.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/libs/vertical.news.slider.min.js",
+    "inputFiles": [
+      "html/scripts/libs/vertical.news.slider.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/application.min.js",
+    "inputFiles": [
+      "html/scripts/application.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/forms.min.min.js",
+    "inputFiles": [
+      "html/scripts/forms.min.js"
+    ]
+  },
+  {
+    "outputFileName": "html/scripts/forms.min.js",
+    "inputFiles": [
+      "html/scripts/forms.js"
+    ]
+  }
+]

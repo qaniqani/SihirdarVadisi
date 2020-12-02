@@ -1,0 +1,21 @@
+﻿<nav id="menuBar" class="navbar navbar-default" ng-controller="MainNavigationCtrl">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" target="_self"><img src="/App/Assets/Themes/img/logo.png" alt="Sihirdar Vadisi Araçlar" title="Sihirdar Vadisi Araçlar" /></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/kac-saat-lol-oynadin" target="_self" ng-class="{'active' : locationPath == '/kac-saat-lol-oynadin'}">KAÇ SAAT LOL OYNADIN?</a></li>
+                <li><a href="/ping" target="_self" ng-class="{'active' : locationPath == '/ping'}">PİNG ÖLÇER</a></li>
+                <li><a href="/seninki-kac-k" target="_self" ng-class="{'active' : locationPath == '/seninki-kac-k'}">SENİNKİ KAÇ K?</a></li>
+                <li><a href="/sampiyonlar" target="_self" ng-class="{'active' : locationPath == '/sampiyonlar'}">ŞAMPİYONLAR</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container -->
+</nav>

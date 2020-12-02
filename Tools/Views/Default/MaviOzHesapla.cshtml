@@ -1,0 +1,115 @@
+﻿@{
+	ViewBag.Title = "Mavi Oz Hesaplayici";
+	ViewBag.Url = Request.RawUrl;
+	ViewBag.Type = "article";
+	ViewBag.Description = "Mavi Oz Hesaplayici.";
+	ViewBag.Image = "http://sihirdarvadisi.com/content/default-share-img.jpg";
+}
+
+<div id="content" ng-view></div>
+<style>
+	.run {
+		width: 10px;
+		height: 10px;
+		display: inline-block;
+	}
+	.run.run-damga {
+		background: #ff0000;
+	}
+	.run.run-muhur {
+		background: #ffff00;
+	}
+	.run.run-nisan {
+		background: #0000ff;
+	}
+	.form-mavi-oz {
+		margin-bottom: 50px;
+	}
+	.form-mavi-oz input {
+		padding: 3px 5px;
+		border-radius: 3px;
+		color: #fff;
+		background: #000;
+		width: 100%;
+		border: 1px solid #666;
+	}
+	.form-mavi-oz .row {
+		margin-bottom: 10px;
+	}
+	.form-mavi-oz .ara-sonuc {
+		text-align: right;
+		padding-top: 5px;
+	}
+	.form-mavi-oz .text {
+		text-align: right;
+		padding-top: 5px;
+	}
+</style>
+<div class="box-module col-md-12 no-padding-left margin-top-20" ng-controller="LoLChampionsKCtrl">
+	<div class="module-title flexible-border margin-bottom-05">ARAÇLAR</div>
+	<div class="module-content no-padding">
+		<div class="news-detail">
+			<div class="news-img" style="width:100%; height:auto;"><img src="/App/Assets/Themes/img/header-lol-mavi-oz.png" alt="" style="width:100%;" /></div>
+			<div class="news-content">
+				<div class="share-box">
+					<div class="addthis_inline_share_toolbox"></div>
+				</div>
+				<h5 class="game flexible-color">LEAGUE OF LEGENDS</h5>
+				<h4 class="title">MAVI OZ HESAPLA</h4>
+				<div class="description">
+					<div class="row">
+						<div class="col-md-7 col-md-offset-2">
+							<form class="form-mavi-oz">
+								<div class="row">
+									<div class="col-md-5 text"></div>
+									<div class="col-md-5 text text-center">Şu an Hesapta</div>
+									<div class="col-md-2 col-1 text">Alacağınız</div>
+								</div><br>
+								<div class="row">
+									<div class="col-md-5 text">Mavi Öz</div>
+									<div class="col-md-5"><input class=" mavi" data-hedef=".mavi-sonuc" data-carpan="6.5" value="0"></div>
+									<div class="col-md-2 col-1 ara-sonuc mavi-sonuc">0</div>
+								</div><br>
+								<div class="row">
+									<div class="col-md-5 text">Damgalar <i class="run run-damga"></i></div>
+									<div class="col-md-5"><input class=" damga" data-hedef=".damga-sonuc" data-carpan="100" value="0"></div>
+									<div class="col-md-2 ara-sonuc damga-sonuc">0</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 text">Mühürler <i class="run run-muhur"></i></div>
+									<div class="col-md-5"><input class=" muhur" data-hedef=".muhur-sonuc" data-carpan="100" value="0"></div>
+									<div class="col-md-2 ara-sonuc muhur-sonuc">0</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 text">Nişanlar <i class="run run-nisan"></i></div>
+									<div class="col-md-5"><input class=" nisan" data-hedef=".nisan-sonuc" data-carpan="100" value="0"></div>
+									<div class="col-md-2 ara-sonuc nisan-sonuc">0</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 text">Cevherler</div>
+									<div class="col-md-5"><input class=" cevher" data-hedef=".cevher-sonuc" data-carpan="300" value="0"></div>
+									<div class="col-md-2 ara-sonuc cevher-sonuc">0</div>
+								</div><br>
+								<div class="row">
+									<div class="col-md-5 text">IP ile Alınmış Rün Sayfaları</div>
+									<div class="col-md-5"><input class=" runs" data-hedef=".runs-sonuc" data-carpan="1500" value="0"></div>
+									<div class="col-md-2 ara-sonuc runs-sonuc">0</div>
+								</div><br>
+								<div class="row">
+									<div class="col-md-5 text">IP Miktarı</div>
+									<div class="col-md-5"><input class=" ip" data-hedef=".ip-sonuc" data-carpan="1" value="0"></div>
+									<div class="col-md-2 ara-sonuc ip-sonuc">0</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5"></div>
+									<div class="col-md-5 text text-right">Toplam: </div>
+									<div class="col-md-2 text sonuc">0</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

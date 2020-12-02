@@ -1,0 +1,54 @@
+﻿@model Sihirdar.DataAccessLayer.Infrastructure.Models.AovSpell
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>Aov Spell</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#basic">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="basic">
+                    <form role="form" action="/Admin/AovSpell/Edit/@Model.Id" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control validate[required]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Num">Number</label>
+                            @Html.TextBoxFor(model => model.Num, new { @class = "form-control validate[required]", type = "number"})
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Image">Image</label>
+                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control", type = "file" })
+                            @if (!string.IsNullOrEmpty(Model.Image))
+                            {
+                                <div style="display: block;">
+                                    <img src="/Content/@(Model.Image).jpg" style="max-height: 100px; max-width:250px;" />
+                                </div>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

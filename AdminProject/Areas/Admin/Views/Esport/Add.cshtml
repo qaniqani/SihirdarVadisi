@@ -1,0 +1,58 @@
+﻿@model Sihirdar.DataAccessLayer.Infrastructure.Models.EsportCalendar
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>E-Sport Calendar</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#basic">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="basic">
+                    <form role="form" action="/Admin/Esport/Add" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Sample: FB vs GAL", @class = "form-control validate[required,minSize[3]]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            @Html.TextBoxFor(model => model.Description, new { @class = "form-control validate[required, minSize[3]] richEditor" })
+                        </div>
+                        <div class="form-group">
+                            <label for="StartDateTime">Start Date</label>
+                            <div class="input-group date">
+                                @Html.TextBoxFor(model => model.StartDateTime, "{0:dd.MM.yyyy HH:mm}", new { placeholder = "Format: dd.MM.yyyy HH:mm", @class = "form-control customDatepickerTime validate[required,minSize[3]]" })
+                                <span class="input-group-addon add-on">
+                                    <i style="font-style:normal;" data-time-icon="entypo-clock" data-date-icon="entypo-calendar">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Picture">Picture</label>
+                            @Html.TextBoxFor(model => model.Picture, new { type = "file", @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Color">Game</label>
+                            @Html.DropDownListFor(model => model.Color, ViewBag.GameList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

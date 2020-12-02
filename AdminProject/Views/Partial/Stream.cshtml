@@ -1,0 +1,15 @@
+﻿@model AdminProject.Services.Models.LiveBroadcastListDto
+<div class="vadi--header--top--on-air">
+	<a href="#" data-toggle="dropdown" class="vadi--header--top--on-air--button @(Model.Live ? " active" : "hidden")"><i class="fa fa-podcast"></i></a>
+	<ul class="vadi--header--top--on-air--dropdown dropdown-menu">
+		@foreach (var item in Model.Items)
+		{
+			<li>
+				<a href="/canli-yayin/@item.Url">
+					<span class="vadi--header--top--on-air--game"><i class="fa fa-gamepad"></i>@item.GameTypeText</span>
+					<span class="vadi--header--top--on-air--title">@item.Name</span>
+				</a>
+			</li>
+		}
+	</ul>
+</div>

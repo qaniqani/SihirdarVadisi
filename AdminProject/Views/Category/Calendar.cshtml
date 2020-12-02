@@ -1,0 +1,20 @@
+﻿@using AdminProject.Models
+@using Sihirdar.DataAccessLayer
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "eSpor Takvimi";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "League of Legends Haberleri, CS:GO Haberleri, DOTA2 Haberleri, Overwatch Haberleri, Heartstone Haberleri, Haftalık Turnuvalar, Şampiyon Bilgileri ve çok daha fazlası";
+    ViewBag.Image = "default-share-img.jpg";
+}
+<div class="vadi--posts">
+	<div class="container">
+		<div class="vadi--post">
+			<h1 class="vadi--post--title">E-Spor Takvimi</h1>
+			<div class="vadi--post--content">
+				<div id="calendar-io"></div>
+			</div>
+		</div>
+	</div>
+</div>

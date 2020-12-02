@@ -1,0 +1,24 @@
+﻿@model IList<AdminProject.Models.WidgetContentViewModel>
+
+
+<div class="vadi--sidebar">
+	<div class="vadi--sidebar--title">POPÜLER İÇERİKLER</div>
+	<div class="vadi--sidebar--news">
+		<div class="row">
+		@foreach (var item in Model)
+		{
+			<div class="col-md-12 col-sm-6">
+				<div class="vadi--sidebar--news--li">
+					<a class="vadi--sidebar--news--link" href="/haber/@item.CategoryUrl/@item.ContentUrl" title="@item.Name">
+						<img class="vadi--sidebar--news--image" src="@(string.IsNullOrEmpty(item.ContentUrl) ? "/html/assets/img/no-image-mini-post.png" : "/Content/" + item.ContentUrl + "_120x80.jpg")" alt="@item.Name" class="img-responsive" />
+						<span class="vadi--sidebar--news--content">
+							<span class="vadi--sidebar--news--game">@item.GameType</span>
+							<span class="vadi--sidebar--news--title multi-ellipsis">@item.Name</span>
+						</span>
+					</a>
+				</div>
+			</div>
+		}
+		</div>
+	</div>
+</div>

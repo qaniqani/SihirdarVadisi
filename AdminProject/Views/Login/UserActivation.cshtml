@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Hesap Aktivasyonu";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "League of Legends Haberleri, CS:GO Haberleri, DOTA2 Haberleri, Overwatch Haberleri, Heartstone Haberleri, Haftalık Turnuvalar, Şampiyon Bilgileri ve çok daha fazlası";
+    ViewBag.Image = "default-share-img.jpg";
+}
+
+<div id="page-content" data-color-code="#879e00">
+    <div class="interaction-boxes news-page user-liked container margin-top-15">
+        <div class="row">
+            <div class="box-module col-md-12">
+                <div class="module-title flexible-border">HESAP AKTİVASYONU <b class="pull-right"></b></div>
+                <div class="module-content no-padding">
+                    <div class="row">
+                        <div class="no-record">@ViewBag.Message</div>
+                        <div class="no-record" style="margin-top:0">Anasayfaya gitmek için <a href="/">tıklayınız</a>.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /#page-content -->

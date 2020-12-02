@@ -1,0 +1,420 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+	switch (Request.QueryString["q"])
+	{
+		case "1":
+			ViewBag.Title = "Sen bu oyunun kitabını yazmışsın! İki kere iki eşittir Teemo!";
+			ViewBag.Description = "League of Legends Bilginizi Ölçüyoruz testinde sonucum \"Sen bu oyunun kitabını yazmışsın!\"";
+			ViewBag.Image = "test/lol/4/1.png";
+			break;
+		case "2":
+			ViewBag.Title = "Alın şu cahili buradan! Test çözmek minyon kesmeye benzemez!";
+			ViewBag.Description = "League of Legends Bilginizi Ölçüyoruz testinde sonucum \"Alın şu cahili buradan!\"";
+			ViewBag.Image = "test/lol/4/2.png";
+			break;
+		case "3":
+			ViewBag.Title = "Biliyorsun bir şeyler ama eksiğin çok!";
+			ViewBag.Description = "League of Legends Bilginizi Ölçüyoruz testinde sonucum \"Biliyorsun bir şeyler ama eksiğin çok!\"";
+			ViewBag.Image = "test/lol/4/3.png";
+			break;
+		default:
+			ViewBag.Title = "Aslında Hangi Kümede Olman Gerekiyor? - Sihirdar Vadisi";
+			ViewBag.Description = "League of Legends Bilginizi Ölçüyoruz!";
+			ViewBag.Image = "test/lol/4/lol-bilginizi-olcuyoruz.png";
+			break;
+	}
+}
+<style>
+.qr {
+	clear: both;
+	border-bottom: 4px solid #242424;
+	border-top: none;
+	padding-top: 20px;
+	margin-top: 0;
+}
+video {
+	vertical-align: middle;
+	width: 100%;
+}
+</style>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <section class="col-md-9">
+                <article class="vadi--post" itemscope itemtype="http://schema.org/NewsArticle">
+                    <h1 class="vadi--post--title" itemprop="headline">League of Legends Bilginizi Ölçüyoruz</h1>
+                    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                        <img class="vadi--post--image" src="~/Content/test/lol/4/lol-bilginizi-olcuyoruz.png" alt="League of Legends Bilginizi Ölçüyoruz" width="100%" />
+                        <meta itemprop="url" content="https://sihirdarvadisi.com/assets/img/test/lol/4/lol-bilginizi-olcuyoruz.png">
+                        <meta itemprop="width" content="945">
+                        <meta itemprop="height" content="450">
+                    </div>
+                    <div class="vadi--post--content">
+						<p>Vadi'nin bizce en önemli pozisyonu olan destek rolü hakkında neler düşünüyorsun?</p>
+
+						<h6 style="font-size:16px; margin-top:15px; color:#ffffff; text-decoration:underline;">Haydi Başlayalım!</h6>
+
+						<div class="row questions-list">
+
+							<hr class="qr" />
+
+							<div class="question col-md-12">
+								<h2>1. Önce kolay bir soruyla başlayalım, aşağıdaki şampiyonlardan hangisinin pasifi gerçek hasar verir?</h2>
+
+								<div class="answers clearfix" data-question="1">
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/1/3.webm">
+										</video>
+										<h5>Udyr</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="1">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/1/1.webm">
+										</video>
+										<h5>Vayne</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/1/2.webm">
+										</video>
+										<h5>Teemo</h5>
+									</div>
+									<input type="hidden" class="choiced-ans" id="a1" value="0">
+								</div>
+							</div>
+
+							<hr class="qr" />
+
+							<div class="question col-md-12">
+								<h2>2. Editörün favorisi Shaco'nun ultisinin adı nedir?</h2>
+
+								<div class="answers clearfix" data-question="0">
+									<div class="answer col-sm-4 " data-choice="3">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/2/2.webm">
+										</video>
+										<h5>Kandırmaca</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="1">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/2/1.webm">
+										</video>
+										<h5>Halüsinasyon</h5>
+									</div>
+
+									<div class="answer col-sm-4 " data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/2/3.webm">
+										</video>
+										<h5>Çift zehirli bıçak</h5>
+									</div>
+									<input type="hidden" class="choiced-ans" id="a2" value="0">
+								</div>
+							</div>
+
+							<hr class="qr" />
+
+							<div class="question col-md-12">
+								<h2>3. Geçtiğimiz günlerde gerçekleştirilen 2017 All-Star 1v1 Turnuvası şampiyonu kimdir?</h2>
+
+								<div class="answers clearfix" data-question="3">
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/3/2.webm">
+										</video>
+										<h5>Faker</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/3/3.webm">
+										</video>
+										<h5>Sneaky</h5>
+									</div>
+
+									<div class="answer col-sm-4 " data-choice="1">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/3/1.webm">
+										</video>
+										<h5>Uzi</h5>
+									</div>
+									<input type="hidden" class="choiced-ans" id="a3" value="0">
+								</div>
+							</div>
+
+							<hr class="qr" />
+
+							<div class="question col-md-12">
+								<h2>4. League of Legends'in Mac işletim sistemine gelmesi üzerine çıkarılan kostüm hangi şampiyona gelmiştir?</h2>
+
+								<div class="answers clearfix" data-question="4">
+									<div class="answer col-sm-4" data-choice="1">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/4/1.webm">
+										</video>
+										<h5>Blitzcrank</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/4/2.webm">
+										</video>
+										<h5>Nautilus</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/4/3.webm">
+										</video>
+										<h5>Heimerdinger</h5>
+									</div>
+									<input type="hidden" class="choiced-ans" id="a4" value="0">
+								</div>
+							</div>
+
+							<hr class="qr" />
+
+							<div class="question col-md-12">
+								<h2>5. Renektonun kardeşi kimdir?</h2>
+
+								<div class="answers clearfix" data-question="5">
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/5/2.webm">
+										</video>
+										<h5>Azir</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="1">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/5/1.webm">
+										</video>
+										<h5>Nasus</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/5/3.webm">
+										</video>
+										<h5>Rengar</h5>
+									</div>
+									<input type="hidden" class="choiced-ans" id="a5" value="0">
+								</div>
+							</div>
+
+							<hr class="qr" />
+
+							<div class="question col-md-12">
+								<h2>6. Oyundaki ilk destansı kostüm hangisidir?</h2>
+
+								<div class="answers clearfix" data-question="6">
+									<div class="answer col-sm-4" data-choice="1">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/6/1.webm">
+										</video>
+										<h5>Pulsefire Ezreal</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/6/2.webm">
+										</video>
+										<h5>Ruh Bekçisi Udyr</h5>
+									</div>
+
+									<div class="answer col-sm-4" data-choice="0">
+										<video loop autoplay>
+											<source type="video/webm" src="~/assets/img/test/lol/4/6/3.webm">
+										</video>
+										<h5>DJ Sona</h5>
+									</div>
+									<input type="hidden" class="choiced-ans" id="a6" value="0">
+								</div>
+							</div>
+						</div>
+
+						<div class="row answers-list">
+
+							<hr class="qr" />
+
+							<div class="answerResult col-md-12" style="display: none;">
+								<h4>Sen bu oyunun kitabını yazmışsın!</h4>
+								<img src="~/Content/test/lol/4/1.png" class="img-responsive" alt="" />
+								<div class="col-md-12"><p>Sen bu oyunun kitabını yazmışsın! İki kere iki eşittir Teemo!</p></div>
+								<a href="#" class="ogBtn">Facebook ile Paylaş</a>
+							</div>
+
+							<div class="answerResult col-md-12" style="display: none;">
+								<h4>Alın şu cahili buradan!</h4>
+								<img src="~/Content/test/lol/4/2.png" class="img-responsive" alt="" />
+								<div class="col-md-12"><p>Alın şu cahili buradan! Test çözmek minyon kesmeye benzemez!</p></div>
+								<a href="#" class="ogBtn">Facebook ile Paylaş</a>
+							</div>
+
+							<div class="answerResult col-md-12" style="display: none;">
+								<h4>Biliyorsun bir şeyler ama eksiğin çok!</h4>
+								<img src="~/Content/test/lol/4/3.png" class="img-responsive" alt="" />
+								<div class="col-md-12"><p>Biliyorsun bir şeyler ama eksiğin çok!</p></div>
+								<a href="#" class="ogBtn">Facebook ile Paylaş</a>
+							</div>
+						</div>
+
+						<p id="totalAnswers">Testi tamamlamak için tüm soruları cevapla!</p>
+
+						<script>
+                            $(document).ready(function ($) {
+	                            var result;
+                                $('.answer').on('click', function () {
+                                   var self = $(this);
+                                   self.parent().find('.checked').removeClass('checked');
+                                   self.addClass('checked');
+
+                                   var questions = $('.answers'),
+                                       answers = $('.checked'),
+                                       message = $('#totalAnswers');
+                                   if(questions.length !== answers.length){
+                                       message.show();
+                                   } else {
+                                       message.hide();
+                                       var point = 0;
+                                       answers.each(function () {
+                                           point += $(this).data('choice');
+                                       });
+
+                                       if (point < 3)
+                                           result = 1;
+                                       else if (point >= 3 && point < 5)
+                                           result = 2;
+                                       else if (point >= 5)
+                                           result = 0;
+                                       else
+                                           result = 0;
+
+                                       $('.answerResult').each(function (k, t) {
+                                           if(k == result) {
+                                               $(this).fadeIn();
+                                               $('body').animate({scrollTop: $(this).offset().top - 50}, 500);
+                                           } else {
+                                               $(this).hide(0);
+                                           }
+                                       });
+                                   }
+                                });
+	                            
+	                            $(".ogBtn").on("click", function (e) {
+		                            e.preventDefault();
+		                            /*window.FB.ui({
+		                                display: 'popup',
+		                                method: 'feed',
+		                                link: "https://www.sihirdarvadisi.com/araclar/testler/aslinda-hangi-kumedesin",
+		                                picture: resultImage,
+		                                name: resultName,
+		                                caption: 'Ekleyen: SihirdarVadisi.com',
+		                                description: resultDesc
+		                            });*/
+		                            if (!result)
+			                            result = '';
+		                            else
+			                            result = result + 1;
+		                            window.FB.ui({
+			                            method: 'share',
+			                            display: 'popup',
+			                            href: 'https://www.sihirdarvadisi.com/araclar/testler/aslinda-hangi-kumedesin?q=' + result,
+			                            hashtag: '#sihirdarvadisi',
+			                            redirect_uri: 'https://www.sihirdarvadisi.com/araclar/testler/aslinda-hangi-kumedesin'
+		                            }, function(res) {
+			                            console.log(res);
+		                            });
+	                            });
+                            });
+						</script>
+
+						<style>
+							.questions-list .question {
+								padding: 0;
+							}
+
+							.questions-list .question h2 {
+								padding: 0 0 0 15px;
+							}
+
+							.answers .answer {
+								cursor: pointer;
+								padding: 15px;
+								font-size: 18px;
+							}
+
+							.answers .answer h5 {
+								margin: 0;
+								padding: 10px;
+								background: #A0A0A0;
+								font-size: 18px !important;
+							}
+
+							.answers .answer.checked h5 {
+								background: #962b84;
+								color: #FFF;
+								font-size: 18px !important;
+							}
+
+							.answerResult {
+								display: none;
+							}
+
+							.answerResult div {
+								padding: 0;
+								margin: 0;
+							}
+
+							.answerResult p {
+								font-size: 15px;
+								margin: 15px 0;
+							}
+
+							.answerResult h4 {
+								font-size: 30px !important;
+							}
+
+							.ogBtn {
+								width: 100%;
+								height: 45px;
+								text-align: center;
+								float: left;
+								background: #49639e;
+								color: #FFF;
+								font-size: 16px;
+								line-height: 45px;
+							}
+
+							.ogBtn:hover {
+								text-decoration: none;
+								color: #FFF;
+							}
+							
+							#totalAnswers {
+								width: 100%;
+								margin: 20px 0;
+								text-align: center;
+								font-size: 15px;
+								color: #ff0000;
+							}
+						</style>
+                    </div>
+                    <div class="vadi--post--comments">
+                        <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="100%" data-colorscheme="dark" data-order-by="reverse_time"></div>
+                    </div>
+                </article>
+            </section>
+            <aside class="col-md-3">
+                @{Html.RenderAction("GetTopContent", "Partial");}
+            </aside>
+        </div>
+    </div>
+</div>

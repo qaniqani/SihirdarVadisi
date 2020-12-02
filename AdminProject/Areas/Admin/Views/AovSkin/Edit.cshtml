@@ -1,0 +1,49 @@
+﻿@model Sihirdar.DataAccessLayer.Infrastructure.Models.AovSkin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>AOV Skin</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#basic">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="basic">
+                    <form role="form" id="admin-form" action="/Admin/AovSkin/Edit/@Model.Id" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Sample: Amumu", @class = "form-control validate[required]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Num">Number</label>
+                            @Html.TextBoxFor(model => model.Num, new { @class = "form-control validate[required]", type = "number" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Picture">Picture</label>
+                            @Html.TextBox("Picture", "", new { type = "file", @class = "form-control" })
+                            @if (!string.IsNullOrEmpty(Model.Picture))
+                            {
+                                <br />
+                                <img src="/Content/@Model.Picture" style="max-height: 100px;max-width: 150px;" />
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

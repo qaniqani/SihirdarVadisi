@@ -1,0 +1,68 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using AdminProject.Models
+@model StaticPagedList<CategoryContentItemViewModel>
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="vadi--posts">
+	<div class="container">
+		<div class="row">
+			<section class="col-md-9">
+				<h1 class="vadi--posts--title">@ViewBag.PageTitle</h1>
+				<div class="vadi--posts--list">
+
+					@if (Model != null)
+					{
+						if (Model.Count > 0)
+						{
+							foreach (var itemViewModel in Model)
+							{
+								<a href="/haber/@itemViewModel.Url" title="@itemViewModel.Subject" class="vadi--posts--post">
+									<div class="row">
+										<div class="col-sm-3 col-xs-12 text-xs-center text-sm-left">
+											<span class="vadi--posts--post--game">@itemViewModel.GameType</span>
+											<img src="/Content/@(itemViewModel.PictureName)_315x198.jpg" alt="@itemViewModel.Subject" class="vadi--posts--post--image">
+										</div>
+										<div class="col-sm-9 col-xs-12 text-xs-center text-sm-left">
+											<header class="vadi--posts--post--header">
+												<!--<div class="vadi&#45;&#45;posts&#45;&#45;post&#45;&#45;game">@itemViewModel.GameType</div>-->
+												<div class="vadi--posts--post--title">@itemViewModel.Subject</div>
+												<div class="vadi--posts--post--meta">
+													<div class="vadi--posts--post--meta--author">
+														<i class="fa fa-user"></i>@itemViewModel.EditorName</div>
+													<time class="vadi--posts--post--meta--date">
+														<i class="fa fa-clock-o"></i>@string.Format("{0:dd MMMM yyyy}", itemViewModel.CreateDate)</time>
+													<time class="vadi--posts--post--meta--game">
+														<i class="fa fa-gamepad"></i>@itemViewModel.GameType</time>
+												</div>
+											</header>
+											<p class="vadi--posts--post--description multi-ellipsis">@Html.Raw(itemViewModel.Description)</p>
+										</div>
+									</div>
+								</a>
+							}
+						}
+					}
+				</div>
+				<div class="text-center">
+					<ul class="pagination">
+						@Html.PagedListPager(Model, page => string.Format("/etiket/{0}?page={1}", ViewBag.Tag, page), new PagedListRenderOptions
+						{
+							LinkToFirstPageFormat = AdminProject.Resources.HtmlLang.pagerLinkFirstPageFormat,
+							LinkToPreviousPageFormat = AdminProject.Resources.HtmlLang.pagerLinkPreviousPageFormat,
+							LinkToNextPageFormat = AdminProject.Resources.HtmlLang.pagerLinkNextPageFormat,
+							LinkToLastPageFormat = AdminProject.Resources.HtmlLang.pagerLinkLastPageFormat
+						})
+					</ul>
+				</div>
+			</section>
+			<aside class="col-md-3">
+				@{
+					Html.RenderAction("GetTopContent", "Partial");
+				}
+			</aside>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+﻿@using AdminProject.Helpers
+@using AdminProject.Models
+@model IEnumerable<MenuItem>
+
+@Html.Raw(Utility.RenderUlFooterMenu(Model))
+
+<div class="vadi--footer--bottom__links col-sm-4 col-md-2">
+    <h4>GAMER PEOPLE</h4>
+    <ul>
+        <li><a href="/fotograf-galerileri/fotograf-galerileri">Galeriler</a></li>
+        <li><a href="/video/video-galerileri">Videolar</a></li>
+        <li><a href="/haber/makaleler">Makaleler</a></li>
+        <li><a href="/haber/dosya-konusu">Dosya Konusu</a></li>
+        <li><a href="/haber/espor-takvimi">eSpor Takvimi</a></li>
+        <li><a href="/iletisim/iletisim-bilgileri">İletişim</a></li>
+    </ul>
+</div>

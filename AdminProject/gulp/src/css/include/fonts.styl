@@ -1,0 +1,29 @@
+
+font-open()
+	font-family 'Open Sans', sans-serif
+font-roboto-condensed()
+	font-family 'Roboto Condensed', sans-serif
+
+
+ff_regular(fontSize, line-height = normal)
+	if(fontSize)
+		font-size fontSize
+	line-height: line-height
+	font-open()
+	font-weight: normal
+	font-style: normal
+
+ff_bold(fontSize, line-height = normal)
+	if(fontSize)
+		font-size fontSize
+	font-roboto-condensed()
+	line-height line-height
+	font-weight 800
+	font-style normal
+
+font-footer(fontSize = inherit, weight = 400, line-height = normal)
+	font-size fontSize
+	line-height line-height
+	font-open()
+	font-weight weight
+	font-style normal

@@ -1,0 +1,17 @@
+﻿@model IList<Tools.Service.Model.WidgetContentViewModel>
+
+<div class="module-title flexible-border">POPÜLER İÇERİKLER</div>
+<div class="module-content no-padding">
+    <ul class="popular-news-list">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="/haber/@item.CategoryUrl/@item.ContentUrl" title="@item.Name">
+                    <img src="@(string.IsNullOrEmpty(item.ContentUrl) ? "/html/assets/img/no-image-mini-post.png" : "/Content/" + item.ContentUrl + "_120x80.jpg")" alt="@item.Name" class="img-responsive" />
+                    <em class="flexible-color">@item.GameType</em>
+                    <p class="multi-ellipsis">@item.Name</p>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

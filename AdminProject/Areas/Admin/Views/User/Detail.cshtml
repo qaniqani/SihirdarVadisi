@@ -1,0 +1,89 @@
+﻿@model Sihirdar.DataAccessLayer.Infrastructure.Models.User
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detail";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-sm-12 nest" style="margin-top:20px; padding-top:20px;">
+            <div class="profile">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-6 text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item text-left">
+                                <span class="entypo-user"></span>&nbsp;&nbsp;Profile
+                            </li>
+                            @if (!string.IsNullOrEmpty(Model.PicturePath))
+                            {
+                                <li class="list-group-item text-center">
+                                    <img src="@Model.PicturePath" style="max-height:150px;" alt="" class="img-circle img-responsive img-profile">
+                                </li>
+                            }
+
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Name Surname</strong>
+                                </span>@Model.Name @Model.Surname
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>E-Mail</strong>
+                                </span>@Model.Email
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Gender</strong>
+                                </span>@Model.Gender
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Gsm</strong>
+                                </span>@Model.Gsm
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Create Date</strong>
+                                </span>@Model.CreatedDate.ToString("dd.MM.yyyy HH:mm:ss")
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Update Date</strong>
+                                </span>@Model.UpdatedDate.ToString("dd.MM.yyyy HH:mm:ss")
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6 profile-name">
+                        <ul class="list-group">
+                            <li class="list-group-item text-left">
+                                <span class="entypo-user"></span>&nbsp;&nbsp;Other Details
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Interest Areas</strong>
+                                </span>@(string.IsNullOrEmpty(Model.InterestAreas) ? "-" : Model.InterestAreas)
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Sign In Type</strong>
+                                </span>@Model.SignInType.ToString()
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Activation Code</strong>
+                                </span>@(string.IsNullOrEmpty(Model.ActivationCode) ? "-" : Model.ActivationCode)
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Last Login Date</strong>
+                                </span>@Model.LastLoginDate.ToString("dd.MM.yyyy HH:mm:ss")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

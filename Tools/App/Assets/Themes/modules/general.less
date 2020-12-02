@@ -1,0 +1,1427 @@
+﻿@import "variables.less";
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    background: @background-color;
+    .ff_bold(13px);
+    padding-right: 0 !important;
+    overflow-x: hidden !important;
+}
+
+.tools-breadcrumb-container {
+    background: #1e1e1e;
+    padding: 0 0 10px 0;
+    height: 50px;
+
+    .tools-breadcrumb {
+        width: auto !important;
+        float: right;
+        background: none;
+        border-radius: 0;
+        margin: 0;
+
+        li {
+            color: #4c4c4c;
+
+            a {
+                .ff_regular(14px,32px);
+                color: #5c5c5c;
+            }
+
+            &:before {
+                color: #4c4c4c;
+            }
+
+            &.active {
+                .ff_regular(14px);
+                color: @lol-color;
+            }
+        }
+    }
+
+    .back-to-link {
+        margin: 0;
+        padding: 8px 15px;
+        .ff_bold(14px, 32px);
+        background: none;
+        color: @white !important;
+        text-transform: none;
+
+        &:hover, &:focus {
+            color: @lol-color !important;
+            background: none !important;
+        }
+    }
+}
+
+.sidebar {
+    .box-module {
+        width: 100%;
+        float: left;
+    }
+
+    .module-title {
+        width: 100%;
+        display: inline-block;
+        background: #000;
+        color: @white;
+        padding: 8px 10px;
+        text-transform: uppercase;
+        font-size: 15px !important;
+    }
+
+    ul.popular-news-list {
+        margin: 0;
+        padding: 0;
+
+        li {
+            width: 100%;
+            height: 100px;
+            margin: 0;
+            padding: 10px;
+            color: @white;
+            list-style: none;
+            border: 1px solid @darkgray;
+            border-bottom: 0 none;
+            overflow: hidden;
+            background: #000;
+
+            a {
+                color: @white;
+
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+
+            em {
+                font-style: normal;
+                .ff_bold(14px);
+                text-transform: uppercase;
+            }
+
+            p {
+                padding-top: 5px;
+                .ff_regular(13px);
+                height: 54px;
+                overflow: hidden;
+            }
+
+            img {
+                height: 80px;
+                float: left;
+                padding: 0 10px 0 0;
+            }
+
+            &.callbacks_here {
+                background: @lol-color;
+                transition: 0.3s;
+            }
+
+            &:hover {
+                text-decoration: none;
+                background: #111 !important;
+            }
+
+            &:last-child {
+                border-bottom: 1px solid @darkgray;
+            }
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+
+    @media screen and (min-width: 991px) and (max-width: 1199px) {
+        ul.popular-news-list {
+            margin: 0;
+            padding: 0;
+
+            li {
+
+                img {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.news-page {
+    .box-module {
+        width: 100%;
+        float: left;
+        height: auto;
+        margin-bottom: 20px;
+
+        .module-title {
+            width: 100%;
+            display: inline-block;
+            background: #000;
+            color: @white;
+            padding: 8px 10px;
+            text-transform: uppercase;
+            font-size: 15px !important;
+        }
+
+        .module-content {
+            width: 100%;
+            height: auto;
+            background: none;
+
+            .news-detail {
+                width: 100%;
+                float: left;
+                background: #000;
+
+                .news-img {
+                    width: 100%;
+                    height: 450px;
+                    float: left;
+                    background-size: cover !important;
+                    background-repeat: no-repeat !important;
+                    background-position: center top !important;
+                }
+
+                .news-frame {
+                    width: 100%;
+                    height: auto;
+                    float: left;
+                    padding-top: 15px;
+
+                    .stream-frame {
+                        height: 520px;
+
+                        iframe {
+                        }
+                    }
+
+                    .chat-frame {
+                        height: 520px;
+
+                        iframe {
+                        }
+                    }
+                }
+
+                .news-content {
+                    width: 100%;
+                    float: left;
+                    min-height: 407px;
+                    padding: 15px;
+                    .ff_regular(13px);
+
+                    .game {
+                        margin: 10px 0 7px 0;
+                        .ff_bold(14px);
+                        color: @lol-color;
+                        text-transform: uppercase;
+                    }
+
+                    .title {
+                        margin: 0 0 7px 0;
+                        padding: 0 10px 0 0;
+                        .ff_bold(28px);
+                        color: @white;
+                    }
+
+                    .author {
+                        margin: 0 0 7px 0;
+                        .ff_regular(13px);
+
+                        .date {
+                            color: @white;
+                            font-style: normal;
+                        }
+                    }
+
+                    .description {
+                        margin-top: 20px;
+                        color: #CCC;
+                        .ff_regular(13px) !important;
+                        font-style: normal !important;
+                        overflow: hidden;
+
+                        h1, h2, h3, h4, h5, h6 {
+                            color: @white;
+                            .ff_bold(20px);
+                        }
+
+                        iframe {
+                            border: 0 none;
+                        }
+                    }
+
+                    .share-box {
+                        width: 50px;
+                        height: 250px;
+                        float: left;
+                        margin: 10px 15px 0 0;
+
+                        p {
+                            font-style: italic;
+
+                            i {
+                                margin-right: 5px;
+                            }
+                        }
+
+                        .addthis_inline_share_toolbox {
+                            a {
+                                margin-right: 5px !important;
+                                background: none !important;
+                                border: 1px solid @darkgray;
+                                transition: 0s !important;
+
+
+                                &:hover, &:focus {
+                                    transition: 0s !important;
+                                    margin-left: 2px;
+                                    margin-top: 4px !important;
+                                    margin-bottom: 1px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .lol-time-played {
+                    width: 100%;
+                    float: left;
+                    margin-bottom: 30px;
+                    padding: 20px 0;
+                    border: 1px solid @darkgray;
+                    background: #090909;
+
+                    .btn {
+                        width: 100%;
+                        .ff_bold(14px);
+                        padding: 10px;
+                    }
+
+                    .form-group {
+                        margin: 0;
+                    }
+
+                    label {
+                        margin: 0 0 5px 0;
+                        padding: 0;
+                        .ff_bold(13px);
+                    }
+
+                    .radio {
+                        margin-top: 0;
+
+                        label {
+                            margin: unset !important;
+                            padding-left: 35px !important;
+                            color: @white !important;
+                            .ff_regular(14px,21px);
+
+                            .circle {
+                                border-color: @lol-color;
+                            }
+
+                            .check {
+                                background: @white;
+                            }
+                        }
+                    }
+
+                    input[type="text"], select {
+                        .ff_regular(13px);
+                        padding: 0 10px;
+                        border: 1px solid #CCC !important;
+                        background-position: bottom;
+                        background-image: none !important;
+                        color: #CCC;
+                    }
+
+                    .table {
+                        border-color: @darkgray;
+
+                        th {
+                            .ff_bold(15px);
+                            border-color: @darkgray;
+                            background: #1d1d20;
+                            border-bottom: none;
+                        }
+
+                        td, tr {
+                            .ff_regular(13px);
+                            border-color: @darkgray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.champions-search {
+    width: 100%;
+    margin: -25px auto 0 auto !important;
+    padding: 0 10px;
+    border: 1px solid #222 !important;
+    background-size: 0 2px,100% 0 !important;
+}
+
+#champs {
+    width: 100%;
+    float: left;
+
+    li {
+        list-style: none;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            opacity: .7;
+        }
+
+        p {
+            margin: 3px 0 0 0;
+            padding: 0;
+            color: #FFF;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: normal;
+            .ff_regular(13px);
+        }
+
+        img {
+            border: 1px solid #222;
+        }
+
+        &:nth-child(1n) {
+        }
+    }
+
+    li a:hover, li a:focus {
+        text-decoration: none;
+        opacity: 1;
+    }
+}
+
+#champions-dialog {
+    float: left !important;
+    position: static !important;
+    width: 100% !important;
+
+    .modal-dialog {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    .modal-content {
+        background: none;
+    }
+
+    .modal-body {
+        padding: 0 !important;
+        background: none !important;
+        color: @white;
+    }
+
+    .back-to-list-btn {
+        background: @lol-color;
+        color: @white;
+        margin: 0 0 15px 0;
+        border-radius: 0;
+    }
+
+    .champ-picture {
+        height: 350px;
+        overflow: hidden;
+        background-color: #151515 !important;
+        border: 1px solid @background-color;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        margin-right: 0;
+
+        img {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    h5 {
+        width: 100% !important;
+        float: left;
+        padding-top: 15px;
+        .ff_bold(25px);
+        color: @lol-color;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+
+
+    h6 {
+        width: 100%;
+        float: left;
+        .ff_bold(22px);
+        color: @lol-color;
+    }
+
+    .description {
+        margin: 10px 0;
+        .ff_regular(13px);
+    }
+
+    ul.specs {
+        margin: 0 0 0 0;
+        padding: 0;
+
+        li {
+            min-height: 40px;
+            margin-bottom: 5px;
+            list-style: none;
+            .ff_regular(13px);
+
+            .stat-label {
+                height: 20px;
+                float: left;
+                padding-left: 25px;
+                .ff_bold(14px);
+            }
+
+            .stat-value {
+                height: 20px;
+                line-height: 20px;
+                padding-left: 5px;
+                font-size: 13px;
+
+                em {
+                    width: 100%;
+                    float: left;
+                    padding-left: 25px;
+                    font-style: normal;
+                    font-size: 12px;
+                }
+            }
+
+            .stat-ad {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 0;
+            }
+
+            .stat-armor {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -25px;
+            }
+
+            .stat-as {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -50px;
+            }
+
+            .stat-ms {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -75px;
+            }
+
+            .stat-mr {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -125px;
+            }
+
+            .stat-hp {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -150px;
+            }
+
+            .stat-hp-regen {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -175px;
+            }
+
+            .stat-mana {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -200px;
+            }
+
+            .stat-m-regen {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -225px;
+            }
+        }
+    }
+
+    ul.skins {
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+            margin-bottom: 25px;
+            padding: 0 15px 0 0;
+
+            a {
+                width: 100%;
+                height: 100%;
+                .ff_regular(13px);
+                color: @white;
+                cursor: pointer;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                display: block;
+
+                img {
+                    border: 1px solid @background-color;
+                    margin-bottom: 5px;
+                }
+
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    ul.spells {
+        margin: 0;
+        padding: 0;
+
+        li {
+            width: 100%;
+            float: left;
+            list-style: none;
+            margin-bottom: 20px;
+            display: grid;
+            padding: 0 !important;
+
+            h3 {
+                margin: 0;
+                .ff_bold(16px);
+            }
+
+            img {
+                width: 50px;
+                float: left;
+                margin: 10px 10px 10px 0;
+                border: 1px solid @background-color;
+            }
+
+            p {
+                .ff_regular(13px);
+                margin: 10px 0;
+
+                em {
+                    width: 100%;
+                    display: block;
+                    font-style: normal;
+                    color: @lol-color;
+                    .ff_bold(13px)
+                }
+            }
+        }
+    }
+}
+
+.homepage-list {
+    margin: 20px -15px 0 0;
+
+    .item {
+        margin-bottom: 20px;
+        overflow: hidden;
+
+        > div {
+            padding: 0;
+            border: 1px solid #393939;
+            background: #000;
+        }
+
+        a {
+            &:hover, &:focus {
+                text-decoration: none;
+                color: #FFF;
+            }
+        }
+
+        .img {
+            width: 100%;
+            display: block;
+            background-size: cover !important;
+            border-bottom: 1px solid #393939;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .title {
+            width: auto;
+            height: auto;
+            float: left;
+            margin: 15px 15px 10px 15px;
+            padding-bottom: 15px;
+            background: #000;
+            color: @lol-color;
+            .ff_bold(17px);
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 0;
+                width: 40px; /* or 100px */
+                border-bottom: 4px solid #242629;
+            }
+        }
+
+        .description {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            display: block;
+            padding: 0 15px 15px 15px;
+            background: #000;
+            color: #FFF;
+            .ff_regular(14px);
+
+            .btn {
+                background: #000;
+                border: 1px solid #393939;
+                color: @white;
+                border-radius: 0;
+                .ff_bold(14px);
+
+                &:hover, &:focus {
+                    background: @lol-color;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    float: left;
+    border-top: 5px solid #151515;
+    background-color: #000;
+    min-height: 50px;
+    font-size: 12px;
+    color: #FFF;
+    text-align: center;
+    .ff_regular(13px,50px);
+
+    em {
+        font-style: normal;
+    }
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: @black;
+    /* change if the mask should have another color then white */
+    z-index: 9999;
+    /* makes sure it stays on top */
+    display: block;
+
+    #prelogo {
+        width: 119px;
+        height: 80px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -120px 0 0 -58px;
+        background: url(../img/logo2.png) no-repeat 0 top;
+    }
+
+    #status {
+        width: 75px;
+        height: 75px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -10px 0 0 -33px;
+
+        .spinner {
+            width: 70px;
+            text-align: center;
+        }
+
+        .spinner > div {
+            width: 18px;
+            height: 18px;
+            background-color: #FFF;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+            }
+
+            40% {
+                -webkit-transform: scale(1.0);
+            }
+        }
+
+        @keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            40% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+        }
+    }
+}
+
+.container {
+    width: 100% !important;
+    max-width: 1300px;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.no-padding-right {
+    padding-right: 0;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.margin-top-05 {
+    margin-top: 0.5em;
+}
+
+.margin-top-10 {
+    margin-top: 1.0em;
+}
+
+.margin-top-15 {
+    margin-top: 1.5em;
+}
+
+.margin-top-20 {
+    margin-top: 2.0em;
+}
+
+.margin-top-25 {
+    margin-top: 2.5em;
+}
+
+.margin-top-30 {
+    margin-top: 3.0em;
+}
+
+.margin-bottom-05 {
+    margin-bottom: 0.5em;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 1.0em;
+}
+
+.margin-bottom-15 {
+    margin-bottom: 1.5em;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 2.0em;
+}
+
+.margin-bottom-25 {
+    margin-bottom: 2.5em;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 3.0em;
+}
+
+.btn-raised {
+    box-shadow: none !important;
+    border-radius: 0;
+}
+
+select.form-control {
+    border: 1px solid #dedede !important;
+    padding: 0 10px !important;
+    background-size: 0 2px,100% 0px !important;
+    .ff_regular(12px);
+    color: #CCC;
+    position: relative;
+
+    option {
+        color: #000;
+    }
+}
+
+.alert {
+    .ff_regular(13px);
+}
+
+.modal-backdrop {
+    background: rgba(0,0,0,1);
+}
+
+.modal {
+    padding: 0 !important;
+
+    .modal-dialog {
+        margin: 20px auto !important;
+    }
+
+    .modal-header {
+        background: @lol-color;
+        padding: 15px;
+        color: @white;
+
+        .modal-title {
+            .ff_bold(19px);
+        }
+
+        .close {
+            color: @white;
+            opacity: 1;
+        }
+    }
+
+    .modal-body {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .modal-footer {
+        width: 100%;
+        display: inline-block;
+
+        p {
+            padding: 15px 15px 0 15px;
+            .ff_regular(13px);
+            border-top: 1px solid #efefef;
+            text-align: center;
+            display: block;
+
+            a {
+                .ff_bold(14px);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &#lol-time-dialog, &#lol-champion-dialog {
+        .btn-group {
+            width: 100%;
+
+            .btn {
+                width: 11.111111111%;
+                text-align: center;
+                padding: 5px 0;
+                border: 1px solid #d2d2d2;
+                border-right: none;
+                background: @white;
+                color: #AAA;
+
+                &:last-child {
+                    border-right: 1px solid #d2d2d2;
+                }
+
+                &.active {
+                    background: @lol-color;
+                    color: @white;
+                }
+            }
+        }
+
+        @media screen and (min-width: 1px) and (max-width: 765px) {
+
+            .no-padding-left {
+                padding-left: 0 !important;
+                padding: 0 1% !important;
+            }
+
+            .no-padding-right {
+                padding-right: 0 !important;
+                padding: 5px 1% 0 1% !important;
+            }
+
+            .btn-group {
+                .btn {
+                    width: 48% !important;
+                    margin: 1%;
+                    border: 1px solid #D2D2D2 !important;
+
+                    &.active {
+                        background: @lol-color;
+                        color: @white;
+                    }
+                }
+            }
+        }
+    }
+
+    &#register-dialog, &#update-user-dialog {
+        .modal-dialog {
+            max-width: 800px !important;
+
+            .form-group {
+                max-width: unset !important;
+            }
+
+            .file-input {
+                background: #efefef !important;
+                border: 1px solid #DEDEDE;
+                padding: 15px;
+
+                img {
+                    width: 100% !important;
+                }
+
+                .file-default-preview {
+                    img {
+                        max-width: 175px;
+                        border: 1px solid #CCC;
+                    }
+                }
+
+                button, .btn-file {
+                    margin: 10px 0 0 0;
+                    cursor: pointer;
+                    background: #FFF !important;
+                }
+            }
+        }
+    }
+
+    &#login-dialog, &#register-dialog, &#forgot-password-dialog, &#update-user-dialog, &#update-password-dialog {
+        overflow: auto !important;
+
+        .modal-dialog {
+            max-width: 400px;
+
+            .facebook-login {
+                width: 100%;
+                height: 36px;
+                margin: 0 auto;
+                padding: 0;
+                text-transform: none;
+                display: block;
+                .ff_bold(13px, 36px);
+                background-color: #4974b0;
+                color: rgba(255,255,255,.84);
+
+                i {
+                    width: 11%;
+                    height: 36px;
+                    float: left;
+                    margin: 0 0 0 10px;
+                    display: block;
+                    background-position: center 1px;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 37px;
+                    color: rgba(255,255,255,.84);
+                }
+
+                span {
+                    width: 80%;
+                    margin: 0 0 0 8px;
+                    padding: 0;
+                    border-left: 1px solid #466ba0;
+                    text-align: center;
+                    display: inline-block;
+                }
+
+                &:hover, &:focus {
+                    background: #466ba0;
+                    text-decoration: none;
+
+                    span {
+                        border-left: 1px solid #375785;
+                    }
+                }
+            }
+
+            .seperator {
+                width: 100%;
+                padding: 0 0 5px 0;
+                .ff_regular(13px,30px);
+                color: #A9A9A9;
+                text-align: center;
+                border-bottom: 1px solid #EFEFEF;
+            }
+
+            .form-group {
+                max-width: 290px;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .checkbox {
+                margin-top: 0;
+            }
+
+            .text-link {
+                .ff_regular(12px);
+            }
+
+            input[type="text"], input[type="password"], select {
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 10px;
+                border: 1px solid #D2D2D2;
+                background-size: 0 2px,100% 0;
+                .ff_regular(13px);
+                color: #222;
+
+
+                &::-webkit-input-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+
+                &::-moz-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+                /* Firefox 19+ */
+                &:-moz-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+                /* Firefox 18- */
+                &:-ms-input-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+                /* IE */
+            }
+
+            label {
+                .ff_regular(13px);
+            }
+        }
+    }
+
+    &#conditions-dialog {
+        .modal-body {
+            max-height: 450px;
+            overflow: auto;
+            .ff_regular(12px);
+
+            h1, h2, h3, h4, h5, h6 {
+                .ff_bold(17px);
+            }
+        }
+
+        .modal-footer {
+            padding: 14px 24px !important;
+        }
+    }
+}
+
+.dota-color {
+    color: @dota2-color !important;
+}
+
+.overwatch-color {
+    color: @overwatch-color !important;
+}
+
+.lol-color {
+    color: @lol-color !important;
+}
+
+.csgo-color {
+    color: @csgo-color !important;
+}
+
+.heartstone-color {
+    color: @heartstone-color !important;
+}
+
+.hearhstone-color {
+    color: @heartstone-color !important;
+}
+
+.makaleler-color {
+    color: @makaleler-color !important;
+}
+
+.media-color {
+    color: @media-color !important;
+}
+
+.window-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9000;
+    display: none;
+}
+
+.bordered-pink {
+    border-left: 6px solid @lol-color;
+}
+
+.bordered-white {
+    border-left: 6px solid @white;
+}
+
+.bordered-yellow {
+    border-left: 6px solid @csgo-color;
+}
+
+.bordered-orange {
+    border-left: 6px solid @dota2-color;
+}
+
+.bordered-blue {
+    border-left: 6px solid @heartstone-color;
+}
+
+.bordered-media-blue {
+    border-left: 6px solid @media-color;
+}
+
+.bordered-light-yellow {
+    border-left: 6px solid @overwatch-color;
+}
+
+.bordered-green {
+    border-left: 6px solid @makaleler-color;
+}
+
+.flexible-border {
+    border-left: 6px solid @lol-color;
+}
+
+.flexible-color {
+    color: @lol-color;
+}
+
+.flexible-background {
+    background-color: @lol-color;
+}
+
+.play-inside-box {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: relative;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+
+    .play-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -25px 0 0 -21px;
+            color: @white;
+            font-size: 50px;
+            transition: 0.3s;
+        }
+        /*&:hover {
+            i {
+                color: @lol-color;
+            }
+        }*/
+    }
+}
+
+#page-container {
+    width: 100%;
+    float: left;
+    z-index: 20;
+    position: relative;
+    background: @background-color;
+}
+
+#page-content {
+    width: 100%;
+    float: left;
+    background: @background-color;
+}
+
+@media screen and (min-width: 1px) and (max-width: 990px) {
+    .box-module {
+        padding: 0 !important;
+    }
+
+    .banner-responsive {
+        float: left;
+        margin-top: 0 !important;
+    }
+
+    .news-content {
+        .share-box {
+            width: 100% !important;
+            height: 60px !important;
+
+            .addthis_inline_share_toolbox {
+                a {
+                    transition: 0 !important;
+
+                    &:hover, &:focus {
+                        margin-left: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .sidebar-module {
+        padding: 0 !important;
+
+        .col-md-12 {
+            float: left;
+            width: 100%;
+        }
+    }
+
+    .homepage-list {
+        margin: 20px -15px 0 0;
+
+        .item {
+            > div {
+                height: unset !important;
+            }
+
+            .img {
+                img {
+                    height: auto !important;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 766px) and (max-width: 990px) {
+    #menuBar {
+        li {
+            padding-left: 15px !important;
+
+            a {
+                font-size: 15px !important;
+            }
+
+            &:after {
+                content: "" !important;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1px) and (max-width: 765px) {
+    .navbar-toggle {
+        margin-top: 23px;
+        color: @lol-color;
+
+        &.collapsed {
+            color: @white;
+        }
+    }
+
+    #menuBar {
+        height: 80px !important;
+    }
+
+    .navbar-brand {
+        img {
+            width: 180px !important;
+            margin: 0 0 0 15px;
+        }
+    }
+
+    #navbar {
+        width: 100%;
+        height: auto !important;
+        min-height: 220px;
+        margin-top: 17px;
+        background: @black;
+        z-index: 9999;
+        position: absolute;
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            width: 100% !important;
+            height: 50px !important;
+            float: left;
+            padding: 0 !important;
+            border-bottom: 1px solid #292929;
+            text-align: center;
+
+            &:after {
+                content: "" !important;
+            }
+
+            a {
+                width: 100%;
+                height: 100%;
+                float: left;
+                line-height: 50px !important;
+                display: block;
+            }
+        }
+    }
+
+    .tools-breadcrumb {
+        display: none;
+    }
+
+    footer {
+        em {
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+}

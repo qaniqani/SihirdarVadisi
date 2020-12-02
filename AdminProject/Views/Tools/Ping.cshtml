@@ -1,0 +1,319 @@
+﻿@{
+    ViewBag.Title = "Ping Ölçer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #myChart {
+        /*width: 100%;*/
+        display: none;
+        padding: 15px 25px 15px 15px;
+    }
+
+    #radar {
+        display: none;
+        padding: 80px 0;
+        width: 50%;
+        max-width: 50px;
+    }
+
+    .chart-holder {
+        width: 100%;
+    }
+
+    #stats {
+        display: none;
+    }
+
+    #progress-ping {
+        height: 6px;
+        display: none;
+        background-color: #962b84;
+    }
+
+    .progress {
+        background-color: transparent;
+        height: 6px;
+        box-shadow: none;
+        margin: 0 0 0 0;
+    }
+</style>
+
+<div id="page-content">
+    <div class="interaction-boxes news-page container margin-top-15">
+        <div class="row">
+            <div class="box-module col-md-9">
+                <div class="module-title flexible-border">ARAÇLAR</div>
+                <div class="module-content no-padding">
+                    <div class="news-detail">
+                        <div class="news-img" style="height:250px !important; background:url(https://gamerpeople.com/Content/pingolcer.jpg) center !important;"></div>
+                        <div class="news-content">
+                            <div class="share-box">
+                                <div class="addthis_inline_share_toolbox"></div>
+                            </div>
+                            <h5 class="game flexible-color">LEAGUE OF LEGENDS</h5>
+                            <h4 class="title">PİNG ÖLÇER</h4>
+                            <div class="description">
+                                <p class="margin-bottom-15">Oyuna girmeden ping değerlerine hemen ulaş ama Unutma! Görüntülediğin değerler oyun içerisinde anlık olarak değişebilir.</p>
+                                <div class="lol-time-played">
+                                    <div class="col-sm-12 form-group">
+
+                                        <div class="col-md-2 no-padding margin-bottom-10" style="font-size:15px;">Server Seçiniz:</div>
+
+                                        <div class="radio radio-primary col-sm-2 no-padding-left">
+                                            <label>
+                                                <input type="radio" name="region-select" id="tr" value="option6" checked onclick="setHost('tr')"> TR
+                                            </label>
+                                        </div>
+
+                                        <div class="radio radio-primary col-sm-2 no-padding-left">
+                                            <label>
+                                                <input type="radio" name="region-select" id="na" value="option1" onclick="setHost('na')"> NA
+                                            </label>
+                                        </div>
+
+                                        <div class="radio radio-primary col-sm-2 no-padding-left">
+                                            <label>
+                                                <input type="radio" name="region-select" id="na" value="option2" onclick="setHost('euw')"> EUW
+                                            </label>
+                                        </div>
+
+                                        <div class="radio radio-primary col-sm-2 no-padding-left">
+                                            <label>
+                                                <input type="radio" name="region-select" id="na" value="option3" onclick="setHost('eune')"> EUNE
+                                            </label>
+                                        </div>
+
+                                        <div class="radio radio-primary col-sm-2 no-padding-left">
+                                            <label>
+                                                <input type="radio" name="region-select" id="na" value="option4" onclick="setHost('oce')"> OCE
+                                            </label>
+                                        </div>
+
+                                        @*<div class="radio radio-primary col-sm-2 no-padding-left">
+                                            <label>
+                                                <input type="radio" name="region-select" id="na" value="option5" onclick="setHost('lan')"> LAN
+                                            </label>
+                                        </div>*@
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <button class="btn btn-success btn-raised pull-right" onclick="begin();">TEST ET</button>
+                                    </div>
+
+                                    <div class="col-md-12 no-padding chart-holder text-center">
+                                        <div class="row text-center">
+                                            <div class="col-md-2 col-md-offset-5 text-center">
+                                                <div id="radar">Yükleniyor...</div>
+                                            </div>
+
+                                            <div class="inline-preloader media-preloader"></div>
+                                        </div>
+
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+
+                                    <div class="col-md-12" id="stats">
+                                        <div class="progress" id="progress"> <div class="progress-bar progress-ping" id="progress-ping" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div> </div>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">TEST SONUÇLARI</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Ping</td>
+                                                    <td class="text-center"><span class="pull-right" id="running-ping"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Maximum</td>
+                                                    <td class="text-center"><span class="pull-right" id="max"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Minimum</td>
+                                                    <td class="text-center"><span class="pull-right" id="min"></span></td>
+                                                </tr>
+                                                <tr style="font-size: 20px;">
+                                                    <td>Average</td>
+                                                    <td class="text-center"><span class="pull-right" id="avg"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-module col-md-3">
+                @{
+                    Html.RenderAction("GetTopContent", "Partial");
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="#f00" id="page-color-code" />
+
+
+<script src="/html/scripts/libs/ping.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.bundle.min.js"></script>
+<script>
+    var chartData = {
+        labels: [],
+        datasets: [
+            {
+                label: "Ping",
+                fill: true,
+                lineTension: 0.2,
+                backgroundColor: "rgba(75,192,192,0.04)",
+                borderColor: "#962b84",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'bevel',
+                pointBorderColor: "#962b84",
+                pointBackgroundColor: "#FFF",
+                pointBorderWidth: 6,
+                pointHoverRadius: 10,
+                pointHoverBackgroundColor: "#962b84",
+                pointHoverBorderColor: "#FFF",
+                pointHoverBorderWidth: 1,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: [],
+
+            }
+        ]
+    };
+
+    // NA - 104.160.131.3
+    // EUW - 104.160.141.3
+    // EUNE - 104.160.142.3
+    // OCE - 104.160.156.1
+    // LAN - 104.160.136.3
+
+    var ip = {
+        "na": "104.160.131",
+        "euw": "104.160.141",
+        "eune": "104.160.142",
+        "oce": "104.160.156",
+        "lan": "104.160.136",
+        "tr": "104.16.1.92",
+    };
+    var pingdom;
+    var renderCount = 0;
+    var host = "tr";
+    var ctx = document.getElementById("myChart");
+    var max = document.getElementById("max");
+    var min = document.getElementById("min");
+    var avg = document.getElementById("avg");
+    var stats = document.getElementById("stats");
+    var rp = document.getElementById("running-ping");
+    var progress = document.getElementById("progress-ping");
+    var offset = (-25);
+    var myChart;
+    function setHost(hostV) {
+        host = hostV;
+    }
+    function begin() {
+        ctx.style.display = "none";
+        stats.style.display = "block";
+        max.innerHTML = "-";
+        min.innerHTML = "-";
+        avg.innerHTML = "-";
+
+        progress.style.display = "block";
+        progress.style.width = "0%";
+
+
+        document.getElementById("radar").style.display = "block";
+        chartData.datasets[0].data = [];
+        chartData.labels = [];
+
+        var p = new Ping();
+
+        var initTicks = 4;
+        var ticks = 0;
+        var plotTicks = 0;
+        var maxPlotTicks = 15;
+        pingdom = setInterval(function () {
+
+            ticks++;
+
+            while (initTicks > 1) {
+                initTicks--;
+                return;
+            }
+
+            if (ticks % 6 == 0) {
+                return;
+                setTimeout(function () { }, 1000);
+            }
+            // p.ping("http://31.186.224.112", function(data) {
+            p.ping("http://" + ip[host], function (data) {
+                // chartData.datasets[0].data.push(data);
+                
+                chartData.labels.push("");
+                chartData.datasets[0].data.push(data /2 + offset);
+                rp.innerHTML = data / 2 + offset;
+
+
+                // myChart.addData(data, "");
+                progress.style.width = plotTicks / maxPlotTicks * 100 + "%";
+                plotTicks++;
+
+                if (plotTicks > maxPlotTicks) {
+                    end();
+                }
+            });
+
+        }, 800);
+    }
+    function end() {
+        clearInterval(pingdom);
+
+        document.getElementById("radar").style.display = "none";
+        ctx.style.display = "block";
+
+        rp.innerHTML = "-";
+        progress.style.display = "none";
+        max.innerHTML = Math.max.apply(null, chartData.datasets[0].data);
+        min.innerHTML = Math.min.apply(null, chartData.datasets[0].data);
+        avg.innerHTML = Math.floor((chartData.datasets[0].data).reduce(function (a, b) { return a + b; }) / chartData.datasets[0].data.length);
+
+        // alert(chartData.datasets[0].data.reduce((a, b) => a + b, 0));
+
+        if (renderCount == 0) {
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: chartData,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                suggestedMax: 250
+                            }
+                        }]
+                    }
+                }
+
+            });
+            renderCount++;
+        } else {
+
+            myChart.config.data = chartData;
+            // myChart.scales.yAxes[0].gridLines.display = true;
+
+            myChart.update();
+        }
+    }
+</script>
+

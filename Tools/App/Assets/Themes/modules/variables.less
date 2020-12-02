@@ -1,0 +1,82 @@
+﻿/* > Fonts */
+@font-face {
+    font-family: 'Conv_HelveticaNeueLTPro-HvCn';
+    src: url('../fonts/HelveticaNeueLTPro-HvCn.eot');
+    src: local('☺'), url('../fonts/HelveticaNeueLTPro-HvCn.woff') format('woff'), url('../fonts/HelveticaNeueLTPro-HvCn.ttf') format('truetype'), url('../fonts/HelveticaNeueLTPro-HvCn.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: 'Conv_HelveticaNeueLTPro-HvCn' !important;
+        src: url('../fonts/HelveticaNeueLTPro-HvCn.svg') format('svg') !important;
+    }
+}
+
+@font-face {
+    font-family: 'liberation_sansregular';
+    src: url('../fonts/liberationsans-regular-webfont.eot');
+    src: url('../fonts/liberationsans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/liberationsans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/liberationsans-regular-webfont.woff') format('woff'),
+         url('../fonts/liberationsans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/liberationsans-regular-webfont.svg#liberation_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* > Font Options */
+.ff_regular(@fontSize) {
+    font-size: @fontSize;
+    line-height: normal;
+    font-family: 'liberation_sansregular';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ff_regular(@fontSize, @line-height) {
+    font-size: @fontSize;
+    line-height: @line-height;
+    font-family: 'liberation_sansregular';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ff_bold(@fontSize) {
+    font-size: @fontSize;
+    line-height: normal;
+    font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.ff_bold(@fontSize, @line-height) {
+    font-size: @fontSize;
+    line-height: @line-height;
+    font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* > Colors */
+@background-color: #242424;
+@white: #FFFFFF;
+@black: #0b0911;
+@darkgray: #39383e;
+
+/* > Menu Background Colors */
+@lol-color: #962b84;
+@dota2-color: #c8362e;
+@csgo-color: #cc8700;
+@heartstone-color: #0390cb;
+@overwatch-color: #e5d202;
+@media-color: #41909b;
+@makaleler-color: #879e00;
+@dosyalar-color: #aa9573;
+@indirim-color: #ff0000;
+@espor-color: #009e3a;
+
+

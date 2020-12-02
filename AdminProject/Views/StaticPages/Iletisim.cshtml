@@ -1,0 +1,70 @@
+﻿@using reCAPTCHA.MVC
+@model AdminProject.Models.ContactModelDto
+@{
+    ViewBag.Title = "İletişim Bilgilerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="//www.google.com/recaptcha/api.js?hl=tr" async defer></script>
+
+<div id="page-content">
+    <div class="interaction-boxes calendar-tools-page container margin-top-15">
+        <div class="row">
+            <div class="col-md-12 no-padding">
+                <div class="box-module col-md-12">
+                    <div class="module-title flexible-border">BİZE ULAŞIN</div>
+                    <div class="module-content no-padding" style="overflow:visible !important;">
+                        <div class="page-detail no-padding">
+                            <div class="contact-us">
+                                <div class="col-md-12 no-padding"><img src="/html/assets/img/contact-bg.jpg" alt="Gamer People" class="img-responsive" /></div>
+
+                                <div class="col-md-6">
+                                    <h3>Gamer People</h3>
+                                    <p>Gamer People 2013 Yılında hayata geçmiş çıkış noktası League of Legends olan bir eSpor içerik sağlayıcı sitedir. </p>
+                                    <p>2017 yılında Ruby.Technology'i ailesine katılan Gamer People aldığı yatırımın ardından Türkiye'nin ana eSpor içerik sağlayıcısı olmak adına saflarına League of Legends ile birlikte Dota2, Counter Strike:Go, HearthStone, Overwatch gibi oyunları da katarak içeriksel yönünü güçlendirmeyi planlamıştır.</p>
+                                    <p>Bununla birlikte bünyesinde bu zamana kadar 70'e yakın eSpor turnuvası düzenleyen Gamer People toplamda 46.000+ üyeye sahip olmakla beraber 7,000 eSporcunun mücadele verdiği bir eSpor platformu olmayı başarmıştır.</p>
+                                    <p>Yürüttüğü Premium işbirlikleri ile birlikte çalıştığı markalara değer katmayı öncelikli hedeflerinden biri haline getiren Gamer People profesyonel projeler ile güçlenmektedir.</p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h3>İletişim Formu</h3>
+
+                                    <form action="/iletisim/iletisim-bilgileri" method="post">
+
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.NameSurname, new {@class = "form-control input-sm validate[required]", placeholder = "Ad Soyad *", maxlength = "100"})
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.Email, new {@class = "form-control input-sm validate[required,email]", placeholder = "E-Posta Adresi *", maxlength = "150"})
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.Phone, new {@class = "form-control input-sm validate[custom[phone]]", placeholder = "Telefon Numarası", maxlength = "100"})
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.DropDownListFor(model => model.Subject, ViewBag.SubjectType as SelectList, new {@class = "form-control validate[required]"})
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(model => model.Message, new {@class = "form-control input-sm validate[required]", placeholder = "Mesajınız *", maxlength = "500"})
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.Recaptcha()
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-success btn-raised full-width no-margin" style="width: 100%;" value="GÖNDER"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

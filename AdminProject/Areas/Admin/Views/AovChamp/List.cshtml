@@ -1,0 +1,70 @@
+﻿@using Sihirdar.DataAccessLayer
+@model IEnumerable<Sihirdar.DataAccessLayer.Infrastructure.Models.AovChamp>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        AOV Champions
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <table class="table-striped footable-res footable metro-blue" data-page-size="20">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Role</th>
+                            <th>Partype</th>
+                            <th>Status</th>
+                            <th>Options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            foreach (var champ in Model)
+                            {
+                                <tr>
+                                    <td>@champ.Name</td>
+                                    <td>@champ.Title</td>
+                                    <td>@champ.Role</td>
+                                    <td>@champ.Partype</td>
+                                    <td>
+                                        <span class="@(champ.Status == StatusTypes.Active ? "status-metro status-active" : "status-metro status-suspended")">
+                                            @(champ.Status == StatusTypes.Active ? "Active" : "Deactive")
+                                        </span>
+                                    </td>
+                                    <td style="width:100px;">
+                                        <a href="/Admin/AovChamp/Edit/@champ.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                        <a href="/Admin/AovChamp/Delete/@champ.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <div class="pagination pagination-centered"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@using Sihirdar.DataAccessLayer
+@model List<AdminProject.Services.Models.UserLikeItemDto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Beğendiklerim";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "League of Legends Haberleri, CS:GO Haberleri, DOTA2 Haberleri, Overwatch Haberleri, Heartstone Haberleri, Haftalık Turnuvalar, Şampiyon Bilgileri ve çok daha fazlası";
+    ViewBag.Image = "default-share-img.jpg";
+}
+
+@*<script>
+    function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '244843595925420',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function statusChangeCallback(response) {
+        if (response.status === 'connected') {
+            console.log(response);
+        }
+    }
+</script>
+
+<fb:login-button scope="public_profile,email,user_friends,user_hometown,user_likes" onlogin="checkLoginState();"></fb:login-button>*@
+
+<div id="page-content" data-color-code="#879e00">
+    <div class="interaction-boxes news-page user-liked container margin-top-15">
+        <div class="row">
+            <div class="box-module col-md-12">
+                <div class="module-title flexible-border">BEĞENDİKLERİM <b class="pull-right"></b></div>
+                <div class="module-content no-padding">
+                    <div class="row">
+                        @if (Model.Count <= 0)
+                        {
+                            <div class="no-record">Henüz hiç bir şey beğenmedin :(</div>
+                        }
+                        else
+                        {
+                            <ul class="news-list">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.ContentType == ContentTypes.Video)
+                                    {
+                                        <li class="col-md-3">
+                                            <div class="col-sm-12 news-img no-padding" style="background: url(/Content/@(item.Picture)_460x220.jpg)"></div>
+                                            <div class="col-sm-12 news-content">
+                                                <h5 class="game flexible-color">@item.GameTypeText</h5>
+                                                <h4 class="title">@item.Name</h4>
+                                                <h6 class="author flexible-color">Beğenilme Tarihi: <em class="date">@(string.Format("{0:dd.MM.yyyy}", item.DateTime))</em></h6>
+                                                <a href="/video/@item.Url/detay" class="btn btn-default btn-raised read-more"><i class="fa fa-eye" aria-hidden="true"></i> GÖR</a>
+                                                <a href="/kullanici/begenilenler/@item.Id" class="btn btn-default btn-raised read-more pull-right"><i class="fa fa-remove" aria-hidden="true"></i> KALDIR</a>
+                                            </div>
+                                        </li>
+                                    }
+                                    else if (item.ContentType == ContentTypes.Gallery)
+                                    {
+                                        <li class="col-md-3">
+                                            <div class="col-sm-12 news-img no-padding" style="background: url(/Content/Gallery/@(item.Picture))"></div>
+                                            <div class="col-sm-12 news-content">
+                                                <h5 class="game flexible-color">@item.GameTypeText</h5>
+                                                <h4 class="title">@item.Name</h4>
+                                                <h6 class="author flexible-color">Beğenilme Tarihi: <em class="date">@(string.Format("{0:dd.MM.yyyy}", item.DateTime))</em></h6>
+                                                <a href="/fotograf-galerileri/@item.Url/detay" class="btn btn-default btn-raised read-more"><i class="fa fa-eye" aria-hidden="true"></i> GÖR</a>
+                                                <a href="/kullanici/begenilenler/@item.Id" class="btn btn-default btn-raised read-more pull-right"><i class="fa fa-remove" aria-hidden="true"></i> KALDIR</a>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        }
+                    </div>
+                    @*<ul class="pagination pull-right">
+                            <li><a href="#">&laquo; Geri</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">İleri &raquo;</a></li>
+                        </ul>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /#page-content -->

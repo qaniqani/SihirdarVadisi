@@ -1,0 +1,230 @@
+﻿@using PagedList
+@using AdminProject.Models
+@using Sihirdar.DataAccessLayer
+@model StaticPagedList<CategoryVideoItemViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var backgroundPic = "/html/assets/img/temp/latest-video-temp.jpg";
+
+    var videos = ViewBag.FirstVideo as ContentNavigateViewModel;
+
+    if (videos != null)
+    {
+        if (videos.FirstVideo != null)
+        {
+            backgroundPic = "/Content/" + videos.FirstVideo.Url + "_850x420.jpg";
+        }
+    }
+}
+
+<div id="page-content">
+    <div class="interaction-boxes media-page">
+        <div class="latest-video container-fluid no-padding">
+            <div class="video-background" style="background: url(@backgroundPic) no-repeat center;"></div>
+            <div class="background-overlay"></div>
+            <div class="container">
+                <div class="video-nav prev col-md-2 no-padding">
+                    @{
+                        if (videos != null && videos.PrevVideo != null)
+                        {
+                            var item = videos.PrevVideo;
+                    <a href="/video/@item.Url/detay" title="@item.Name" style="background: url(/Content/@(item.Url)_200x120.jpg) no-repeat center;">
+                        <div>
+                            <p class="multi-ellipsis text-left">@item.Name</p>
+                        </div>
+                        <span class="text-left"><i class="fa fa-chevron-left"></i> Önceki Video</span>
+                    </a>
+                        }
+                    }
+                </div>
+                <div class="video-nav next col-md-2 pull-right no-padding">
+                    @{
+                        if (videos != null && videos.NextVideo != null)
+                        {
+                            var item = videos.NextVideo;
+                    <a href="/video/@item.Url/detay" title="@item.Name" style="background: url(/Content/@(item.Url)_200x120.jpg) no-repeat center;">
+                        <div>
+                            <p class="multi-ellipsis text-left">@item.Name</p>
+                        </div>
+                        <span class="text-right">Sonraki Video <i class="fa fa-chevron-right"></i></span>
+                    </a>
+                        }
+                    }
+                </div>
+
+                <div class="video-item col-md-8">
+                    <div class="video-container">
+                        @{
+                            var likedCount = 0;
+                            if (videos != null && videos.FirstVideo != null)
+                            {
+                                var item = videos.FirstVideo;
+
+                                ViewBag.Title = item.Subject;
+                                ViewBag.Url = Request.RawUrl;
+                                ViewBag.Type = "website";
+                                ViewBag.Description = item.Description;
+                                ViewBag.Image = item.Url + "_850x420.jpg";
+
+                        <div class="scroll-controls">
+                            <p>@item.Subject</p>
+                            <a href="javascript:;" class="pull-right" onclick="$(this).toggleVideoScrollClose();"><i class="fa fa-times"></i></a>
+                        </div>
+
+                        <a class="play-inside-box"
+                           href="javascript:;"
+                           onclick="$(this).loadVideo('@item.VideoUrl');"
+                           style="background: url('/Content/@(item.Url)_850x420.jpg');">
+                            <span class="play-overlay"><i class="fa fa-play-circle"></i></span>
+                        </a>
+                        <input type="hidden" id="ContentId" value="@item.Id" />
+                        <input type="hidden" id="ContentUrl" value="@item.Url" />
+                        <input type="hidden" id="ContentGameType" value="@item.ContentType" />
+
+                                likedCount = item.LikedCount;
+
+                                if (ViewBag.LikeId != null)
+                                {
+                        <input type="hidden" id="LikeId" value="@ViewBag.LikeId" />
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="col-md-12 no-padding">
+                    <div class="video-buttons col-md-8 col-centered no-padding">
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Beğen" class="btn" id="like-button"><i class="fa @(ViewBag.CheckLiked ? "fa-heart" : "fa-heart-o")" aria-hidden="true"></i> <em>BEĞEN (<b>@likedCount</b>)</em></a></div>
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Paylaş" class="btn"><div class="addthis_inline_share_toolbox_yndq"></div><i class="fa fa-share-alt" aria-hidden="true"></i> <em>PAYLAŞ</em></a></div>
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Detay" class="btn selected" onclick="$(this).openVideoTab('.video-detail');"><i class="fa fa-align-left" aria-hidden="true"></i> <em>VİDEO DETAYI</em></a></div>
+                        <div class="col-sm-3 no-padding"><a href="javascript:;" title="Yorumlar" class="btn" onclick="$(this).openVideoTab('.video-comments');"><i class="fa fa-comments" aria-hidden="true"></i> <em>YORUMLAR</em></a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-content">
+                <div class="container">
+                    <div class="col-md-8 col-centered tab video-detail no-padding">
+                        @{
+                            var video = ViewBag.FirstVideo as ContentNavigateViewModel;
+                            if (video != null && video.FirstVideo != null)
+                            {
+                                var item = video.FirstVideo;
+
+                        <h5 class="game flexible-color">@item.GameType</h5>
+                        <h4 class="title">@item.Subject</h4>
+                        <div class="description">
+                            @Html.Raw(item.Detail)
+                        </div>
+                            }
+                        }
+                    </div>
+                    <div class="col-md-8 col-centered tab video-comments no-padding">
+                        <div class="facebook-comments-area">
+                            <div id="fb-root"></div>
+                            <script>
+                                $(document).ready(function () {
+                                    (function (d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=244843595925420";
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));
+
+                                    var pageUrl = window.location.href;
+                                    var fbComments = '<div class="fb-comments" data-href="' + pageUrl + '" data-width="100%" data-colorscheme="dark" data-numposts="5"></div>';
+                                    $('.facebook-comments-area').append(fbComments);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.latest-video -->
+    
+    @if (ViewBag.CenterAdvert != null)
+    {
+        var advert = (CategoryAdvertDto)ViewBag.CenterAdvert;
+
+        <div class="reklam-728x90 margin-top-15">
+            @if (advert.AdType == AdvertTypes.Image)
+                {
+                <center>
+                    <a href="/advert/redirect?guid=@advert.Guid"><img src="/Content/File/@advert.FilePath" alt="" /></a>
+                </center>
+            }
+            else
+            {
+                @Html.Raw(advert.Code)
+            }
+        </div>
+    }
+    else
+    {
+
+        <!-- /.reklam-728x90 -->
+    }
+
+        <div class="container">
+            <div class="box-module col-md-12 margin-top-15">
+                <div class="module-title flexible-border">TÜM VİDEOLAR</div>
+
+                <div class="module-content no-padding">
+                    <div class="video-filtering col-md-12 no-padding">
+                        <div class="form-group col-sm-3 no-padding no-margin">
+                            <label for="game-select" class="col-md-12 control-label">Oyun Seçiniz:</label>
+                            <div class="col-md-12">
+                                @Html.DropDownList("gameType", ViewBag.GameType as SelectList, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        @*<div class="form-group col-sm-3 pull-right no-padding no-margin">
+                                <label for="sorting-select" class="col-md-12 control-label">Sırala:</label>
+
+                                <div class="col-md-12">
+                                    @Html.DropDownList("sorting-select", ViewBag.FilterType as SelectList, new { @class = "form-control", id = "sorting-select" })
+                                </div>
+                            </div>*@
+
+                        <input type="hidden" id="video-category-url" value="@ViewBag.Category.Url" />
+                        <div class="video-list" id="list-videos">
+                            @if (Model.TotalItemCount > 0)
+                            {
+                                foreach (var itemViewModel in Model)
+                                {
+                                    <div class="video col-md-3">
+                                        <div class="video-item" style="background:url(/Content/@(itemViewModel.Picture)_200x120.jpg);">
+                                            <a class="play-inside-box" href="/video/@itemViewModel.Url/detay">
+                                                <div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+                                            </a>
+                                        </div>
+
+                                        <div class="video-text">
+                                            <p class="flexible-color">@itemViewModel.GameType</p>
+                                            <em class="multi-ellipsis">@itemViewModel.Subject</em>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="no-video">Gösterilecek hiç birşey bulamadık :/</div>
+                            }
+                        </div>
+                        @if (Model.TotalItemCount > 0)
+                        {
+                            <a href="javascript:;" id="load-video" class="col-md-12 btn btn-default btn-block load-videos-btn">Daha Fazla Görüntüle</a>
+                            <div class="no-video">Daha fazla video bulamadık :/</div>
+                        }
+                    </div>
+                </div>
+            </div><!-- /.video-list -->
+        </div>
+    </div><!-- /#page-content -->
+</div>
+
+@*@ViewBag.Category.Url*@
+@*video/{categoryUrl}/ajax*@
+<input type="hidden" value="#41909b" id="page-color-code" />

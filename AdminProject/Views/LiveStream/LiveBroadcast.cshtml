@@ -1,0 +1,61 @@
+﻿@using AdminProject.Models
+@using Sihirdar.DataAccessLayer
+@model Sihirdar.DataAccessLayer.Infrastructure.Models.LiveBroadcast
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Canlı Yayınlar";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "League of Legends Haberleri, CS:GO Haberleri, DOTA2 Haberleri, Overwatch Haberleri, Heartstone Haberleri, Haftalık Turnuvalar, Şampiyon Bilgileri ve çok daha fazlası";
+    ViewBag.Image = "default-share-img.jpg";
+}
+
+<div id="page-content">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="vadi--stream">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="vadi--stream--title" itemprop="headline">@Model.Name</h1>
+						<div class="vadi--stream--detail">@Html.Raw(Model.Description)</div>
+					</div>
+					<div class="col-md-12">
+						<div class="vadi--stream--height row">
+							<section class="col-md-9">
+								<div class="vadi--stream--video">
+									<iframe allowfullscreen="true" frameborders="0" height="100%" scrolling="no" src="@Model.PublishAddress" width="100%"></iframe>
+								</div>
+							</section>
+							<section class="col-md-3">
+								<div class="vadi--stream--chat">
+									<iframe height="100%" frameborders="0" src="@Model.ChatAddress" width="100%"></iframe>
+								</div>
+							</section>
+						</div>
+					</div>
+					@if (ViewBag.TypeAdvert != null)
+					{
+						var advert = (CategoryAdvertDto) ViewBag.TypeAdvert;
+	
+						<div class="reklam-728x90 margin-top-15 margin-bottom-15">
+							@if (advert.AdType == AdvertTypes.Image)
+							{
+								<a href="/advert/redirect?guid=@advert.Guid"><img src="/Content/File/@advert.FilePath" alt="" /></a>
+							}
+							else
+							{
+								@Html.Raw(advert.Code)
+							}
+						</div>
+					}
+					else
+					{
+						<!-- /.reklam-728x90 -->
+					}
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div><!-- /#page-content -->

@@ -1,0 +1,257 @@
+﻿@using AdminProject.Helpers
+@using AdminProject.Models
+
+@model Sihirdar.DataAccessLayer.Infrastructure.Models.Content
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //set category name
+        var categoryId = $("#CategoryId").val();
+        if (categoryId != "0") {
+            var selectedText = $("#sortable li .cat" + categoryId).text();
+            var categoryType = $("#sortable li .cat" + categoryId).attr("data-categoryType");
+
+            $("#CategoryName").text(selectedText);
+
+            $("#embeddedCodeBox").hide();
+            if (categoryType == "6") {
+                $("#embeddedCodeBox").show();
+            }
+        }
+
+        //select category
+        $("#sortable li div").click(function () {
+            var text = $(this).text();
+            var id = $(this).attr("data-id");
+            var categoryType = $(this).attr("data-categoryType");
+
+            $("#CategoryName").text(text);
+            $("#CategoryId").val(id);
+
+            $("#embeddedCodeBox").hide();
+            if (categoryType == "6") {
+                $("#embeddedCodeBox").show();
+            }
+        });
+
+        $("#GetVideoDetail").click(function () {
+            var url = $("#VideoUrl").val();
+            if (url && url == "") {
+                alert("Video url is required.");
+                return;
+            }
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: "POST",
+                url: "/Admin/Content/GetVideoDetail",
+                data: JSON.stringify({ 'videoUrl': url }),
+                success: function (result) {
+                    console.log(result);
+
+                    if (result.VideoEmbedUrl == "") {
+                        alert("The video could not be retrieved. Try again.");
+                        $("#downloadImage").attr("src", "");
+                        $("#EmbeddedUrl").html("");
+                        $("#EmbeddedUrl1").html("");
+                        $("#hfPicName").val("");
+                        $("#VideoUrl").val("");
+                        return;
+                    }
+
+                    $("#downloadImage").attr("src", "/Content/" + result.SaveName + ".jpg");
+                    $("#EmbeddedUrl").html(result.VideoEmbedUrl);
+                    $("#EmbeddedUrl1").html(result.VideoEmbedUrl);
+                    $("#hfPicName").val(result.SaveName + ".jpg");
+                    $("#VideoUrl").val(result.VideoEmbedUrl);
+                }
+            });
+        });
+    });
+</script>
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-6">
+            <form role="form" action="/Admin/Content/Edit" method="post" enctype="multipart/form-data">
+                <div class="nest" id="basicClose1">
+                    <div class="title-alt">
+                        <h6>Content Detail</h6>
+                        <div class="titleToggle">
+                            <a class="nav-toggle-alt" href="#basic">
+                                <span class="entypo-up-open"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="body-nest" id="basic">
+                        <div class="form-group">
+                            <label for="CategoryId">Selected Category</label>
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.HiddenFor(model => model.CategoryId)
+                            <strong style="display:block" id="CategoryName">Not selected category</strong>
+                        </div>
+                        <div class="form-group">
+                            <label for="ContentType">Content Type</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.ContentType, ViewBag.ContentTypeList as SelectList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="GameType">Game Type</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.GameType, ViewBag.GameTypeList as SelectList, new { @class = "form-control validate[required]" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="FilterType">Filter Type</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.FilterType, ViewBag.FilterTypeList as SelectList, new { @class = "form-control validate[required]" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Subject</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control validate[required,minSize[3]", maxlength = "200" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Detail">Content</label>
+                            @Html.TextAreaFor(model => model.Detail, new { @class = "richEditor" })
+                        </div>
+                        <div id="embeddedCodeBox" style="display: none;">
+                            <div class="form-group">
+                                <label for="VideoUrl">Video Url (Leave blank if the video address does not change.) </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                    @Html.TextBox("VideoUrl", "", new { @class = "form-control", id = "VideoUrl" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="EmbeddedUrl">Embedded Url</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                    @Html.TextBox("EmbeddedUrl1", Model.VideoUrl, new { @class = "form-control", id = "EmbeddedUrl1", disabled = "disabled" })
+                                    <input type="hidden" name="EmbeddedUrl" value="@Model.VideoUrl" />
+                                </div>
+                                <div class="clearfix"></div>
+                                <a href="javascript:;" class="btn btn-warning" id="GetVideoDetail">Get Video Info</a>
+                                <div class="clearfix"></div>
+                                <input name="hfPicName" id="hfPicName" type="hidden" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Picture">Picture</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBox("Picture", "", new { type = "file", @class = "form-control" })
+                            </div>
+                            @if (!string.IsNullOrEmpty(Model.Picture))
+                            {
+                                <br />
+                                <img id="downloadImage" src="/Content/@(Model.Picture).jpg" style="max-height:150px; max-width:200px; display: block;" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nest" id="basicClose2">
+                    <div class="title-alt">
+                        <h6>Seo</h6>
+                        <div class="titleToggle">
+                            <a class="nav-toggle-alt" href="#seo">
+                                <span class="entypo-down-open"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="body-nest" id="seo">
+                        <div class="form-group">
+                            <label for="Title">Title</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Keyword">Keyword</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Keyword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Tags">Tags</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Tags, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Url">Url</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBox("Url1", Model.Url, new { @class = "form-control", disabled = "disabled" })
+                                @Html.HiddenFor(a => a.Url)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nest">
+                    <div class="title-alt">
+                        <h6>Save</h6>
+                    </div>
+                    <div class="body-nest">
+                        <div class="form-group">
+                            <label for="IsShowcase">Is Showcase?</label>
+                            <br />
+                            @Html.CheckBoxFor(model => model.IsShowcase, new { id = "IsShowcase" })
+                        </div>
+                        <div class="form-group">
+                            <label for="PublishDate">Publish Date</label>
+                            <input type="text" class="form-control validate[required] customizeDatepickerTime" name="PublishDate" value="@Model.PublishDate.ToString("dd.MM.yyyy HH:mm")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>Categories</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#menus">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="menus">
+                    @Html.Raw(Utility.RenderMenu(ViewBag.Menu as IEnumerable<MenuItem>).Insert(3, " id=\"sortable\""))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

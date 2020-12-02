@@ -1,0 +1,137 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using AdminProject.Models
+@using Sihirdar.DataAccessLayer
+@model StaticPagedList<CategoryContentItemViewModel>
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Url = Request.RawUrl;
+	ViewBag.Type = "article";
+	ViewBag.Description = "League of Legends Haberleri, CS:GO Haberleri, DOTA2 Haberleri, Overwatch Haberleri, Heartstone Haberleri, Haftalık Turnuvalar, Şampiyon Bilgileri ve çok daha fazlası";
+	ViewBag.Image = "default-share-img.jpg";
+}
+<div class="vadi--posts">
+	<style>
+		.color--background { background-color: @ViewBag.Category.ColorCode; }
+
+		.color--text { color: @ViewBag.Category.ColorCode; }
+
+		.color--border { border-color: @ViewBag.Category.ColorCode; }
+	</style>
+	<div class="container">
+		<div class="row">
+			<section class="col-md-9">
+				<h1 class="vadi--posts--title">@ViewBag.Category.Name</h1>
+				<div class="vadi--posts--list">
+					@if (Model != null)
+					{
+						if (Model.Count > 0)
+						{
+							var counter = 1;
+
+							foreach (var itemViewModel in Model)
+							{
+								<a href="/haber/@ViewBag.Category.Url/@itemViewModel.Url" title="@itemViewModel.Subject" class="vadi--posts--post">
+									<div class="row">
+										<div class="col-sm-3 col-xs-12 text-xs-center text-sm-left">
+											<span class="vadi--posts--post--game color--background">@itemViewModel.GameType</span>
+											<img src="/Content/@(itemViewModel.Url)_315x198.jpg" alt="@itemViewModel.Subject" class="vadi--posts--post--image">
+										</div>
+										<div class="col-sm-9 col-xs-12 text-xs-center text-sm-left">
+											<header class="vadi--posts--post--header">
+												<!--<div class="vadi&#45;&#45;posts&#45;&#45;post&#45;&#45;game">@itemViewModel.GameType</div>-->
+												<div class="vadi--posts--post--title">@itemViewModel.Subject</div>
+												<div class="vadi--posts--post--meta">
+													<div class="vadi--posts--post--meta--author">
+														<i class="fa fa-user"></i>@itemViewModel.EditorName</div>
+													<time class="vadi--posts--post--meta--date">
+														<i class="fa fa-clock-o"></i>@string.Format("{0:dd MMMM yyyy}", itemViewModel.CreateDate)</time>
+													<time class="vadi--posts--post--meta--game">
+														<i class="fa fa-gamepad"></i>@itemViewModel.GameType</time>
+												</div>
+											</header>
+											<p class="vadi--posts--post--description multi-ellipsis">@Html.Raw(itemViewModel.Description)</p>
+										</div>
+									</div>
+								</a>
+								if (ViewBag.CenterAdvert != null)
+								{
+									if (counter % 2 == 0 && counter < 5)
+									{
+										var advert = (CategoryAdvertDto) ViewBag.CenterAdvert;
+										<div class="reklam-728x90 margin-bottom-15 pull-left">
+											@if (advert.AdType == AdvertTypes.Image)
+											{
+												<a href="/advert/redirect?guid=@advert.Guid">
+													<img src="/Content/File/@advert.FilePath" alt="" />
+												</a>
+											}
+											else
+											{
+												@Html.Raw(advert.Code)
+											}
+										</div>
+										<!-- /.reklam-728x90 -->
+									}
+								}
+								else
+								{
+									if (counter % 3 == 0 && counter < 5)
+									{
+										<!-- /.reklam-728x90 -->
+									}
+								}
+
+								counter++;
+							}
+						}
+						else
+						{
+							<div class="no-record">Yakında buraları boş göremeyeceksiniz :)</div>
+						}
+					}
+				</div>
+				<div class="text-center">
+					<ul class="pagination">
+						@Html.PagedListPager(Model, page => string.Format("/haber/{0}?page={1}", ViewBag.Category.Url, page), new PagedListRenderOptions
+						{
+							LinkToFirstPageFormat = AdminProject.Resources.HtmlLang.pagerLinkFirstPageFormat,
+							LinkToPreviousPageFormat = AdminProject.Resources.HtmlLang.pagerLinkPreviousPageFormat,
+							LinkToNextPageFormat = AdminProject.Resources.HtmlLang.pagerLinkNextPageFormat,
+							LinkToLastPageFormat = AdminProject.Resources.HtmlLang.pagerLinkLastPageFormat
+						})
+					</ul>
+				</div>
+			</section>
+			<aside class="col-md-3">
+				@{
+					Html.RenderAction("GetTopContent", "Partial");
+					if (ViewBag.RightBlockAdvert != null)
+					{
+						var adverts = (List<CategoryAdvertDto>) ViewBag.RightBlockAdvert;
+						foreach (var item in adverts)
+						{
+							if (item.AdType == AdvertTypes.Image)
+							{
+								<div class="col-md-12 no-padding banner-responsive margin-bottom-20">
+									<a href="/advert/redirect?guid=@item.Guid">
+										<img src="/Content/File/@item.FilePath" alt="" />
+									</a>
+								</div>
+								<!-- /.ads-->
+							}
+							else
+							{
+								<div class="col-md-12 no-padding banner-responsive margin-bottom-20">
+									@Html.Raw(item.Code)
+								</div>
+								<!-- /.ads-->
+							}
+						}
+					}
+				}
+			</aside>
+		</div>
+	</div>
+</div>

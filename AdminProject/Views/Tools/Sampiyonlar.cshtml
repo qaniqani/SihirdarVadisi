@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Şampiyonlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "League of Legends Şampiyonları";
+    ViewBag.Image = "default-share-img.jpg";
+}
+<link href="/html/assets/libs/jquery.fancybox.min.css" rel="stylesheet" />
+<script src="/html/scripts/libs/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var champsKey = getParameterByName('key');
+        if (champsKey != null) {
+            getChampionDetail(champsKey);
+        } else {
+            getChampionList();
+        }
+    });
+
+    var array = [];
+
+    function getChampionList() {
+        $.ajax({
+            url: "https://ddragon.leagueoflegends.com/cdn/6.24.1/data/tr_TR/champion.json",
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                $('.non-modal').show();
+                array = $.map(data.data, function (value, index) { return [value]; });
+
+                for (i = 0; i < array.length; i++) {
+                    $('#champs').append('<li class="col-sm-1 text-center"> <a href="/sampiyonlar?key=' + array[i].key + '"> <img class="img" style="max-width:100%;" alt="' + array[i].name + '" src="//ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/' + array[i].image.full + '"> <p class="name">' + array[i].name + '</p> </a> </li>');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.api-error').show();
+            }
+        });
+    }
+
+    function getChampionDetail(id) {
+        $('ul.skins').prev().html('');
+        $('ul.skins').html('');
+        $('ul.spells').prev().html('');
+        $('ul.spells').html('');
+
+        $.ajax({
+            url: "https://global.api.pvp.net/api/lol/static-data/TR/v1.2/champion/" + id + "?champData=all&locale=tr_TR&api_key=RGAPI-AC33441F-8A24-4CB9-8AD1-476C2974ED4A",
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                $('#champions-dialog').show();
+                $('.non-modal').hide();
+                $('body', 'html').scrollTop(80);
+
+                var imageSource = data.key;
+                //imageSource = imageSource.replace(/[^a-zA-Z0-9]/g, '');
+                var attackPerLevel = 0.625 / (1 + data.stats.attackspeedoffset);
+
+                $('#champions-dialog .modal-body h5').html(data.name + " / " + data.title);
+                $('#champions-dialog .modal-body p').html(data.blurb);
+                $('#champions-dialog .modal-body .champ-picture').css('background', 'url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + imageSource + '_0.jpg")')
+                $('#champions-dialog .modal-body .specs .stat-hp').next().html(data.stats.hp + " <em>(+" + data.stats.hpperlevel + " seviye başına)</em>");
+                $('#champions-dialog .modal-body .specs .stat-ad').next().html(data.stats.attackdamage + " <em>(+" + data.stats.attackdamageperlevel + " seviye başına)</em>");
+                $('#champions-dialog .modal-body .specs .stat-as').next().html(attackPerLevel.toString().slice(0, 5) + " <em>(+" + data.stats.attackspeedperlevel + "% seviye başına)</em>");
+                $('#champions-dialog .modal-body .specs .stat-ms').next().html(data.stats.movespeed);
+                $('#champions-dialog .modal-body .specs .stat-hp-regen').next().html(data.stats.hpregen + " <em>(+" + data.stats.hpregenperlevel + " seviye başına)</em>");
+                $('#champions-dialog .modal-body .specs .stat-armor').next().html(data.stats.armor + " <em>(+" + data.stats.armorperlevel + " seviye başına)</em>");
+                $('#champions-dialog .modal-body .specs .stat-mr').next().html(data.stats.spellblock + " <em>(+" + data.stats.spellblockperlevel + " seviye başına)</em>");
+
+                $('ul.skins').prev().html('Kostümler (' + data.skins.length + ')');
+                for (i = 0; i < data.skins.length; i++) {
+                    if (data.skins[i].name == "default") data.skins[i].name = data.name;
+                    $('ul.skins').append('<li class="col-sm-3"><a href="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + data.key + "_" + data.skins[i].num + '.jpg" data-fancybox="gallery"><img class="img-responsive" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + data.key + "_" + data.skins[i].num + '.jpg" /> ' + data.skins[i].name + ' </a></li>')
+                }
+
+                var spellsLength = data.spells.length;
+                var newSpellsLength = parseInt(spellsLength) + 1;
+                $('ul.spells').prev().html('Yetenekler (' + newSpellsLength + ')');
+
+                $('ul.spells').prepend('<li class="col-md-12"> <h3>' + data.passive.name + '</h3> <div class="col-md-12 no-padding"> <img src="https://ddragon.leagueoflegends.com/cdn/6.24.1/img/passive/' + data.passive.image.full + '" alt="' + data.passive.name + '" />  <p><em>-</em> ' + data.passive.description + '</p> </div> </li>');
+
+                for (i = 0; i < data.spells.length; i++) {
+                    $('ul.spells').append('<li class="col-md-12"> <h3>' + data.spells[i].name + '</h3> <div class="col-md-12 no-padding"> <img src="https://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/' + data.spells[i].image.full + '" alt="' + data.spells[i].name + '" />  <p><em>Bedel: ' + data.spells[i].costType + ' / Menzil: ' + data.spells[i].rangeBurn + '</em>' + data.spells[i].description + '</p> </div> </li>')
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.champions-search').hide();
+                $('.api-error').show();
+            }
+        });
+    }
+
+    function search() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("search-input");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("champs");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) li[i].style.display = "";
+            else li[i].style.display = "none";
+        }
+    }
+</script>
+
+<div id="page-content">
+    <div class="interaction-boxes calendar-tools-page container margin-top-15">
+        <div class="row">
+            <div class="col-md-12 no-padding">
+                <div class="box-module col-md-12">
+                    <div class="module-title flexible-border">ŞAMPİYONLAR</div>
+
+                    <div class="module-content no-padding">
+                        <div class="page-detail">
+                            <div class="alert alert-danger margin-top-15 api-error" style="display:none;">
+                                <p class="text-center">Bir problem oluştuğundan, bu sayfa geçici olarak devre dışı :/</p>
+                            </div>
+
+                            <div class="non-modal" style="display:none;">
+                                <input type="text" id="search-input" onkeyup="search()" class="form-control no-margin champions-search" placeholder="Şampiyon Ara..." maxlength="20">
+                                <ul id="champs" class="no-padding"></ul>
+                            </div>
+
+                            <div class="modal" id="champions-dialog">
+                                <a href="/sampiyonlar" class="btn btn-default back-to-list-btn"><i class="fa fa-chevron-left"></i> Şampiyonlar'a Geri Dön</a>
+
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body no-padding">
+                                            <div class="champ-picture col-sm-6"></div>
+
+                                            <div class="col-sm-6 no-padding-right">
+                                                <h5></h5>
+                                                <p class="description"></p>
+
+                                                <h6>Özellikler</h6>
+                                                <ul class="specs">
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-hp">Can:</span> <span class="stat-value"></span></li>
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-ad">Saldırı Gücü:</span> <span class="stat-value"></span></li>
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-as">Saldırı Hızı:</span> <span class="stat-value"></span></li>
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-hp-regen">Can Yenileme:</span> <span class="stat-value"></span></li>
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-armor">Zırh:</span><span class="stat-value"></span></li>
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-ms">Hareket Hızı:</span> <span class="stat-value"></span></li>
+                                                    <li class="col-sm-6 no-padding-left"><span class="stat-label stat-mr">Büyü Direnci:</span><span class="stat-value"></span></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-sm-12 no-padding margin-top-15">
+                                                <h6 class="col-md-12">Yetenekler</h6>
+                                                <ul class="spells">
+                                                    <li><a href="#"></a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-sm-12 no-padding">
+                                                <h6 class="col-md-12">Kostümler</h6>
+                                                <ul class="skins"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="#962b84" id="page-color-code" />
+

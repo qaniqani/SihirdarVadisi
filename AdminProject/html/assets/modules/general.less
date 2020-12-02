@@ -1,0 +1,620 @@
+﻿@import "variables.less";
+
+html {
+    -webkit-text-size-adjust: none; 
+}
+
+body {
+    background: @background-color;
+    .ff_bold(13px);
+    overflow: hidden;
+    padding-right: 0 !important;
+    overflow-x: hidden !important;
+}
+
+.visible {
+    overflow: visible !important;
+}
+
+.customize-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.customize-scrollbar::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+
+.customize-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #777;
+}
+
+.customize-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: @lol-color;
+    cursor: pointer;
+}
+
+.formError {
+    .ff_regular(11px);
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: @black;
+    /* change if the mask should have another color then white */
+    z-index: 9999;
+    /* makes sure it stays on top */
+    display: block;
+
+    #prelogo {
+        width: 126px;
+        height: 84px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -135px 0 0 -63px;
+        background: url(../img/logo.png) no-repeat center top;
+    }
+
+    #status {
+        width: 75px;
+        height: 75px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -10px 0 0 -33px;
+
+        .spinner {
+            width: 70px;
+            text-align: center;
+        }
+
+        .spinner > div {
+            width: 18px;
+            height: 18px;
+            background-color: #FFF;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+            }
+
+            40% {
+                -webkit-transform: scale(1.0);
+            }
+        }
+
+        @keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            40% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+        }
+    }
+}
+
+.container {
+    width: 100% !important;
+    max-width: 1300px;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.no-padding-right {
+    padding-right: 0;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.margin-top-05 {
+    margin-top: 0.5em;
+}
+
+.margin-top-10 {
+    margin-top: 1.0em;
+}
+
+.margin-top-15 {
+    margin-top: 1.5em;
+}
+
+.margin-top-20 {
+    margin-top: 2.0em;
+}
+
+.margin-top-25 {
+    margin-top: 2.5em;
+}
+
+.margin-top-30 {
+    margin-top: 3.0em;
+}
+
+.margin-bottom-05 {
+    margin-bottom: 0.5em;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 1.0em;
+}
+
+.margin-bottom-15 {
+    margin-bottom: 1.5em;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 2.0em;
+}
+
+.margin-bottom-25 {
+    margin-bottom: 2.5em;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 3.0em;
+}
+
+.btn-raised {
+    box-shadow: none !important;
+    border-radius: 0;
+}
+
+select.form-control {
+    border: 1px solid #dedede !important;
+    padding: 0 10px !important;
+    background-size: 0 2px,100% 0px !important;
+    .ff_regular(12px);
+    color: #CCC;
+    position: relative;
+
+    option {
+        color: #000;
+    }
+}
+
+.alert {
+    .ff_regular(13px);
+}
+
+
+.modal-backdrop {
+    background: rgba(0,0,0,1);
+}
+
+.modal {
+    padding: 0 !important;
+
+    .modal-dialog {
+        margin: 20px auto !important;
+    }
+
+    .modal-header {
+        background: @lol-color;
+        padding: 15px;
+        color: @white;
+
+        .modal-title {
+            .ff_bold(19px);
+        }
+
+        .close {
+            color: @white;
+            opacity: 1;
+        }
+    }
+
+    .modal-body {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .modal-footer {
+        width: 100%;
+        display: inline-block;
+
+        p {
+            padding: 15px 15px 0 15px;
+            .ff_regular(13px);
+            border-top: 1px solid #efefef;
+            text-align: center;
+            display: block;
+
+            a {
+                .ff_bold(14px);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &#lol-time-dialog, &#lol-champion-dialog {
+        .btn-group {
+            width: 100%;
+
+            .btn {
+                width: 11.111111111%;
+                text-align: center;
+                padding: 5px 0;
+                border: 1px solid #d2d2d2;
+                border-right: none;
+                background: @white;
+                color: #AAA;
+
+                &:last-child {
+                    border-right: 1px solid #d2d2d2;
+                }
+
+                &.active {
+                    background: @lol-color;
+                    color: @white;
+                }
+            }
+        }
+
+        @media screen and (min-width: 1px) and (max-width: 765px) {
+
+            .no-padding-left {
+                padding-left: 0 !important;
+                padding: 0 1% !important;
+            }
+
+            .no-padding-right {
+                padding-right: 0 !important;
+                padding: 5px 1% 0 1% !important;
+            }
+
+            .btn-group {
+                .btn {
+                    width: 48% !important;
+                    margin: 1%;
+                    border: 1px solid #D2D2D2 !important;
+
+                    &.active {
+                        background: @lol-color;
+                        color: @white;
+                    }
+                }
+            }
+        }
+    }
+
+    &#register-dialog, &#update-user-dialog {
+        .modal-dialog {
+            max-width: 800px !important;
+
+            .form-group {
+                max-width: unset !important;
+            }
+
+            .file-input {
+                background: #efefef !important;
+                border: 1px solid #DEDEDE;
+                padding: 15px;
+
+                img {
+                    width: 100% !important;
+                }
+
+                .file-default-preview {
+                    img {
+                        max-width: 175px;
+                        border: 1px solid #CCC;
+                    }
+                }
+
+                button, .btn-file {
+                    margin: 10px 0 0 0;
+                    cursor: pointer;
+                    background: #FFF !important;
+                }
+            }
+        }
+    }
+
+    &#login-dialog, &#register-dialog, &#forgot-password-dialog, &#update-user-dialog, &#update-password-dialog {
+        overflow: auto !important;
+
+        .modal-dialog {
+            max-width: 400px;
+
+            .facebook-login {
+                width: 100%;
+                height: 36px;
+                margin: 0 auto;
+                padding: 0;
+                text-transform: none;
+                display: block;
+                .ff_bold(13px, 36px);
+                background-color: #4974b0;
+                color: rgba(255,255,255,.84);
+
+                i {
+                    width: 11%;
+                    height: 36px;
+                    float: left;
+                    margin: 0 0 0 10px;
+                    display: block;
+                    background-position: center 1px;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 37px;
+                    color: rgba(255,255,255,.84);
+                }
+
+                span {
+                    width: 80%;
+                    margin: 0 0 0 8px;
+                    padding: 0;
+                    border-left: 1px solid #466ba0;
+                    text-align: center;
+                    display: inline-block;
+                }
+
+                &:hover, &:focus {
+                    background: #466ba0;
+                    text-decoration: none;
+
+                    span {
+                        border-left: 1px solid #375785;
+                    }
+                }
+            }
+
+            .seperator {
+                width: 100%;
+                padding: 0 0 5px 0;
+                .ff_regular(13px,30px);
+                color: #A9A9A9;
+                text-align: center;
+                border-bottom: 1px solid #EFEFEF;
+            }
+
+            .form-group {
+                max-width: 290px;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .checkbox {
+                margin-top: 0;
+            }
+
+            .text-link {
+                .ff_regular(12px);
+            }
+
+            input[type="text"], input[type="password"], select {
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 10px;
+                border: 1px solid #D2D2D2;
+                background-size: 0 2px,100% 0;
+                .ff_regular(13px);
+                color: #222;
+
+
+                &::-webkit-input-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+
+                &::-moz-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+                /* Firefox 19+ */
+                &:-moz-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+                /* Firefox 18- */
+                &:-ms-input-placeholder {
+                    font-size: 13px;
+                    color: #222;
+                }
+                /* IE */
+            }
+
+            label {
+                .ff_regular(13px);
+            }
+        }
+    }
+
+    &#conditions-dialog {
+        .modal-body {
+            max-height: 450px;
+            overflow: auto;
+            .ff_regular(12px);
+
+            h1, h2, h3, h4, h5, h6 {
+                .ff_bold(17px);
+            }
+        }
+
+        .modal-footer {
+            padding: 14px 24px !important;
+        }
+    }
+}
+
+.dota-color {
+    color: @dota2-color !important;
+}
+
+.overwatch-color {
+    color: @overwatch-color !important;
+}
+
+.lol-color {
+    color: @lol-color !important;
+}
+
+.csgo-color {
+    color: @csgo-color !important;
+}
+
+.heartstone-color {
+    color: @heartstone-color !important;
+}
+
+.hearhstone-color {
+    color: @heartstone-color !important;
+}
+
+.makaleler-color {
+    color: @makaleler-color !important;
+}
+
+.media-color {
+    color: @media-color !important;
+}
+
+.window-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9000;
+    display: none;
+}
+
+.bordered-pink {
+    border-left: 6px solid @lol-color;
+}
+
+.bordered-white {
+    border-left: 6px solid @white;
+}
+
+.bordered-yellow {
+    border-left: 6px solid @csgo-color;
+}
+
+.bordered-orange {
+    border-left: 6px solid @dota2-color;
+}
+
+.bordered-blue {
+    border-left: 6px solid @heartstone-color;
+}
+
+.bordered-media-blue {
+    border-left: 6px solid @media-color;
+}
+
+.bordered-light-yellow {
+    border-left: 6px solid @overwatch-color;
+}
+
+.bordered-green {
+    border-left: 6px solid @makaleler-color;
+}
+
+.flexible-border {
+    border-left: 6px solid @lol-color;
+}
+
+.flexible-color {
+    color: @lol-color;
+}
+
+.flexible-background {
+    background-color: @lol-color;
+}
+
+.play-inside-box {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: relative;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+
+    .play-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -25px 0 0 -21px;
+            color: @white;
+            font-size: 50px;
+            transition: 0.3s;
+        }
+        /*&:hover {
+            i {
+                color: @lol-color;
+            }
+        }*/
+    }
+}
+
+#page-container {
+    width: 100%;
+    z-index: 20;
+    position: relative;
+    background: @background-color;
+}
+
+#page-header {
+    width: 100%;
+    float: left;
+}
+
+#page-content {
+    width: 100%;
+    float: left;
+    background: @background-color;
+}
+
+#page-footer {
+    width: 100%;
+    float: left;
+}

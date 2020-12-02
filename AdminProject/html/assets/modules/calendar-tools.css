@@ -1,0 +1,505 @@
+/* > Fonts */
+@font-face {
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn';
+  src: url('../fonts/HelveticaNeueLTPro-HvCn.eot');
+  src: local('☺'), url('../fonts/HelveticaNeueLTPro-HvCn.woff') format('woff'), url('../fonts/HelveticaNeueLTPro-HvCn.ttf') format('truetype'), url('../fonts/HelveticaNeueLTPro-HvCn.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'Conv_HelveticaNeueLTPro-HvCn' !important;
+    src: url('../fonts/HelveticaNeueLTPro-HvCn.svg') format('svg') !important;
+  }
+}
+@font-face {
+  font-family: 'liberation_sansregular';
+  src: url('../fonts/liberationsans-regular-webfont.eot');
+  src: url('../fonts/liberationsans-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/liberationsans-regular-webfont.woff2') format('woff2'), url('../fonts/liberationsans-regular-webfont.woff') format('woff'), url('../fonts/liberationsans-regular-webfont.ttf') format('truetype'), url('../fonts/liberationsans-regular-webfont.svg#liberation_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* > Font Options */
+/* > Colors */
+/* > Menu Background Colors */
+#page-content .calendar-tools-page .box-module {
+  height: auto;
+  margin-bottom: 20px;
+}
+#page-content .calendar-tools-page .box-module .module-title {
+  width: 100%;
+  display: inline-block;
+}
+#page-content .calendar-tools-page .box-module .module-content {
+  width: 100%;
+  height: auto;
+  background: none;
+  position: relative;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail {
+  width: 100%;
+  float: left;
+  background: #000;
+  padding: 15px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #esports-timetable .timetable-header {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #esports-timetable .timetable-month .calendar-day:hover {
+  background: #111;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #esports-timetable .timetable-month .timetable-item {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #esports-timetable .timetable-month .timetable-item .timetable-time {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description {
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p {
+  float: left;
+  color: #CCC;
+  margin-right: 14px;
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p span {
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin: 3px 3px 0 0;
+  border-radius: 15px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p .lol-bg {
+  background: #962b84;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p .csgo-bg {
+  background: #cc8700;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p .dota2-bg {
+  background: #c8362e;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p .heartstone-bg {
+  background: #0390cb;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .timetable-description p .overwatch-bg {
+  background: #e5d202;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .champions-search {
+  width: 100%;
+  margin: -25px auto 0 auto !important;
+  padding: 0 10px;
+  border: 1px solid #222;
+  background-size: 0 2px,100% 0;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs {
+  width: 100%;
+  float: left;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs li {
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs li a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: .7;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs li p {
+  margin: 3px 0 0 0;
+  padding: 0;
+  color: #FFF;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs li img {
+  border: 1px solid #222;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs li a:hover,
+#page-content .calendar-tools-page .box-module .module-content .page-detail #champs li a:focus {
+  text-decoration: none;
+  opacity: 1;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us {
+  float: left;
+  padding-bottom: 10px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us h3 {
+  font-size: 25px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #FFFFFF;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us p {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #ccc;
+  text-align: justify;
+  margin: 20px 0 25px 0;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us .form-group {
+  margin: 15px 0 5px 0;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="text"],
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="password"],
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us select {
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid #D2D2D2;
+  background-size: 0 2px,100% 0;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #CCC;
+  /* Firefox 19+ */
+  /* Firefox 18- */
+  /* IE */
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="text"]::-webkit-input-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="password"]::-webkit-input-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us select::-webkit-input-placeholder {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="text"]::-moz-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="password"]::-moz-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us select::-moz-placeholder {
+  font-size: 14px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="text"]:-moz-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="password"]:-moz-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us select:-moz-placeholder {
+  font-size: 14px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="text"]:-ms-input-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us input[type="password"]:-ms-input-placeholder,
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us select:-ms-input-placeholder {
+  font-size: 14px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px 10px;
+  border: 1px solid #D2D2D2;
+  background-size: 0 2px,100% 0;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #CCC;
+  /* Firefox 19+ */
+  /* Firefox 18- */
+  /* IE */
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us textarea::-webkit-input-placeholder {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us textarea::-moz-placeholder {
+  font-size: 14px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us textarea:-moz-placeholder {
+  font-size: 14px;
+}
+#page-content .calendar-tools-page .box-module .module-content .page-detail .contact-us textarea:-ms-input-placeholder {
+  font-size: 14px;
+}
+#champions-dialog {
+  float: left !important;
+  position: static !important;
+  width: 100% !important;
+}
+#champions-dialog .modal-dialog {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+}
+#champions-dialog .modal-content {
+  background: none;
+}
+#champions-dialog .modal-body {
+  padding: 0 !important;
+  background: none !important;
+  color: #FFFFFF;
+}
+#champions-dialog .back-to-list-btn {
+  background: #962b84;
+  color: #FFFFFF;
+  margin: 0 0 15px 0;
+  border-radius: 0;
+}
+#champions-dialog .champ-picture {
+  height: 350px;
+  overflow: hidden;
+  background-color: #151515 !important;
+  border: 1px solid #242424;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  margin-right: 0;
+}
+#champions-dialog .champ-picture img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#champions-dialog h5 {
+  width: 100%;
+  float: left;
+  font-size: 25px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #962b84;
+  margin: 0;
+  padding-bottom: 10px;
+}
+#champions-dialog h6 {
+  width: 100%;
+  float: left;
+  font-size: 22px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #962b84;
+}
+#champions-dialog .description {
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#champions-dialog ul.specs {
+  margin: 0 0 0 0;
+  padding: 0;
+}
+#champions-dialog ul.specs li {
+  min-height: 40px;
+  margin-bottom: 5px;
+  list-style: none;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#champions-dialog ul.specs li .stat-label {
+  height: 20px;
+  float: left;
+  padding-left: 25px;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+#champions-dialog ul.specs li .stat-value {
+  height: 20px;
+  line-height: 20px;
+  padding-left: 5px;
+  font-size: 13px;
+}
+#champions-dialog ul.specs li .stat-value em {
+  width: 100%;
+  float: left;
+  padding-left: 25px;
+  font-style: normal;
+  font-size: 12px;
+}
+#champions-dialog ul.specs li .stat-ad {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 0;
+}
+#champions-dialog ul.specs li .stat-armor {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -25px;
+}
+#champions-dialog ul.specs li .stat-as {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -50px;
+}
+#champions-dialog ul.specs li .stat-ms {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -75px;
+}
+#champions-dialog ul.specs li .stat-mr {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -125px;
+}
+#champions-dialog ul.specs li .stat-hp {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -150px;
+}
+#champions-dialog ul.specs li .stat-hp-regen {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -175px;
+}
+#champions-dialog ul.specs li .stat-mana {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -200px;
+}
+#champions-dialog ul.specs li .stat-m-regen {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -225px;
+}
+#champions-dialog ul.skins {
+  margin: 0;
+  padding: 0;
+}
+#champions-dialog ul.skins li {
+  list-style: none;
+  margin-bottom: 25px;
+}
+#champions-dialog ul.skins li a {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+#champions-dialog ul.skins li a img {
+  border: 1px solid #242424;
+  margin-bottom: 5px;
+}
+#champions-dialog ul.skins li a:hover,
+#champions-dialog ul.skins li a:focus {
+  text-decoration: none;
+}
+#champions-dialog ul.spells {
+  margin: 0;
+  padding: 0;
+}
+#champions-dialog ul.spells li {
+  list-style: none;
+  margin-bottom: 20px;
+  display: -ms-grid;
+  display: grid;
+}
+#champions-dialog ul.spells li h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+#champions-dialog ul.spells li img {
+  width: 50px;
+  float: left;
+  margin: 10px 10px 10px 0;
+  border: 1px solid #242424;
+}
+#champions-dialog ul.spells li p {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  margin: 10px 0;
+}
+#champions-dialog ul.spells li p em {
+  width: 100%;
+  display: block;
+  color: #962b84;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.timetable-color.lol-color {
+  background: #962b84;
+}
+.timetable-color.heartstone-color {
+  background: #0390cb !important;
+}
+.timetable-color.dota2-color {
+  background: #c8362e;
+}
+.timetable-color.overwatch-color {
+  background: #e5d202;
+}
+.timetable-color.csgo-color {
+  background: #cc8700;
+}
+.timetable-popup .popup-header {
+  font-size: 18px !important;
+  line-height: normal !important;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
+  text-shadow: 1px 1px 1px #000;
+  color: #FFFFFF !important;
+}
+.timetable-popup .popup-header.lol-color {
+  background: #962b84;
+}
+.timetable-popup .popup-header.dota2-color {
+  background: #c8362e;
+}
+.timetable-popup .popup-header.overwatch-color {
+  background: #e5d202;
+}
+.timetable-popup .popup-header.heartstone-color {
+  background: #0390cb;
+}
+.timetable-popup .popup-header.csgo-color {
+  background: #cc8700;
+}
+.timetable-popup .popup-body .timetable-time {
+  font-size: 18px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.timetable-popup .popup-body .timetable-desc {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}

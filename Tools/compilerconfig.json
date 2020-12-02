@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "App/Content/Themes/global.css",
+    "inputFile": "App/Content/Themes/global.less"
+  },
+  {
+    "outputFile": "App/Assets/Themes/global.css",
+    "inputFile": "App/Assets/Themes/global.less"
+  }
+]

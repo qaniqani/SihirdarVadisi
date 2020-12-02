@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Meta Tags -->
+    <meta charset="iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <link rel="canonical" href="" />
+    <link rel="author" href="https://www.sihirdarvadisi.com/" />
+
+    <!-- Title -->
+    <title>Sihirdar Vadisi</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:800&subset=latin,latin-ext" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/libs/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/libs/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" href="assets/libs/ripples.min.css" />
+    <link rel="stylesheet" href="assets/libs/responsiveslides.css" />
+    <link rel="stylesheet" href="assets/libs/jetmenu.css" />
+    <link rel="stylesheet" href="assets/libs/timetable.css" />
+    <link rel="stylesheet" href="assets/libs/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/global.min.css" />
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="scripts/libs/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/material.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/ripples.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/jetmenu.js"></script>
+    <script type="text/javascript" src="scripts/libs/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/timetable.js"></script>
+    <script type="text/javascript" src="scripts/libs/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="scripts/application.js"></script>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-588e08eba1f1eeac"></script>
+</head>
+<body>
+    <div id="preloader">
+        <div id="prelogo"></div>
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div><!-- /#preloader-->
+
+    <div class="masthead-area" style="background:url(assets/img/temp/top-head-banner.jpg);">
+        <div class="container">
+            <a href="javascript:;" class="close" onclick="$(this).mastheadClose();">KAPAT <i class="fa fa-times"></i></a>
+        </div>
+    </div><!-- /.masthead-area -->
+
+    <div id="page-container">
+        <!-- /.overlay helper -->
+        <div class="window-overlay"></div>
+
+        <div id="page-header">
+            <div class="navbar-header">
+                <div class="container">
+
+                    <a class="navbar-brand logo" href="index.html"></a>
+
+                    <div class="header-buttons">
+                        <a href="index.html" class="btn homepage-button sv-icon pull-left no-padding"><i class="sv-homepage"></i></a>
+
+                        <a href="#" class="share-button pull-left"><i class="fa fa-bullhorn" aria-hidden="true"></i> CANLI YAYIN</a>
+
+                        <a href="javascript:;" onclick="$(this).searchOpen();" class="btn sv-icon search-button pull-right no-padding"><i class="sv-search"></i></a>
+
+                        <a href="#" class="membership-button login pull-right" data-toggle="modal" data-target="#login-dialog"><i class="fa fa-sign-in"></i> GİRİŞ YAP</a>
+                    </div><!-- /.header-buttons -->
+
+                    <div class="form-group search-area">
+                        <input class="form-control" placeholder="Ne aramak istedin?" />
+                    </div>
+
+                </div><!-- /.container -->
+            </div><!-- /.navbar-header -->
+
+            <div id="site-navigation">
+                <div class="container">
+                    <ul id="jetmenu" class="jetmenu">
+                        <li>
+                            <a class="btn" href="javascript:;">LEAGUE OF LEGENDS</a>
+                            <ul class="dropdown">
+                                <li><a href="#" class="btn">Vadiden Haberler</a></li>
+                                <li><a href="#" class="btn">Geliştirici Haberleri</a></li>
+                                <li><a href="#" class="btn">Etkinlik Haberleri</a></li>
+                                <li><a href="#" class="btn">Takım Haberleri</a></li>
+                                <li><a href="takimlar.html" class="btn">League of Legends Takımları</a></li>
+                                <li><a href="indirim-rehberi.html" class="btn">İndirim Rehberi</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="javascript:;">DOTA 2</a>
+                            <ul class="dropdown">
+                                <li><a href="#" class="btn">DOTA 2 Haber</a></li>
+                                <li><a href="#" class="btn">Geliştirici Haberleri</a></li>
+                                <li><a href="#" class="btn">Etkinlik Haberleri</a></li>
+                                <li><a href="#" class="btn">Takım Haberleri</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="javascript:;">CS:GO</a>
+                            <ul class="dropdown">
+                                <li><a href="#" class="btn">CS:GO Haber</a></li>
+                                <li><a href="#" class="btn">Geliştirici Haberleri</a></li>
+                                <li><a href="#" class="btn">Etkinlik Haberleri</a></li>
+                                <li><a href="#" class="btn">Takım Haberleri</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="javascript:;">HEARTSTONE</a>
+                            <ul class="dropdown">
+                                <li><a href="#" class="btn">Heartstone Haber</a></li>
+                                <li><a href="#" class="btn">Geliştirici Haberleri</a></li>
+                                <li><a href="#" class="btn">Etkinlik Haberleri</a></li>
+                                <li><a href="#" class="btn">Takım Haberleri</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="javascript:;">OVERWATCH</a>
+                            <ul class="dropdown">
+                                <li><a href="#" class="btn">OVERWATCH Haber</a></li>
+                                <li><a href="#" class="btn">Geliştirici Haberleri</a></li>
+                                <li><a href="#" class="btn">Etkinlik Haberleri</a></li>
+                                <li><a href="#" class="btn">Takım Haberleri</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="javascript:;">MEDYA</a>
+                            <ul class="dropdown">
+                                <li><a href="video-galerileri.html" class="btn">Video Galerileri</a></li>
+                                <li><a href="fotograf-galerileri.html" class="btn">Fotoğraf Galerileri</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="makaleler.html">MAKALELER</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="dosya-konusu.html">DOSYA KONUSU</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="javascript:;">ARAÇLAR</a>
+                            <ul class="dropdown">
+                                <li><a href="araclar-senin-sampiyonun-kac-k.html" class="btn">Kaç Saat LOL Oynadım?</a></li>
+                                <li><a href="araclar-kac-saat-lol-oynadim.html" class="btn">Senin LOL Şampiyonun Kaç K?</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="btn" href="espor-takvimi.html">eSPOR TAKVİMİ</a>
+                        </li>
+                    </ul>
+                </div><!-- /.container -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /#page-header -->
+
+        <div id="page-content" data-color-code="#962b84">
+            <div class="interaction-boxes news-page container margin-top-15">
+                <div class="row">
+                    <div class="box-module col-md-9">
+                        <div class="module-title flexible-border">YAZAR PROFİLİ</div>
+                        <div class="module-content no-padding">
+                            <ul class="news-list">
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-9/14470549_10209724309917065_440653984298415777_n.jpg?oh=0a9c74894e320dae91790941c2ff1af1&oe=5906E797')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">YAZAR</h5>
+                                        <h4 class="title">TOYGUN OZBEK</h4>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="#" class="btn btn-default btn-raised read-more"><i class="fa fa-facebook no-margin" aria-hidden="true"></i></a>
+                                        <a href="#" class="btn btn-default btn-raised read-more"><i class="fa fa-twitter no-margin" aria-hidden="true"></i></a>
+                                        <a href="#" class="btn btn-default btn-raised read-more"><i class="fa fa-twitch no-margin" aria-hidden="true"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="module-title flexible-border">YAZARA AİT HABERLER & MAKALELER</div>
+                        <div class="module-content no-padding">
+                            <ul class="news-list">
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('assets/img/temp/news-img-1.jpg')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">HEARTSTONE</h5>
+                                        <h4 class="title">Expo'da açıklanan oyun, Ocak 2017'te çıktı!</h4>
+                                        <h6 class="author flexible-color">JOHN DOE / <em class="date">23 OCAK 2017</em></h6>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="makale-detail.html" class="btn btn-default btn-raised read-more"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('assets/img/temp/news-img-3.jpg')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">LEAGUE OF LEGENDS</h5>
+                                        <h4 class="title">Kanlı Ay Kostümleri PBE' de Görücüye Çıktı !</h4>
+                                        <h6 class="author flexible-color">JOHN DOE / <em class="date">23 OCAK 2017</em></h6>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="makale-detail.html" class="btn btn-default btn-raised read-more"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('assets/img/temp/news-img-4.jpg')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">OVERWATCH</h5>
+                                        <h4 class="title">Bertuğ "J1MMY" BAYRAK, Ekime Kadar Yok!</h4>
+                                        <h6 class="author flexible-color">JOHN DOE / <em class="date">23 OCAK 2017</em></h6>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="makale-detail.html" class="btn btn-default btn-raised read-more"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('assets/img/temp/news-img-5.jpg')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">CS:GO</h5>
+                                        <h4 class="title">6 - 9 Ocak Arasındaki Kostüm İndirimleri</h4>
+                                        <h6 class="author flexible-color">JOHN DOE / <em class="date">23 OCAK 2017</em></h6>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="makale-detail.html" class="btn btn-default btn-raised read-more"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('assets/img/temp/news-img-6.jpg')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">LEAGUE OF LEGENDS</h5>
+                                        <h4 class="title">2017 Model SKT Kostümleri Kapıda!</h4>
+                                        <h6 class="author flexible-color">JOHN DOE / <em class="date">23 OCAK 2017</em></h6>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="makale-detail.html" class="btn btn-default btn-raised read-more"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-sm-4 news-img no-padding" style="background:url('assets/img/temp/news-img-2.jpg')"></div>
+                                    <div class="col-sm-8 news-content">
+                                        <h5 class="game flexible-color">CS:GO</h5>
+                                        <h4 class="title">CS:GO Arkadaşları Uygulamasında Güncelleme</h4>
+                                        <h6 class="author flexible-color">JOHN DOE / <em class="date">23 OCAK 2017</em></h6>
+                                        <p class="description multi-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu purus non tortor vehicula pharetra in ac ligula. Integer porta iaculis volutpat. Nulla facilisi. Curabitur et sem volutpat quam accumsan condimentum. Donec et orci dolor. Aenean dictum ligula id sapien imperdiet molestie. Sed at augue lacus.</p>
+                                        <a href="makale-detail.html" class="btn btn-default btn-raised read-more"><i class="fa fa-share" aria-hidden="true"></i> DEVAMINI OKU</a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="pagination pull-right">
+                                <li><a href="#">&laquo; Geri</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">İleri &raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box-module col-md-3">
+                        <div class="module-title flexible-border">POPÜLER MAKALELER</div>
+                        <div class="module-content no-padding">
+                            <ul class="popular-news-list">
+                                <li>
+                                    <a href="makale-detail.html">
+                                        <img src="assets/img/temp/main-slides-1p.jpg" alt="" class="img-responsive" />
+                                        <em class="flexible-color">LEAGUE OF LEGENDS</em>
+                                        <p class="multi-ellipsis">Riot'a Sor: Yasuo Dengelemesi, Şampiyon olma rehberi</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="makale-detail.html">
+                                        <img src="assets/img/temp/main-slides-2p.jpg" alt="" class="img-responsive" />
+                                        <em class="flexible-color">CS:GO</em>
+                                        <p class="multi-ellipsis">2016'nın En İyi 5 e-Spor Hareketi Belirlendi</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="makale-detail.html">
+                                        <img src="assets/img/temp/main-slides-3p.jpg" alt="" class="img-responsive" />
+                                        <em class="flexible-color">HEARTSTONE</em>
+                                        <p class="multi-ellipsis">Trinity Series’te Mücadele Edecek Takımlar Belli Oldu</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="makale-detail.html">
+                                        <img src="assets/img/temp/main-slides-1p.jpg" alt="" class="img-responsive" />
+                                        <em class="flexible-color">LEAGUE OF LEGENDS</em>
+                                        <p class="multi-ellipsis">Riot'a Sor: Yasuo Dengelemesi, Şampiyon olma rehberi</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="makale-detail.html">
+                                        <img src="assets/img/temp/main-slides-2p.jpg" alt="" class="img-responsive" />
+                                        <em class="flexible-color">CS:GO</em>
+                                        <p class="multi-ellipsis">2016'nın En İyi 5 e-Spor Hareketi Belirlendi</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="col-md-12 no-padding banner-responsive margin-top-20">
+                                <center><img src="/html/assets/img/temp/ads-temp2.jpg" class="img-responsive" /></center>
+                            </div><!-- /.ads-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /#page-content -->
+
+        <div id="page-footer">
+            <div class="module-top container-fluid">
+                <div class="container">
+                    <a href="index.html" class="homepage-button sv-icon pull-left no-padding"><i class="sv-homepage"></i> ANASAYFA</a>
+                    <a href="javascript:;" class="pull-right"> DİL SEÇENEKLERİ <i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+
+            <div class="module-bottom container-fluid">
+                <div class="container">
+                    <div class="menu-item col-sm-2">
+                        <h4>LEAGUE OF LEGENDS</h4>
+                        <ul>
+                            <li><a href="#">Vadiden Haberler</a></li>
+                            <li><a href="#">Geliştirici Haberleri</a></li>
+                            <li><a href="#">Etkinlik Haberleri</a></li>
+                            <li><a href="#">Takım Haberleri</a></li>
+                            <li><a href="#">Oyun Bilgisi</a></li>
+                            <li><a href="#">Gizemli Sandık</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item col-sm-2">
+                        <h4>DOTA2</h4>
+                        <ul>
+                            <li><a href="#">DOTA2 Haber</a></li>
+                            <li><a href="#">Geliştirici Haberleri</a></li>
+                            <li><a href="#">Etkinlik Haberleri</a></li>
+                            <li><a href="#">Takım Haberleri</a></li>
+                            <li><a href="#">Oyun Bilgisi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item col-sm-2">
+                        <h4>CS:GO</h4>
+                        <ul>
+                            <li><a href="#">CS:GO Haber</a></li>
+                            <li><a href="#">Geliştirici Haberleri</a></li>
+                            <li><a href="#">Etkinlik Haberleri</a></li>
+                            <li><a href="#">Takım Haberleri</a></li>
+                            <li><a href="#">Oyun Bilgisi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item col-sm-2">
+                        <h4>HEARTSTONE</h4>
+                        <ul>
+                            <li><a href="#">Heartstone Haber</a></li>
+                            <li><a href="#">Geliştirici Haberleri</a></li>
+                            <li><a href="#">Etkinlik Haberleri</a></li>
+                            <li><a href="#">Takım Haberleri</a></li>
+                            <li><a href="#">Oyun Bilgisi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item col-sm-2">
+                        <h4>OVERWATCH</h4>
+                        <ul>
+                            <li><a href="#">OVERWATCH Haber</a></li>
+                            <li><a href="#">Geliştirici Haberleri</a></li>
+                            <li><a href="#">Etkinlik Haberleri</a></li>
+                            <li><a href="#">Takım Haberleri</a></li>
+                            <li><a href="#">Oyun Bilgisi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item col-sm-2">
+                        <h4>SİHİRDAR VADİSİ</h4>
+                        <ul>
+                            <li><a href="#">Galeriler</a></li>
+                            <li><a href="#">Makaleler</a></li>
+                            <li><a href="#">Dosya Konusu</a></li>
+                            <li><a href="#">İndirim Rehberi</a></li>
+                            <li><a href="#">eSpor Takvimi</a></li>
+                            <li><a href="#">Bize Ulaşın</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="social-links margin-top-30">
+                    <div class="container">
+                        <div class="social-item col-sm-2">
+                            <a href="#">
+                                <i class="fa fa-facebook"></i> Facebook'da Takip Et
+                            </a>
+                        </div>
+
+                        <div class="social-item col-sm-2">
+                            <a href="#">
+                                <i class="fa fa-twitter"></i> Twitter'da Takip Et
+                            </a>
+                        </div>
+
+                        <div class="social-item col-sm-2">
+                            <a href="#">
+                                <i class="fa fa-linkedin"></i> Linkedin'de Takip Et
+                            </a>
+                        </div>
+
+                        <div class="social-item col-sm-2">
+                            <a href="#">
+                                <i class="fa fa-twitch"></i> Twitch'de Takip Et
+                            </a>
+                        </div>
+
+                        <div class="social-item col-sm-2">
+                            <a href="#">
+                                <i class="fa fa-google-plus"></i> Google'da Takip Et
+                            </a>
+                        </div>
+
+                        <div class="social-item col-sm-2">
+                            <a href="#">
+                                <i class="fa fa-youtube"></i> Youtube'da Takip Et
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-copy container-fluid">
+                <div class="container">
+                    <div class="col-md-12 margin-top-20">
+                        <center><a class="logo" href="/"><img src="assets/img/logo.png" alt="" width="100" /></a></center>
+                    </div>
+
+                    <div class="col-md-12 margin-top-10">
+                        <center><p>© Sihirdar Vadisi bir <a class="ruby-badge" href="https://ruby.technology">Ruby Technology</a> Ürünüdür.</p></center>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.page-footer -->
+    </div><!-- /.page-container -->
+
+    <div id="login-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">GİRİŞ YAP</h4>
+                </div><!-- /.modal-header -->
+
+                <div class="modal-body">
+                    <div class="form-group no-margin">
+                        <div class="col-md-12">
+                            <div class="seperator margin-bottom-15">Facebook Hesabı ile Giriş</div>
+
+                            <div class="form-group no-margin no-padding">
+                                <a href="#" class="facebook-login"><i class="fa fa-facebook"></i><span>FACEBOOK İLE GİRİŞ YAP</span></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 margin-top-20">
+                            <div class="seperator margin-bottom-15">Sihirdar Vadisi Hesabı ile Giriş</div>
+
+                            <div class="form-group margin-bottom-10 margin-top-05 no-padding">
+                                <input class="form-control" type="text" placeholder="Kullanıcı Adı" id="login-name">
+                            </div>
+
+                            <div class="form-group margin-bottom-05 margin-top-05">
+                                <input class="form-control" type="text" placeholder="Şifre" id="login-password">
+                            </div>
+
+                            <div class="form-group no-margin">
+                                <div class="row-action-primary checkbox">
+                                    <label><input type="checkbox">&nbsp; Beni Hatırla</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group no-margin no-padding">
+                                <input type="button" class="btn btn-success btn-raised btn-block no-margin" value="GİRİŞ YAP" />
+
+                                <div class="center-block text-center margin-top-10">
+                                    <a href="#" class="text-link" data-toggle="modal" data-target="#forgot-password-dialog" data-dismiss="modal">Şifreni mi unuttun?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-body -->
+
+                <div class="modal-footer">
+                    <p>Vadi Hesabı Oluşturmak için <a href="#" data-toggle="modal" data-target="#register-dialog" data-dismiss="modal">Tıkla!</a> </p>
+                </div><!-- /.modal-footer -->
+            </div>
+        </div>
+    </div><!-- /#login-dialog -->
+
+    <div id="forgot-password-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ŞİFREMİ UNUTTUM</h4>
+                </div><!-- /.modal-header -->
+
+                <div class="modal-body">
+                    <div class="form-group no-margin margin-top-15">
+                        <div class="col-md-12">
+                            <div class="form-group margin-bottom-10 margin-top-05 no-padding">
+                                <input class="form-control" type="text" placeholder="Kullanıcı Adı">
+                            </div>
+
+                            <div class="form-group margin-top-05">
+                                <input class="form-control" type="text" placeholder="E-Mail">
+                            </div>
+
+
+                            <div class="form-group no-margin no-padding">
+                                <input type="button" class="btn btn-success btn-raised btn-block" value="GÖNDER" />
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-body -->
+
+                <div class="modal-footer">
+                    <p class="text-link">Bilgilerini doğru girdiğinde, şifren e-mail adresine gönderilecektir. Spam klasörünü kontrol etmeyi unutma!</p>
+                </div><!-- /.modal-footer -->
+            </div>
+        </div>
+    </div><!-- /#forgot-password-dialog -->
+
+    <div id="register-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">VADİ HESABI OLUŞTUR</h4>
+                </div><!-- /.modal-header -->
+
+                <div class="modal-body">
+                    <div class="form-group no-margin margin-top-15">
+                        <div class="form-group margin-bottom-10 margin-top-05 no-padding">
+                            <input class="form-control" type="text" placeholder="Adınız Soyadınız">
+                        </div>
+
+                        <div class="form-group margin-bottom-10 margin-top-05 no-padding">
+                            <input class="form-control" type="text" placeholder="Email Adresiniz">
+                        </div>
+
+                        <div class="form-group margin-bottom-10 margin-top-05 no-padding">
+                            <input class="form-control" type="text" placeholder="Kullanıcı Adı">
+                        </div>
+
+                        <div class="form-group margin-bottom-10 margin-top-05">
+                            <input class="form-control" type="text" placeholder="Şifre">
+                        </div>
+
+                        <div class="form-group margin-bottom-10 margin-top-05">
+                            <input class="form-control" type="text" placeholder="Şifre Tekrar">
+                        </div>
+
+                        <div class="form-group margin-top-05">
+                            <p class="text-link">Kayıt işlemine devam ederek, <a href="#" data-toggle="modal" data-target="#conditions-dialog">Sihirdar Vadisi Kullanıcı Sözleşmesi</a>'ni kabul etmiş oluyorsunuz.</p>
+                        </div>
+
+                        <div class="form-group no-margin no-padding">
+                            <input type="button" class="btn btn-success btn-raised btn-block no-margin" value="HESAP OLUŞTUR" />
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div>
+    </div><!-- /#register-dialog -->
+
+    <div id="conditions-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">KULLANICI SÖZLEŞMESİ</h4>
+                </div><!-- /.modal-header -->
+
+                <div class="modal-body">
+                    <h2 class="no-margin">1. GİRİŞ</h2><p>Aşağıda şartlarını okuyacağınız işbu anlaşma,&nbsp;<b>ONEDIO BİLİŞİM YAZILIM MEDYA TEKN.SAN.TİC. A.Ş.</b>' ye ait <a href="http://www.onedio.com">http://www.onedio.com</a>&nbsp;(aşağıda kısaca "onedio.com" olarak anılacaktır) ile onedio.com servisini kullanacak olan kullanıcı arasında akdedilmiş olup, kullanıcılarına hangi şartlarda hizmet vereceğini belirtir. onedio.com, üyelerine haber paylaşımı, e.günlük (blog), yorum ve tartışma yapabilecekleri ortam sağlayan bir sosyal network (ağ) servisidir.</p><h2>2. ÜYELİK ANLAŞMASININ KABULÜ</h2><p>Bu hizmetler onedio.com sunucusunda hizmet veren onedio.com tarafından sağlanır. onedio.com'a üye olunması, onedio.com üyelik sözleşmesinin üye tarafından kanunen reşit ve temyiz kudretine sahipken okunduğunu ve kabul edildiğini gösterir. Bu üyelik sözleşmesi onedio.com hizmetlerinden faydalanan tüm üyeler, kullanıcılar ve ziyaretçiler için bağlayıcıdır. Bu siteyi kullananlar, ister ziyaretçi (ziyaretçi: üye olmayan ama onedio.com'un servislerinden sınırlı biçimde yararlananlar), ister üye (üye: onedio.com'a kaydolanlar) olsunlar bu sözleşme hükümlerince hareket etmeyi taahhüt etmiş demektir. Sözleşme metninde geçen "kullanıcı" kelimesi, "üye" ve "ziyaretçi"leri içerir.</p><h3>2.1. Kayıt Olmak</h3><p>Sitenin sağladığı hizmetlerden yararlanmak için bir hesap açarak veya Facebook hesabınız ile giriş yaparak kayıt olabilirsiniz. Belirli hizmetlerden yararlanmak için ise bir hesap açmanıza gerek yoktur. Fakat, başka hizmetler için, örneğin içeriklere yorum yapmak, içerik eklemek gibi, üyelik gerekmektedir. Hesabınız için doğru ve eksiksiz bir biçimde bilgi sağlamanız ve bu bilgileri sürekli güncel tutmanız gerekmektedir. Üyeler; (1) başka bir insanı taklit eden; (2) izin almaksızın herhangi bir bireye tabi olan bir ismi kullanan; (3) insanları kışkırtacak, saldırgan bir kullanıcı adı seçemez. Hesabınızda gerçekleşecek her türlü aktivite ve şifrenizi güvende tutmak tamamiyle sizin sorumluluğunuzdadır. İzin almaksızın başka bir kullanıcının bilgileri ile kayıt olmaz veya başka kullanıcıların hesaplarını kullanmazsınız. Hesabınızda, sizin kontrolünüz dışında bir durum oluşması durumda derhal onedio.com ile irtibata geçmelisiniz. Hesabınız için gereken bilgileri hiçbir zaman üçüncü kişi ve kurumlar ile paylaşmamalısınız. onedio.com ile iletişime geçerek veya direkt olarak kendiniz, hesabınızı dilediğiniz zaman silebilirsiniz.</p><p>Eğer Facebook vasıtası ile kayıt oluyorsanız, bize Facebook profilinizde yer alan belirli bilgilere ,sağladığımız hizmetler doğrultusunda, erişim sağlama imkanı tanımış sayılırsınız. Facebook hesabınızda yer alan gizlilik ayarlarında, hangi bilgilerin ulaşılır olacağını ayarlayabilirsiniz. Sitenin sağladığı hizmetleri kullanarak bize, Facebook profilinizde kullanımına izin verdiğiniz bilgileri, gizlilik politikamıza uygun olarak, toplama, depolama, muhafaza etme ve belirsiz bir süreliğine kullanma hakkı sağlarsınız.</p><p>Sitenin sağladığı hizmetleri hangi şekilde olursa olsun kullanmakla, zaman zaman kullanıcıya haber vermeksizin değişebilecek olan işbu sözleşmeyi ve işletme esaslarını, politikalarını ve prosedürlerini kabul etmiş sayılırsınız. Lütfen bu sözleşmeyi dikkatli bir biçimde okuyun ve saklayın. onedio.com'un verdiği hizmetlerinden yararlanmayı düşünüyorsanız üyelik sözleşmesinin sonunda bulunan "Okudum ve Kabul Ediyorum" ifadesini onaylayın. Eğer onedio.com hizmetlerinin suistimal edildiğini düşünüyorsanız ya da yayınlanan bilgilerden rahatsız oluyorsanız derhal onedio.com'la irtibata geçin.</p><h2>3. İÇERİK</h2><p><b>3.1. Tanım:</b> İşbu sözleşmede yer alan içerik teriminin tanımı şunları içerir; bilgi, veri, yazı, fotoğraf, video, ses klibi, yorumlar, makaleler, yazılımlar, kodlar, grafikler. İşbu sözleşmede yer alan içerik tanımı, aynı zamanda üyelerin içeriklerini de kapsamaktadır.</p><p><b>3.2. Üye İçerikleri:</b> Kullanıcılar tarafından siteye eklenen, yüklenen, yaratılan her türlü içerik bu tanıma girer ve ister gizli paylaşılmış, ister tüm kullanıcılara açık paylaşılmış olsun, içerikler tamamen içeriği yükleyen kullanıcının sorumluluğundadır. İçeriğin doğruluğu, güncelliği ve tüm yasalara, kurallara ve düzenlemelere uygun olup olmadığı tekrardan kullanıcının sorumluluğundadır.</p><p><b>3.3. İçerik Uygunluğu:</b> onedio.com herhangi bir içeriğin site veya hizmetlerimiz vasıtasıyla daima uygun olacağının garantisini vermez. onedio.com herhangi bir içeriği, herhangi bir zamanda kullanıcıya haber vermeksizin ve herhangi bir sebep olmadan ( Kişilik haklarını zedelemek, kullanıcı anlaşmasını ihlal etmek vs… ) kendi takdiri doğrultusunda kaldırma düzenleme, değiştirme ,engelleme hakkını saklı tutar.</p><p><b>3.4. Telif Hakları ve Uyarılar:</b> Özellikle bizler tarafından, partnerlerimiz tarafından ve kullanıcılarımız tarafından sağlanan içerikler ve hizmetler, telif hakları, marka hakları, hizmet hakları, patentler, ticari sırlar ve diğer kanun ve yasalar doğrultusunda korunmaktadır. Kullanıcılar bu telif hakları kurallarına uymak durumundadır.</p><p><b>3.5. Lisans Kullanım Hakkı:</b> Hizmetleri kullanmak dışında, içerikleri başka amaçlar için kullanmak, taklit etmek, değiştirmek, dağıtımını yapmak veya depolamak yasaktır. Kullanıcılar içerikleri satamaz, kendilerininmiş gibi kullanamaz, reklam gibi amaçlar doğrultusunda istismar edemez ve üçüncü kişilerin hakkını zedeleyecek şekilde kullanamaz.</p><h2>4. ÜYENİN YÜKÜMLÜLÜKLERİ</h2><h3>Üyeler;</h3><ol><li><span>onedio.com'a üye olarak veya hizmetlerini kullanarak, verdiği bütün bilgilerin tam ve doğru olduğunu; onedio.com'u kullanırken herhangi bir geçerli yasa ve düzenlemeyi ihlal etmeyeceğini...</span></li><li><span>onedio.com'da yayınlanan hiçbir yazı veya grafiğin üçüncü kişiler tarafından yayın hakkı sahibinden izin alınmadan kullanılamayacağını, bu sitelerde yer alan ve kullanıcılar yahut onedio.com editörleri, yazarları tarafından üretilen içerik materyali ya da uygulamaların, başka İnternet sitelerinde, konvansiyonel ortamlarda ve diğer mecralarda yayın hakkı sahibinden izin alınmadan yayınlanamayacağını...</span></li><li><span>onedio.com'a gönderdikleri yazılı, görsel ve işitsel malzemelerde başkalarının kişilik haklarına zarar verecek, karalayıcı, aldatıcı unsurlar, pornografik, ahlaka aykırı fotoğraflar, hakaret, şiddet, ırkçılık, ayrımcılık ve yasadışılık bulunmayacağını...</span></li><li><span>onedio.com'a üye olurken belirledikleri şifrenin güvenliğini sağlamanın kendi sorumlulukları altında olduğunu, gereken önlemleri almayı, diğer üyelerin üyelik hesaplarını, kullanıcı adlarını, şifrelerini kullanmamayı, verilerine izinsiz olarak ulaşmamayı ve kendilerine ait şifreleri başkalarıyla paylaşmamayı, aksi halde bundan doğacak hukuki ve cezai sorumlukların kendisine ait olacağını; üye hesaplarının yetkisi olmayanlar tarafından kullanıldığını veya şifrelerinin başkalarının eline geçtiğini öğrendiklerinde bu durumu derhal hemen onedio.com'a bildirmeyi; onedio.com'un üyelerin şifrelerinin, üyelik hesaplarının, kullanıcı adlarının üçüncü şahıslar tarafından ele geçirilmesinden sorumlu tutulamayacağını...</span></li><li><span>Bildiği halde yalan, yanlış, yanıltıcı ve doğru olmayan içerik eklemeyeceğine…</span></li><li><span>Site tarafından talep edilmeden veya site ile anlaşmadan reklam oluşturmayacağına ve spam’de bulunamayacağına…</span></li><li><span>onedio.com'un sitenin belli alanlarını veya kategorilerini, sitede kullanılan bazı imkânları paralı hale getirebileceğini ve tek taraflı olarak fiyatları belirleme hakkına sahip olduğunu...</span></li><li><span>onedio.com'da tehdit, taciz ve hakaretin yasak olduğunu, herkese açık alanlara ya da özel mesaj alanlarına üyeleri rahatsız edecek mesajlar atan kişilerin, durumları incelendikten sonra onedio.com tarafından üyelikten çıkarılabileceğini...</span></li><li><span>onedio.com'un, üyelerini herhangi bir davranıştan dolayı ödüllendirebileceğini, faaliyetlerini kısıtlayabileceğini ya da üyeliklerini sonlandırabileceğini...</span></li><li><span>Onedio Medya ve İnternet Hizmetleri A.Ş'nin tescilli markaları olan onedio.com ismi ve onedio.com logosunun izinsiz kullanımının yasak olduğunu...</span></li><li><span>Çalışanlarımız ve temsilcilerimiz de dahil olmak üzere hiçbir insanı veya kurumu taklit etmeyeceğini…</span></li><li><span>onedio.com'un interaktif servisleri vasıtasıyla kullanıcılar tarafından sağlanan grafik ve içeriklerden onedio.com'un ve Onedio Medya ve İnternet Hizmetleri A.Ş'nin hiçbir şekilde sorumlu olmadığını, onedio.com'un yayın ilkelerine ve yasalara aykırı olan sayfaları yayından kaldırma hakkına sahip olduğunu...</span></li><li><span>Herhangi bir yazılım, donanım veya iletişim unsuruna zarar vermek, yıkıma uğrutmak, işlevini aksatmak maksadıyla virüs içeren yazılım veya başka bir bilgisayar kodu, dosyası oluşturamayacağına, yetkisi olmayan herhangi bir sisteme, dataya, şifreye ulaşmaya çalışamayacağına…</span></li><li><span>Ayrıca direkt veya dolaylı olarak, verilen hizmetlerdeki algoritmaları ve kodları deşifre edecek, işlevlerini bozacak davranışlarda bulunmayacağını…</span></li><li><span>İçerikleri değiştirme, dönüştürme, çevirme, alıntı göstermeksizin başka sitelerde yayınlama gibi davranışlarda bulunmayacağını…</span></li><li><span>Kanunen yasak bilgiler içeren mesajlar, zincir posta, yazılım virüsü gibi üçüncü şahıslara zarar verebilecek içerikleri dağıtamayacağını; diğer kullanıcıların bilgisayarındaki bilgilere ya da yazılıma zarar verecek program ve/ya bilgiler göndermemeyi...</span></li><li><span>Üyelikleri iptal edilse bile, üye oldukları süre içindeki hareketlerinden de sorumlu olduklarını...</span></li><li><span>onedio.com üzerinden kurulan tüm ilişkilerde sorumluluğun tamamen ilgili taraflara ait olduğunu, onedio.com'un sorumluluğu olmadığını...</span></li><li><span>Üye'nin yapacağı her türlü işlemden bizzat kendisinin sorumlu olduğunu...</span></li><li><span>Tüm bu maddelere daha sonra itiraz etmeyeceğini... Peşinen kabul ve taahhüt etmiştir.</span></li><b>onedio.com gerektiği takdirde; (1) yasalara uymayan bir durumda; (2) kullanıcı sözleşmesine uymayan bir durumda; (3) güvenlik ve teknik sorunları önlemek adına; (4) kullanıcılardan gelen istekler doğrultusunda; (5) bizlerin, kullanıcılarımızın, kısaca herkesin haklarını korumak adına her türlü bilgiyi okuma, muhafaza etme, açığa çıkarma hakkına sahiptir.</b></ol><h2>5. ONEDİO.COM’A VERİLEN YETKİLER</h2><ol><li><span>onedio.com, üyelerden veya kullanıcılardan gelen içeriği, e-postayı ya da sayfalarında bulunan herhangi bir iletiyi neden göstermeden reddetme, geciktirme, geç yayına alma veya yayınlamama hakkına sahiptir.</span></li><li><span>onedio.com herhangi bir sayfasındaki ya da hizmetindeki üye erişimini neden belirtmeksizin ve uyarmaksızın, erteleme, sınırlama ve yok etme hakkına sahiptir. Bu durumdan dolayı onedio.com sorumlu tutulamaz.</span></li><li><span>Bir kullanıcıya ait şifre ve kullanıcı adı başka biri tarafından ele geçirildiğinde üyenin bilgisi dışında işlem yapılabilir. Böyle bir durum farkedildiğinde şifrenizi değiştirmenizi tavsiye ederiz. Bu tip durumlarda son karar, onedio.com editörlerine ve yöneticilerine aittir.</span></li><li><span>onedio.com bir anlaşmazlık durumunda, ilişkin üyeliklere son vermek ve profil ve e.günlük (blog) sayfalarını, haberlerini, yorumlarını, tartışma metinlerini silmek yoluyla anlaşmazlığı çözmeye gidebilir.</span></li><li><span>onedio.com'da reklam ve tanıtım faaliyetlerinin yasal hakları sadece onedio.com'a veya onedio.com'un yetki verdiği kuruluşlara aittir. Eğer onedio.com hizmetlerini ticari amaçlarla kullanmak istiyorsanız lütfen onedio.com'la iletişim kurun.</span></li><li><span>Sitemizin birçok yerinden https://onedio.com markası olan ve/ya olmayan diğer sitelere link verilebilir. onedio.com, link (bağlantı) verdiği, tavsiye ettiği https://onedio.com markası olmayan sitelerin bilgi kullanımı, gizlilik ilkeleri ve içeriğinden sorumlu değildir.</span></li><li><span>onedio.com kullanıcı isimlerinin ve e.postalarının izinsiz ve yetkisiz kişiler tarafından, herhangi bir nedenle toplanması yasaktır.</span></li><li><span>Üyelerin onedio.com'daki profillerinde veya web sitelerinde bulunan veya forumlara gönderilen ticari reklam - tanıtımlar veya bunlarla ilgili linkler uyarı yapılmadan silinebilir, bu tür girişimlerde bulunan kullanıcıların üyelikleri sona erdirilebilir.</span></li><li><span>onedio.com, herhangi bir uyarı yapmaksızın sözleşme hükümlerini tek taraflı olarak değiştirme hakkına sahiptir.</span></li><li><span>onedio.com, üyeler tarafından 1 yıl boyunca işletilmeyen, 1 yıl boyunca siteye yazılı veya görsel giriş yapılmayan veya güncellenmeyen, siteleri silebilir. Silinen sitelerin domain (isim) hakkı onedio.com'a devrolunur. onedio.com bu domain'i (alan adını) üyeye devredebilir.</span></li><li><span>onedio.com, üyeler tarafından 1 yıl boyunca işletilmeyen, 1 yıl boyunca siteye yazılı veya görsel giriş yapılmayan veya güncellenmeyen, e.günlükleri (blogları) silebilir. Yürürlülük Kullanıcı, üyelik formunu doldurup kabul ettiğini beyan ettiği anda işbu sözleşem ile belirlenen şartları kabul etmiş sayılır ve bu sözleşme taraflar arasında süresiz olarak yürürlüğe girer. Sözleşme üyeliğin sona ermesi ile veya işbu sözleşmede sayılan fesih hallerinden herhangi birinin gerçekleşmesi ile hiçbir ihtara gerek kalmaksızın kendiliğinden hükümsüz kalacaktır. Fesih ve değişiklik onedio.com bu üyelik sözleşmesini dilediği zaman sona erdirebilir. Değişiklikler onedio.com'un web sitesinde yayınlandıktan sonra yürürlüğe girer. Kullanıcı, bu üyelik sözleşmesindeki değişiklikleri, değişiklikler onedio.com web sitesinde yayınlandıktan sonra kabul etmiş sayılır. Bu değişikliklerden haberdar olabilmek için üyelik sözleşmesini sık sık gözden geçirmenizi tavsiye ederiz. Kullanıcı onedio.comtarafından işbu sözleşme hükümleri uyarınca verilecek servisi kullanmaya başladığı tarihten itbaren, sözleşmede belirtilen hak ve yükümlülüklere aykırı hareketleri ve/veya edim ve taahhütlerini yerine getirmemesi nedeniyle, onedio.com'un ve/veya 3. kişilerin uğrayacağı her türlü zarar ve ziyanı derhal tazmin etmeyi kabul ve taahhüt eder. İhtilaflar İşbu sözleşmeden doğacak uyuşmazlıkların çözümünde Ankara Mahkemeleri ve icra daireleri yetkili kılınmıştır. onedio.com'la iletişime geçin.</span></li></ol><h2>6. TELİF HAKLARI</h2><p>onedio.com'da yazdığınız yorum, yazı ve haberlere ilişkin telif hakları size aittir. Bu nedenle onedio.com'da yayınlanmış olan haber ve yorumları ticari maksatla dahi dilediğiniz şekilde derleyip, kullanabilirsiniz. Ancak bunları başka bir kaynakta daha yayınlamanız halinde onedio.com'a aktif link vermeniz gerekmektedir. Telif hakları size ait olmakla birlikte, onedio.com'da yazdığınız tüm haberler ve yazılar üzerinde Onedio Medya ve İnternet Hizmetleri A.Ş'ye çoğaltma, kopyalama, işleme ve basılı ortam, radyo-televizyon, uydu ve kablo gibi telli veya telsiz yayın yapan kuruluşlar vasıtasıyla veya internet ve sair dijital iletim şekilleri de dahil olmak üzere işaret, ses ve/veya görüntü nakline yarayan araçlar ve sair her türlü araçla yayınlama hakları dahil olmak ancak bunlarla kısıtlı kalmamak kaydıyla tüm mali haklarını hiçbir coğrafi sınırlama olmaksızın, süresiz ve bedelsiz kullanma hakkı(lisans) vermektesiniz. Haber, yorum ve yazılarınız onedio.com'da yayında olduğu müddetçe Onedio Medya ve İnternet Hizmetleri A.Ş tüm yazılarınızı uygun gördüğü bütün ortamlarda ticari amaçla kullanılması hakkına sahip olacaktır. Bunu engellemek için yazınızı silmeniz yeterlidir ancak bu sadece ileriye dönük bir işlem olup, size daha önce yapılmış çalışmalardan yazılarınızın çıkarılmasını veya telif ücreti talep etme hakkı ve sair bir hak vermeyecektir. Daha önce yapılmış çalışmaların yeniden basımı veya yayını bu nedenle her zaman mümkündür. Onedio Medya ve İnternet Hizmetleri A.Ş yazılarınızın internet dışındaki ortamlarda ticari amaçla kullanılması halinde, ilgili çalışmadan kar elde edilmesi şartıyla, kendi takdir edeceği miktarda telif ödemesinde bulunacağını taahhüt eder.</p><h2>7. YASAL SORUMLULUK</h2><p>Onedio.com'da yayınlanmak üzere sunduğunuz içeriğin size ait olduğu veya fikir ve sanat eserleri kanunu çerçevesinde kullanma hakkınız olduğu kabul edilir. Size ait olmayan içeriği ancak kanunlarda belirtilen usule uygun olarak ve atıfta bulunmanız şartıyla yayınlanması mümkündür. Aksi halde Onedio Medya ve İnternet Hizmetleri'nin uğrayabileceği zararlardan sorumlu tutulacaksınız. onedio.com'da yayınlanmak üzere sunduğunuz içeriğin ve mesaj ve sair onedio.com imkanlarının kullanılması suretiyle göndermiş olduğunuz içeriğin hukuka uygun olması sizin sorumluluğunuzdadır. Gönderidiğiniz veya sağladığınız içeriğin hukuka uygun olmaması halinde tüm hukuki ve cezai sorumluluğun tarafınıza ait olduğunu kabul etmektesiniz. Bu sözleşmesel ilişki nedeniyle doğabilecek ihtilaflarda onedio.com'un bilgisayar kayıtlarının(eposta yazışmaları, internet trafik bilgisi ve erişim kayıtları[log] vs.) h.u.m.k. 287. maddesi anlamında muteber, bağlayıcı, kesin ve münhasır delil teşkil edeceğini ve bu maddenin delil sözleşmesi niteliğinde olduğunu kabul etmiş sayılmaktasınız.</p><p><a href="https://onedio.com/kurumsal/iletisim">Üyelik sözleşmesiyle veya onedio.com uygulamalarıyla ilgili herhangi bir sorunuz varsa iletişime geçin:</a></p><p><b>Adres:</b> Halıcı Yazılımevi Kat:1 No:3 ODTU Teknokent Ankara<br><b>E-posta:</b> onedio@onedio.com</p><p>Tebligat Adresleri Kullanıcı'nın onedio.com'a bildirdiği adres, bu sözleşme ile ilgili olarak yapılacak her türlü bildirim için yasal adres kabul edilir. Taraflar, mevcut adreslerindeki değişiklikleri yazılı olarak diğer tarafa 3 (üç) gün içinde bildirmedikçe, eski adreslere yapılacak bildirimlerin geçerli olacağını ve kendilerine yapılmış sayılacağını kabul ederler. İşbu sözleşme nedeniyle onedio.com'un kullanıcı'nın kayıtlı e.posta adresini kullanarak yapacağı her türlü bildirim aynen geçerli olup, e.postanın onedio.com tarafından yollanmasından 1 (bir) gün sonra Kullanıcı'ya ulaştığı kabul edilecektir. Kullanıcı, bu katılım sözleşmesinde yer alan maddelerin tümünü okuduğunu, anladığını, kabul ettiğini ve kendisiyle ilgili olarak verdiği bilgilerin doğruluğunu onayladığını beyan, kabul ve taahhüt eder.</p>
+                </div><!-- /.modal-content -->
+
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-success btn-raised btn-block no-margin" data-dismiss="modal" value="TAMAM" />
+                </div><!-- /.modal-footer -->
+            </div>
+        </div>
+    </div><!-- /#register-dialog -->
+</body>
+</html>

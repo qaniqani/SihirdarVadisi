@@ -1,0 +1,93 @@
+﻿@import "variables.less";
+
+.masthead-area {
+    width: 100%;
+    height: 120px;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    z-index: 10;
+
+    .adm-ads-area {
+        margin: 10px 0;
+    }
+
+    .container {
+        width: 970px !important;
+        /*background: Red;*/
+    }
+
+    .close {
+        font-size: 18px;
+        color: @white;
+        text-shadow: none;
+        opacity: .7;
+        padding: 10px;
+
+        &:hover, &:focus {
+            opacity: 1;
+        }
+    }
+}
+
+
+.reklam-728x90 {
+    width: 100%;
+    height: 120px;
+    display: block;
+    padding: 15px;
+    background: #1d1d1d url(/Content/sponsored-text.png) no-repeat center;
+
+    iframe {
+        overflow: hidden;
+    }
+}
+
+.reklam-300x600 {
+    height: 600px;
+    display: block;
+    overflow: hidden !important;
+    background: #1d1d1d url(/Content/sponsored-text.png) no-repeat center;
+
+    iframe {
+        overflow: hidden;
+    }
+}
+
+.reklam-300x450 {
+    height: 450px;
+    display: block;
+    overflow: hidden !important;
+    background: url(/Content/sponsored-text.png) no-repeat center;
+
+    iframe {
+        overflow: hidden;
+    }
+}
+
+.reklam-300x250 {
+    height: 250px;
+    display: block;
+    overflow: hidden !important;
+    background: #1d1d1d url(/Content/sponsored-text.png) no-repeat center;
+
+    iframe {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 1px) and (max-width: 991px) {
+
+
+    .reklam-300x450 {
+        padding-left: 15px;
+    }
+
+    .reklam-300x250 {
+    }
+}
+
+@media screen and (min-width: 1px) and (max-width: 768px) {
+    .reklam-728x90 {
+        display: none !important;
+    }
+}

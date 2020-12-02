@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "html/assets/modules/general.css",
+    "inputFile": "html/assets/modules/general.less"
+  },
+  {
+    "outputFile": "html/scripts/libs/fuckadblock.es5.js",
+    "inputFile": "html/scripts/libs/fuckadblock.js"
+  },
+  {
+    "outputFile": "html/assets/global.css",
+    "inputFile": "html/assets/global.less"
+  }
+]

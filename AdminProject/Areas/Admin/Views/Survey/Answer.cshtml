@@ -1,0 +1,112 @@
+﻿@using Sihirdar.DataAccessLayer.Infrastructure.Models
+@model Answer
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<style>
+    #alert {
+        margin: 15px 30px 0 30px !important;
+        padding: 0;
+    }
+
+        #alert h3 {
+            display: none;
+        }
+
+        #alert .alert {
+            margin: 0 0 -15px 0;
+        }
+</style>
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nest" id="basicClose">
+                @*@Html.MyValidationSummary()*@
+
+                <div class="title-alt">
+                    <h6>Answers </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#basic"><span class="entypo-up-open"></span></a>
+                    </div>
+                </div>
+                <div class="body-nest" id="basic">
+                    <form role="form" action="/Admin/Survey/Answer/@ViewBag.Question.Id@(ViewBag.AnswerId != null ? "?answerId=" + ViewBag.AnswerId : "")" method="post">
+                        <div class="form-group">
+                            <label for="">Selected Question</label>
+                            <br />
+                            @ViewBag.Question.Question
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <label for="Response">Response</label>
+                            @Html.TextBoxFor(model => model.Response, new { placeholder = "", @class = "form-control validate[required]]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Vote">Vote</label>
+                            @Html.TextBoxFor(model => model.Vote, new { placeholder = "", @class = "form-control validate[required]]", type = "number" })
+                        </div>
+                        <div class="form-group">
+                            <label for="SequenceNumber">Sequence Number</label>
+                            @Html.TextBoxFor(model => model.SequenceNumber, new { placeholder = "", @class = "form-control validate[required]]", type = "number" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        Other Answers
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <table class="table-striped footable-res footable metro-blue">
+                        <thead>
+                            <tr>
+                                <th>Response</th>
+                                <th>Vote</th>
+                                <th>Sequence Nr</th>
+                                <th>Status</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var answer in (List<Answer>)ViewBag.Answers)
+                                {
+                                    <tr>
+                                        <td>@answer.Response </td>
+                                        <td>@answer.Vote</td>
+                                        <td>@answer.SequenceNumber</td>
+                                        <td>@answer.Status</td>
+                                        <td style="width:100px;">
+                                            <a href="/Admin/Survey/Answer/@ViewBag.Question.Id?answerId=@answer.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                            <a href="/Admin/Survey/AnswerDelete/@ViewBag.Question.Id?answerId=@answer.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

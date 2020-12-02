@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "Arena of Valor Şampiyonları";
+    ViewBag.Url = Request.RawUrl;
+    ViewBag.Type = "article";
+    ViewBag.Description = "Tüm şampiyonların yeteneklerini, özellikleri, kostümlerini, ve çok daha fazlasını şampiyonunu seçerek öğrenebilirsin.";
+    ViewBag.Image = "http://sihirdarvadisi.com/content/default-share-img.jpg";
+}
+
+<div id="content" ng-view></div>
+
+<div class="box-module col-md-12 no-padding-left margin-top-20">
+    <div class="module-title flexible-border margin-bottom-05">ARAÇLAR</div>
+    <div class="module-content no-padding">
+        <div class="news-detail">
+            <div class="news-img" style="width:100%; height:auto;"><img src="/App/Assets/Themes/img/header-aov-sampiyonlar.png" alt="" style="width:100%;" /></div>
+            <div class="news-content">
+                <div class="share-box">
+                    <div class="addthis_inline_share_toolbox"></div>
+                </div>
+                <h5 class="game flexible-color">ARENA OF VALOR</h5>
+                <h4 class="title">ŞAMPİYONLAR</h4>
+                <div class="description">
+
+                    <p>Arena of Valor şampiyonlarını keşfetmeye hazır mısın? <br /><br /> Tüm şampiyonların yeteneklerini, özellikleri, kostümlerini, ve çok daha fazlasını şampiyonunu seçerek öğrenebilirsin.</p>
+
+                    <div class="alert alert-danger margin-top-15 api-error" style="display:none;">
+                        <p class="text-center">Bir problem oluştuğundan, bu sayfa geçici olarak devre dışı :/</p>
+                    </div>
+
+                    <div class="non-modal" style="display:none;">
+                        <input type="text" id="search-input" onkeyup="search()" class="form-control no-margin champions-search" placeholder="Şampiyon Ara..." maxlength="20">
+                        <ul id="champs" class="no-padding"></ul>
+                    </div>
+
+                    <div class="modal margin-top-15" id="champions-dialog">
+                        <a href="/aov-sampiyonlar" target="_self" class="btn btn-default back-to-list-btn"> &laquo; LİSTEYE GERİ DÖN</a>
+
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body no-padding">
+                                    <div class="col-sm-12 no-padding">
+                                        <img src="" alt="" class="c-picture" style="float: left;margin-right: 10px;margin-bottom: 5px;">
+                                        <h5 style="display: block;float: none;width: auto;padding-top:0;"></h5>
+                                        <p class="description full-width" style="display: inline;"></p>
+
+                                        <h6>Özellikler</h6>
+                                        <!--<ul class="specs">
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-hp">Can:</span> <span class="stat-value"></span></li>
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-ad">Saldırı Gücü:</span> <span class="stat-value"></span></li>
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-as">Saldırı Hızı:</span> <span class="stat-value"></span></li>
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-hp-regen">Can Yenileme:</span> <span class="stat-value"></span></li>
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-armor">Zırh:</span><span class="stat-value"></span></li>
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-ms">Hareket Hızı:</span> <span class="stat-value"></span></li>
+                                            <li class="col-sm-6 no-padding-left"><span class="stat-label stat-mr">Büyü Direnci:</span><span class="stat-value"></span></li>
+                                        </ul>-->
+										<table class="table specs">
+											<thead></thead>
+											<tbody></tbody>
+										</table>
+                                    </div>
+
+                                    <div class="col-sm-12 no-padding margin-top-15">
+                                        <h6 class="col-md-12 no-padding">Yetenekler</h6>
+                                        <ul class="spells">
+                                            <li><a href="#"></a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-sm-12 no-padding">
+                                        <h6 class="col-md-12 no-padding">Kostümler</h6>
+                                        <ul class="skins"></ul>
+                                    </div>
+
+                                    <a href="/aov-sampiyonlar" target="_self" class="btn btn-default back-to-list-btn"> &laquo; LİSTEYE GERİ DÖN</a>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="http://www.sihirdarvadisi.com/html/assets/libs/jquery.fancybox.min.css" rel="stylesheet" />
+<script src="http://www.sihirdarvadisi.com/html/scripts/libs/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var champsKey = getParameterByName('key');
+        if (champsKey != null) {
+            getChampionDetail(champsKey);
+        } else {
+            getChampionList();
+        }
+    });
+
+    var array = [];
+
+    function getChampionList() {
+        $.ajax({
+            url: "/api/aov/champs",
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                $('.non-modal').show();
+                array = $.map(data, function (value, index) { return [value]; });
+
+                for (i = 0; i < array.length; i++) {
+                    $('#champs').append('<li class="col-sm-2 text-center"> <a href="/aov-sampiyonlar?key=' + array[i].id + '" target="_self"> <img class="img" style="width:100%;" alt="' + array[i].name + '" src="//sihirdarvadisi.com/' + array[i].image + '"> <p class="name">' + array[i].name + '</p> </a> </li>');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.api-error').show();
+            }
+        });
+    }
+
+    function getChampionDetail(id) {
+        $('ul.skins').prev().html('');
+        $('ul.skins').html('');
+        $('ul.spells').prev().html('');
+        $('ul.spells').html('');
+
+        $.ajax({
+            url: "/api/aov/champ/" + id,
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                $('#champions-dialog').show();
+                $('.non-modal').hide();
+                $('body', 'html').scrollTop(80);
+                var attackPerLevel = 0.625 / (1 + data.stats.attackspeedoffset);
+                data.lore = data.lore.replace(/\r\n|\n|\r/g, '<br />');
+
+                $('#champions-dialog .modal-body h5').html(data.name + " / " + data.title);
+                $('#champions-dialog .modal-body p').html(data.lore);
+                $('#champions-dialog .modal-body .c-picture').attr('src', 'https://sihirdarvadisi.com' + data.image);
+
+				var th = "<th>Stat</th>";
+				for(var i =1; i<= 15; i++)
+				{
+					th += '<th>Lvl ' + i + '</th>';
+				}
+				var tr = $("<tr>").append($(th));
+				$("#champions-dialog .modal-body .specs thead").append($(tr));
+
+
+				var stats = [
+					{title: "Attack Damage", stat: "ad", per: "adperlevel"},
+					{title: "Ability Power", stat: "ap", per: "apperlevel"},
+					{title: "Max HP", stat: "hp", per: "hpperlevel"},
+					{title: "Armor", stat: "armor", per: "armorPerLevel"},
+					{title: "Magic Defense", stat: "mr", per: "mrPerLevel"},
+					{title: "Attack Speed", stat: "as", per: "asPerLevel"},
+					{title: "Cooldown Speed", stat: "cd", per: "cdPerLevel"},
+					{title: "Critical Chance", stat: "critic", per: "criticPerLevel"},
+					{title: "Movement Speed", stat: "movement", per: "movementPerLevel"},
+					{title: "HP / 5 sec", stat: "hpregen", per: "hpregenperlevel"},
+					{title: "Mana / 5 sec", stat: "manaregen", per: "manaregenperlevel"}
+				];
+
+				for(var ix=0;ix<stats.length;ix++){
+					var td = "<td>"+stats[ix].title+"</td>";
+					for(var ii =0; ii<= 14; ii++) {
+						var curStat = data.stats[stats[ix].stat] + (data.stats[stats[ix].per] * ii);
+						if(ii===0)
+							td += '<td><b style="color: #efcf1d;">'+curStat+'</b></td>';
+						else
+							td += '<td>'+curStat+'</td>';
+					}
+					var trs = $("<tr>").append($(td));
+					$("#champions-dialog .modal-body .specs tbody").append($(trs));
+				}
+
+
+                $('ul.skins').prev().html('Kostümler (' + data.skins.length + ')');
+                for (i = 0; i < data.skins.length; i++) {
+                    if (data.skins[i].name == "default") data.skins[i].name = data.name;
+                    $('ul.skins').append('<li class="col-sm-3"><a href="https://sihirdarvadisi.com' + data.image + '" data-fancybox="gallery"><img class="img-responsive" src="https://sihirdarvadisi.com' + data.image + '" /> ' + data.skins[i].name + ' </a></li>')
+                }
+
+                var spellsLength = data.spells.length;
+                $('ul.spells').prev().html('Yetenekler (' + spellsLength + ')');
+				function compare(a,b) {
+					if (a.num < b.num)
+						return -1;
+					if (a.num > b.num)
+						return 1;
+					return 0;
+				}
+				data.spells.sort(compare);
+                for (i = 0; i < data.spells.length; i++) {
+                    $('ul.spells').append('<li class="col-md-12"> <h3>' + data.spells[i].name + '</h3> <div class="col-md-12 no-padding"> <img src="//sihirdarvadisi.com' + data.spells[i].image + '" alt="' + data.spells[i].name + '" />  <p>' + data.spells[i].description + '</p> </div> </li>')
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.champions-search').hide();
+                $('.api-error').show();
+            }
+        });
+    }
+
+    function search() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("search-input");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("champs");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) li[i].style.display = "";
+            else li[i].style.display = "none";
+        }
+    }
+</script>

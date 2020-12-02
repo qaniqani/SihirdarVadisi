@@ -1,0 +1,287 @@
+﻿@model Sihirdar.DataAccessLayer.Infrastructure.Models.AovChamp
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function() {
+        
+    });
+</script>
+
+<div class="content-wrap">
+    <div class="row">
+        <form role="form" id="admin-form" action="/Admin/AovChamp/Add" method="post" enctype="multipart/form-data">
+            <div class="col-md-8">
+                <div class="nest" id="basicClose">
+                    <div class="title-alt">
+                        <h6>AOV Champ</h6>
+                        <div class="titleToggle">
+                            <a class="nav-toggle-alt" href="#basic">
+                                <span class="entypo-up-open"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="body-nest" id="basic">
+
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Sample: Amumu", @class = "form-control validate[required]]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Title">Title</label>
+                            @Html.TextBoxFor(model => model.Title, new { @class = "form-control validate[required]" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Key">Key</label>
+                            @Html.TextBoxFor(model => model.Key, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Role">Role</label>
+                            @Html.TextBoxFor(model => model.Role, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Partype">Partype</label>
+                            @Html.TextBoxFor(model => model.Partype, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Lore">Lore</label>
+                            @Html.TextAreaFor(model => model.Lore, new { @class = "form-update" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Quote">Quote</label>
+                            @Html.TextBoxFor(model => model.Quote, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Image">Image</label>
+                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control validate[required]", type = "file" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Gold">Gold</label>
+                            @Html.TextBoxFor(model => model.Gold, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Ticket">Ticket</label>
+                            @Html.TextBoxFor(model => model.Ticket, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InfoDifficulty">Info Difficulty</label>
+                            @Html.TextBoxFor(model => model.InfoDifficulty, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InfoAttack">Info Attack</label>
+                            @Html.TextBoxFor(model => model.InfoAttack, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InfoConst">Info Const</label>
+                            @Html.TextBoxFor(model => model.InfoConst, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InfoMagic">Info Magic</label>
+                            @Html.TextBoxFor(model => model.InfoMagic, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nest">
+                    <div class="title-alt">
+                        <h6>Skins</h6>
+                    </div>
+                    <div class="body-nest">
+                        <table class="table" data-page-size="30">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Num</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @{
+                                foreach (var skin in ViewBag.Skins)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" data-value="@skin.Id" class="skinCheck"/>
+                                            <input type="hidden" name="skinId" />
+                                        </td>
+                                        <td>@skin.Name</td>
+                                        <td>@skin.Num</td>
+                                    </tr>
+                                }
+                            }
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="pagination pagination-centered"></div>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="nest">
+                    <div class="title-alt">
+                        <h6>Spells</h6>
+                    </div>
+                    <div class="body-nest">
+                        <table class="table" data-page-size="30">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Num</th>
+                                    <th>Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var spell in ViewBag.Spells)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" data-value="@spell.Id" class="spellCheck" />
+                                                <input type="hidden" name="spellId" />
+                                            </td>
+                                            <td>@spell.Name</td>
+                                            <td>@spell.Num</td>
+                                            <td><img src="/Content/@(spell.Image).jpg" style="max-width: 250px; max-height: 50px;"/></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="pagination pagination-centered"></div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="nest">
+                    <div class="title-alt">
+                        <h6>Save</h6>
+                    </div>
+                    <div class="body-nest">
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="nest" id="basic2">
+                    <div class="title-alt">
+                        <h6>Stats</h6>
+                        <div class="titleToggle">
+                            <a class="nav-toggle-alt" href="#basic1">
+                                <span class="entypo-up-open"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="body-nest" id="basic1">
+                        <div class="form-group">
+                            <label for="Ad">Ad</label>
+                            @Html.TextBoxFor(model => model.Ad, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Adperlevel">Ad Per Level</label>
+                            @Html.TextBoxFor(model => model.Adperlevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Ap">Ap</label>
+                            @Html.TextBoxFor(model => model.Ap, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Apperlevel">Ap Per Level</label>
+                            @Html.TextBoxFor(model => model.Apperlevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Hp">Hp</label>
+                            @Html.TextBoxFor(model => model.Hp, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Hpperlevel">Hp Per Level</label>
+                            @Html.TextBoxFor(model => model.Hpperlevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Hpregen">Hpregen</label>
+                            @Html.TextBoxFor(model => model.Hpregen, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Hpregenperlevel">Hpregen Per Level</label>
+                            @Html.TextBoxFor(model => model.Hpregenperlevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Manaregen">Manaregen</label>
+                            @Html.TextBoxFor(model => model.Manaregen, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Manaregenperlevel">Manaregen Per Level</label>
+                            @Html.TextBoxFor(model => model.Manaregenperlevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Armor">Armor</label>
+                            @Html.TextBoxFor(model => model.Armor, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="ArmorPerLevel">Armor Per Level</label>
+                            @Html.TextBoxFor(model => model.ArmorPerLevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Mr">Mr</label>
+                            @Html.TextBoxFor(model => model.Mr, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="MrPerLevel">Mr Per Level</label>
+                            @Html.TextBoxFor(model => model.MrPerLevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="As">As</label>
+                            @Html.TextBoxFor(model => model.As, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="AsPerLevel">As Per Level</label>
+                            @Html.TextBoxFor(model => model.AsPerLevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Cd">Cd</label>
+                            @Html.TextBoxFor(model => model.Cd, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="CdPerLevel">Cd Per Level</label>
+                            @Html.TextBoxFor(model => model.CdPerLevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Critic">Critic</label>
+                            @Html.TextBoxFor(model => model.Critic, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="CriticPerLevel">Critic Per Level</label>
+                            @Html.TextBoxFor(model => model.CriticPerLevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Movement">Movement</label>
+                            @Html.TextBoxFor(model => model.Movement, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                        <div class="form-group">
+                            <label for="MovementPerLevel">Movement Per Level</label>
+                            @Html.TextBoxFor(model => model.MovementPerLevel, new { @class = "form-control", type = "number", Value = "0" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

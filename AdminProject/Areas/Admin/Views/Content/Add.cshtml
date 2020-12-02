@@ -1,0 +1,251 @@
+﻿@using AdminProject.Helpers
+@using AdminProject.Models
+
+@model Sihirdar.DataAccessLayer.Infrastructure.Models.Content
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sortable li div").click(function () {
+            var text = $(this).text();
+            var id = $(this).attr("data-id");
+            var categoryType = $(this).attr("data-categoryType");
+            //ESportCalendar = 8,
+            //Gallery = 7,
+            //Video = 6,
+            //Story = 5,
+            //Static = 4,
+            //ToolLOLHour = 3,
+            //ToolLOLChamp = 2,
+            //TeamPage = 1,
+            //DownloadGuide = 0,
+
+            $("#CategoryName").text(text);
+            $("#CategoryId").val(id);
+
+            $("#embeddedCodeBox").hide();
+            if (categoryType == "6") {
+                $("#embeddedCodeBox").show();
+            }
+        });
+
+        $("#GetVideoDetail").click(function () {
+            var url = $("#VideoUrl").val();
+            if (url && url == "") {
+                alert("Video url is required.");
+                return;
+            }
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: "POST",
+                url: "/Admin/Content/GetVideoDetail",
+                data: JSON.stringify({ 'videoUrl': url }),
+                success: function (result) {
+                    if (result.VideoEmbedUrl == "") {
+                        alert("The video could not be retrieved. Try again.");
+                        $("#downloadImage").attr("src", "");
+                        $("#embedPath").html("");
+                        $("#hfPicName").val("");
+                        $("#hfVideoEmbed").val("");
+                        $("#VideoUrl").val("");
+                        $('.videoPre-label').hide();
+
+                        return;
+                    }
+
+                    $('.videoPre-label').show();
+                    $("#downloadImage").attr("src", "/Content/" + result.SaveName + ".jpg");
+                    $("#embedPath").html(result.VideoEmbedUrl);
+                    $("#hfPicName").val(result.SaveName + ".jpg");
+                    $("#hfVideoEmbed").val(result.VideoEmbedUrl);
+                    $("#VideoUrl").val(result.VideoEmbedUrl);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .videoPre-label {
+        display: none;
+    }
+</style>
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-8">
+            <form role="form" action="/Admin/Content/Add" method="post" enctype="multipart/form-data">
+                <div class="nest" id="basicClose1">
+                    <div class="title-alt">
+                        <h6>Content Detail</h6>
+                        <div class="titleToggle">
+                            <a class="nav-toggle-alt" href="#basic">
+                                <span class="entypo-up-open"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="body-nest" id="basic">
+                        <div class="form-group">
+                            <label for="CategoryId">Selected Category</label>
+                            @Html.HiddenFor(model => model.CategoryId, new { @Value = "0" })
+                            <i style="display:block" id="CategoryName">Not selected category</i>
+                        </div>
+                        <div class="form-group">
+                            <label for="ContentType">Content Type</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.ContentType, ViewBag.ContentTypeList as SelectList, new { @class = "form-control validate[required]" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="GameType">Game Type</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.GameType, ViewBag.GameTypeList as SelectList, new { @class = "form-control validate[required]" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="FilterType">Filter Type</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.DropDownListFor(model => model.FilterType, ViewBag.FilterTypeList as SelectList, new { @class = "form-control validate[required]" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Subject</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control validate[required,minSize[3]", maxlength = "200" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Detail">Content</label>
+                            @Html.TextAreaFor(model => model.Detail, new { @class = "richEditor" })
+                        </div>
+                        <div id="embeddedCodeBox" style="display: none;">
+                            <div class="form-group">
+                                <label for="VideoUrl">Video Url (izlesene, youtube, twitch, vimeo etc.) </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                    @Html.TextBoxFor(model => model.VideoUrl, new { @class = "form-control", id = "VideoUrl" })
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <a href="javascript:;" class="btn btn-info" style="margin-top:10px;" id="GetVideoDetail">Get Video Info</a>
+
+                                <div class="clearfix"></div>
+                                <input name="hfPicName" id="hfPicName" type="hidden" />
+                                <input name="hfVideoEmbed" id="hfVideoEmbed" type="hidden" />
+                                <label class="videoPre-label" style="margin-top:10px;">Video Thumbnail:</label>
+                                <div class="clearfix"></div>
+                                <img id="downloadImage" style="max-width:150px; max-height:100px; margin-top:5px;" />
+                                <div class="clearfix"></div>
+                                <label class="videoPre-label" style="margin-top:15px;">Embed Code: <b id="embedPath"></b></label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Picture">Picture</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBox("Picture", "", new { type = "file", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nest" id="basicClose2">
+                    <div class="title-alt">
+                        <h6>Seo</h6>
+                        <div class="titleToggle">
+                            <a class="nav-toggle-alt" href="#seo">
+                                <span class="entypo-down-open"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="body-nest" id="seo">
+                        <div class="form-group">
+                            <label for="Title">Title</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Keyword">Keyword</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Keyword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Tags">Tags</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Tags, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Url">Url</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@TempData["LanguageTag"]</span>
+                                @Html.TextBoxFor(model => model.Url, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nest">
+                    <div class="title-alt">
+                        <h6>Save</h6>
+                    </div>
+                    <div class="body-nest">
+                        <div class="form-group">
+                            <label for="IsShowcase">Is Showcase?</label>
+                            <br />
+                            @Html.CheckBoxFor(model => model.IsShowcase, new { id = "IsShowcase" })
+                        </div>
+                        <div class="form-group">
+                            <label for="PublishDate">Publish Date</label>
+                            <br />
+                            @Html.TextBoxFor(model => model.PublishDate, DateTime.Now.ToString("dd.MM.yyyy HH:mm"), new { @class = "form-control validate[required] customDatepickerTime" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
+                        </div>
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="nest" id="basicClose">
+                <div class="title-alt">
+                    <h6>Menus</h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#menus">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="menus">
+                    @Html.Raw(Utility.RenderMenu(ViewBag.Menu as IEnumerable<MenuItem>).Insert(3, " id=\"sortable\""))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

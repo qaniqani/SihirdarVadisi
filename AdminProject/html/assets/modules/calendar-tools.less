@@ -1,0 +1,494 @@
+﻿@import "variables.less";
+
+#page-content {
+    .calendar-tools-page {
+        .box-module {
+            height: auto;
+            margin-bottom: 20px;
+
+            .module-title {
+                width: 100%;
+                display: inline-block;
+            }
+
+            .module-content {
+                width: 100%;
+                height: auto;
+                background: none;
+                position: relative;
+
+                .page-detail {
+                    width: 100%;
+                    float: left;
+                    background: #000;
+                    padding: 15px;
+
+                    #esports-timetable {
+                        .timetable-header {
+                            .ff_bold(14px);
+                        }
+
+                        .timetable-month {
+
+                            .calendar-day {
+                                &:hover {
+                                    background: #111;
+                                }
+                            }
+
+                            .timetable-item {
+                                .ff_regular(13px);
+
+                                .timetable-time {
+                                    .ff_bold(13px);
+                                }
+                            }
+                        }
+                    }
+
+                    .timetable-description {
+                        width: 100%;
+                        float: left;
+                        margin-top: 20px;
+
+                        p {
+                            float: left;
+                            color: #CCC;
+                            margin-right: 14px;
+                            .ff_regular(12px);
+
+                            span {
+                                width: 10px;
+                                height: 10px;
+                                float: left;
+                                margin: 3px 3px 0 0;
+                                border-radius: 15px;
+                            }
+
+                            .lol-bg {
+                                background: @lol-color;
+                            }
+
+                            .csgo-bg {
+                                background: @csgo-color;
+                            }
+
+                            .dota2-bg {
+                                background: @dota2-color;
+                            }
+
+                            .heartstone-bg {
+                                background: @heartstone-color;
+                            }
+
+                            .overwatch-bg {
+                                background: @overwatch-color;
+                            }
+                        }
+                    }
+
+                    .champions-search {
+                        width: 100%;
+                        margin: -25px auto 0 auto !important;
+                        padding: 0 10px;
+                        border: 1px solid #222;
+                        background-size: 0 2px,100% 0;
+                    }
+
+                    #champs {
+                        width: 100%;
+                        float: left;
+
+                        li {
+                            list-style: none;
+                            padding: 10px;
+                            margin-bottom: 10px;
+
+                            a {
+                                width: 100%;
+                                height: 100%;
+                                display: block;
+                                opacity: .7;
+                            }
+
+                            p {
+                                margin: 3px 0 0 0;
+                                padding: 0;
+                                color: #FFF;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                font-weight: normal;
+                                .ff_regular(13px);
+                            }
+
+                            img {
+                                border: 1px solid #222;
+                            }
+
+                            &:nth-child(1n) {
+                            }
+                        }
+
+                        li a:hover, li a:focus {
+                            text-decoration: none;
+                            opacity: 1;
+                        }
+                    }
+
+                    .contact-us {
+                        float: left;
+                        padding-bottom: 10px;
+
+                        h3 {
+                            .ff_bold(25px);
+                            color: @white;
+                        }
+
+                        p {
+                            .ff_regular(14px);
+                            color: #ccc;
+                            text-align: justify;
+                            margin: 20px 0 25px 0;
+                        }
+
+                        .form-group {
+                            margin: 15px 0 5px 0;
+                        }
+
+
+                        input[type="text"], input[type="password"], select {
+                            width: 100%;
+                            height: 40px;
+                            margin: 0 auto;
+                            padding: 0 10px;
+                            border: 1px solid #D2D2D2;
+                            background-size: 0 2px,100% 0;
+                            .ff_regular(14px);
+                            color: #CCC;
+
+                            &::-webkit-input-placeholder {
+                                .ff_regular(14px);
+                            }
+
+                            &::-moz-placeholder {
+                                font-size: 14px;
+                            }
+                            /* Firefox 19+ */
+                            &:-moz-placeholder {
+                                font-size: 14px;
+                            }
+                            /* Firefox 18- */
+                            &:-ms-input-placeholder {
+                                font-size: 14px;
+                            }
+                            /* IE */
+                        }
+
+                        textarea {
+                            width: 100%;
+                            height: 80px;
+                            padding: 10px 10px;
+                            border: 1px solid #D2D2D2;
+                            background-size: 0 2px,100% 0;
+                            .ff_regular(14px);
+                            color: #CCC;
+
+
+                            &::-webkit-input-placeholder {
+                                .ff_regular(14px);
+                            }
+
+                            &::-moz-placeholder {
+                                font-size: 14px;
+                            }
+                            /* Firefox 19+ */
+                            &:-moz-placeholder {
+                                font-size: 14px;
+                            }
+                            /* Firefox 18- */
+                            &:-ms-input-placeholder {
+                                font-size: 14px;
+                            }
+                            /* IE */
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 991px) and (max-width: 1199px) {
+        }
+
+        @media screen and (min-width: 765px) and (max-width: 991px) {
+        }
+
+        @media screen and (min-width: 1px) and (max-width: 765px) {
+        }
+    }
+}
+
+#champions-dialog {
+    float: left !important;
+    position: static !important;
+    width: 100% !important;
+
+    .modal-dialog {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    .modal-content {
+        background: none;
+    }
+
+    .modal-body {
+        padding: 0 !important;
+        background: none !important;
+        color: @white;
+    }
+
+    .back-to-list-btn {
+        background: @lol-color;
+        color: @white;
+        margin: 0 0 15px 0;
+        border-radius: 0;
+    }
+
+    .champ-picture {
+        height: 350px;
+        overflow: hidden;
+        background-color: #151515 !important;
+        border: 1px solid @background-color;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        margin-right: 0;
+
+        img {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    h5 {
+        width: 100%;
+        float: left;
+        .ff_bold(25px);
+        color: @lol-color;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+
+
+    h6 {
+        width: 100%;
+        float: left;
+        .ff_bold(22px);
+        color: @lol-color;
+    }
+
+    .description {
+        margin: 10px 0;
+        .ff_regular(13px);
+    }
+
+    ul.specs {
+        margin: 0 0 0 0;
+        padding: 0;
+
+        li {
+            min-height: 40px;
+            margin-bottom: 5px;
+            list-style: none;
+            .ff_regular(13px);
+
+            .stat-label {
+                height: 20px;
+                float: left;
+                padding-left: 25px;
+                .ff_bold(14px);
+            }
+
+            .stat-value {
+                height: 20px;
+                line-height: 20px;
+                padding-left: 5px;
+                font-size: 13px;
+
+                em {
+                    width: 100%;
+                    float: left;
+                    padding-left: 25px;
+                    font-style: normal;
+                    font-size: 12px;
+                }
+            }
+
+            .stat-ad {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 0;
+            }
+
+            .stat-armor {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -25px;
+            }
+
+            .stat-as {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -50px;
+            }
+
+            .stat-ms {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -75px;
+            }
+
+            .stat-mr {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -125px;
+            }
+
+            .stat-hp {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -150px;
+            }
+
+            .stat-hp-regen {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -175px;
+            }
+
+            .stat-mana {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -200px;
+            }
+
+            .stat-m-regen {
+                background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -225px;
+            }
+        }
+    }
+
+    ul.skins {
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+            margin-bottom: 25px;
+
+            a {
+                width: 100%;
+                height: 100%;
+                display: grid;
+                .ff_regular(13px);
+                color: @white;
+                cursor: pointer;
+
+                img {
+                    border: 1px solid @background-color;
+                    margin-bottom: 5px;
+                }
+
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    ul.spells {
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+            margin-bottom: 20px;
+            display: grid;
+
+            h3 {
+                margin: 0;
+                .ff_bold(16px);
+            }
+
+            img {
+                width: 50px;
+                float: left;
+                margin: 10px 10px 10px 0;
+                border: 1px solid @background-color;
+            }
+
+            p {
+                .ff_regular(13px);
+                margin: 10px 0;
+
+                em {
+                    width: 100%;
+                    display: block;
+                    font-style: normal;
+                    color: @lol-color;
+                    .ff_bold(13px)
+                }
+            }
+        }
+    }
+}
+
+
+//> Timetable Color&Font Settings
+
+// General Color Settings
+.timetable-color.lol-color {
+    background: @lol-color;
+}
+
+.timetable-color.heartstone-color {
+    background: @heartstone-color !important;
+}
+
+.timetable-color.dota2-color {
+    background: @dota2-color;
+}
+
+.timetable-color.overwatch-color {
+    background: @overwatch-color;
+}
+
+.timetable-color.csgo-color {
+    background: @csgo-color;
+}
+
+// Popup Settings
+.timetable-popup {
+    .popup-header {
+        .ff_bold(18px) !important;
+        text-shadow: 1px 1px 1px #000;
+        color: @white !important;
+
+        &.lol-color {
+            background: @lol-color;
+        }
+
+        &.dota2-color {
+            background: @dota2-color;
+        }
+
+        &.overwatch-color {
+            background: @overwatch-color;
+        }
+
+        &.heartstone-color {
+            background: @heartstone-color;
+        }
+
+        &.csgo-color {
+            background: @csgo-color;
+        }
+    }
+
+    .popup-body {
+        .timetable-time {
+            .ff_bold(18px);
+        }
+
+        .timetable-desc {
+            .ff_regular(13px);
+        }
+    }
+}

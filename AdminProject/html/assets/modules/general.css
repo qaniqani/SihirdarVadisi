@@ -1,0 +1,729 @@
+﻿/* > Fonts */
+@font-face {
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn';
+  src: url('../fonts/HelveticaNeueLTPro-HvCn.eot');
+  src: local('☺'), url('../fonts/HelveticaNeueLTPro-HvCn.woff') format('woff'), url('../fonts/HelveticaNeueLTPro-HvCn.ttf') format('truetype'), url('../fonts/HelveticaNeueLTPro-HvCn.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'Conv_HelveticaNeueLTPro-HvCn' !important;
+    src: url('../fonts/HelveticaNeueLTPro-HvCn.svg') format('svg') !important;
+  }
+}
+@font-face {
+  font-family: 'liberation_sansregular';
+  src: url('../fonts/liberationsans-regular-webfont.eot');
+  src: url('../fonts/liberationsans-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/liberationsans-regular-webfont.woff2') format('woff2'), url('../fonts/liberationsans-regular-webfont.woff') format('woff'), url('../fonts/liberationsans-regular-webfont.ttf') format('truetype'), url('../fonts/liberationsans-regular-webfont.svg#liberation_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* > Font Options */
+/* > Colors */
+/* > Menu Background Colors */
+html {
+  -webkit-text-size-adjust: none;
+}
+body {
+  background: #242424;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  overflow: hidden;
+  padding-right: 0 !important;
+  overflow-x: hidden !important;
+}
+.visible {
+  overflow: visible !important;
+}
+.customize-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.customize-scrollbar::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-left: 1px solid #ccc;
+}
+.customize-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #777;
+}
+.customize-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #962b84;
+  cursor: pointer;
+}
+.formError {
+  font-size: 11px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0b0911;
+  /* change if the mask should have another color then white */
+  z-index: 9999;
+  /* makes sure it stays on top */
+  display: block;
+}
+#preloader #prelogo {
+  width: 126px;
+  height: 84px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -135px 0 0 -63px;
+  background: url(../img/logo.png) no-repeat center top;
+}
+#preloader #status {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -10px 0 0 -33px;
+}
+#preloader #status .spinner {
+  width: 70px;
+  text-align: center;
+}
+#preloader #status .spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #FFF;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+#preloader #status .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+#preloader #status .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.container {
+  width: 100% !important;
+  max-width: 1300px;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-padding-left {
+  padding-left: 0;
+}
+.no-padding-right {
+  padding-right: 0;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+.margin-top-05 {
+  margin-top: 0.5em;
+}
+.margin-top-10 {
+  margin-top: 1.0em;
+}
+.margin-top-15 {
+  margin-top: 1.5em;
+}
+.margin-top-20 {
+  margin-top: 2.0em;
+}
+.margin-top-25 {
+  margin-top: 2.5em;
+}
+.margin-top-30 {
+  margin-top: 3.0em;
+}
+.margin-bottom-05 {
+  margin-bottom: 0.5em;
+}
+.margin-bottom-10 {
+  margin-bottom: 1.0em;
+}
+.margin-bottom-15 {
+  margin-bottom: 1.5em;
+}
+.margin-bottom-20 {
+  margin-bottom: 2.0em;
+}
+.margin-bottom-25 {
+  margin-bottom: 2.5em;
+}
+.margin-bottom-30 {
+  margin-bottom: 3.0em;
+}
+.btn-raised {
+  box-shadow: none !important;
+  border-radius: 0;
+}
+select.form-control {
+  border: 1px solid #dedede !important;
+  padding: 0 10px !important;
+  background-size: 0 2px,100% 0px !important;
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #CCC;
+  position: relative;
+}
+select.form-control option {
+  color: #000;
+}
+.alert {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal-backdrop {
+  background: #000000;
+}
+.modal {
+  padding: 0 !important;
+}
+.modal .modal-dialog {
+  margin: 20px auto !important;
+}
+.modal .modal-header {
+  background: #962b84;
+  padding: 15px;
+  color: #FFFFFF;
+}
+.modal .modal-header .modal-title {
+  font-size: 19px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.modal .modal-header .close {
+  color: #FFFFFF;
+  opacity: 1;
+}
+.modal .modal-body {
+  width: 100%;
+  display: inline-block;
+}
+.modal .modal-footer {
+  width: 100%;
+  display: inline-block;
+}
+.modal .modal-footer p {
+  padding: 15px 15px 0 15px;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  border-top: 1px solid #efefef;
+  text-align: center;
+  display: block;
+}
+.modal .modal-footer p a {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  text-decoration: underline;
+}
+.modal#lol-time-dialog .btn-group,
+.modal#lol-champion-dialog .btn-group {
+  width: 100%;
+}
+.modal#lol-time-dialog .btn-group .btn,
+.modal#lol-champion-dialog .btn-group .btn {
+  width: 11.111111111%;
+  text-align: center;
+  padding: 5px 0;
+  border: 1px solid #d2d2d2;
+  border-right: none;
+  background: #FFFFFF;
+  color: #AAA;
+}
+.modal#lol-time-dialog .btn-group .btn:last-child,
+.modal#lol-champion-dialog .btn-group .btn:last-child {
+  border-right: 1px solid #d2d2d2;
+}
+.modal#lol-time-dialog .btn-group .btn.active,
+.modal#lol-champion-dialog .btn-group .btn.active {
+  background: #962b84;
+  color: #FFFFFF;
+}
+@media screen and (min-width: 1px) and (max-width: 765px) {
+  .modal#lol-time-dialog .no-padding-left,
+  .modal#lol-champion-dialog .no-padding-left {
+    padding-left: 0 !important;
+    padding: 0 1% !important;
+  }
+  .modal#lol-time-dialog .no-padding-right,
+  .modal#lol-champion-dialog .no-padding-right {
+    padding-right: 0 !important;
+    padding: 5px 1% 0 1% !important;
+  }
+  .modal#lol-time-dialog .btn-group .btn,
+  .modal#lol-champion-dialog .btn-group .btn {
+    width: 48% !important;
+    margin: 1%;
+    border: 1px solid #D2D2D2 !important;
+  }
+  .modal#lol-time-dialog .btn-group .btn.active,
+  .modal#lol-champion-dialog .btn-group .btn.active {
+    background: #962b84;
+    color: #FFFFFF;
+  }
+}
+.modal#register-dialog .modal-dialog,
+.modal#update-user-dialog .modal-dialog {
+  max-width: 800px !important;
+}
+.modal#register-dialog .modal-dialog .form-group,
+.modal#update-user-dialog .modal-dialog .form-group {
+  max-width: unset !important;
+}
+.modal#register-dialog .modal-dialog .file-input,
+.modal#update-user-dialog .modal-dialog .file-input {
+  background: #efefef !important;
+  border: 1px solid #DEDEDE;
+  padding: 15px;
+}
+.modal#register-dialog .modal-dialog .file-input img,
+.modal#update-user-dialog .modal-dialog .file-input img {
+  width: 100% !important;
+}
+.modal#register-dialog .modal-dialog .file-input .file-default-preview img,
+.modal#update-user-dialog .modal-dialog .file-input .file-default-preview img {
+  max-width: 175px;
+  border: 1px solid #CCC;
+}
+.modal#register-dialog .modal-dialog .file-input button,
+.modal#update-user-dialog .modal-dialog .file-input button,
+.modal#register-dialog .modal-dialog .file-input .btn-file,
+.modal#update-user-dialog .modal-dialog .file-input .btn-file {
+  margin: 10px 0 0 0;
+  cursor: pointer;
+  background: #FFF !important;
+}
+.modal#login-dialog,
+.modal#register-dialog,
+.modal#forgot-password-dialog,
+.modal#update-user-dialog,
+.modal#update-password-dialog {
+  overflow: auto !important;
+}
+.modal#login-dialog .modal-dialog,
+.modal#register-dialog .modal-dialog,
+.modal#forgot-password-dialog .modal-dialog,
+.modal#update-user-dialog .modal-dialog,
+.modal#update-password-dialog .modal-dialog {
+  max-width: 400px;
+}
+.modal#login-dialog .modal-dialog .facebook-login,
+.modal#register-dialog .modal-dialog .facebook-login,
+.modal#forgot-password-dialog .modal-dialog .facebook-login,
+.modal#update-user-dialog .modal-dialog .facebook-login,
+.modal#update-password-dialog .modal-dialog .facebook-login {
+  width: 100%;
+  height: 36px;
+  margin: 0 auto;
+  padding: 0;
+  text-transform: none;
+  display: block;
+  font-size: 13px;
+  line-height: 36px;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background-color: #4974b0;
+  color: rgba(255, 255, 255, 0.84);
+}
+.modal#login-dialog .modal-dialog .facebook-login i,
+.modal#register-dialog .modal-dialog .facebook-login i,
+.modal#forgot-password-dialog .modal-dialog .facebook-login i,
+.modal#update-user-dialog .modal-dialog .facebook-login i,
+.modal#update-password-dialog .modal-dialog .facebook-login i {
+  width: 11%;
+  height: 36px;
+  float: left;
+  margin: 0 0 0 10px;
+  display: block;
+  background-position: center 1px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 37px;
+  color: rgba(255, 255, 255, 0.84);
+}
+.modal#login-dialog .modal-dialog .facebook-login span,
+.modal#register-dialog .modal-dialog .facebook-login span,
+.modal#forgot-password-dialog .modal-dialog .facebook-login span,
+.modal#update-user-dialog .modal-dialog .facebook-login span,
+.modal#update-password-dialog .modal-dialog .facebook-login span {
+  width: 80%;
+  margin: 0 0 0 8px;
+  padding: 0;
+  border-left: 1px solid #466ba0;
+  text-align: center;
+  display: inline-block;
+}
+.modal#login-dialog .modal-dialog .facebook-login:hover,
+.modal#register-dialog .modal-dialog .facebook-login:hover,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:hover,
+.modal#update-user-dialog .modal-dialog .facebook-login:hover,
+.modal#update-password-dialog .modal-dialog .facebook-login:hover,
+.modal#login-dialog .modal-dialog .facebook-login:focus,
+.modal#register-dialog .modal-dialog .facebook-login:focus,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:focus,
+.modal#update-user-dialog .modal-dialog .facebook-login:focus,
+.modal#update-password-dialog .modal-dialog .facebook-login:focus {
+  background: #466ba0;
+  text-decoration: none;
+}
+.modal#login-dialog .modal-dialog .facebook-login:hover span,
+.modal#register-dialog .modal-dialog .facebook-login:hover span,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:hover span,
+.modal#update-user-dialog .modal-dialog .facebook-login:hover span,
+.modal#update-password-dialog .modal-dialog .facebook-login:hover span,
+.modal#login-dialog .modal-dialog .facebook-login:focus span,
+.modal#register-dialog .modal-dialog .facebook-login:focus span,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:focus span,
+.modal#update-user-dialog .modal-dialog .facebook-login:focus span,
+.modal#update-password-dialog .modal-dialog .facebook-login:focus span {
+  border-left: 1px solid #375785;
+}
+.modal#login-dialog .modal-dialog .seperator,
+.modal#register-dialog .modal-dialog .seperator,
+.modal#forgot-password-dialog .modal-dialog .seperator,
+.modal#update-user-dialog .modal-dialog .seperator,
+.modal#update-password-dialog .modal-dialog .seperator {
+  width: 100%;
+  padding: 0 0 5px 0;
+  font-size: 13px;
+  line-height: 30px;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #A9A9A9;
+  text-align: center;
+  border-bottom: 1px solid #EFEFEF;
+}
+.modal#login-dialog .modal-dialog .form-group,
+.modal#register-dialog .modal-dialog .form-group,
+.modal#forgot-password-dialog .modal-dialog .form-group,
+.modal#update-user-dialog .modal-dialog .form-group,
+.modal#update-password-dialog .modal-dialog .form-group {
+  max-width: 290px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.modal#login-dialog .modal-dialog .checkbox,
+.modal#register-dialog .modal-dialog .checkbox,
+.modal#forgot-password-dialog .modal-dialog .checkbox,
+.modal#update-user-dialog .modal-dialog .checkbox,
+.modal#update-password-dialog .modal-dialog .checkbox {
+  margin-top: 0;
+}
+.modal#login-dialog .modal-dialog .text-link,
+.modal#register-dialog .modal-dialog .text-link,
+.modal#forgot-password-dialog .modal-dialog .text-link,
+.modal#update-user-dialog .modal-dialog .text-link,
+.modal#update-password-dialog .modal-dialog .text-link {
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal#login-dialog .modal-dialog input[type="text"],
+.modal#register-dialog .modal-dialog input[type="text"],
+.modal#forgot-password-dialog .modal-dialog input[type="text"],
+.modal#update-user-dialog .modal-dialog input[type="text"],
+.modal#update-password-dialog .modal-dialog input[type="text"],
+.modal#login-dialog .modal-dialog input[type="password"],
+.modal#register-dialog .modal-dialog input[type="password"],
+.modal#forgot-password-dialog .modal-dialog input[type="password"],
+.modal#update-user-dialog .modal-dialog input[type="password"],
+.modal#update-password-dialog .modal-dialog input[type="password"],
+.modal#login-dialog .modal-dialog select,
+.modal#register-dialog .modal-dialog select,
+.modal#forgot-password-dialog .modal-dialog select,
+.modal#update-user-dialog .modal-dialog select,
+.modal#update-password-dialog .modal-dialog select {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid #D2D2D2;
+  background-size: 0 2px,100% 0;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #222;
+  /* Firefox 19+ */
+  /* Firefox 18- */
+  /* IE */
+}
+.modal#login-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#login-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#register-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#update-user-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#update-password-dialog .modal-dialog select::-webkit-input-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#login-dialog .modal-dialog select::-moz-placeholder,
+.modal#register-dialog .modal-dialog select::-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog select::-moz-placeholder,
+.modal#update-user-dialog .modal-dialog select::-moz-placeholder,
+.modal#update-password-dialog .modal-dialog select::-moz-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#login-dialog .modal-dialog select:-moz-placeholder,
+.modal#register-dialog .modal-dialog select:-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog select:-moz-placeholder,
+.modal#update-user-dialog .modal-dialog select:-moz-placeholder,
+.modal#update-password-dialog .modal-dialog select:-moz-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#login-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#register-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#update-user-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#update-password-dialog .modal-dialog select:-ms-input-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog label,
+.modal#register-dialog .modal-dialog label,
+.modal#forgot-password-dialog .modal-dialog label,
+.modal#update-user-dialog .modal-dialog label,
+.modal#update-password-dialog .modal-dialog label {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal#conditions-dialog .modal-body {
+  max-height: 450px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal#conditions-dialog .modal-body h1,
+.modal#conditions-dialog .modal-body h2,
+.modal#conditions-dialog .modal-body h3,
+.modal#conditions-dialog .modal-body h4,
+.modal#conditions-dialog .modal-body h5,
+.modal#conditions-dialog .modal-body h6 {
+  font-size: 17px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.modal#conditions-dialog .modal-footer {
+  padding: 14px 24px !important;
+}
+.dota-color {
+  color: #c8362e !important;
+}
+.overwatch-color {
+  color: #e5d202 !important;
+}
+.lol-color {
+  color: #962b84 !important;
+}
+.csgo-color {
+  color: #cc8700 !important;
+}
+.heartstone-color {
+  color: #0390cb !important;
+}
+.hearhstone-color {
+  color: #0390cb !important;
+}
+.makaleler-color {
+  color: #879e00 !important;
+}
+.media-color {
+  color: #41909b !important;
+}
+.window-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9000;
+  display: none;
+}
+.bordered-pink {
+  border-left: 6px solid #962b84;
+}
+.bordered-white {
+  border-left: 6px solid #FFFFFF;
+}
+.bordered-yellow {
+  border-left: 6px solid #cc8700;
+}
+.bordered-orange {
+  border-left: 6px solid #c8362e;
+}
+.bordered-blue {
+  border-left: 6px solid #0390cb;
+}
+.bordered-media-blue {
+  border-left: 6px solid #41909b;
+}
+.bordered-light-yellow {
+  border-left: 6px solid #e5d202;
+}
+.bordered-green {
+  border-left: 6px solid #879e00;
+}
+.flexible-border {
+  border-left: 6px solid #962b84;
+}
+.flexible-color {
+  color: #962b84;
+}
+.flexible-background {
+  background-color: #962b84;
+}
+.play-inside-box {
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: relative;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+}
+.play-inside-box .play-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /*&:hover {
+            i {
+                color: @lol-color;
+            }
+        }*/
+}
+.play-inside-box .play-overlay i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -21px;
+  color: #FFFFFF;
+  font-size: 50px;
+  transition: 0.3s;
+}
+#page-container {
+  width: 100%;
+  z-index: 20;
+  position: relative;
+  background: #242424;
+}
+#page-header {
+  width: 100%;
+  float: left;
+}
+#page-content {
+  width: 100%;
+  float: left;
+  background: #242424;
+}
+#page-footer {
+  width: 100%;
+  float: left;
+}

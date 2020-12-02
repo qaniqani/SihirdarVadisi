@@ -1,0 +1,20 @@
+﻿<div class="sidebar box-module" ng-controller="SidebarCtrl">
+    <!--<div class="col-md-12 no-padding-left banner-responsive margin-top-20 margin-bottom-20">
+        <center><iframe src="http://www.sihirdarvadisi.com/html/assets/banner-frames/300x250/300x250/index.html" width="300" height="250" frameborder="0" class="center-block"></iframe></center>
+    </div>-->
+
+    <div class="col-md-12 no-padding">
+        <div class="module-title bordered-pink full-width pull-left margin-bottom-05">SON EKLENEN HABERLER</div>
+        <div class="module-content no-padding">
+            <ul class="popular-news-list">
+                <li ng-repeat="news in newslist">
+                    <a ng-href="http://www.sihirdarvadisi.com/haber/{{news.categoryUrl}}/{{news.contentUrl}}" title="Clutch Gamers' tan Beklenmedik Başarı !">
+                        <img ng-src="http://www.sihirdarvadisi.com/Content/{{news.picture}}_120x80.jpg" alt="Clutch Gamers' tan Beklenmedik Başarı !" class="img-responsive">
+                        <em class="lol-color">{{news.gameType}}</em>
+                        <p class="multi-ellipsis">{{news.name}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

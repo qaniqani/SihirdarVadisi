@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Sihirdar.DataAccessLayer.Infrastructure.Models.Advert>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        Adverts
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <table class="table-striped footable-res footable metro-blue" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>Ad Type</th>
+                                <th>Name</th>
+                                <th>Guid</th>
+                                <th>Location</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Click Hit</th>
+                                <th>View Hit</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var advert in Model)
+                                {
+                                    <tr>
+                                        <td>@advert.AdType</td>
+                                        <td>@advert.Name</td>
+                                        <td>@advert.AdGuid</td>
+                                        <td>@advert.AdLocation</td>
+                                        <td>@advert.StartDate.ToString("dd.MM.yyyy")</td>
+                                        <td>@advert.EndDate.ToString("dd.MM.yyyy")</td>
+                                        <td>@advert.ClickHit</td>
+                                        <td>@advert.ViewHit</td>
+                                        <td style="width:100px;">
+                                            <a href="/Admin/Advert/Edit/@advert.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                            <a href="/Admin/Advert/Delete/@advert.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9">
+                                    <div class="pagination pagination-centered"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

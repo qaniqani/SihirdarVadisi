@@ -1,0 +1,27 @@
+﻿@import "variables.less";
+
+.sv-icon {
+    i {
+        width: 36px;
+        height: 36px;
+        float: left;
+    }
+
+    i.sv-homepage {
+        background: url(../img/icon-gfx.png) no-repeat 0 0;
+    }
+
+    i.sv-search {
+        background: url(../img/icon-gfx.png) no-repeat -36px 0;
+    }
+
+    &:hover {
+        i.sv-homepage {
+            background: url(../img/icon-gfx.png) no-repeat 0 -36px;
+        }
+
+        i.sv-search {
+            background: url(../img/icon-gfx.png) no-repeat -36px -36px;
+        }
+    }
+}

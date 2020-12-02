@@ -1,0 +1,58 @@
+﻿@using Sihirdar.DataAccessLayer.Infrastructure.Models
+@model Content
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        Content View
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <div class="col-md-12">
+                        <h3>@Model.Name</h3>
+                        <div class="clearfix"></div>
+                        @Html.Raw(Model.Detail)
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr />
+                    <div class="col-md-12">
+                        <h5>Pictures</h5>
+                        @foreach (var item in (List<Picture>)ViewBag.Pictures)
+                        {
+                            <div class="col-md-2">
+                                <h6 class="text-center">w:@(item.Width) h:@(item.Height)</h6>
+                                <img src="/Content/@item.PicturePath" title="w-h:@(item.Width)x@(item.Height)" style="width: 100%; height: 100%;"/>
+                            </div>
+                        }
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr />
+                    <div class="col-md-12">
+                        <form action="/Admin/Content/View/@Model.Id" method="post">
+                            <div class="form-group">
+                                <label for="Status">Status</label>
+                                @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control", style="width:200px; display:inline-block;" })
+                                &nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-info" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

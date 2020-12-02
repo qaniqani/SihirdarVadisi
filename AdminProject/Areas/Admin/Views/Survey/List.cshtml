@@ -1,0 +1,83 @@
+﻿@using Sihirdar.DataAccessLayer
+@model IEnumerable<Sihirdar.DataAccessLayer.Infrastructure.Models.Survey>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nest" id="FootableClose">
+                <div class="title-alt">
+                    <h6>
+                        Survey List
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Footable">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="Footable">
+                    <p class="lead well">Please note that other languages when the data update.</p>
+                    <table class="table-striped footable-res footable metro-blue" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Question
+                                </th>
+                                <th>
+                                    Question Type
+                                </th>
+                                <th>
+                                    Start Date
+                                </th>
+                                <th>
+                                    End Date
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Options
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var survey in Model)
+                                {
+                                    <tr>
+                                        <td>@survey.Question </td>
+                                        <td>@survey.QuestionType</td>
+                                        <td>@survey.StartDate.ToString("dd.MM.yyyy")</td>
+                                        <td>@survey.EndDate.ToString("dd.MM.yyyy")</td>
+                                        <td>
+                                            <span class="@(survey.Status == StatusTypes.Active ? "status-metro status-active" : "status-metro status-suspended")">
+                                                @(survey.Status == StatusTypes.Active ? "Active" : "Deactive")
+                                            </span>
+                                        </td>
+                                        <td style="width:140px;">
+                                            <a href="/Admin/Survey/Answer/@survey.Id" class="btn btn-info" title="Answers" data-fancybox-type="iframe"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+                                            <a href="/Admin/Survey/Edit/@survey.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                            <a href="/Admin/Survey/Delete/@survey.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="pagination pagination-centered"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

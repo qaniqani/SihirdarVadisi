@@ -1,0 +1,47 @@
+﻿@model AdminProject.Services.Models.SurveyAndQuestionResultDto
+
+@if (Model != null)
+{
+    <form id="survey-form">
+        <div class="col-md-12 option-list no-padding">
+            <p>@Model.Survey.Survey</p>
+            <input type="hidden" value="@Model.Survey.Id" id="survey-id" />
+
+
+            @foreach (var answer in Model.Answers)
+            {
+                <div class="radio radio-primary">
+                    <label>
+                        <input type="radio" class="validate[required]" name="optionsRadios" id="radio_@answer.Id" value="@answer.Id">
+                        @answer.Answer
+                    </label>
+                    <input type="hidden" id="answer_@answer.Id" value="@answer.Id" />
+                    <input type="hidden" id="vote_@answer.Id" value="@answer.Vote" />
+                </div>
+            }
+        </div>
+
+        <div class="col-md-12 no-padding">
+            <input type="submit" class="btn btn-default btn-raised" data-survey="@Model.Survey.Id" value="OYLA">
+            <a href="javascript:;" id="get-survey-results" class="btn btn-default btn-raised" data-survey="@Model.Survey.Id">SONUÇLAR</a>
+        </div>
+    </form>
+
+    <div id="survey-results" style="display:none;">
+        <div class="col-md-12 option-list no-padding customize-scrollbar">
+            <p>@Model.Survey.Survey</p>
+
+            <ul></ul>
+        </div>
+
+        <div class="col-md-12 no-padding">
+            <a href="javascript:;" class="btn btn-default btn-raised" style="width:100%;" onclick="$('#survey-results').hide(); $('#survey-results ul').html(''); $('#survey-form').show();">GERİ DÖN</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12 no-padding">
+        <p>Geçerli bir anket bulunmamaktadır.</p>
+    </div>
+}

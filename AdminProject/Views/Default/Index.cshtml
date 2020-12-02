@@ -1,0 +1,375 @@
+﻿@using AdminProject.Helpers
+@using AdminProject.Models
+@using Sihirdar.DataAccessLayer
+@model DefaultModelViewModel
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Gamer People";
+	ViewBag.Url = Request.RawUrl;
+	ViewBag.Type = "article";
+	ViewBag.Description = "League of Legends Haberleri, CS:GO Haberleri, DOTA2 Haberleri, Overwatch Haberleri, Heartstone Haberleri, Haftalık Turnuvalar, Şampiyon Bilgileri ve çok daha fazlası";
+	ViewBag.Image = "default-share-img.jpg";
+}
+
+<div class="container">
+	<div class="vadi--slider">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						@foreach (var item in Model.Sliders)
+						{
+						<div class="swiper-slide">
+							<div class="vadi--slider--slide">
+								<a class="vadi--slider--slide--link" href="@item.Detail2">
+									<img class="vadi--slider--slide--image" src="https://gamerpeople.com/Content/@item.Picture1">
+									<span class="vadi--slider--slide--meta @Tool.GetGameTypeColorCode[item.GameType]">
+										@*<span class="game-title">@Tool.GetGameTypeText[item.GameType]</span>*@
+										<span class="vadi--slider--slide--title">@item.Name</span>
+										<span class="vadi--slider--slide--text">@item.Detail1</span>
+									</span>
+								</a>
+							</div>
+						</div>
+						}
+					</div>
+				</div>
+			</div>
+			<div class="hidden-xs hidden-sm col-md-4 col-lg-3">
+				<div class="vadi--slider--pages">
+					@foreach (var item in Model.Sliders.Select((Slider, i) => new { i, Slider }))
+					{
+					<div class="vadi--slider--page @Tool.GetGameTypeColorCode[item.Slider.GameType]">
+						<a class="vadi--slider--page--link" href="@item.Slider.Detail2" data-index="@item.i">
+							<span class="row">
+								<span class="col-sm-7">
+									<img class="vadi--slider--page--image" src="https://gamerpeople.com@(string.IsNullOrEmpty(item.Slider.Picture2) ? "/html/assets/img/no-image-mini-post.png" : "/Content/" + item.Slider.Picture2)" alt="@item.Slider.Name" class="img-responsive" />
+								</span>
+								<span class="col-sm-5">
+									<span class="vadi--slider--page--text">
+										<span class="vadi--slider--page--game">@Tool.GetGameTypeText[item.Slider.GameType]</span>
+										<span class="vadi--slider--page--title multi-ellipsis">@item.Slider.Name</span>
+										<span class="vadi--slider--page--index">@(item.i+1)</span>
+									</span>
+								</span>
+							</span>
+						</a>
+					</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@if (ViewBag.Home728Advert != null)
+{
+	var advert = (CategoryAdvertDto)ViewBag.Home728Advert;
+
+	<div class="reklam-728x90 margin-top-15 margin-bottom-15">
+		@if (advert.AdType == AdvertTypes.Image)
+		{
+			<center>
+				<a href="/advert/redirect?guid=@advert.Guid"><img src="/Content/File/@advert.FilePath" alt="" /></a>
+			</center>
+		}
+		else
+		{
+			@Html.Raw(advert.Code)
+		}
+	</div>
+}
+else
+{
+
+}
+
+<div class="interaction-boxes container margin-top-20">
+	<div class="row">
+		<div class="col-md-9 no-padding">
+			@{
+				var twoVideo = Model.TopLastedVideos;
+			}
+
+			@foreach (var itemViewModel in twoVideo)
+			{
+				<div class="box-module col-sm-6 video-box">
+					<div class="module-title bordered-pink">@itemViewModel.Subject</div>
+					<div class="module-content no-padding">
+						<a class="play-inside-box" title="@itemViewModel.Subject" href="/video/@itemViewModel.Url/detay" style="background:url(/Content/@(itemViewModel.Picture)_460x220.jpg);">
+							<div class="play-overlay">
+								<i class="fa fa-play-circle"></i>
+							</div>
+						</a>
+					</div>
+				</div>
+			}
+			@*<div class="box-module col-sm-6 video-box">
+				<div class="module-title bordered-pink">GÜNÜN VİDEOSU</div>
+				<div class="module-content no-padding">
+					@if (Model.DayOfVideo != null)
+					{
+						<a class="play-inside-box" title="Günün Videosu" href="javascript:;" onclick="$(this).loadVideo('@Model.DayOfVideo.VideoUrl');" style="background: url('/Content/@(Model.DayOfVideo.Url)_460x220.jpg');">
+							<div class="play-overlay">
+								<i class="fa fa-play-circle"></i>
+							</div>
+						</a>
+					}
+				</div>
+			</div>*@
+
+			@*<div class="box-module col-sm-6 video-box">
+					<div class="module-title bordered-pink">TWITCH EKLENTİSİ</div>
+					<div class="module-content no-padding">
+						<a class="play-inside-box" href="javascript:;" onclick="$(this).loadVideo('twitch', 'https://player.twitch.tv/?video=v114748296&autoplay=true&muted=true');" style="background:url('/html/assets/img/temp/video-temp-1.jpg');">
+							<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+						</a>
+					</div>
+				</div>*@
+
+			@*<div class="box-module col-sm-6 quotes-box">
+				<div class="module-title bordered-pink">GÜNÜN SÖZÜ</div>
+				<div class="module-content" style="padding:30px 25px 0 30px !important;">
+					<p class="quote text-center" style="padding:50px 0 0 0;">* @Model.PromiseDay.Promise</p>
+					<p class="author">- @Model.PromiseDay.Teller</p>
+				</div>
+			</div>*@
+
+			@*<div class="box-module col-sm-12 esports-calendar homepage-list-calendar">
+				<div class="module-title bordered-pink">E-SPOR TAKVİMİ</div>
+				<div class="module-content customize-scrollbar">
+					<div class="no-game">Oyun bulunamadı.</div>
+					<div id="esports-timetable">
+						<div class="timetable-example">
+							<div class="tiva-timetable" data-view="list" data-date-start="pazartesi"></div>
+						</div>
+					</div>
+				</div>
+			</div>*@
+		</div>
+		@*@if (ViewBag.Home300Advert != null)
+		{
+		var advert = (CategoryAdvertDto)ViewBag.Home300Advert;
+
+		<div class="reklam-300x450 col-md-3 no-padding-left margin-bottom-15">
+			@if (advert.AdType == AdvertTypes.Image)
+			{
+			<center>
+				<a href="/advert/redirect?guid=@advert.Guid"><img src="/Content/File/@advert.FilePath" alt="" /></a>
+			</center>
+			}
+			else
+			{
+			@Html.Raw(advert.Code)
+			}
+		</div>
+		}
+		else
+		{
+		<div class="reklam-300x450 hidden-sm col-md-3 no-padding-left margin-bottom-15">
+			<center style="height:100%;"><a href="https://ruby.technology" style="background-color:#292929; height:100%; display:block;"><img src="~/html/assets/img/reklam/reklamruby.jpg" /></a></center>
+		</div>
+		}*@
+		<div class="col-md-3 calendar-home-padding">
+			<div id="calendar-home"></div>
+		</div>
+	</div>
+</div>
+
+<div class="vadi--home--lol">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h2 class="vadi--home--lol--title bordered-pink">League of Legends Haberleri</h2>
+			</div>
+			@foreach (var secondSliderItem in Model.SecondSlider)
+			{
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<a class="vadi--home--lol--news" href="/haber/@secondSliderItem.Url" title="@secondSliderItem.Subject">
+					<span class="vadi--home--lol--news--title">
+						@secondSliderItem.Subject
+					</span>
+					<!--<em>@secondSliderItem.GameTypeText</em>-->
+					<span class="vadi--home--lol--news--image">
+						<img src="https://gamerpeople.com/Content/@(secondSliderItem.Picture)_260x160.jpg" alt="@secondSliderItem.Subject" />
+					</span>
+				</a>
+			</div>
+			}
+		</div>
+	</div>
+</div>
+
+<div class="interaction-boxes news-boxes container">
+	<div class="row">
+		<div class="col-md-12 no-padding-left">
+			<div class="box-module col-sm-6 col-md-3 news-list no-padding-right">
+				<div class="module-title bordered-orange margin-bottom-10">DOTA2 HABER</div>
+				<div class="module-content">
+					<ul>
+						@{
+							var step = 0;
+							foreach (var gameTypeItem in Model.FourSubContent.Where(a => a.GameType == GameTypes.Dota2).ToList())
+							{
+								if (step == 0)
+								{
+									<li class="featured-post">
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<img src="/Content/@(gameTypeItem.Picture)_315x198.jpg" alt="@gameTypeItem.Name" title="@gameTypeItem.Name" />
+											<b class="dota-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								else
+								{
+									<li>
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<b class="dota-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								step++;
+							}
+							step = 0;
+						}
+					</ul>
+				</div>
+			</div>
+
+			<div class="box-module col-sm-6 col-md-3 news-list no-padding-right">
+				<div class="module-title bordered-yellow margin-bottom-10">CS:GO HABER</div>
+				<div class="module-content">
+					<ul>
+						@{
+							foreach (var gameTypeItem in Model.FourSubContent.Where(a => a.GameType == GameTypes.CsGo).ToList())
+							{
+								if (step == 0)
+								{
+									<li class="featured-post">
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<img src="/Content/@(gameTypeItem.Picture)_315x198.jpg" alt="@gameTypeItem.Name" title="@gameTypeItem.Name" />
+											<b class="csgo-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								else
+								{
+									<li>
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<b class="csgo-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								step++;
+							}
+							step = 0;
+						}
+					</ul>
+				</div>
+			</div>
+
+			<div class="box-module col-sm-6 col-md-3 news-list no-padding-right">
+				<div class="module-title bordered-blue margin-bottom-10">HEARTSTONE HABER</div>
+				<div class="module-content">
+					<ul>
+						@{
+							foreach (var gameTypeItem in Model.FourSubContent.Where(a => a.GameType == GameTypes.Heartstone).ToList())
+							{
+								if (step == 0)
+								{
+									<li class="featured-post">
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<img src="/Content/@(gameTypeItem.Picture)_315x198.jpg" alt="@gameTypeItem.Name" title="@gameTypeItem.Name" />
+											<b class="heartstone-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								else
+								{
+									<li>
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<b class="heartstone-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								step++;
+							}
+							step = 0;
+						}
+					</ul>
+				</div>
+			</div>
+
+			<div class="box-module col-sm-6 col-md-3 news-list no-padding-right">
+				<div class="module-title bordered-light-yellow margin-bottom-10">ARENA OF VALOR HABER</div>
+				<div class="module-content">
+					<ul>
+						@{
+							foreach (var gameTypeItem in Model.FourSubContent.Where(a => a.GameType == GameTypes.StrikeOfKings).ToList())
+							{
+								if (step == 0)
+								{
+									<li class="featured-post">
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<img src="/Content/@(gameTypeItem.Picture)_315x198.jpg" alt="@gameTypeItem.Name" title="@gameTypeItem.Name" />
+											<b class="overwatch-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								else
+								{
+									<li>
+										<a href="/haber/@gameTypeItem.Url" title="@Html.Raw(gameTypeItem.Description)">
+											<b class="overwatch-color">@gameTypeItem.Name</b>
+											<p class="multi-ellipsis">@Html.Raw(gameTypeItem.Description)</p>
+										</a>
+									</li>
+								}
+								step++;
+							}
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- /.news-boxes-->
+
+<div class="interaction-boxes video-boxes container">
+	<div class="box-module col-md-12 no-padding">
+		<div class="module-title bordered-media-blue">SON EKLENEN VİDEOLAR</div>
+
+		<div class="row">
+			@{
+				var sixVideo = Model.LastedVideos;
+			}
+
+			@foreach (var itemViewModel in sixVideo)
+			{
+				<div class="col-sm-6 col-md-2">
+					<div class="module-content">
+						<div class="video-text">
+							<p class="media-color">@itemViewModel.GameType</p>
+						</div>
+						<div class="video-item" style="background:url(/Content/@(itemViewModel.Picture)_200x120.jpg);">
+							<a class="play-inside-box" href="/video/@itemViewModel.Url/detay" title="@itemViewModel.Subject">
+								<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+							</a>
+						</div>
+						<div class="video-text">
+							<em class="multi-ellipsis">@itemViewModel.Subject</em>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div><!-- /.video-boxes-->

@@ -1,0 +1,173 @@
+﻿@using AdminProject.Areas.Admin.Models
+@using AdminProject.Services.Models
+@using Sihirdar.DataAccessLayer
+@model ContentSearchRequestDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="nest">
+                <div class="title-alt">
+                    <h6>
+                        Content Search
+                    </h6>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#searchContent">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-nest" id="searchContent">
+                    <form action="/Admin/Content/List" method="get">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Subject</td>
+                                    <td>Url</td>
+                                    <td>* Content Type</td>
+                                    <td>Game Type</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Name, new { placeholder = "Subject", @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Url, new { placeholder = "Url", @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.ContentType, ViewBag.ContentTypeList as SelectList, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.GameType, ViewBag.GameTypeList as SelectList, new { @class = "form-control" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Create Date</td>
+                                    <td>* Status</td>
+                                    <td>Is Showcase?</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.CreateDate, "{0:dd.MM.yyyy}", new { placeholder = "Create Date >", @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusList, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.CheckBoxFor(model => model.IsShowcase)
+                                    </td>
+                                    <td><button type="submit" class="btn btn-success btn-block">Search</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="nest" id="FootableClose">
+                <div class="body-nest" id="Footable">
+                    <p class="lead well">Please note that other languages when the data update.</p>
+                    <div class="table-responsive" style="overflow:auto;">
+                        <table class="table footable metro-blue">
+                            <thead>
+                                <tr>
+                                    <th>Categories</th>
+                                    <th>Subject</th>
+                                    <th>Url</th>
+                                    <th>Publish D.</th>
+                                    <th>Created D.</th>
+                                    <th>Update D.</th>
+                                    <th>Status</th>
+                                    <th>Editor</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var content in ((PagerList<ContentListItemDto>)ViewBag.Contents).List)
+                                    {
+                                        <tr>
+                                            <td>@content.Categories</td>
+                                            <td>@content.Name</td>
+                                            <td>@content.Url</td>
+                                            <td>@string.Format("{0:dd.MM.yyyy HH:mm}", content.PublishDate)</td>
+                                            <td>@string.Format("{0:dd.MM.yyyy HH:mm:ss}", content.CreateDate)</td>
+                                            <td>
+                                                @{
+                                                    if (content.UpdateEditorId > 0)
+                                                    {
+                                                        <span>@string.Format("{0:dd.MM.yyyy HH:mm:ss}", content.ModifiedDate)</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="@(content.Status == StatusTypes.Active ? "status-metro status-active" : "status-metro status-suspended")">
+                                                    @(content.Status == StatusTypes.Active ? "Active" : "Deactive")
+                                                </span>
+                                            </td>
+                                            <td>
+                                                @{
+                                                    if (content.UpdateEditorId > 0)
+                                                    {
+                                                        <span>@content.UpdateEditor</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>@content.CreateEditor</span>
+                                                    }
+                                                }
+                                            </td>
+                                            <td style="width:100px;">
+                                                <a href="/Admin/Content/Edit/@content.Id" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                                <a href="/Admin/Content/Delete/@content.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to continue?')"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                                    }
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="pagination pagination-centered">
+                                            <ul>
+                                                @{
+                                                    var recordCount = ((PagerList<ContentListItemDto>)ViewBag.Contents).TotalCount;
+                                                    var pageCount = recordCount / Model.Take + 1;
+
+                                                    var url = ViewBag.UrlAddress;
+                                                    for (var i = 1; i < pageCount + 1; i++)
+                                                    {
+                                                        <li class="footable-page">
+                                                            <a href="@string.Format("{0}&Skip={1}", url, i)">@(i)</a>
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+                                        <div style="float: right; color:black;">
+                                            There are @recordCount records in total.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,2963 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,800|Roboto+Condensed:400,700&subset=latin-ext')
+@require 'include/vars'
+@require 'include/icon'
+@require 'include/fonts'
+@require 'include/bootstrap-new'
+@require 'others/*'
+
+
+media_queries = {
+  lg  : "(min-width: 1200px)",
+  md  : "(min-width: 992px) and (max-width: 1199px)",
+  sm : "(min-width: 768px) and (max-width: 991px)",
+  xs : "(max-width: 767px)"
+}
+
+respond(breakpoints)
+	conditions = ()
+	for breakpoint in breakpoints
+		push(conditions, media_queries[breakpoint])
+	conditions = join(", ", conditions)
+	@media conditions
+		{block}
+
+html
+	-webkit-text-size-adjust: none
+
+body
+	background: background-color
+	ff_bold(13px)
+	overflow: hidden
+	padding-right: 0 !important
+	overflow-x: hidden !important
+
+.visible
+	overflow: visible !important
+
+.customize-scrollbar::-webkit-scrollbar
+	width: 8px
+
+.customize-scrollbar::-webkit-scrollbar-track
+	background-color: #eaeaea
+	border-left: 1px solid #ccc
+
+.customize-scrollbar::-webkit-scrollbar-thumb
+	background-color: #777
+
+.customize-scrollbar::-webkit-scrollbar-thumb:hover
+	background-color: menu.lol
+	cursor: pointer
+
+.formError
+	ff_regular(11px)
+
+/* Preloader */
+#preloader
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-color: black
+	/* change if the mask should have another color then white */
+	z-index: 9999
+	/* makes sure it stays on top */
+	display: block
+
+	#prelogo
+		width: 126px
+		height: 84px
+		position: absolute
+		top: 50%
+		left: 50%
+		margin: -135px 0 0 -63px
+		background: url(../../html/assets/img/logo.png) no-repeat center top
+
+	#status
+		width: 75px
+		height: 75px
+		position: absolute
+		left: 50%
+		top: 50%
+		margin: -10px 0 0 -33px
+
+		.spinner
+			width: 70px
+			text-align: center
+
+		.spinner > div
+			width: 18px
+			height: 18px
+			background-color: #FFF
+			border-radius: 100%
+			display: inline-block
+			animation: sk-bouncedelay 1.4s infinite ease-in-out both
+		.spinner .bounce1
+			animation-delay: -0.32s
+		.spinner .bounce2
+			animation-delay: -0.16s
+		@keyframes sk-bouncedelay
+			0%, 80%, 100%
+				transform: scale(0)
+			40%
+				transform: scale(1.0)
+
+.container
+	width: 100% !important
+	max-width: 1300px
+
+.no-padding
+	padding: 0 !important
+
+.no-padding-left
+	padding-left: 0
+
+.no-padding-right
+	padding-right: 0
+
+.no-margin
+	margin: 0 !important
+
+.col-centered
+	float: none
+	margin: 0 auto
+
+.margin-top-05
+	margin-top: 0.5em
+
+.margin-top-10
+	margin-top: 1.0em
+
+.margin-top-15
+	margin-top: 1.5em
+
+.margin-top-20
+	margin-top: 2.0em
+
+.margin-top-25
+	margin-top: 2.5em
+
+.margin-top-30
+	margin-top: 3.0em
+
+.margin-bottom-05
+	margin-bottom: 0.5em
+
+.margin-bottom-10
+	margin-bottom: 1.0em
+
+.margin-bottom-15
+	margin-bottom: 1.5em
+
+.margin-bottom-20
+	margin-bottom: 2.0em
+
+.margin-bottom-25
+	margin-bottom: 2.5em
+
+.margin-bottom-30
+	margin-bottom: 3.0em
+
+.btn-raised
+	box-shadow: none !important
+	border-radius: 0
+
+select.form-control
+	border: 1px solid #dedede !important
+	padding: 0 10px !important
+	background-size: 0 2px, 100% 0px !important
+	ff_regular(12px)
+	color: #CCC
+	position: relative
+
+	option
+		color: #000
+
+.alert
+	ff_regular(13px)
+
+.modal-backdrop
+	background: rgba(0, 0, 0, 1)
+
+.modal
+	padding: 0 !important
+
+	.modal-dialog
+		margin: 20px auto !important
+
+	.modal-header
+		background: menu.lol
+		padding: 15px
+		color: white
+
+		.modal-title
+			ff_bold(19px)
+
+		.close
+			color: white
+			opacity: 1
+
+	.modal-body
+		width: 100%
+		display: inline-block
+
+	.modal-footer
+		width: 100%
+		display: inline-block
+
+		p
+			padding: 15px 15px 0 15px
+			ff_regular(13px)
+			border-top: 1px solid #efefef
+			text-align: center
+			display: block
+
+			a
+				ff_bold(14px)
+				text-decoration: underline
+
+	&#lol-time-dialog, &#lol-champion-dialog
+		.btn-group
+			width: 100%
+
+			.btn
+				width: 11.111111111%
+				text-align: center
+				padding: 5px 0
+				border: 1px solid #d2d2d2
+				border-right: none
+				background: white
+				color: #AAA
+
+				&:last-child
+					border-right: 1px solid #d2d2d2
+
+				&.active
+					background: menu.lol
+					color: white
+
+		@media screen and (max-width: 767px)
+
+			.no-padding-left
+				padding-left: 0 !important
+				padding: 0 1% !important
+
+			.no-padding-right
+				padding-right: 0 !important
+				padding: 5px 1% 0 1% !important
+
+			.btn-group
+				.btn
+					width: 48% !important
+					margin: 1%
+					border: 1px solid #D2D2D2 !important
+
+					&.active
+						background: menu.lol
+						color: white
+
+	&#register-dialog, &#update-user-dialog
+		.modal-dialog
+			max-width: 800px !important
+
+			.form-group
+				max-width: unset !important
+
+			.file-input
+				background: #efefef !important
+				border: 1px solid #DEDEDE
+				padding: 15px
+
+				img
+					width: 100% !important
+
+				.file-default-preview
+					img
+						max-width: 175px
+						border: 1px solid #CCC
+
+				button, .btn-file
+					margin: 10px 0 0 0
+					cursor: pointer
+					background: #FFF !important
+
+	&#login-dialog, &#register-dialog, &#forgot-password-dialog, &#update-user-dialog, &#update-password-dialog
+		overflow: auto !important
+
+		.modal-dialog
+			max-width: 400px
+
+			.facebook-login
+				width: 100%
+				height: 36px
+				margin: 0 auto
+				padding: 0
+				text-transform: none
+				display: block
+				ff_bold(13px, 36px)
+				background-color: #4974b0
+				color: rgba(255, 255, 255, .84)
+
+				i
+					width: 11%
+					height: 36px
+					float: left
+					margin: 0 0 0 10px
+					display: block
+					background-position: center 1px
+					font-size: 16px
+					text-align: center
+					line-height: 37px
+					color: rgba(255, 255, 255, .84)
+
+				span
+					width: 80%
+					margin: 0 0 0 8px
+					padding: 0
+					border-left: 1px solid #466ba0
+					text-align: center
+					display: inline-block
+
+				&:hover, &:focus
+					background: #466ba0
+					text-decoration: none
+
+					span
+						border-left: 1px solid #375785
+
+			.seperator
+				width: 100%
+				padding: 0 0 5px 0
+				ff_regular(13px, 30px)
+				color: #A9A9A9
+				text-align: center
+				border-bottom: 1px solid #EFEFEF
+
+			.form-group
+				max-width: 290px
+				margin-left: auto !important
+				margin-right: auto !important
+
+			.checkbox
+				margin-top: 0
+
+			.text-link
+				ff_regular(12px)
+
+			input[type="text"], input[type="password"], select
+				width: 100%
+				margin: 0 auto
+				padding: 0 10px
+				border: 1px solid #D2D2D2
+				background-size: 0 2px, 100% 0
+				ff_regular(13px)
+				color: #222
+
+				&::-webkit-input-placeholder
+					font-size: 13px
+					color: #222
+
+				&::-moz-placeholder
+					font-size: 13px
+					color: #222
+
+				/* Firefox 19+ */
+				&:-moz-placeholder
+					font-size: 13px
+					color: #222
+
+				/* Firefox 18- */
+				&:-ms-input-placeholder
+					font-size: 13px
+					color: #222
+
+			/* IE */
+
+			label
+				ff_regular(13px)
+
+	&#conditions-dialog
+		.modal-body
+			max-height: 450px
+			overflow: auto
+			ff_regular(12px)
+
+			h1, h2, h3, h4, h5, h6
+				ff_bold(17px)
+
+		.modal-footer
+			padding: 14px 24px !important
+
+.dota-color
+	color: menu.dota2 !important
+
+.overwatch-color
+	color: menu.overwatch !important
+
+.lol-color
+	color: menu.lol !important
+
+.csgo-color
+	color: menu.csgo !important
+
+.heartstone-color
+	color: menu.hearthstone !important
+
+.pubg-color
+	color: menu.pubg !important
+
+.strikeofkings-color, .aov-color
+	color: menu.aov !important
+
+.makaleler-color
+	color: menu.makaleler !important
+
+.media-color
+	color: menu.media !important
+
+.window-overlay
+	width: 100%
+	height: 100%
+	position: fixed
+	top: 0
+	left: 0
+	background: rgba(0, 0, 0, 0.95)
+	z-index: 9000
+	display: none
+
+.bordered-pink
+	border-left: 6px solid menu.lol
+
+.bordered-white
+	border-left: 6px solid white
+
+.bordered-yellow
+	border-left: 6px solid menu.csgo
+
+.bordered-orange
+	border-left: 6px solid menu.dota2
+
+.bordered-blue
+	border-left: 6px solid menu.hearthstone
+
+.bordered-media-blue
+	border-left: 6px solid menu.media
+
+.bordered-light-yellow
+	border-left: 6px solid menu.overwatch
+
+.bordered-green
+	border-left: 6px solid menu.makaleler
+
+.flexible-border
+	border-left: 6px solid menu.lol
+
+.flexible-color
+	color: menu.lol
+
+.flexible-background
+	background-color: menu.lol
+
+.play-inside-box
+	width: 100%
+	height: 100%
+	float: left
+	position: relative
+	background-size: cover !important
+	background-repeat: no-repeat !important
+	background-position: center top !important
+
+	.play-overlay
+		width: 100%
+		height: 100%
+		position: absolute
+		top: 0
+		left: 0
+		background: rgba(0, 0, 0, 0.5)
+
+		i
+			position: absolute
+			top: 50%
+			left: 50%
+			margin: -25px 0 0 -21px
+			color: white
+			font-size: 50px
+			transition: 0.3s
+
+
+/*
+ * ADVERTISING
+ */
+
+.masthead-area
+	width: 100%
+	height: 120px
+	background-repeat: no-repeat !important
+	background-position: center top !important
+	z-index: 10
+
+	.adm-ads-area
+		margin: 10px 0
+
+	.container
+		width: 970px !important
+	/*background: Red*/
+
+	.close
+		font-size: 18px
+		color: white
+		text-shadow: none
+		opacity: .7
+		padding: 10px
+
+		&:hover, &:focus
+			opacity: 1
+
+.reklam-728x90
+	width: 100%
+	height: 120px
+	display: block
+	padding: 15px
+	background: #1d1d1d url(/Content/sponsored-text.png) no-repeat center
+
+	iframe
+		overflow: hidden
+
+.reklam-300x600
+	height: 600px
+	display: block
+	overflow: hidden !important
+	background: #1d1d1d url(/Content/sponsored-text.png) no-repeat center
+
+	iframe
+		overflow: hidden
+
+.reklam-300x450
+	height: 450px
+	display: block
+	overflow: hidden !important
+	background: url(/Content/sponsored-text.png) no-repeat center
+
+	iframe
+		overflow: hidden
+
+.reklam-300x250
+	height: 250px
+	display: block
+	overflow: hidden !important
+	background: #1d1d1d url(/Content/sponsored-text.png) no-repeat center
+
+	iframe
+		overflow: hidden
+
+@media (max-width: 991px)
+	.reklam-300x450
+		padding-left: 15px
+
+@media (max-width: 767px)
+	.reklam-728x90
+		display: none !important
+
+.interaction-boxes
+	.box-module
+		height: 262px
+		margin-bottom: 20px
+
+		.module-title
+			background: #000
+			color: white
+			padding: 8px 10px
+			text-transform: uppercase
+			font-size: 15px !important
+
+		.module-content
+			width: 100%
+			height: 220px
+			margin-top: 10px
+			overflow: hidden
+			background: #000
+
+			.no-record
+				width: 100%
+				height: 250px
+				background: #000
+				color: #FFF
+				text-align: center
+				ff_regular(15px, 250px)
+
+		&.lol-app-box
+			.module-content
+				background: url(../../html/assets/img/lol-timer-bg.jpg) no-repeat center top
+				background-size: cover
+
+				.form-group
+					width: 100%
+					float: left
+					margin: 10px 0 0 0
+
+					label
+						width: 100%
+						margin: 0 0 10px 0
+						display: block
+						color: white
+						font-size: 14px
+
+					select, input[type="text"]
+						background-color: black
+						color: white
+						padding: 0 10px
+						border: 1px solid background-color
+						border-bottom: 0 none
+						ff_regular(13px)
+
+					.btn
+						background: menu.lol
+
+					&:nth-child(2)
+						margin: 0
+
+		&.membership-box
+			p
+				color: white
+				ff_regular(13px)
+				margin-bottom: 10px
+
+				em
+					color: menu.lol
+					font-style: normal
+
+			.login-button
+				width: 100%
+				float: left
+				margin: 15px 0
+				background: #3b5898
+				border-radius: 0
+				color: white
+
+			.register-button
+				width: 100%
+				float: left
+				background: menu.lol
+				border-radius: 0
+				color: white
+
+		&.quotes-box
+			.module-content
+				padding: 50px 25px 0 50px
+				position: relative
+				background: url(../../html/assets/img/quote-bg.jpg) no-repeat left top
+				background-size: cover
+				font-family: Consolas
+
+			.quote
+				font-size: 18px
+
+			.author
+				position: absolute
+				bottom: 15px
+				right: 25px
+
+		&.survey-box
+			height: 545px
+			overflow: hidden
+
+			.module-content
+				height: 100%
+				padding: 15px
+
+				p
+					color: white
+					ff_regular(14px)
+					margin-bottom: 25px
+
+				.radio
+					width: 100%
+					margin-bottom: 25px
+					ff_regular(13px)
+
+					label
+						color: white
+						font-size: 13px
+						padding-left: 35px
+
+					.circle
+						border-color: menu.lol
+
+					.check
+						background-color: white
+
+				.option-list
+					height: 420px
+					margin-bottom: 15px
+					background: #010101
+					padding: 0 8px 0 0 !important
+					overflow: auto
+
+				#survey-results
+					ul
+						margin: 0
+						padding: 0
+
+						li
+							width: 100%
+							float: left
+							margin-bottom: 15px
+							padding: 0
+							ff_regular(13px)
+							color: white
+							list-style: none
+
+							p
+								display: block
+								margin: 0 0 3px 0
+								padding: 0 0
+								ff_regular(13px)
+								white-space: nowrap
+								text-overflow: ellipsis
+								overflow: hidden
+
+							div
+								width: 100%
+								height: 25px
+								border: 1px solid menu.lol
+								float: left
+								position: relative
+								overflow: hidden
+								ff_regular(13px, 23px)
+
+								span
+									height: 100%
+									position: absolute
+									background: #822a93
+									background: -moz-linear-gradient(top, #822a93 1%, #962b84 100%)
+									background: -webkit-linear-gradient(top, #822a93 1%, #962b84 100%)
+									background: linear-gradient(to bottom, #822a93 1%, #962b84 100%)
+									margin-right: 4px
+									z-index: 0
+									line-height: 23px
+									padding: 0 5px
+
+								em
+									height: 100%
+									float: right
+									font-style: normal
+									z-index: 9
+									position: relative
+									padding: 0 10px
+									ff_regular(13px, 23px)
+
+				.btn-raised
+					width: 49%
+					margin: 0
+					padding-left: 0
+					padding-right: 0
+					background: none
+					color: white
+					border: 1px solid menu.lol
+
+		&.esports-calendar
+			.module-title
+				.time-navigation
+					float: right
+					margin: 0 0 0 0
+					ff_regular(15px, 17px)
+
+					.navi-icon
+						font-size: 13px
+
+					.navi-prev
+						margin-right: 10px
+
+					.navi-next
+						margin-left: 10px
+
+			.module-content
+				overflow: auto !important
+				height: 220px !important
+
+				.no-game
+					width: 100%
+					height: 100%
+					ff_regular(20px, 220px)
+					color: menu.lol
+					text-align: center
+					display: none
+
+				.timetable-header
+					height: 25px
+					font-size: 14px
+					line-height: 23px
+					background: darkgray
+
+					span
+						font-size: 14px
+
+				.timetable-day:last-child
+					border: 0 none
+
+				.timetable-content
+					padding: 0 0 0 0
+					border: 0 none
+
+					.timetable-item
+						margin-bottom: 0
+						border-bottom: 1px solid background-color
+						line-height: 0 !important
+						padding: 0
+
+						.timetable-color
+							top: 14px
+							left: 15px
+						.timetable-title
+							width: 100%
+							height: 100%
+							display: block
+							padding: 10px 15px 10px 35px !important
+							line-height: unset
+							transition: 0.3s
+
+							.timetable-time
+								ff_regular(13px)
+
+							.timetable-name
+								ff_regular(13px)
+
+							&:hover
+								background: #151515
+								text-decoration: none
+								transition: 0.3s
+
+	&.news-boxes
+		.box-module
+			height: auto
+
+			&.news-list
+				//.module-content
+					//border: 1px solid darkgray
+
+				ul
+					margin: 0
+					padding: 0
+
+					li
+						list-style: none
+						border-bottom: 1px solid darkgray
+
+						&.featured-post
+							img
+								width: 100%
+								height: auto
+								max-width: 305px
+								max-height: 170px
+								margin: 0 auto
+								display: block
+
+						a
+							color: white
+							background: #000
+							display: block
+							height: 100%
+
+							b
+								width: 100%
+								float: left
+								padding: 10px 10px 5px 10px
+								font-size: 13px
+								overflow: hidden
+								white-space: nowrap
+								text-overflow: ellipsis
+								text-transform: uppercase
+
+							p
+								height: 47px
+								padding: 5px 10px
+								ff_regular(13px)
+								display: inline-block
+
+							&:hover
+								background: #111 !important
+								text-decoration: none
+
+						img
+							width: 100%
+							max-height: 170px
+
+						&:last-child
+							border-bottom: 0 none
+
+			.module-content
+				height: auto
+
+	&.video-boxes
+		.box-module
+			height: auto
+
+		.module-content
+			height: auto
+			margin-bottom: 10px
+			background: none
+
+		.seperator
+			width: 100%
+			height: 1px
+			float: left
+			margin: 10px 0
+			padding: 0
+			border-color: darkgray
+
+		.video-item
+			width: 100%
+			height: 130px
+			float: left
+			background: #000
+			position: relative
+			overflow: hidden
+			background-size: cover !important
+			background-repeat: no-repeat !important
+			background-position: center top !important
+
+			img
+				margin: 0 auto
+
+			.play-overlay
+				background: rgba(0, 0, 0, 0.5) !important
+
+		.video-text
+			width: 100%
+			float: left
+
+			p
+				width: 100%
+				margin: 0
+				padding: 0 15px 5px 0
+				font-size: 15px
+				display: inline-block
+				text-transform: uppercase
+
+			em
+				width: 100%
+				height: 40px
+				padding: 5px 0 0 0
+				display: block
+				color: white
+				font-style: normal
+				ff_regular(13px)
+				text-shadow: 1px 1px 1px #000
+
+		.related-video
+			position: relative
+
+			.module-content
+				position: relative
+
+			i
+				font-size: 75px !important
+				margin: -50px 0 0 -32px
+
+			.video-item
+				height: 330px !important
+				min-height: 180px
+
+			.video-text
+				position: absolute
+				bottom: 20px
+				left: 0
+				text-align: center
+
+				p
+					font-size: 17px
+					padding: 0 0 5px 0
+
+				em
+					width: 100%
+					font-size: 15px
+					padding: 5px 10px
+
+	@media (min-width: 991px) and (max-width: 1199px)
+		.box-module
+			&.video-box
+				img
+					height: 100%
+
+			&.membership-box
+				.btn
+					margin: 10px 0
+
+			&.quotes-box
+				.module-content
+					padding: 20px 25px 0 20px
+
+	@media (min-width: 767px) and (max-width: 991px)
+		&.video-boxes
+			.video-item
+				height: 250px
+
+		.box-module
+			&.video-box
+				img
+					height: 100%
+
+			&.membership-box
+				.btn
+					margin: 10px 0
+
+				.margin-top-15
+					margin: 0
+
+				p
+					padding-top: 10px
+					margin-bottom: 5px
+
+			&.quotes-box
+				.module-content
+					padding: 20px 25px 0 20px
+
+			&.survey-box
+				height: auto !important
+
+				.module-content
+					height: auto
+
+				.option-list
+					height: 310px !important
+					padding: 0 !important
+
+					.radio
+						margin-bottom: 20px
+
+						label
+							padding-left: 35px
+
+				.btn-raised
+					width: 49% !important
+					font-size: 12px
+
+	@media (max-width: 767px)
+		&.news-boxes
+			padding: 0 15px !important
+
+		&.video-boxes
+			.related-video
+				width: 100%
+				float: left
+
+			.video-item
+				height: 250px
+
+		.box-module
+			width: 100%
+			height: auto
+			float: left
+
+			.module-content
+				float: left
+				height: auto
+
+			&.video-box
+				img
+					width: auto
+					height: auto
+					margin: 0 auto
+
+				.module-content
+					height: 220px
+
+			&.membership-box
+				.btn
+					margin: 0 0 15px 0
+
+				.margin-top-15
+					margin: 0
+
+				p
+					padding-top: 10px
+					margin-bottom: 15px
+					font-size: 12px
+
+			&.quotes-box
+				.module-content
+					padding: 20px 25px 0 20px
+
+					.quote
+						font-size: 14px
+
+					.author
+						position: relative
+						float: right
+						margin-top: 20px
+
+			&.survey-box
+				height: auto !important
+
+				.module-content
+					height: auto
+
+				.option-list
+					height: auto !important
+					padding: 0 !important
+
+					.radio
+						margin-bottom: 20px
+
+						label
+							padding-left: 35px
+
+				.btn-raised
+					width: 49% !important
+					font-size: 12px
+
+/*
+ * CALENDAR TOOLS
+ */
+
+.calendar-tools-page
+	.box-module
+		height: auto
+		margin-bottom: 20px
+
+		.module-title
+			width: 100%
+			display: inline-block
+
+		.module-content
+			width: 100%
+			height: auto
+			background: none
+			position: relative
+
+			.page-detail
+				width: 100%
+				float: left
+				background: #000
+				padding: 15px
+
+				#esports-timetable
+					.timetable-header
+						ff_bold(14px)
+
+					.timetable-month
+
+						.calendar-day
+							&:hover
+								background: #111
+
+						.timetable-item
+							ff_regular(13px)
+
+							.timetable-time
+								ff_bold(13px)
+
+				.timetable-description
+					width: 100%
+					float: left
+					margin-top: 20px
+
+					p
+						float: left
+						color: #CCC
+						margin-right: 14px
+						ff_regular(12px)
+
+						span
+							width: 10px
+							height: 10px
+							float: left
+							margin: 3px 3px 0 0
+							border-radius: 15px
+						.lol-bg
+							background: menu.lol
+						.dota2-bg
+							background: menu.dota2
+						.csgo-bg
+							background: menu.csgo
+						.hearthstone-bg
+							background: menu.hearthstone
+						.overwatch-bg
+							background: menu.overwatch
+						.pubg-bg
+							background: menu.pubg
+						.aov-bg
+							background: menu.aov
+
+				.champions-search
+					width: 100%
+					margin: -25px auto 0 auto !important
+					padding: 0 10px
+					border: 1px solid #222
+					background-size: 0 2px, 100% 0
+
+				#champs
+					width: 100%
+					float: left
+
+					li
+						list-style: none
+						padding: 10px
+						margin-bottom: 10px
+
+						a
+							width: 100%
+							height: 100%
+							display: block
+							opacity: .7
+
+						p
+							margin: 3px 0 0 0
+							padding: 0
+							color: #FFF
+							overflow: hidden
+							white-space: nowrap
+							text-overflow: ellipsis
+							font-weight: normal
+							ff_regular(13px)
+
+						img
+							border: 1px solid #222
+
+					li a:hover, li a:focus
+						text-decoration: none
+						opacity: 1
+
+				.contact-us
+					float: left
+					padding-bottom: 10px
+
+					h3
+						ff_bold(25px)
+						color: white
+
+					p
+						ff_regular(14px)
+						color: #ccc
+						text-align: justify
+						margin: 20px 0 25px 0
+
+					.form-group
+						margin: 15px 0 5px 0
+
+					input[type="text"], input[type="password"], select
+						width: 100%
+						height: 40px
+						margin: 0 auto
+						padding: 0 10px
+						border: 1px solid #D2D2D2
+						background-size: 0 2px, 100% 0
+						ff_regular(14px)
+						color: #CCC
+
+						&::-webkit-input-placeholder
+							ff_regular(14px)
+
+						&::-moz-placeholder
+							font-size: 14px
+
+						/* Firefox 19+ */
+						&:-moz-placeholder
+							font-size: 14px
+
+						/* Firefox 18- */
+						&:-ms-input-placeholder
+							font-size: 14px
+
+					/* IE */
+
+					textarea
+						width: 100%
+						height: 80px
+						padding: 10px 10px
+						border: 1px solid #D2D2D2
+						background-size: 0 2px, 100% 0
+						ff_regular(14px)
+						color: #CCC
+
+						&::-webkit-input-placeholder
+							ff_regular(14px)
+
+						&::-moz-placeholder
+							font-size: 14px
+
+						/* Firefox 19+ */
+						&:-moz-placeholder
+							font-size: 14px
+
+						/* Firefox 18- */
+						&:-ms-input-placeholder
+							font-size: 14px
+
+/* IE */
+
+#champions-dialog
+	float: left !important
+	position: static !important
+	width: 100% !important
+
+	.modal-dialog
+		width: 100%
+		margin: 0 !important
+		padding: 0
+
+	.modal-content
+		background: none
+
+	.modal-body
+		padding: 0 !important
+		background: none !important
+		color: white
+
+	.back-to-list-btn
+		background: menu.lol
+		color: white
+		margin: 0 0 15px 0
+		border-radius: 0
+
+	.champ-picture
+		height: 350px
+		overflow: hidden
+		background-color: #151515 !important
+		border: 1px solid background-color
+		background-size: cover !important
+		background-position: center !important
+		background-repeat: no-repeat !important
+		margin-right: 0
+
+		img
+			width: 100%
+			margin: 0
+			padding: 0
+
+	h5
+		width: 100%
+		float: left
+		ff_bold(25px)
+		color: menu.lol
+		margin: 0
+		padding-bottom: 10px
+
+	h6
+		width: 100%
+		float: left
+		ff_bold(22px)
+		color: menu.lol
+
+	.description
+		margin: 10px 0
+		ff_regular(13px)
+
+	ul.specs
+		margin: 0 0 0 0
+		padding: 0
+
+		li
+			min-height: 40px
+			margin-bottom: 5px
+			list-style: none
+			ff_regular(13px)
+
+			.stat-label
+				height: 20px
+				float: left
+				padding-left: 25px
+				ff_bold(14px)
+
+			.stat-value
+				height: 20px
+				line-height: 20px
+				padding-left: 5px
+				font-size: 13px
+
+				em
+					width: 100%
+					float: left
+					padding-left: 25px
+					font-style: normal
+					font-size: 12px
+
+			.stat-ad
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 0
+
+			.stat-armor
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -25px
+
+			.stat-as
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -50px
+
+			.stat-ms
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -75px
+
+			.stat-mr
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -125px
+
+			.stat-hp
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -150px
+
+			.stat-hp-regen
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -175px
+
+			.stat-mana
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -200px
+
+			.stat-m-regen
+				background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -225px
+
+	ul.skins
+		margin: 0
+		padding: 0
+
+		li
+			list-style: none
+			margin-bottom: 25px
+
+			a
+				width: 100%
+				height: 100%
+				display: grid
+				ff_regular(13px)
+				color: white
+				cursor: pointer
+
+				img
+					border: 1px solid background-color
+					margin-bottom: 5px
+
+				&:hover, &:focus
+					text-decoration: none
+
+	ul.spells
+		margin: 0
+		padding: 0
+
+		li
+			list-style: none
+			margin-bottom: 20px
+			display: grid
+
+			h3
+				margin: 0
+				ff_bold(16px)
+
+			img
+				width: 50px
+				float: left
+				margin: 10px 10px 10px 0
+				border: 1px solid background-color
+
+			p
+				ff_regular(13px)
+				margin: 10px 0
+
+				em
+					width: 100%
+					display: block
+					font-style: normal
+					color: menu.lol
+					ff_bold(13px)
+
+// Popup Settings
+.timetable-popup
+	.popup-header
+		ff_bold(18px)
+		!important
+		text-shadow: 1px 1px 1px #000
+		color: white !important
+
+		&.lol-color
+			background: menu.lol
+
+		&.dota2-color
+			background: menu.dota2
+
+		&.overwatch-color
+			background: menu.overwatch
+
+		&.heartstone-color
+			background: menu.hearthstone
+
+		&.csgo-color
+			background: menu.csgo
+
+		&.strikeofkings-color
+			background: menu.aov
+
+		&.pubg-color
+			background: menu.pubg
+
+	.popup-body
+		.timetable-time
+			ff_bold(18px)
+
+		.timetable-desc
+			ff_regular(13px)
+
+/*
+ * MEDIA
+ */
+
+.media-page
+	.latest-video
+		width: 100%
+		height: auto
+		padding: 20px 0 0 0 !important
+		display: block
+		position: relative
+		overflow: hidden
+
+		.video-background
+			width: 100%
+			height: 487px
+			position: absolute
+			top: 0
+			left: 0
+			background-color: rgba(0, 0, 0, .8) !important
+			background-size: cover !important
+			-webkit-filter: blur(3px)
+			-moz-filter: blur(3px)
+			-o-filter: blur(3px)
+			-ms-filter: blur(3px)
+			filter: blur(3px)
+			z-index: 4
+			overflow: hidden
+
+		.background-overlay
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 487px
+			background: rgba(0, 0, 0, 0.76)
+			z-index: 5
+			border-bottom: 1px solid darkgray
+			overflow: hidden
+
+		.video-item
+			height: 418px
+			max-height: 418px
+			margin: 0 auto
+			padding: 0
+			border: 1px solid darkgray
+			background-color: #000
+			background-position: center top !important
+			background-repeat: no-repeat !important
+			background-size: cover !important
+			z-index: 14
+			position: relative
+			transition: 0.3s
+
+			.video-container
+				width: 100%
+				height: 100%
+
+				.carousel
+					width: 100%
+					height: 100%
+
+					.carousel-inner
+						height: 100%
+
+					.item
+						width: 100%
+						height: 100%
+						background-size: cover !important
+
+					.carousel-caption
+						padding-bottom: 0
+						margin-bottom: 0
+						text-shadow: 1px 1px 1px #000
+
+						h3
+							ff_bold(16px)
+
+						p
+							ff_regular(13px)
+
+					.carousel-control
+						width: auto
+						height: auto
+						font-size: 30px
+
+						&.left
+							left: 15px
+
+						&.right
+							right: 35px
+
+						.fa
+							position: absolute
+							top: 50%
+							z-index: 5
+							display: inline-block
+							margin-top: 3px
+
+				a
+					width: 100%
+					height: 100%
+					display: block
+					color: white
+
+					.play-overlay
+						color: white
+						background: none
+
+						i
+							font-size: 90px !important
+							margin: -35px 0 0 -45px !important
+
+					&:hover, &:focus
+						text-decoration: none
+
+				iframe
+					width: 100%
+					height: 100%
+					border: 0
+
+				.scroll-controls
+					display: none
+
+			&.video-pip-on
+				.video-container
+					width: 300px
+					height: 170px
+					display: block
+					z-index: 10
+					position: fixed
+					bottom: 10px
+					right: 10px
+					animation-name: imamHatiplerKapatilsin
+					animation-duration: 0.3s
+					animation-timing-function: ease
+					animation-direction: alternate
+
+					.scroll-controls
+						width: 300px
+						padding: 7px 10px
+						position: absolute
+						top: -32px
+						left: 0
+						background: menu.lol
+						display: block
+						border-width: 1px 1px 0 1px
+
+						a
+							width: 32px
+							height: 30px
+							position: absolute
+							top: 0
+							right: 0
+							background: #751465
+							text-align: center
+							line-height: 32px
+
+							i
+								font-size: 17px
+
+						p
+							width: 250px
+							float: left
+							margin: 0
+							padding: 0
+							overflow: hidden
+							white-space: nowrap
+							text-overflow: ellipsis
+							ff_regular(13px)
+							color: #FFF
+
+					.video-title
+						display: none
+
+					.play-overlay
+						i
+							font-size: 70px !important
+							margin: -30px 0 0 -30px !important
+
+					iframe
+						width: 100%
+						height: 100%
+						border: 0
+
+				@keyframes imamHatiplerKapatilsin
+					0%
+						bottom: -25%
+						right: 10px
+
+					100%
+						width: 300px
+						bottom: 10px !important
+						right: 10px
+
+		.video-nav
+			height: 418px
+			z-index: 14
+
+			a
+				width: 100%
+				height: 120px
+				margin-top: 162px
+				background: white
+				display: table
+				background-size: cover !important
+				position: relative
+				opacity: .8
+				transition: .3s
+
+				div
+					display: table-cell
+					vertical-align: middle
+					background: rgba(0, 0, 0, .4)
+
+					p
+						max-height: 66px
+						padding: 0 15px 0 15px
+						font-size: 18px
+						color: white
+						overflow: hidden
+
+				span
+					width: 100%
+					height: 20px
+					position: absolute
+					bottom: -20px
+					left: 0
+					padding: 0 10px
+					background: media-color
+					color: white
+					ff_regular(12px, 20px)
+
+					i
+						margin: 0 5px
+
+				&:hover, &:focus
+					opacity: 1
+					text-decoration: none
+
+		.video-buttons
+			min-height: 49px
+			background: rgba(0, 0, 0, 0.5)
+			border: 1px solid darkgray
+			border-top: none
+			z-index: 15
+
+			a
+				width: 100%
+				height: 100%
+				display: block
+				color: white
+				text-align: center
+				line-height: 48px
+				margin: 0
+				padding: 0
+
+				i
+					margin-right: 10px
+
+				em
+					font-style: normal
+
+				&.selected
+					color: media-color
+
+				&:hover, &:focus
+					color: media-color
+					text-decoration: none
+
+			div
+				border-right: 1px solid darkgray
+
+				&:last-child
+					border-right: none
+
+		.video-content
+			width: 100%
+			height: auto
+			background: #000
+
+			.video-detail
+				margin: 20px auto
+
+				.game
+					margin: 10px 0 7px 0
+					ff_bold(13px)
+					color: menu.lol
+					text-transform: uppercase
+
+				.title
+					margin: 0 0 7px 0
+					padding: 0 10px 0 0
+					ff_bold(25px)
+					color: white
+					text-overflow: ellipsis
+					white-space: nowrap
+					overflow: hidden
+
+				.description
+					color: #CCC
+					ff_regular(13px)
+
+			.video-comments
+				display: none
+				margin: 20px auto
+
+				.facebook-comments-area
+					background: #000
+					max-height: 500px
+					overflow: auto
+
+	.box-module
+		height: auto
+		margin-bottom: 20px
+		padding: 0
+
+		.module-title
+			width: 100%
+			display: inline-block
+
+		.video-search
+			background: #000
+			height: 60px
+			margin: 15px 0
+
+		.module-content
+			width: 100%
+			height: auto
+			background: #000
+
+			.video-filtering
+				.form-group
+					label
+						margin-bottom: 7px
+						ff_bold(14px)
+						text-transform: uppercase
+						color: media-color !important
+
+					select
+						border: 1px solid #dedede
+						padding: 0 10px
+						background-size: 0 2px, 100% 0px
+						ff_regular(13px)
+
+			.video-list
+				width: 100%
+				float: left
+				padding-bottom: 20px
+
+				.video
+					float: left
+					margin: 15px 0 0 0
+
+					.video-item
+						width: 100%
+						height: 180px
+						float: left
+						border: 1px solid darkgray
+						background: #000
+						position: relative
+						overflow: hidden
+						background-size: cover !important
+						background-repeat: no-repeat !important
+						background-position: center top !important
+
+						img
+							margin: 0 auto
+
+					.video-text
+						width: 100%
+						float: left
+
+						p
+							width: 100%
+							margin: 5px 0
+							padding: 0 15px 0 0
+							font-size: 15px
+							display: inline-block
+							text-transform: uppercase
+
+						em
+							width: 100%
+							height: 45px
+							display: block
+							color: white
+							ff_regular(13px)
+							font-style: normal
+
+				.flexible-color
+					color: media-color
+
+			.load-videos-btn
+				width: 96%
+				float: left
+				height: 45px
+				margin: 15px 2% 20px 2%
+				padding: 0
+				line-height: 45px
+				background: media-color
+				color: white
+				text-overflow: ellipsis
+				white-space: nowrap
+				overflow: hidden
+
+			.no-video
+				width: 96%
+				float: left
+				height: 45px
+				margin: 15px 2% 20px 2%
+				padding: 0
+				line-height: 45px
+				color: media-color
+				text-overflow: ellipsis
+				white-space: nowrap
+				overflow: hidden
+				text-align: center
+				font-size: 17px
+				display: none
+
+	@media (max-width: 991px)
+		.video-background
+			height: 797px !important
+
+		.background-overlay
+			height: 797px !important
+
+		.video-nav
+			width: 100%
+			height: 140px !important
+			float: none !important
+			margin-bottom: 15px
+
+			a
+				margin: 0 0 0 0 !important
+
+	@media (max-width: 767px)
+		.latest-video
+			.video-item
+				a
+					.video-title
+						padding: 0 10px
+						font-size: 30px !important
+
+			.video-buttons
+				div
+					width: 25%
+					float: left
+
+					em
+						display: none
+
+					i
+						margin: 0
+
+					&:last-child
+						border-bottom: none
+
+// ADDTHIS CONFIG
+
+.addthis_inline_share_toolbox_yndq
+	width: 100%
+	position: absolute
+	opacity: 0
+
+.at-expanded-menu
+	position: fixed !important
+	top: 0 !important
+
+	#at-expanded-menu-hd
+		display: none !important
+
+	.at-expanded-menu-top-services-header, #at-expanded-menu-load-btn, .at-branding-logo
+		display: none !important
+
+.at-expanded-menu-branding
+	display: none !important
+
+#at-expanded-menu-host .at-expanded-menu-round .at-expanded-menu-button-label
+	ff_regular(13px)
+	!important
+	font-weight: normal !important
+	letter-spacing: unset !important
+
+#at20mc
+	display: none !important
+
+#at-expanded-menu-top-service-list-container li
+	width: 54px !important
+	height: 54px !important
+	margin-bottom: 40px !important
+
+	.at-expanded-menu-button
+		width: 54px !important
+
+		.at-icon-wrapper
+			width: 54px !important
+			height: 54px !important
+			border-radius: 0 !important
+
+/*
+ * VADI
+ */
+
+.vadi
+	width 100%
+	&--content
+		padding 15px 0
+	&--home
+		&--lol
+			&--title
+				color white
+				ff_bold(15px)
+				padding 10px 15px
+				background #000
+				margin 0 0 10px
+				text-transform uppercase
+			&--news
+				background #000
+				padding 15px
+				display block
+				color white
+				margin-bottom 15px
+				transition all 150ms ease
+				border 1px solid #000
+				&:hover, &:focus, &:active
+					color white
+					text-decoration none
+					background lighten(#000, 10%)
+					border 1px solid #999
+				&--image
+					text-align center
+					display block
+					img
+						width 100%
+				&--title
+					font-size 16px
+					display block
+					width 100%
+					white-space nowrap
+					overflow hidden
+					text-overflow ellipsis
+					margin-bottom 15px
+	&--slider
+		> .row
+			display flex
+			align-items stretch
+		&--slide
+			position relative
+			&--link
+				display block
+			&--image
+				width 945px
+				height 450px
+				display block
+				max-width 100%
+				+respond(sm xs)
+					height auto
+			&--meta
+				position absolute
+				bottom 0
+				right 0
+				left 0
+				width 100%
+				padding 15px
+				background rgba(0,0,0,.8)
+				color white
+			&--title
+				font-size 36px
+				font-roboto-condensed()
+				text-overflow ellipsis
+				white-space nowrap
+				overflow hidden
+				font-weight 700
+				display block
+			&--text
+				font-open()
+				font-size 16px
+				font-weight 300
+				text-overflow ellipsis
+				white-space nowrap
+				overflow hidden
+				display block
+		&--pages
+			margin-left -20px
+			height 100%
+			display flex
+			flex-direction column
+			align-items stretch
+		&--page
+			display block
+			background #000
+			margin-bottom 10px
+			border none
+			position relative
+			&:last-child
+				margin-bottom 0
+			&.vadi-slider_here
+				background: menu.lol
+
+			&.bordered-pink.vadi-slider_here
+				background: menu.lol
+
+			&.bordered-yellow.vadi-slider_here
+				background: menu.csgo
+
+			&.bordered-orange.vadi-slider_here
+				background: menu.dota2
+
+			&.bordered-blue.vadi-slider_here
+				background: menu.hearthstone
+
+			&.bordered-media-blue.vadi-slider_here
+				background: menu.media
+
+			&.bordered-light-yellow.vadi-slider_here
+				background: menu.overwatch
+
+			&.bordered-green.vadi-slider_here
+				background: menu.makaleler
+
+			&.bordered-white.vadi-slider_here
+				background: white
+
+				a
+					color: black
+			&--image
+				max-width 100%
+				width 100%
+				height 75px
+			&--link
+				display block
+				position initial
+				padding 15px
+				color #ddd
+				transition all 150ms ease
+				&:hover, &:focus, &:active
+					text-decoration none
+					color #fff
+				> .row
+					display block
+					position initial
+					> span
+						position initial
+						padding 0 10px
+			&--text
+				display block
+				margin 0 0 0 -10px
+				position initial
+			&--title
+				position relative
+				z-index 5
+				font-open()
+				font-size 13px
+				font-weight 300
+			&--game
+				font-roboto-condensed()
+				font-size 12px
+				text-transform uppercase
+				font-weight 700
+			&--game, &--title, &--index
+				display block
+			&--index
+				position absolute
+				right 0
+				bottom 0
+				font-size 48px
+				color rgba(0,0,0,.1)
+				line-height 1
+				font-weight 700
+				z-index 2
+				font-open()
+
+	&--header
+		background #000
+		&--top
+			padding 10px 0
+			&--logo
+				img
+					max-width 100%
+					+respond(xs)
+						height 60px
+
+			&--search
+				display inline-block
+				font-size 0
+				margin-top 16px
+				span
+					background #333
+					border-radius 3px
+					padding 13px 17px
+					display inline-block
+					font-size 18px
+					color #aaa
+					&:hover, &:focus
+						color #fff
+						background background-color
+				input
+					ff_regular(18px)
+					padding 12px 10px
+					border none
+					border-radius 3px 0 0 3px
+					background background-color
+					color #ddd
+					width 0
+					margin-right -20px
+			&--sign-in, &--home
+				background #333
+				border-radius 3px
+				padding 13px 17px
+				display inline-block
+				font-size 18px
+				color #aaa
+				margin-top 16px
+				&:hover, &:focus
+					color #fff
+					background background-color
+			&--user-menu, &--sign-in
+				display none
+			&--user-menu, &--on-air
+				position relative
+				display inline-block
+				&--button
+					background #333
+					border-radius 3px
+					padding 13px 17px
+					display inline-block
+					font-size 18px
+					color #aaa
+					margin-top 16px
+					&:hover, &:focus
+						color #fff
+						background background-color
+			&--user-menu
+				.dropdown-menu
+					right 0
+					left auto
+					background #333
+					font-size 18px
+					border none
+					> li
+						border none
+						> a
+							color white
+							padding 10px 20px
+							border-bottom 2px solid background-color
+							transition all 150ms ease
+							&:hover
+								background #555
+								color white
+						&:last-child
+							a
+								border none
+			&--on-air
+				&--game
+					display block
+					font-weight 700
+					font-roboto-condensed()
+					i
+						margin-right 5px
+				&--title
+					font-open()
+					font-weight 300
+				&--dropdown
+					background #333
+					font-size 18px
+					border none
+					> li
+						border none
+						> a
+							color white
+							padding 10px 20px
+							border-bottom 2px solid background-color
+							transition all 150ms ease
+							&:hover
+								background #555
+								color white
+						&:last-child
+							a
+								border none
+		&--navbar
+			border-top 1px solid background-color
+			margin-bottom 0
+			.navbar-toggle
+				.icon-bar
+					background white
+			&--nav-collapse
+				margin 0 -15px !important
+			&--nav
+				+respond(lg md sm)
+					display flex
+				+respond(xs)
+					flex-direction column
+				> li
+					+respond(lg md sm)
+						flex 1 0 0
+					border-right 1px solid background-color
+					&:first-child
+						border-left 1px solid background-color
+					+respond(xs)
+						border-left 1px solid background-color
+						min-height 50px
+					&.dropdown
+						+respond(xs)
+							.dropdown-backdrop
+								display none !important
+							> a:before
+								font-family "FontAwesome"
+								content "\f067"
+								position absolute
+								right 14px
+								display block
+								top 18px
+								color white
+								font-size 14px
+					> .dropdown-menu
+						margin 0
+						background #000
+						font-size 18px
+						border none
+						+respond(xs)
+							position static
+							float none
+							width auto
+							margin-top 0
+							background-color #444
+							border 0
+							box-shadow none
+						> li
+							border none
+							> a
+								color white
+								padding 10px 20px
+								border-bottom 2px solid background-color
+								transition all 150ms ease
+								+respond(xs)
+									text-align center
+									background #444
+								&:hover, &:focus, &:active
+									background #555
+							&:last-child
+								a
+									border none
+					> a
+						border-bottom 5px solid transparent
+						font-size 16px
+						padding 2px 5px
+						color #fff
+						text-align center
+						height 100%
+						width 100%
+						display flex
+						align-items center
+						justify-content center
+						transition: all ease 0.8s;
+						box-shadow: inset 0 0 0 0 #000
+						&:hover, &:focus, &:active
+							background-color #000 !important
+						+respond(xs)
+							border-bottom 1px solid background-color !important
+							min-height 50px
+					&.open
+						> a
+							background-color inherit
+							&:hover, &:focus
+								background-color inherit
+						> .dropdown-menu
+							border-bottom 2px solid transparent
+					/* LOL */
+					&:nth-child(1)
+						c = menu.lol
+						> a
+							border-bottom-color c
+							box-shadow: inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* AOV */
+					&:nth-child(2)
+						c = menu.aov
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* DOTA2 */
+					&:nth-child(3)
+						c = menu.dota2
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* PUBG */
+					&:nth-child(4)
+						c = menu.pubg
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* CSGO */
+					&:nth-child(5)
+						c = menu.csgo
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* HEARTHSTONE */
+					&:nth-child(6)
+						c = menu.hearthstone
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* MEDYA */
+					&:nth-child(7)
+						c = menu.media
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* INCELEME */
+					&:nth-child(8)
+						c = menu.makaleler
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* ARAÇLAR */
+					&:nth-child(9)
+						c = menu.indirim
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+					/* TAKVİM */
+					&:nth-child(10)
+						c = menu.espor
+						> a
+							border-bottom-color c
+							box-shadow inset 0 0 0 0 c
+							&:hover
+								box-shadow inset 0 -100px 0 0 c
+								border-color c
+						> .dropdown-menu
+							border-bottom-color c
+	&--footer
+		color #cccccc
+		clear both
+		&--top
+			background #151515
+			color inherit
+			padding 7px 0
+			clear both
+			&__home
+				color inherit
+				transition all 200ms ease
+				i
+					vertical-align middle
+					font-size 26px
+					margin-right 10px
+					background #fff
+					color #151515
+					padding 5px
+					transition all 200ms ease
+				&:hover
+					color lighten(color-primary, 30)
+					text-decoration none
+					i
+						background color-primary
+						color #ffffff
+		&--bottom
+			background #000000
+			color inherit
+			padding 20px 0
+			a
+				transition all 150ms ease
+			&__hr
+				border-top 1px solid #39383e
+				margin 20px 0
+			&__links
+				color inherit
+				&:nth-child(4)
+					+respond(sm)
+						clear both
+				a
+					color inherit
+					text-decoration none
+					transition all 150ms ease
+					&:hover
+						color lighten(color-primary, 30)
+				h4
+					ff_bold(18px)
+					border-bottom 1px solid #39383e
+					padding-bottom 10px
+					overflow hidden
+					white-space nowrap
+					text-overflow ellipsis
+				ul
+					list-style-type none
+					margin 10px 0 0
+					padding 0
+					li
+						padding 0
+						margin 0 0 5px
+						display block
+						a
+							padding 3px 0
+							ff_regular(14px)
+			&__logo
+				display inline-block
+				+respond(xs)
+					display block
+				img
+					width 30px
+					+respond(xs)
+						width 50px
+			&__text
+				display inline-block
+				color inherit
+				padding 10px 0
+				font-footer()
+			&__ruby
+				color color-ruby
+				&:hover
+					color inherit
+					text-decoration none
+			&__social
+				color inherit
+				list-style-type none
+				padding 10px 0
+				margin 0
+				li
+					margin 0
+					padding 0
+					display inline-block
+					border-right 1px solid #39383e
+					&:last-child
+						border-right none
+					a
+						color inherit
+						padding 4px 7px
+						&:hover
+							color lighten(color-primary, 30)
+
+	&--post
+		background #000
+		color #fff
+		padding 15px
+		h1, h2, h3, h4, h5, h6
+			margin-bottom 0
+			margin-top 0
+		&--title
+			font-roboto-condensed()
+			font-size 30px
+			margin 0 0 10px
+		&--detail
+			//margin 0 0 15px
+			color #eee
+			ff_regular(16px)
+
+			news-border()
+			> i
+				margin-right 5px
+				margin-left 15px
+				&:first-child
+					margin-left 0
+		&--image
+			margin-top 15px
+		&--content
+			news-border()
+			ff_regular(16px, 1.5em)
+			img, iframe, object, video, audio
+				max-width 100% !important
+			p, li
+				margin 0 0 1em
+			h2, h3, h4, h5, h6
+				margin 0.75em 0 .25em
+				font-helvetica()
+			a
+				display inline-block
+			blockquote
+				&.twitter-tweet
+					display inline-block
+					font-family "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif
+					font-size 12px
+					font-weight bold
+					line-height 16px
+					border-color #eee #ddd #bbb
+					border-radius 5px
+					border-style solid
+					border-width 1px
+					box-shadow 0 1px 3px rgba(0, 0, 0, 0.15)
+					margin 10px 5px
+					padding 16px
+					background #fff
+					color #000
+					p
+						font-size 16px
+						font-weight normal
+						line-height 20px
+					a
+						color color-secondary
+						font-weight normal
+						text-decoration none
+						outline 0 none
+						&:hover, &:focus
+							text-decoration underline
+		&--tags
+			font-size 0
+			news-border()
+			> strong
+				font-weight bold
+				ff_regular(16px)
+				margin 0 10px 0 0
+			> a
+				margin 0 5px 5px 0
+				display inline-block
+				padding 2px 4px 1px
+				background color-secondary
+				color white
+				ff_regular(14px)
+				border-radius 2px
+				text-decoration none
+				transition all 150ms ease
+				&:hover
+					background darken(color-secondary, 10)
+		&--author
+			news-border()
+			&--avatar
+				width 100%
+			&--name
+				font-helvetica()
+				font-size 30px
+				margin 0 0 5px
+			&--title
+				ff_regular(16px)
+				margin 0 0 15px
+			&--motto
+				ff_regular(16px)
+		&--closest
+			news-border()
+			padding 0
+			display flex
+			&--link
+				margin 0
+				padding 15px
+				display block
+				flex 1
+				align-self stretch
+				color #fff
+				text-decoration none
+				transition all 150ms ease
+				font-helvetica()
+				> h2
+					font-weight 700
+				&:hover
+					background #555
+					color inherit
+					text-decoration none
+				> span
+					display block
+					ff_regular(16px)
+			&--prev
+				text-align left
+			&--next
+				text-align right
+		&--comments
+			margin 0 -15px -25px
+			padding 15px
+	&--posts
+		&--title
+			color white
+			ff_bold(15px)
+			padding 10px 15px
+			background #000
+			margin 0 0 5px
+			text-transform uppercase
+		&--post
+			display block
+			text-decoration none
+			color #ddd
+			padding 15px
+			background #000
+			transition all 150ms ease
+			margin-bottom 15px
+			border 1px solid transparent
+			&:hover, &:focus, &:active
+				color #fff
+				background #555
+				border 1px solid #fff
+				text-decoration none
+			&--header
+				+respond(xs)
+					margin-top 15px
+			&--title
+				font-roboto-condensed()
+				font-size 28px
+				font-weight 700
+				line-height 1.1
+				margin-bottom 5px
+				white-space nowrap
+				overflow hidden
+				text-overflow ellipsis
+			&--image
+				max-width 100%
+				max-height 100%
+			&--game
+				position absolute
+				left 20px
+				top 5px
+				padding 5px 10px
+				font-size 10px
+				font-weight 700
+				text-transform uppercase
+			&--meta
+				font-open()
+				font-weight 300
+				font-size 14px
+				margin-bottom 10px
+				> *
+					display inline-block
+					margin-right 10px
+					i
+						margin-right 5px
+			&--description
+				font-open()
+				font-weight 400
+				font-size 16px
+				margin 0
+				+respond(sm)
+					font-size 14px
+	&--sidebar
+		background #000
+		padding 0 15px
+		margin-left -15px
+		+respond(xs sm)
+			margin-left 0
+		&--title
+			news-border()
+			color white
+			ff_bold(15px)
+			padding 10px 15px
+		&--news
+			padding 0
+			margin 0
+			list-style-type none
+			&--li
+				margin-top 5px
+				display block
+				+respond(xs sm)
+					margin-bottom 5px
+				a
+					display flex
+					color white
+					text-decoration none
+					transition all 150ms ease
+					margin -5px -15px
+					padding 15px
+					border-bottom 2px solid background-color
+					&:hover
+						background #555
+			> div > div
+				&:last-child
+					a
+						border-bottom none
+
+				&:nth-child(2n+1)
+					a
+						+respond(xs sm)
+							border-right 1px solid background-color
+				&:nth-child(2n)
+					a
+						+respond(xs sm)
+							border-left 1px solid background-color
+			&--image, &--content
+				flex 1
+			&--content
+				padding 0 0 0 15px
+			&--game
+				font-weight normal !important
+				display block
+				margin-bottom 10px
+				text-transform uppercase
+			&--title
+				ff_regular(13px)
+				display block
+	&--extra
+		&--fb-post
+			border 1px solid #fff
+			background #fff
+			border-radius 3px
+			overflow hidden
+			width 100%
+		&--youtube
+			position relative
+			padding-bottom 56.25%
+			padding-top 25px
+			height 0
+			&--iframe
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+				border none
+
+	&--stream
+		background #000
+		color #fff
+		padding 15px
+		&--title
+			font-roboto-condensed()
+			font-size 30px
+			margin 0
+		&--detail
+			color #eee
+			ff_regular(16px)
+
+			news-border()
+			> i
+				margin-right 5px
+				margin-left 15px
+				&:first-child
+					margin-left 0
+		&--height
+			margin-top 15px
+			display flex
+			justify-items stretch
+		&--video
+			position relative
+			padding-bottom 56.25%
+			padding-top 25px
+			height 0
+			margin-right -15px
+			iframe
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+				border none
+		&--chat
+			height 100%
+			margin-left -15px
+			iframe
+				border none
+.pagination
+	margin 0
+	border-radius 3px
+	+respond(xs sm)
+		margin-bottom 5px
+	> li
+		> a, > span
+			background #000
+			color #ddd
+			border-color background-color
+			padding 9px 13px
+			&:focus, &:hover
+				background #555
+				color #fff
+				border-color background-color
+		&.disabled
+			> a, > span
+				background-color #000
+				color #ddd
+				border-color background-color
+				&:focus, &:hover
+					background-color #000
+					color #ddd
+					border-color background-color
+		&.active
+			> a, > span
+				background-color color-primary
+				border-color background-color
+				&:focus, &:hover
+					background-color darken(color-primary, 10)
+					border-color background-color
+
+.timetable-color
+	&.lol-color
+		background: menu.lol
+	&.heartstone-color
+		background: menu.hearthstone
+	&.dota2-color
+		background: menu.dota2
+	&.overwatch-color
+		background: menu.overwatch
+	&.csgo-color
+		background: menu.csgo
+	&.pubg-color
+		background: menu.pubg
+	&.strikeofkings-color
+		background: menu.aov
+
+.text
+	&-xs
+		&-left
+			text-align left
+		&-right
+			text-align right
+		&-center
+			text-align center
+		&-justify
+			text-align justify
+
+@media (min-width 768px)
+	.text
+		&-sm
+			&-left
+				text-align left
+			&-right
+				text-align right
+			&-center
+				text-align center
+			&-justify
+				text-align justify
+
+@media (min-width 992px)
+	.text
+		&-md
+			&-left
+				text-align left
+			&-right
+				text-align right
+			&-center
+				text-align center
+			&-justify
+				text-align justify
+
+@media (min-width 1200px)
+	.text
+		&-lg
+			&-left
+				text-align left
+			&-right
+				text-align right
+			&-center
+				text-align center
+			&-justify
+				text-align justify

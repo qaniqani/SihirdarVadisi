@@ -1,0 +1,1558 @@
+﻿/* > Fonts */
+@font-face {
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn';
+  src: url('fonts/HelveticaNeueLTPro-HvCn.eot');
+  src: local('☺'), url('fonts/HelveticaNeueLTPro-HvCn.woff') format('woff'), url('fonts/HelveticaNeueLTPro-HvCn.ttf') format('truetype'), url('fonts/HelveticaNeueLTPro-HvCn.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'Conv_HelveticaNeueLTPro-HvCn' !important;
+    src: url('fonts/HelveticaNeueLTPro-HvCn.svg') format('svg') !important;
+  }
+}
+@font-face {
+  font-family: 'liberation_sansregular';
+  src: url('fonts/liberationsans-regular-webfont.eot');
+  src: url('fonts/liberationsans-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/liberationsans-regular-webfont.woff2') format('woff2'), url('fonts/liberationsans-regular-webfont.woff') format('woff'), url('fonts/liberationsans-regular-webfont.ttf') format('truetype'), url('fonts/liberationsans-regular-webfont.svg#liberation_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* > Font Options */
+/* > Colors */
+/* > Menu Background Colors */
+html {
+  -webkit-text-size-adjust: none;
+}
+body {
+  background: #242424;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  padding-right: 0 !important;
+  overflow-x: hidden !important;
+}
+.tools-breadcrumb-container {
+  background: #1e1e1e;
+  padding: 0 0 10px 0;
+  height: 50px;
+}
+.tools-breadcrumb-container .tools-breadcrumb {
+  width: auto !important;
+  float: right;
+  background: none;
+  border-radius: 0;
+  margin: 0;
+}
+.tools-breadcrumb-container .tools-breadcrumb li {
+  color: #4c4c4c;
+}
+.tools-breadcrumb-container .tools-breadcrumb li a {
+  font-size: 14px;
+  line-height: 32px;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #5c5c5c;
+}
+.tools-breadcrumb-container .tools-breadcrumb li:before {
+  color: #4c4c4c;
+}
+.tools-breadcrumb-container .tools-breadcrumb li.active {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #962b84;
+}
+.tools-breadcrumb-container .back-to-link {
+  margin: 0;
+  padding: 8px 15px;
+  font-size: 14px;
+  line-height: 32px;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background: none;
+  color: #FFFFFF !important;
+  text-transform: none;
+}
+.tools-breadcrumb-container .back-to-link:hover,
+.tools-breadcrumb-container .back-to-link:focus {
+  color: #962b84 !important;
+  background: none !important;
+}
+.sidebar .box-module {
+  width: 100%;
+  float: left;
+}
+.sidebar .module-title {
+  width: 100%;
+  display: inline-block;
+  background: #000;
+  color: #FFFFFF;
+  padding: 8px 10px;
+  text-transform: uppercase;
+  font-size: 15px !important;
+}
+.sidebar ul.popular-news-list {
+  margin: 0;
+  padding: 0;
+}
+.sidebar ul.popular-news-list li {
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  padding: 10px;
+  color: #FFFFFF;
+  list-style: none;
+  border: 1px solid #39383e;
+  border-bottom: 0 none;
+  overflow: hidden;
+  background: #000;
+}
+.sidebar ul.popular-news-list li a {
+  color: #FFFFFF;
+}
+.sidebar ul.popular-news-list li a:hover,
+.sidebar ul.popular-news-list li a:focus {
+  text-decoration: none;
+}
+.sidebar ul.popular-news-list li em {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.sidebar ul.popular-news-list li p {
+  padding-top: 5px;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  height: 54px;
+  overflow: hidden;
+}
+.sidebar ul.popular-news-list li img {
+  height: 80px;
+  float: left;
+  padding: 0 10px 0 0;
+}
+.sidebar ul.popular-news-list li.callbacks_here {
+  background: #962b84;
+  transition: 0.3s;
+}
+.sidebar ul.popular-news-list li:hover {
+  text-decoration: none;
+  background: #111 !important;
+}
+.sidebar ul.popular-news-list li:last-child {
+  border-bottom: 1px solid #39383e;
+}
+.sidebar ul.popular-news-list li:before {
+  display: none;
+}
+@media screen and (min-width: 991px) and (max-width: 1199px) {
+  .sidebar ul.popular-news-list {
+    margin: 0;
+    padding: 0;
+  }
+  .sidebar ul.popular-news-list li img {
+    display: none;
+  }
+}
+.news-page .box-module {
+  width: 100%;
+  float: left;
+  height: auto;
+  margin-bottom: 20px;
+}
+.news-page .box-module .module-title {
+  width: 100%;
+  display: inline-block;
+  background: #000;
+  color: #FFFFFF;
+  padding: 8px 10px;
+  text-transform: uppercase;
+  font-size: 15px !important;
+}
+.news-page .box-module .module-content {
+  width: 100%;
+  height: auto;
+  background: none;
+}
+.news-page .box-module .module-content .news-detail {
+  width: 100%;
+  float: left;
+  background: #000;
+}
+.news-page .box-module .module-content .news-detail .news-img {
+  width: 100%;
+  height: 450px;
+  float: left;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+}
+.news-page .box-module .module-content .news-detail .news-frame {
+  width: 100%;
+  height: auto;
+  float: left;
+  padding-top: 15px;
+}
+.news-page .box-module .module-content .news-detail .news-frame .stream-frame {
+  height: 520px;
+}
+.news-page .box-module .module-content .news-detail .news-frame .chat-frame {
+  height: 520px;
+}
+.news-page .box-module .module-content .news-detail .news-content {
+  width: 100%;
+  float: left;
+  min-height: 407px;
+  padding: 15px;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.news-page .box-module .module-content .news-detail .news-content .game {
+  margin: 10px 0 7px 0;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #962b84;
+  text-transform: uppercase;
+}
+.news-page .box-module .module-content .news-detail .news-content .title {
+  margin: 0 0 7px 0;
+  padding: 0 10px 0 0;
+  font-size: 28px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #FFFFFF;
+}
+.news-page .box-module .module-content .news-detail .news-content .author {
+  margin: 0 0 7px 0;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.news-page .box-module .module-content .news-detail .news-content .author .date {
+  color: #FFFFFF;
+  font-style: normal;
+}
+.news-page .box-module .module-content .news-detail .news-content .description {
+  margin-top: 20px;
+  color: #CCC;
+  font-size: 13px !important;
+  line-height: normal !important;
+  font-family: 'liberation_sansregular' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  overflow: hidden;
+}
+.news-page .box-module .module-content .news-detail .news-content .description h1,
+.news-page .box-module .module-content .news-detail .news-content .description h2,
+.news-page .box-module .module-content .news-detail .news-content .description h3,
+.news-page .box-module .module-content .news-detail .news-content .description h4,
+.news-page .box-module .module-content .news-detail .news-content .description h5,
+.news-page .box-module .module-content .news-detail .news-content .description h6 {
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.news-page .box-module .module-content .news-detail .news-content .description iframe {
+  border: 0 none;
+}
+.news-page .box-module .module-content .news-detail .news-content .share-box {
+  width: 50px;
+  height: 250px;
+  float: left;
+  margin: 10px 15px 0 0;
+}
+.news-page .box-module .module-content .news-detail .news-content .share-box p {
+  font-style: italic;
+}
+.news-page .box-module .module-content .news-detail .news-content .share-box p i {
+  margin-right: 5px;
+}
+.news-page .box-module .module-content .news-detail .news-content .share-box .addthis_inline_share_toolbox a {
+  margin-right: 5px !important;
+  background: none !important;
+  border: 1px solid #39383e;
+  transition: 0s !important;
+}
+.news-page .box-module .module-content .news-detail .news-content .share-box .addthis_inline_share_toolbox a:hover,
+.news-page .box-module .module-content .news-detail .news-content .share-box .addthis_inline_share_toolbox a:focus {
+  transition: 0s !important;
+  margin-left: 2px;
+  margin-top: 4px !important;
+  margin-bottom: 1px !important;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played {
+  width: 100%;
+  float: left;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border: 1px solid #39383e;
+  background: #090909;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .btn {
+  width: 100%;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  padding: 10px;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .form-group {
+  margin: 0;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played label {
+  margin: 0 0 5px 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .radio {
+  margin-top: 0;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .radio label {
+  margin: unset !important;
+  padding-left: 35px !important;
+  color: #FFFFFF !important;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .radio label .circle {
+  border-color: #962b84;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .radio label .check {
+  background: #FFFFFF;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played input[type="text"],
+.news-page .box-module .module-content .news-detail .lol-time-played select {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  padding: 0 10px;
+  border: 1px solid #CCC !important;
+  background-position: bottom;
+  background-image: none !important;
+  color: #CCC;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .table {
+  border-color: #39383e;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .table th {
+  font-size: 15px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  border-color: #39383e;
+  background: #1d1d20;
+  border-bottom: none;
+}
+.news-page .box-module .module-content .news-detail .lol-time-played .table td,
+.news-page .box-module .module-content .news-detail .lol-time-played .table tr {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  border-color: #39383e;
+}
+.champions-search {
+  width: 100%;
+  margin: -25px auto 0 auto !important;
+  padding: 0 10px;
+  border: 1px solid #222 !important;
+  background-size: 0 2px,100% 0 !important;
+}
+#champs {
+  width: 100%;
+  float: left;
+}
+#champs li {
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#champs li a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: .7;
+}
+#champs li p {
+  margin: 3px 0 0 0;
+  padding: 0;
+  color: #FFF;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#champs li img {
+  border: 1px solid #222;
+}
+#champs li a:hover,
+#champs li a:focus {
+  text-decoration: none;
+  opacity: 1;
+}
+#champions-dialog {
+  float: left !important;
+  position: static !important;
+  width: 100% !important;
+}
+#champions-dialog .modal-dialog {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+}
+#champions-dialog .modal-content {
+  background: none;
+}
+#champions-dialog .modal-body {
+  padding: 0 !important;
+  background: none !important;
+  color: #FFFFFF;
+}
+#champions-dialog .back-to-list-btn {
+  background: #962b84;
+  color: #FFFFFF;
+  margin: 0 0 15px 0;
+  border-radius: 0;
+}
+#champions-dialog .champ-picture {
+  height: 350px;
+  overflow: hidden;
+  background-color: #151515 !important;
+  border: 1px solid #242424;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  margin-right: 0;
+}
+#champions-dialog .champ-picture img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#champions-dialog h5 {
+  width: 100% !important;
+  float: left;
+  padding-top: 15px;
+  font-size: 25px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #962b84;
+  margin: 0;
+  padding-bottom: 10px;
+}
+#champions-dialog h6 {
+  width: 100%;
+  float: left;
+  font-size: 22px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #962b84;
+}
+#champions-dialog .description {
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#champions-dialog ul.specs {
+  margin: 0 0 0 0;
+  padding: 0;
+}
+#champions-dialog ul.specs li {
+  min-height: 40px;
+  margin-bottom: 5px;
+  list-style: none;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+#champions-dialog ul.specs li .stat-label {
+  height: 20px;
+  float: left;
+  padding-left: 25px;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+#champions-dialog ul.specs li .stat-value {
+  height: 20px;
+  line-height: 20px;
+  padding-left: 5px;
+  font-size: 13px;
+}
+#champions-dialog ul.specs li .stat-value em {
+  width: 100%;
+  float: left;
+  padding-left: 25px;
+  font-style: normal;
+  font-size: 12px;
+}
+#champions-dialog ul.specs li .stat-ad {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 0;
+}
+#champions-dialog ul.specs li .stat-armor {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -25px;
+}
+#champions-dialog ul.specs li .stat-as {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -50px;
+}
+#champions-dialog ul.specs li .stat-ms {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -75px;
+}
+#champions-dialog ul.specs li .stat-mr {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -125px;
+}
+#champions-dialog ul.specs li .stat-hp {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -150px;
+}
+#champions-dialog ul.specs li .stat-hp-regen {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -175px;
+}
+#champions-dialog ul.specs li .stat-mana {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -200px;
+}
+#champions-dialog ul.specs li .stat-m-regen {
+  background: url("https://lolstatic-a.akamaihd.net/game-info/1.1.9/css/resources/images/stat-icons-sprite.png") no-repeat 0 -225px;
+}
+#champions-dialog ul.skins {
+  margin: 0;
+  padding: 0;
+}
+#champions-dialog ul.skins li {
+  list-style: none;
+  margin-bottom: 25px;
+  padding: 0 15px 0 0;
+}
+#champions-dialog ul.skins li a {
+  width: 100%;
+  height: 100%;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+#champions-dialog ul.skins li a img {
+  border: 1px solid #242424;
+  margin-bottom: 5px;
+}
+#champions-dialog ul.skins li a:hover,
+#champions-dialog ul.skins li a:focus {
+  text-decoration: none;
+}
+#champions-dialog ul.spells {
+  margin: 0;
+  padding: 0;
+}
+#champions-dialog ul.spells li {
+  width: 100%;
+  float: left;
+  list-style: none;
+  margin-bottom: 20px;
+  display: grid;
+  padding: 0 !important;
+}
+#champions-dialog ul.spells li h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+#champions-dialog ul.spells li img {
+  width: 50px;
+  float: left;
+  margin: 10px 10px 10px 0;
+  border: 1px solid #242424;
+}
+#champions-dialog ul.spells li p {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  margin: 10px 0;
+}
+#champions-dialog ul.spells li p em {
+  width: 100%;
+  display: block;
+  color: #962b84;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.homepage-list {
+  margin: 20px -15px 0 0;
+}
+.homepage-list .item {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.homepage-list .item > div {
+  padding: 0;
+  border: 1px solid #393939;
+  background: #000;
+}
+.homepage-list .item a:hover,
+.homepage-list .item a:focus {
+  text-decoration: none;
+  color: #FFF;
+}
+.homepage-list .item .img {
+  width: 100%;
+  display: block;
+  background-size: cover !important;
+  border-bottom: 1px solid #393939;
+}
+.homepage-list .item .img img {
+  width: 100%;
+}
+.homepage-list .item .title {
+  width: auto;
+  height: auto;
+  float: left;
+  margin: 15px 15px 10px 15px;
+  padding-bottom: 15px;
+  background: #000;
+  color: #962b84;
+  font-size: 17px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  position: relative;
+}
+.homepage-list .item .title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 40px;
+  /* or 100px */
+  border-bottom: 4px solid #242629;
+}
+.homepage-list .item .description {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: block;
+  padding: 0 15px 15px 15px;
+  background: #000;
+  color: #FFF;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.homepage-list .item .description .btn {
+  background: #000;
+  border: 1px solid #393939;
+  color: #FFFFFF;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.homepage-list .item .description .btn:hover,
+.homepage-list .item .description .btn:focus {
+  background: #962b84;
+}
+footer {
+  width: 100%;
+  float: left;
+  border-top: 5px solid #151515;
+  background-color: #000;
+  min-height: 50px;
+  font-size: 12px;
+  color: #FFF;
+  text-align: center;
+  font-size: 13px;
+  line-height: 50px;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+footer em {
+  font-style: normal;
+}
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0b0911;
+  /* change if the mask should have another color then white */
+  z-index: 9999;
+  /* makes sure it stays on top */
+  display: block;
+}
+#preloader #prelogo {
+  width: 119px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -120px 0 0 -58px;
+  background: url(img/logo2.png) no-repeat 0 top;
+}
+#preloader #status {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -10px 0 0 -33px;
+}
+#preloader #status .spinner {
+  width: 70px;
+  text-align: center;
+}
+#preloader #status .spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #FFF;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+#preloader #status .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+#preloader #status .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.container {
+  width: 100% !important;
+  max-width: 1300px;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-padding-left {
+  padding-left: 0;
+}
+.no-padding-right {
+  padding-right: 0;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+.margin-top-05 {
+  margin-top: 0.5em;
+}
+.margin-top-10 {
+  margin-top: 1.0em;
+}
+.margin-top-15 {
+  margin-top: 1.5em;
+}
+.margin-top-20 {
+  margin-top: 2.0em;
+}
+.margin-top-25 {
+  margin-top: 2.5em;
+}
+.margin-top-30 {
+  margin-top: 3.0em;
+}
+.margin-bottom-05 {
+  margin-bottom: 0.5em;
+}
+.margin-bottom-10 {
+  margin-bottom: 1.0em;
+}
+.margin-bottom-15 {
+  margin-bottom: 1.5em;
+}
+.margin-bottom-20 {
+  margin-bottom: 2.0em;
+}
+.margin-bottom-25 {
+  margin-bottom: 2.5em;
+}
+.margin-bottom-30 {
+  margin-bottom: 3.0em;
+}
+.btn-raised {
+  box-shadow: none !important;
+  border-radius: 0;
+}
+select.form-control {
+  border: 1px solid #dedede !important;
+  padding: 0 10px !important;
+  background-size: 0 2px,100% 0px !important;
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #CCC;
+  position: relative;
+}
+select.form-control option {
+  color: #000;
+}
+.alert {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal-backdrop {
+  background: #000000;
+}
+.modal {
+  padding: 0 !important;
+}
+.modal .modal-dialog {
+  margin: 20px auto !important;
+}
+.modal .modal-header {
+  background: #962b84;
+  padding: 15px;
+  color: #FFFFFF;
+}
+.modal .modal-header .modal-title {
+  font-size: 19px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.modal .modal-header .close {
+  color: #FFFFFF;
+  opacity: 1;
+}
+.modal .modal-body {
+  width: 100%;
+  display: inline-block;
+}
+.modal .modal-footer {
+  width: 100%;
+  display: inline-block;
+}
+.modal .modal-footer p {
+  padding: 15px 15px 0 15px;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  border-top: 1px solid #efefef;
+  text-align: center;
+  display: block;
+}
+.modal .modal-footer p a {
+  font-size: 14px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  text-decoration: underline;
+}
+.modal#lol-time-dialog .btn-group,
+.modal#lol-champion-dialog .btn-group {
+  width: 100%;
+}
+.modal#lol-time-dialog .btn-group .btn,
+.modal#lol-champion-dialog .btn-group .btn {
+  width: 11.111111111%;
+  text-align: center;
+  padding: 5px 0;
+  border: 1px solid #d2d2d2;
+  border-right: none;
+  background: #FFFFFF;
+  color: #AAA;
+}
+.modal#lol-time-dialog .btn-group .btn:last-child,
+.modal#lol-champion-dialog .btn-group .btn:last-child {
+  border-right: 1px solid #d2d2d2;
+}
+.modal#lol-time-dialog .btn-group .btn.active,
+.modal#lol-champion-dialog .btn-group .btn.active {
+  background: #962b84;
+  color: #FFFFFF;
+}
+@media screen and (min-width: 1px) and (max-width: 765px) {
+  .modal#lol-time-dialog .no-padding-left,
+  .modal#lol-champion-dialog .no-padding-left {
+    padding-left: 0 !important;
+    padding: 0 1% !important;
+  }
+  .modal#lol-time-dialog .no-padding-right,
+  .modal#lol-champion-dialog .no-padding-right {
+    padding-right: 0 !important;
+    padding: 5px 1% 0 1% !important;
+  }
+  .modal#lol-time-dialog .btn-group .btn,
+  .modal#lol-champion-dialog .btn-group .btn {
+    width: 48% !important;
+    margin: 1%;
+    border: 1px solid #D2D2D2 !important;
+  }
+  .modal#lol-time-dialog .btn-group .btn.active,
+  .modal#lol-champion-dialog .btn-group .btn.active {
+    background: #962b84;
+    color: #FFFFFF;
+  }
+}
+.modal#register-dialog .modal-dialog,
+.modal#update-user-dialog .modal-dialog {
+  max-width: 800px !important;
+}
+.modal#register-dialog .modal-dialog .form-group,
+.modal#update-user-dialog .modal-dialog .form-group {
+  max-width: unset !important;
+}
+.modal#register-dialog .modal-dialog .file-input,
+.modal#update-user-dialog .modal-dialog .file-input {
+  background: #efefef !important;
+  border: 1px solid #DEDEDE;
+  padding: 15px;
+}
+.modal#register-dialog .modal-dialog .file-input img,
+.modal#update-user-dialog .modal-dialog .file-input img {
+  width: 100% !important;
+}
+.modal#register-dialog .modal-dialog .file-input .file-default-preview img,
+.modal#update-user-dialog .modal-dialog .file-input .file-default-preview img {
+  max-width: 175px;
+  border: 1px solid #CCC;
+}
+.modal#register-dialog .modal-dialog .file-input button,
+.modal#update-user-dialog .modal-dialog .file-input button,
+.modal#register-dialog .modal-dialog .file-input .btn-file,
+.modal#update-user-dialog .modal-dialog .file-input .btn-file {
+  margin: 10px 0 0 0;
+  cursor: pointer;
+  background: #FFF !important;
+}
+.modal#login-dialog,
+.modal#register-dialog,
+.modal#forgot-password-dialog,
+.modal#update-user-dialog,
+.modal#update-password-dialog {
+  overflow: auto !important;
+}
+.modal#login-dialog .modal-dialog,
+.modal#register-dialog .modal-dialog,
+.modal#forgot-password-dialog .modal-dialog,
+.modal#update-user-dialog .modal-dialog,
+.modal#update-password-dialog .modal-dialog {
+  max-width: 400px;
+}
+.modal#login-dialog .modal-dialog .facebook-login,
+.modal#register-dialog .modal-dialog .facebook-login,
+.modal#forgot-password-dialog .modal-dialog .facebook-login,
+.modal#update-user-dialog .modal-dialog .facebook-login,
+.modal#update-password-dialog .modal-dialog .facebook-login {
+  width: 100%;
+  height: 36px;
+  margin: 0 auto;
+  padding: 0;
+  text-transform: none;
+  display: block;
+  font-size: 13px;
+  line-height: 36px;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background-color: #4974b0;
+  color: rgba(255, 255, 255, 0.84);
+}
+.modal#login-dialog .modal-dialog .facebook-login i,
+.modal#register-dialog .modal-dialog .facebook-login i,
+.modal#forgot-password-dialog .modal-dialog .facebook-login i,
+.modal#update-user-dialog .modal-dialog .facebook-login i,
+.modal#update-password-dialog .modal-dialog .facebook-login i {
+  width: 11%;
+  height: 36px;
+  float: left;
+  margin: 0 0 0 10px;
+  display: block;
+  background-position: center 1px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 37px;
+  color: rgba(255, 255, 255, 0.84);
+}
+.modal#login-dialog .modal-dialog .facebook-login span,
+.modal#register-dialog .modal-dialog .facebook-login span,
+.modal#forgot-password-dialog .modal-dialog .facebook-login span,
+.modal#update-user-dialog .modal-dialog .facebook-login span,
+.modal#update-password-dialog .modal-dialog .facebook-login span {
+  width: 80%;
+  margin: 0 0 0 8px;
+  padding: 0;
+  border-left: 1px solid #466ba0;
+  text-align: center;
+  display: inline-block;
+}
+.modal#login-dialog .modal-dialog .facebook-login:hover,
+.modal#register-dialog .modal-dialog .facebook-login:hover,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:hover,
+.modal#update-user-dialog .modal-dialog .facebook-login:hover,
+.modal#update-password-dialog .modal-dialog .facebook-login:hover,
+.modal#login-dialog .modal-dialog .facebook-login:focus,
+.modal#register-dialog .modal-dialog .facebook-login:focus,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:focus,
+.modal#update-user-dialog .modal-dialog .facebook-login:focus,
+.modal#update-password-dialog .modal-dialog .facebook-login:focus {
+  background: #466ba0;
+  text-decoration: none;
+}
+.modal#login-dialog .modal-dialog .facebook-login:hover span,
+.modal#register-dialog .modal-dialog .facebook-login:hover span,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:hover span,
+.modal#update-user-dialog .modal-dialog .facebook-login:hover span,
+.modal#update-password-dialog .modal-dialog .facebook-login:hover span,
+.modal#login-dialog .modal-dialog .facebook-login:focus span,
+.modal#register-dialog .modal-dialog .facebook-login:focus span,
+.modal#forgot-password-dialog .modal-dialog .facebook-login:focus span,
+.modal#update-user-dialog .modal-dialog .facebook-login:focus span,
+.modal#update-password-dialog .modal-dialog .facebook-login:focus span {
+  border-left: 1px solid #375785;
+}
+.modal#login-dialog .modal-dialog .seperator,
+.modal#register-dialog .modal-dialog .seperator,
+.modal#forgot-password-dialog .modal-dialog .seperator,
+.modal#update-user-dialog .modal-dialog .seperator,
+.modal#update-password-dialog .modal-dialog .seperator {
+  width: 100%;
+  padding: 0 0 5px 0;
+  font-size: 13px;
+  line-height: 30px;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #A9A9A9;
+  text-align: center;
+  border-bottom: 1px solid #EFEFEF;
+}
+.modal#login-dialog .modal-dialog .form-group,
+.modal#register-dialog .modal-dialog .form-group,
+.modal#forgot-password-dialog .modal-dialog .form-group,
+.modal#update-user-dialog .modal-dialog .form-group,
+.modal#update-password-dialog .modal-dialog .form-group {
+  max-width: 290px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.modal#login-dialog .modal-dialog .checkbox,
+.modal#register-dialog .modal-dialog .checkbox,
+.modal#forgot-password-dialog .modal-dialog .checkbox,
+.modal#update-user-dialog .modal-dialog .checkbox,
+.modal#update-password-dialog .modal-dialog .checkbox {
+  margin-top: 0;
+}
+.modal#login-dialog .modal-dialog .text-link,
+.modal#register-dialog .modal-dialog .text-link,
+.modal#forgot-password-dialog .modal-dialog .text-link,
+.modal#update-user-dialog .modal-dialog .text-link,
+.modal#update-password-dialog .modal-dialog .text-link {
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal#login-dialog .modal-dialog input[type="text"],
+.modal#register-dialog .modal-dialog input[type="text"],
+.modal#forgot-password-dialog .modal-dialog input[type="text"],
+.modal#update-user-dialog .modal-dialog input[type="text"],
+.modal#update-password-dialog .modal-dialog input[type="text"],
+.modal#login-dialog .modal-dialog input[type="password"],
+.modal#register-dialog .modal-dialog input[type="password"],
+.modal#forgot-password-dialog .modal-dialog input[type="password"],
+.modal#update-user-dialog .modal-dialog input[type="password"],
+.modal#update-password-dialog .modal-dialog input[type="password"],
+.modal#login-dialog .modal-dialog select,
+.modal#register-dialog .modal-dialog select,
+.modal#forgot-password-dialog .modal-dialog select,
+.modal#update-user-dialog .modal-dialog select,
+.modal#update-password-dialog .modal-dialog select {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid #D2D2D2;
+  background-size: 0 2px,100% 0;
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+  color: #222;
+  /* Firefox 19+ */
+  /* Firefox 18- */
+  /* IE */
+}
+.modal#login-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]::-webkit-input-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]::-webkit-input-placeholder,
+.modal#login-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#register-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#update-user-dialog .modal-dialog select::-webkit-input-placeholder,
+.modal#update-password-dialog .modal-dialog select::-webkit-input-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]::-moz-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]::-moz-placeholder,
+.modal#login-dialog .modal-dialog select::-moz-placeholder,
+.modal#register-dialog .modal-dialog select::-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog select::-moz-placeholder,
+.modal#update-user-dialog .modal-dialog select::-moz-placeholder,
+.modal#update-password-dialog .modal-dialog select::-moz-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]:-moz-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]:-moz-placeholder,
+.modal#login-dialog .modal-dialog select:-moz-placeholder,
+.modal#register-dialog .modal-dialog select:-moz-placeholder,
+.modal#forgot-password-dialog .modal-dialog select:-moz-placeholder,
+.modal#update-user-dialog .modal-dialog select:-moz-placeholder,
+.modal#update-password-dialog .modal-dialog select:-moz-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="text"]:-ms-input-placeholder,
+.modal#login-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#register-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#update-user-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#update-password-dialog .modal-dialog input[type="password"]:-ms-input-placeholder,
+.modal#login-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#register-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#forgot-password-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#update-user-dialog .modal-dialog select:-ms-input-placeholder,
+.modal#update-password-dialog .modal-dialog select:-ms-input-placeholder {
+  font-size: 13px;
+  color: #222;
+}
+.modal#login-dialog .modal-dialog label,
+.modal#register-dialog .modal-dialog label,
+.modal#forgot-password-dialog .modal-dialog label,
+.modal#update-user-dialog .modal-dialog label,
+.modal#update-password-dialog .modal-dialog label {
+  font-size: 13px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal#conditions-dialog .modal-body {
+  max-height: 450px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: normal;
+  font-family: 'liberation_sansregular';
+  font-weight: normal;
+  font-style: normal;
+}
+.modal#conditions-dialog .modal-body h1,
+.modal#conditions-dialog .modal-body h2,
+.modal#conditions-dialog .modal-body h3,
+.modal#conditions-dialog .modal-body h4,
+.modal#conditions-dialog .modal-body h5,
+.modal#conditions-dialog .modal-body h6 {
+  font-size: 17px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.modal#conditions-dialog .modal-footer {
+  padding: 14px 24px !important;
+}
+.dota-color {
+  color: #c8362e !important;
+}
+.overwatch-color {
+  color: #e5d202 !important;
+}
+.lol-color {
+  color: #962b84 !important;
+}
+.csgo-color {
+  color: #cc8700 !important;
+}
+.heartstone-color {
+  color: #0390cb !important;
+}
+.hearhstone-color {
+  color: #0390cb !important;
+}
+.makaleler-color {
+  color: #879e00 !important;
+}
+.media-color {
+  color: #41909b !important;
+}
+.window-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9000;
+  display: none;
+}
+.bordered-pink {
+  border-left: 6px solid #962b84;
+}
+.bordered-white {
+  border-left: 6px solid #FFFFFF;
+}
+.bordered-yellow {
+  border-left: 6px solid #cc8700;
+}
+.bordered-orange {
+  border-left: 6px solid #c8362e;
+}
+.bordered-blue {
+  border-left: 6px solid #0390cb;
+}
+.bordered-media-blue {
+  border-left: 6px solid #41909b;
+}
+.bordered-light-yellow {
+  border-left: 6px solid #e5d202;
+}
+.bordered-green {
+  border-left: 6px solid #879e00;
+}
+.flexible-border {
+  border-left: 6px solid #962b84;
+}
+.flexible-color {
+  color: #962b84;
+}
+.flexible-background {
+  background-color: #962b84;
+}
+.play-inside-box {
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: relative;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+}
+.play-inside-box .play-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /*&:hover {
+            i {
+                color: @lol-color;
+            }
+        }*/
+}
+.play-inside-box .play-overlay i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -21px;
+  color: #FFFFFF;
+  font-size: 50px;
+  transition: 0.3s;
+}
+#page-container {
+  width: 100%;
+  float: left;
+  z-index: 20;
+  position: relative;
+  background: #242424;
+}
+#page-content {
+  width: 100%;
+  float: left;
+  background: #242424;
+}
+@media screen and (min-width: 1px) and (max-width: 990px) {
+  .box-module {
+    padding: 0 !important;
+  }
+  .banner-responsive {
+    float: left;
+    margin-top: 0 !important;
+  }
+  .news-content .share-box {
+    width: 100% !important;
+    height: 60px !important;
+  }
+  .news-content .share-box .addthis_inline_share_toolbox a {
+    transition: 0 !important;
+  }
+  .news-content .share-box .addthis_inline_share_toolbox a:hover,
+  .news-content .share-box .addthis_inline_share_toolbox a:focus {
+    margin-left: 0 !important;
+  }
+  .sidebar-module {
+    padding: 0 !important;
+  }
+  .sidebar-module .col-md-12 {
+    float: left;
+    width: 100%;
+  }
+  .homepage-list {
+    margin: 20px -15px 0 0;
+  }
+  .homepage-list .item > div {
+    height: unset !important;
+  }
+  .homepage-list .item .img img {
+    height: auto !important;
+  }
+}
+@media screen and (min-width: 766px) and (max-width: 990px) {
+  #menuBar li {
+    padding-left: 15px !important;
+  }
+  #menuBar li a {
+    font-size: 15px !important;
+  }
+  #menuBar li:after {
+    content: "" !important;
+  }
+}
+@media screen and (min-width: 1px) and (max-width: 765px) {
+  .navbar-toggle {
+    margin-top: 23px;
+    color: #962b84;
+  }
+  .navbar-toggle.collapsed {
+    color: #FFFFFF;
+  }
+  #menuBar {
+    height: 80px !important;
+  }
+  .navbar-brand img {
+    width: 180px !important;
+    margin: 0 0 0 15px;
+  }
+  #navbar {
+    width: 100%;
+    height: auto !important;
+    min-height: 220px;
+    margin-top: 17px;
+    background: #0b0911;
+    z-index: 9999;
+    position: absolute;
+  }
+  #navbar ul {
+    padding: 0;
+    margin: 0;
+  }
+  #navbar li {
+    width: 100% !important;
+    height: 50px !important;
+    float: left;
+    padding: 0 !important;
+    border-bottom: 1px solid #292929;
+    text-align: center;
+  }
+  #navbar li:after {
+    content: "" !important;
+  }
+  #navbar li a {
+    width: 100%;
+    height: 100%;
+    float: left;
+    line-height: 50px !important;
+    display: block;
+  }
+  .tools-breadcrumb {
+    display: none;
+  }
+  footer em:last-child {
+    display: none;
+  }
+}
+#menuBar {
+  height: 100px;
+  background: #000;
+  margin-bottom: 0;
+}
+#menuBar .navbar-brand {
+  padding: 18px 0 !important;
+  margin-left: 0;
+}
+#menuBar .navbar-brand img {
+  width: 240px;
+}
+#menuBar #navbar {
+  height: 100% !important;
+}
+#menuBar #navbar .navbar-nav {
+  height: 100%;
+}
+#menuBar #navbar .navbar-nav li {
+  height: 100px;
+  line-height: 100px;
+  padding: 14px 0 0 60px;
+  position: relative;
+}
+#menuBar #navbar .navbar-nav li:after {
+  content: "|";
+  font-size: 25px;
+  position: absolute;
+  left: 30px;
+  color: #262529;
+}
+#menuBar #navbar .navbar-nav li:first-child:after {
+  content: "";
+  padding: 0;
+}
+#menuBar #navbar .navbar-nav li a {
+  padding: 0 0 5px 0;
+  font-size: 16px;
+  line-height: normal;
+  font-family: 'Conv_HelveticaNeueLTPro-HvCn', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  display: inline;
+}
+#menuBar #navbar .navbar-nav li a:hover,
+#menuBar #navbar .navbar-nav li a:focus {
+  opacity: .7;
+}
+#menuBar #navbar .navbar-nav li a.active {
+  color: #d65ec1;
+  text-shadow: 0 0 25px #962b84, 0 0 5px #962b84, 0 0 30px #962b84, 0 0 30px #962b84;
+}
+#menuBar #navbar .navbar-nav li a.active:hover {
+  opacity: 1;
+}

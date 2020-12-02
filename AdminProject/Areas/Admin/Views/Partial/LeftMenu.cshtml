@@ -1,0 +1,298 @@
+﻿@model string
+
+@if (!string.IsNullOrEmpty(Model))
+{
+
+    if (Model.Contains("Master"))
+    {
+        <ul class="topnav menu-left-nest main-left-menu">
+            <li>
+                <a href="javascript:;" style="border-left: 0px solid !important;" class="title-menu-left">
+                    <span class="widget-menu"></span>
+                    <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                </a>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:" title="Menu">
+                    <i class="fa fa-th-large"></i>
+                    <span>Menu</span>
+                </a>
+                <ul data-url="Menu">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Menu/Add" title="Menu Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Menu/List" title="Menu List"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span>List/ Edit</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Menu/Order" title="Menu Order"><i class="fa fa-sort" aria-hidden="true"></i><span>Order</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Content">
+                    <i class="fa fa-file-text"></i>
+                    <span>Content</span>
+                </a>
+                <ul data-url="Content">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Content/Add" title="Content Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Content/List" title="Content List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Content/Order" title="Content Order"><i class="fa fa-sort"></i><span>Order</span></a>
+                    </li>
+                </ul>
+            </li>
+            @*<li style="display: none;">
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Arena of Valor Champ.">
+                    <i class="fa fa-font"></i>
+                    <span>Arena of Valor Champ.</span>
+                </a>
+                <ul data-url="ArenaValorChamp">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/ArenaValorChamp/Add" title="Arena of Valor Champ. Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/ArenaValorChamp/List" title="Arena of Valor Champ. List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>*@
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Word of the Day">
+                    <i class="fa fa-font"></i>
+                    <span>Word of the Day</span>
+                </a>
+                <ul data-url="PromiseDay">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/PromiseDay/Add" title="Word of the Day Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/PromiseDay/List" title="Word of the Day List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Survey">
+                    <i class="fa fa-list-ol"></i>
+                    <span>Survey</span>
+                </a>
+                <ul data-url="Survey">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Survey/Add" title="Survey Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Survey/List" title="Survey List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="E-Sports Calendar">
+                    <i class="fa fa-calendar"></i>
+                    <span>E-Sports Calendar</span>
+                </a>
+                <ul data-url="Esport">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Esport/Add" title="Esport Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Esport/List" title="Esport List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Live Broadcast">
+                    <i class="fa fa-bullhorn"></i>
+                    <span>Live Broadcast</span>
+                </a>
+                <ul data-url="LiveBroadcast">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/LiveBroadcast/Add" title="Live Broadcast Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/LiveBroadcast/List" title="Live Broadcast List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
+
+    if (Model.Contains("Media"))
+    {
+        <ul class="topnav menu-left-nest main-left-menu">
+            <li>
+                <a href="javascript:;" style="border-left: 0px solid !important;" class="title-menu-left">
+                    <span class="design-kit"></span>
+                    <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                </a>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="AOV Champ. Build">
+                    <i class="fa fa-camera-retro"></i>
+                    <span>AOV Champ. Build</span>
+                </a>
+                <ul data-url="AovSkin|AovSpell|AovChamp">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/AovChamp/Add" title="Champ. Add"><i class="fa fa-plus-square"></i><span>Champ. Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/AovChamp/List" title="Champ. List"><i class="fa fa-plus-square"></i><span>Champ. Edit/ List</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/AovSpell/Add" title="Spell Add"><i class="fa fa-plus-square"></i><span>Spell Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/AovSpell/List" title="Spell List"><i class="fa fa-plus-square"></i><span>Spell Edit/ List</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/AovSkin/Add" title="Skin Add"><i class="fa fa-plus-square"></i><span>Skin Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/AovSkin/List" title="Skin List"><i class="fa fa-plus-square"></i><span>Skin Edit/ List</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Gallery">
+                    <i class="fa fa-camera-retro"></i>
+                    <span>Gallery</span>
+                </a>
+                <ul data-url="Gallery|MultiGallery">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/MultiGallery/Add" title="Gallery Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Gallery/List" title="Gallery List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Gallery/Order" title="Gallery Order"><i class="fa fa-sort"></i><span>Order</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Slider">
+                    <i class="fa fa-picture-o"></i>
+                    <span>Slider</span>
+                </a>
+                <ul data-url="Slider">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Slider/Add" title="Slider Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Slider/List" title="Slider List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Slider/SliderOrder" title="Slider Order"><i class="fa fa-sort"></i><span>Slider Order</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Slider/VideoOrder" title="Video Order"><i class="fa fa-sort"></i><span>Video Order</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="File / Picture">
+                    <i class="fa fa-files-o"></i>
+                    <span>File / Picture</span>
+                </a>
+                <ul data-url="File">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/File/Add" title="File Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/File/List" title="File List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
+
+    if (Model.Contains("Setting"))
+    {
+        <ul id="menu-showhide" class="topnav menu-left-nest main-left-menu">
+            <li>
+                <a href="javascript:;" style="border-left: 0px solid !important;" class="title-menu-left">
+                    <span class="component"></span>
+                    <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                </a>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Advert">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                    <span>Advert</span>
+                </a>
+                <ul data-url="Advert">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Advert/Add" title="Advert Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Advert/List" title="Advert List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Users">
+                    <i class="fa fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <ul data-url="User">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/User/List" title="User List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/User/Tournament" title="Tournament List"><i class="fa fa-pencil-square-o"></i><span>Tournament List</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Picture Size">
+                    <i class="fa fa-arrows-alt"></i>
+                    <span>Picture Size</span>
+                </a>
+                <ul data-url="PictureSize">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/PictureSize/Add" title="Picture Size Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/PictureSize/List" title="Picture Size List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Admin">
+                    <i class="fa fa-user"></i>
+                    <span>Admin</span>
+                </a>
+                <ul data-url="Admin">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Admin/Add" title="Admin Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Admin/List" title="Admin List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="javascript:;" title="Language">
+                    <i class="fa fa-globe"></i>
+                    <span>Language</span>
+                </a>
+                <ul data-url="Language">
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Language/Add" title="Language Add"><i class="fa fa-plus-square"></i><span>Add</span></a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip2 ajax-load" href="/Admin/Language/List" title="Language List"><i class="fa fa-pencil-square-o"></i><span>List/ Edit</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="tooltip-tip ajax-load menu-link" href="/Admin/Settings" title="Settings">
+                    <i class="fa fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    }
+}

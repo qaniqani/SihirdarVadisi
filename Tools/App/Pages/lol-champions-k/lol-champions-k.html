@@ -1,0 +1,127 @@
+﻿<div class="box-module col-md-12 no-padding-left margin-top-20" ng-controller="LoLChampionsKCtrl">
+    <div class="module-title flexible-border margin-bottom-05">ARAÇLAR</div>
+    <div class="module-content no-padding">
+        <div class="news-detail">
+            <div class="news-img" style="width:100%; height:auto;"><img src="/App/Assets/Themes/img/header-lol-kac-k-2.jpg" alt="" style="width:100%;" /></div>
+            <div class="news-content">
+                <div class="share-box">
+                    <div class="addthis_inline_share_toolbox"></div>
+                </div>
+                <h5 class="game flexible-color">LEAGUE OF LEGENDS</h5>
+                <h4 class="title">SENİNKİ KAÇ K?</h4>
+                <div class="description">
+
+                    <p>"800 K Yasuo Mid Sal xD" Muabbetinin dibine kibrit suyu döküp ateşe veriyoruz. <br /><br /> Tüm gerçek ve ustalıklar gün yüzüne çıkıyor. Hangi arkadaşınız hangi şampiyonda usta artık görebileceksiniz! <br /><br /> Senin ki Kaç K? ile işler değişiyor.</p>
+
+                    <div class="lol-time-played margin-top-15">
+                        <div class="col-md-12">
+                            <form name="appForm" ng-hide="showResultError">
+                                <div class="col-sm-12 margin-bottom-05" ng-show="appForm.$invalid">
+                                    <p style="color:red;">* Sorgulama yapabilmek için lütfen, "Sihirdar Adınızı (Nick)" girin ve Doğrulama kutucuğunu işaretleyin. </p>
+                                </div>
+
+                                <div class="col-sm-6 form-group" ng-hide="showResult">
+                                    <label>Sihirdar Adı Giriniz</label>
+                                    <input type="text" class="form-control" ng-model="selectedUserName" placeholder="" maxlength="70" required />
+                                </div>
+
+                                <div class="col-sm-6 form-group" ng-hide="showResult">
+                                    <label>Server Seçiniz</label>
+                                    <select class="form-control" ng-model="selectedServer" ng-options="server as server.label for server in servers"></select>
+                                </div>
+
+                                <div class="col-sm-6" ng-if="appForm.$invalid">
+                                    <re-captcha ng-model='appVm.chaptcha'></re-captcha>
+                                </div>
+
+                                <div class="col-md-12" ng-hide="showResult">
+                                    <button ng-show="!appForm.$invalid" ng-disabled="appForm.$invalid" class="btn btn-success btn-raised pull-right" ng-click="getResult();">Kontrol Et</button>
+                                </div>
+                            </form>
+
+                            <div class="col-md-12" ng-show="showResult || showResultError">
+                                <a href="/seninki-kac-k" target="_self" class="btn btn-info btn-raised btn-block">YENİ SORGU YAP</a>
+                            </div>
+
+                            <div class="col-md-12 margin-top-15 table-responsive" style="border:0 none; margin-bottom:0;" ng-show="showResult">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>ŞAMPİYON</th>
+                                        <th class="text-center">SEVİYE</th>
+                                        <th class="text-center">PUAN</th>
+                                        <th class="text-center">SON OYNAMA</th>
+                                        <th class="text-center">SANDIK</th>
+                                        <th class="text-center">DURUMU</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="result in results" class="results">
+                                        <td> <a ng-href="/sampiyonlar?key={{::result.championId}}" target="_self"><img width="24" ng-src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/{{::result.picture}}" alt="{{::result.championName}}" style="margin-right:5px;">{{::result.championName}}</a></td>
+                                        <td class="text-center"><img src="/App/Assets/Themes/img/blank.gif" width="1" height="24" /> {{::result.championLevel}}</td>
+                                        <td class="text-center"><img src="/App/Assets/Themes/img/blank.gif" width="1" height="24" /> {{::result.championPoint}}</td>
+                                        <td class="text-center"><img src="/App/Assets/Themes/img/blank.gif" width="1" height="24" /> {{::result.lastPlayTime |  date : 'dd/MM/yyyy hh:mm:ss'}}</td>
+                                        <td class="text-center"><img src="/App/Assets/Themes/img/chest-{{::result.chestGranted}}.png" alt="Sandık" class="" width="24"> </td>
+                                        <td>
+                                            <div class="progressBar-outer" data-toggle="tooltip" data-placement="top" title="3674/4200 ({{::result.levelPercent}}%)">
+                                                <em>3674/4200 ({{::result.levelPercent}}%)</em>
+                                                <div class="progressBar-inner" style="width: {{::result.levelPercent}}%;"></div>
+                                            </div>
+                                            <!--<img src="/App/Assets/Themes/img/token.png" class="token notEarned" style="max-width:24px;">
+                                            <img src="/App/Assets/Themes/img/token.png" class="token notEarned" style="max-width:24px;">-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="alert alert-danger margin-top-10" ng-show="showResultError">
+                                    <p class="text-center">Sihirdar Adınızı (Nick) bulanamadı! Lütfen tekrar deneyiniz.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .results {
+        line-height: 25px;
+    }
+
+    .token {
+        height: 17px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .progressBar-outer {
+        background-color: #1d1d20;
+        height: 20px;
+        width: 100%;
+        margin-top: 2px;
+    }
+
+    .progressBar-outer em {
+        position: absolute;
+        padding: 0 5px;
+        font-size: 11px;
+        line-height: 21px;
+        font-style: normal;
+        color: #FFF;
+    }
+
+    .progressBar-inner {
+        background-color: #962b84;
+        height: 100%;
+    }
+
+    .profileLink {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+</style>

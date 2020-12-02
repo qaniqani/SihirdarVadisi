@@ -1,0 +1,1241 @@
+﻿@using Sihirdar.DataAccessLayer
+@using AdminProject.Models
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<title>Türkiye’nin Espor Haber Platformu | @ViewBag.Title</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+	<meta name="description" content="@ViewBag.Description">
+	<meta name="keywords" content="League of Legends, Haber, CS:GO, Counter Strike, DOTA2, Overwatch, Heartstone, Haftalık Turnuvalar, LoL, Espor, Türkiye, Esports, Oyun, Riot Games, @ViewBag.Keywords" />
+	<meta name="robots" content="">
+	<meta property="fb:app_id" content="244843595925420" />
+	<meta property="og:url" content="https://gamerpeople.com/@ViewBag.Url" />
+	<meta property="og:type" content="@ViewBag.Type" />
+	<meta property="og:title" content="@ViewBag.Title" />
+	<meta property="og:description" content="@ViewBag.Description ..." />
+	<meta property="og:image" content="https://gamerpeople.com/Content/@ViewBag.Image" />
+	<link rel="author" href="https://gamerpeople.com/" />
+
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,800" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:800&subset=latin,latin-ext" />-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
+	<!--[if lt IE 9]>
+	<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	@*@Styles.Render("~/web-styles")*@
+	<link href="/assets/css/sihirdarvadisi.min.css?v=201711101321" rel="stylesheet" />
+	<!-- Scripts -->
+	@*@Scripts.Render("~/web-scripts")*@
+	<script src="/assets/js/sihirdarvadisi.min.js?v=201711101256"></script>
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-37345752-2', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script type="application/ld+json">
+	{
+		"@@context": "http://schema.org",
+		"@@type": "WebSite",
+		"url": "https://gamerpeople.com/",
+		"potentialAction": {
+			"@@type": "SearchAction",
+			"target": "https://gamerpeople.com/arama?kelimeler={search_term_string}",
+			"query-input": "required name=search_term_string"
+		}
+	}
+	</script>
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "Organization",
+        "name" : "Gamer People",
+        "url": "https://gamerpeople.com/",
+        "logo": "https://gamerpeople.com/html/assets/img/logo.png",
+        "sameAs": [
+        "https://www.facebook.com/gamerpeople",
+        "https://twitter.com/gamerpeople",
+        "https://www.instagram.com/gamerpeople/",
+        "https://plus.google.com/102955569879215946620",
+        "https://www.youtube.com/user/gamerpeople",
+        "https://www.linkedin.com/company/10507883/"
+        ]
+        }
+    </script>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=244843595925420";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<div id="preloader">
+		<div id="prelogo"></div>
+		<div id="status">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+	</div><!-- /#preloader-->
+	@if (ViewBag.HeaderAdvert != null)
+	{
+		var advert = (CategoryAdvertDto)ViewBag.HeaderAdvert;
+		if (advert.AdType == AdvertTypes.Image)
+		{
+			<div class="masthead-area" style="background:url(/Content/File/@advert.FilePath);">
+				<div class="container">
+					<a href="javascript:;" class="close" onclick="$(this).mastheadClose();">KAPAT <i class="fa fa-times"></i></a>
+				</div>
+			</div>
+		}
+		else
+		{
+			<div class="masthead-area" style="height:auto !important;">
+				<div class="container no-padding">
+					<a href="javascript:;" class="close" onclick="$(this).mastheadClose();">KAPAT <i class="fa fa-times"></i></a>
+					<div class="masthead-container">@Html.Raw(advert.Code)</div>
+				</div>
+			</div>
+		}
+	}
+@if (ViewBag.Error != null)
+{
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<p>@Html.ValidationSummary()</p>
+	</div>
+}
+
+@if (ViewBag.Ok != null)
+{
+	<div class="alert alert-dismissible alert-success">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<p>Takımınız kayıt edildi. <br/>Teşekkürler.</p>
+	</div>
+}
+
+<div class="inline-preloader media-preloader"></div>
+<div class="vadi">
+	<div class="window-overlay"></div>
+	<header class="vadi--header">
+		<div class="vadi--header--top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-md-5 hidden-xs">
+						<a href="/" class="vadi--header--top--home"><i class="fa fa-home"></i></a>
+						@{
+							Html.RenderAction("GetLiveStream", "Partial");
+						}
+					</div>
+					<div class="col-xs-4 col-sm-2 col-md-2 text-sm-center text-xs-left">
+						<a class="vadi--header--top--logo" href="/">
+							<img src="/html/assets/img/logo.png" alt="Gamer People logosu">
+						</a>
+					</div>
+					<div class="col-xs-8 col-sm-5 col-md-5 text-right">
+						<form method="get" action="/arama" class="vadi--header--top--search">
+							<input class="vadi--header--top--search--input" type="search" autocomplete="false" name="kelimeler" placeholder="Arama yap...">
+							<span class="vadi--header--top--search--button" data-button="search"><i class="fa fa-search"></i></span>
+						</form>
+						<a href="#" class="vadi--header--top--sign-in" data-toggle="modal" data-target="#login-dialog"><i class="fa fa-sign-in"></i></a>
+						<div class="vadi--header--top--user-menu">
+							<a href="#" class="vadi--header--top--user-menu--button" data-toggle="dropdown" id="loggedInUser"><i class="fa fa-user"></i></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="javascript:void(0)" data-toggle="modal" data-target="#update-user-dialog"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Üyelik Bilgilerim</a>
+								</li>
+								<li>
+									<a href="/kullanici/begenilenler"><i class="fa fa-heart" aria-hidden="true"></i> Beğendiklerim</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)" data-toggle="modal" data-target="#update-password-dialog"><i class="fa fa-key" aria-hidden="true"></i> Şifremi Değiştir</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)" id="logout-button"><i class="fa fa-sign-out" aria-hidden="true"></i> Çıkış Yap</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar vadi--header--navbar">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="vadi--header--navbar--nav-collapse collapse navbar-collapse">
+					@{
+					Html.RenderAction("GetMenus", "Partial");
+					}
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main class="vadi--content">
+	@RenderBody()
+	</main>
+	<footer class="vadi--footer">
+		<div class="vadi--footer--top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+						<a href="/" class="vadi--footer--top__home"><i class="fa fa-home"></i> ANASAYFA</a>
+					</div>
+					<div class="col-xs-6 text-right">
+						@*<div class="language-options btn-group pull-right">
+							<a href="javascript:;" class="pull-right" data-toggle="dropdown"> DİL SEÇENEKLERİ <i class="fa fa-globe"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:void(0)">TÜRKÇE</a></li>
+								<li><a href="javascript:void(0)">ENGLISH</a></li>
+							</ul>
+						</div>*@
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="vadi--footer--bottom">
+			<div class="container">
+				<div class="row text-sm-left text-xs-center">
+				@{ Html.RenderAction("GetFooterCategory", "Partial"); }
+				</div>
+				<div class="row-fluid vadi--footer--bottom__hr"></div>
+				<div class="row">
+					<div class="col-sm-6 col-xs-12 text-sm-left text-xs-center">
+						<a class="vadi--footer--bottom__logo"><img src="/assets/img/vadi--footer--minion.png" alt="Gamer People Minionu"></a>
+						<div class="vadi--footer--bottom__text">&copy; Gamer People, <a rel="external dofollow" class="vadi--footer--bottom__ruby" href="https://ruby.technology" title="Ruby Technology">Ruby Technology</a> ürünüdür.</div>
+					</div>
+					<div class="col-sm-6 col-xs-12 text-sm-right text-xs-center">
+						<ul class="vadi--footer--bottom__social">
+							<li><a rel="external nofollow" title="Gamer People Facebook Sayfası" href="https://facebook.com/gamerpeople"><i class="fa fa-facebook"></i></a></li>
+							<li><a rel="external nofollow" title="Gamer People Twitter Hesabı" href="https://twitter.com/gamerpeople"><i class="fa fa-twitter"></i></a></li>
+							<li><a rel="external nofollow" title="Gamer People Instagram Hesabı" href="https://instagram.com/gamerpeople"><i class="fa fa-instagram"></i></a></li>
+							<li><a rel="external nofollow" title="Gamer People Twitch.tv Hesabı" href="https://twitch.tv/gamerpeople"><i class="fa fa-twitch"></i></a></li>
+							<li><a rel="external nofollow" title="Gamer People Google Plus Sayfası" href="https://plus.google.com/102955569879215946620"><i class="fa fa-google-plus"></i></a></li>
+							<li><a rel="external nofollow" title="Gamer People Youtube Kanalı" href="https://youtube.com/user/gamerpeople"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<div id="login-dialog" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">GİRİŞ YAP</h4>
+			</div>
+
+			<div class="modal-body">
+				<form id="login-form">
+					<div class="form-group no-margin">
+						@*<div class="col-md-12">
+								<div class="seperator margin-bottom-15">Facebook Hesabı ile Giriş</div>
+
+								<div class="form-group no-margin no-padding">
+									<a href="#" class="facebook-login"><i class="fa fa-facebook"></i><span>FACEBOOK İLE GİRİŞ YAP</span></a>
+								</div>
+							</div>*@
+
+						<div class="col-md-12">
+							@*<div class="seperator margin-bottom-15">Gamer People Hesabı ile Giriş</div>*@
+
+							<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+								<label class="colored">Email Adresin</label>
+								<input class="form-control validate[required, maxSize[100],custom[email]]" autocomplete="off" type="text" placeholder="" id="login-email" maxlength="100" autofocus>
+							</div>
+
+							<div class="form-group margin-bottom-05 margin-top-05">
+								<label class="colored">Şifre</label>
+								<input class="form-control validate[required, minSize[6]]" autocomplete="off" type="password" placeholder="" id="login-password" maxlength="50">
+							</div>
+
+							<div class="form-group no-margin no-padding">
+								<input type="submit" class="btn btn-success btn-raised btn-block no-margin login-btn" value="GİRİŞ YAP" />
+
+								<div class="center-block text-center margin-top-10">
+									<a href="#" class="text-link" data-toggle="modal" data-target="#forgot-password-dialog" data-dismiss="modal">Şifremi Hatırlamıyorum</a>
+								</div>
+							</div>
+
+							<div class="form-group no-padding">
+								<a href="/kullanici/fb" class="btn btn-info btn-raised btn-block no-margin">Facebook'la Giriş Yap</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.modal-body -->
+
+			<div class="modal-footer">
+				<p>Vadi Hesabı Oluşturmak için <a href="#" data-toggle="modal" data-target="#register-dialog" data-dismiss="modal">Tıkla!</a> </p>
+			</div><!-- /.modal-footer -->
+		</div>
+	</div>
+</div><!-- /#login-dialog -->
+<div id="forgot-password-dialog" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">ŞİFREMİ HATIRLATMA</h4>
+			</div><!-- /.modal-header -->
+
+			<div class="modal-body">
+				<form id="forgot-password-form">
+					<div class="form-group no-margin margin-top-15">
+						<div class="col-md-12">
+							<div class="form-group margin-top-05">
+								<label class="colored">Email Adresin</label>
+								<input class="form-control validate[required,custom[email]]" id="fg-email" type="text" placeholder="">
+							</div>
+
+							@*<div class="form-group"> --key 6Lcv0RgUAAAAAG-oYoB1oU8klh4K0kbVRkQIVn_r
+									<label class="colored">Doğrulama Kodu:</label>
+
+								</div>*@
+
+							@*<div class="form-group">
+									<div class="g-recaptcha" data-sitekey="6Lcv0RgUAAAAAG-oYoB1oU8klh4K0kbVRkQIVn_r"></div>
+								</div>*@
+
+							<div class="form-group no-margin no-padding">
+								<input type="submit" class="btn btn-success btn-raised btn-block" value="GÖNDER" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.modal-body -->
+
+			<div class="modal-footer">
+				<p class="text-link">Bilgilerini doğru girdiğinde, şifren e-mail adresine gönderilecektir. Spam klasörünü kontrol etmeyi unutma!</p>
+			</div><!-- /.modal-footer -->
+		</div>
+	</div>
+</div><!-- /#forgot-password-dialog -->
+<div id="register-dialog" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">VADİ HESABI OLUŞTUR</h4>
+			</div><!-- /.modal-header -->
+
+			<div class="modal-body">
+				<form id="register-form">
+					<div class="col-sm-6">
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Adın *</label>
+							<input class="form-control validate[required]" type="text" placeholder="" id="cu-name">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Soyadın *</label>
+							<input class="form-control validate[required]" type="text" placeholder="" id="cu-surname">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Email Adresin *</label>
+							<input class="form-control validate[required, custom[email]]" type="text" placeholder="" id="cu-email">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored full-width">Doğum Tarihin *</label>
+							<div class="clearfix"></div>
+							<select class="form-control validate[required]" id="cu-birthday" style="width:33%; display:inline-block; margin-left:-1px;">
+								<option value="">Gün</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+							</select>
+
+							<select class="form-control validate[required]" id="cu-birthdate" style="width:33%; display:inline-block; margin-left:-2px;">
+								<option value="">Ay</option>
+								<option value="">Ay</option>
+								<option value="1">Ocak</option>
+								<option value="2">Şubat</option>
+								<option value="3">Mart</option>
+								<option value="4">Nisan</option>
+								<option value="5">Mayıs</option>
+								<option value="6">Haziran</option>
+								<option value="7">Temmuz</option>
+								<option value="8">Ağustos</option>
+								<option value="9">Eylül</option>
+								<option value="10">Ekim</option>
+								<option value="11">Kasım</option>
+								<option value="12">Aralık</option>
+							</select>
+
+							<select class="form-control validate[required]" id="cu-birthyear" style="width:33%; display:inline-block; margin-left:-3px;">
+								<option value="">Yıl</option>
+								<option value="2008">2008</option>
+								<option value="2007">2007</option>
+								<option value="2006">2006</option>
+								<option value="2005">2005</option>
+								<option value="2004">2004</option>
+								<option value="2003">2003</option>
+								<option value="2002">2002</option>
+								<option value="2001">2001</option>
+								<option value="2000">2000</option>
+								<option value="1999">1999</option>
+								<option value="1998">1998</option>
+								<option value="1997">1997</option>
+								<option value="1996">1996</option>
+								<option value="1995">1995</option>
+								<option value="1994">1994</option>
+								<option value="1993">1993</option>
+								<option value="1992">1992</option>
+								<option value="1991">1991</option>
+								<option value="1990">1990</option>
+								<option value="1989">1989</option>
+								<option value="1988">1988</option>
+								<option value="1987">1987</option>
+								<option value="1986">1986</option>
+								<option value="1985">1985</option>
+								<option value="1984">1984</option>
+								<option value="1983">1983</option>
+								<option value="1982">1982</option>
+								<option value="1981">1981</option>
+								<option value="1980">1980</option>
+								<option value="1979">1979</option>
+								<option value="1978">1978</option>
+								<option value="1977">1977</option>
+								<option value="1976">1976</option>
+								<option value="1975">1975</option>
+							</select>
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Telefon Numaran</label>
+							<input class="form-control validate[custom[phone]]" type="text" placeholder="" id="cu-phone">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Yaşadığın Ülke *</label>
+							<select class="form-control validate[required]" id="cu-country">
+								<option value="Türkiye" selected="selected">Türkiye</option>
+								<option value="ABD Virgin Adaları">ABD Virgin Adaları</option>
+								<option value="Almanya">Almanya</option>
+								<option value="Amerika Birleşik Devletleri">Amerika Birleşik Devletleri</option>
+								<option value="Andorra">Andorra</option>
+								<option value="Antigua ve Barbuda">Antigua ve Barbuda</option>
+								<option value="Arjantin">Arjantin</option>
+								<option value="Arnavutluk">Arnavutluk</option>
+								<option value="Aruba">Aruba</option>
+								<option value="Avustralya">Avustralya</option>
+								<option value="Avusturya">Avusturya</option>
+								<option value="Azerbaycan">Azerbaycan</option>
+								<option value="Bahama">Bahama</option>
+								<option value="Bahamas">Bahamas</option>
+								<option value="Bahreyn">Bahreyn</option>
+								<option value="Bangladeş">Bangladeş</option>
+								<option value="Barbados">Barbados</option>
+								<option value="Belçika">Belçika</option>
+								<option value="Belize">Belize</option>
+								<option value="Benin">Benin</option>
+								<option value="Beyaz Rusya">Beyaz Rusya</option>
+								<option value="Birleşik Arap Emirlikleri">Birleşik Arap Emirlikleri</option>
+								<option value="Bolivya">Bolivya</option>
+								<option value="Bosna Hersek">Bosna Hersek</option>
+								<option value="Brezilya">Brezilya</option>
+								<option value="Brunei">Brunei</option>
+								<option value="Bulgaristan">Bulgaristan</option>
+								<option value="Burma">Burma</option>
+								<option value="Cebelitarık">Cebelitarık</option>
+								<option value="Çek Cumhuriyeti">Çek Cumhuriyeti</option>
+								<option value="Çin">Çin</option>
+								<option value="Danimarka">Danimarka</option>
+								<option value="Dominik Cumhuriyeti">Dominik Cumhuriyeti</option>
+								<option value="Ekvator">Ekvator</option>
+								<option value="El Salvador">El Salvador</option>
+								<option value="Endonezya">Endonezya</option>
+								<option value="Eritre">Eritre</option>
+								<option value="Ermenistan">Ermenistan</option>
+								<option value="Estonya">Estonya</option>
+								<option value="Fas">Fas</option>
+								<option value="Fiji">Fiji</option>
+								<option value="Filipinler">Filipinler</option>
+								<option value="Finlandiya">Finlandiya</option>
+								<option value="Fransa">Fransa</option>
+								<option value="Fransız Polinezyası">Fransız Polinezyası</option>
+								<option value="Grenada">Grenada</option>
+								<option value="Guadalup">Guadalup</option>
+								<option value="Guam">Guam</option>
+								<option value="Guatemala">Guatemala</option>
+								<option value="Güney Afrika">Güney Afrika</option>
+								<option value="Gürcistan">Gürcistan</option>
+								<option value="Hırvatistan">Hırvatistan</option>
+								<option value="Hindistan">Hindistan</option>
+								<option value="Hollanda">Hollanda</option>
+								<option value="Hollanda Antilleri">Hollanda Antilleri</option>
+								<option value="Honduras">Honduras</option>
+								<option value="Hong Kong">Hong Kong</option>
+								<option value="İngiliz Virginia Adaları">İngiliz Virginia Adaları</option>
+								<option value="İngiltere">İngiltere</option>
+								<option value="İrlanda">İrlanda</option>
+								<option value="İspanya">İspanya</option>
+								<option value="İsrail">İsrail</option>
+								<option value="İsveç">İsveç</option>
+								<option value="İsviçre">İsviçre</option>
+								<option value="İtalya">İtalya</option>
+								<option value="İzlanda">İzlanda</option>
+								<option value="Jamaika">Jamaika</option>
+								<option value="Japonya">Japonya</option>
+								<option value="Kamboçya">Kamboçya</option>
+								<option value="Kanada">Kanada</option>
+								<option value="Katar">Katar</option>
+								<option value="Kayman Adaları">Kayman Adaları</option>
+								<option value="Kıbrıs">Kıbrıs</option>
+								<option value="Kolombiya">Kolombiya</option>
+								<option value="Kore">Kore</option>
+								<option value="Kosta Rika">Kosta Rika</option>
+								<option value="Kuveyt">Kuveyt</option>
+								<option value="Küba">Küba</option>
+								<option value="Letonya">Letonya</option>
+								<option value="Liechtenstein">Liechtenstein</option>
+								<option value="Litvanya">Litvanya</option>
+								<option value="Lübnan">Lübnan</option>
+								<option value="Lüksemburg">Lüksemburg</option>
+								<option value="Macaristan">Macaristan</option>
+								<option value="Makedonya">Makedonya</option>
+								<option value="Maldivler">Maldivler</option>
+								<option value="Malezya">Malezya</option>
+								<option value="Malta">Malta</option>
+								<option value="Mauritius">Mauritius</option>
+								<option value="Meksika">Meksika</option>
+								<option value="Mısır">Mısır</option>
+								<option value="Moldova">Moldova</option>
+								<option value="Monako">Monako</option>
+								<option value="Mozambik">Mozambik</option>
+								<option value="Nikaragua">Nikaragua</option>
+								<option value="Norveç">Norveç</option>
+								<option value="Özbekistan">Özbekistan</option>
+								<option value="Panama">Panama</option>
+								<option value="Paraguay">Paraguay</option>
+								<option value="Peru">Peru</option>
+								<option value="Polonya">Polonya</option>
+								<option value="Portekiz">Portekiz</option>
+								<option value="Porto Riko">Porto Riko</option>
+								<option value="Romanya">Romanya</option>
+								<option value="Rusya">Rusya</option>
+								<option value="Saint Kitts ve Nevis">Saint Kitts ve Nevis</option>
+								<option value="Saint Lucia">Saint Lucia</option>
+								<option value="San Marino">San Marino</option>
+								<option value="Senegal">Senegal</option>
+								<option value="Seyşel">Seyşel</option>
+								<option value="Singapur">Singapur</option>
+								<option value="Slovakya">Slovakya</option>
+								<option value="Slovenya">Slovenya</option>
+								<option value="Sri Lanka">Sri Lanka</option>
+								<option value="Suriye">Suriye</option>
+								<option value="Suudi Arabistan">Suudi Arabistan</option>
+								<option value="Şili">Şili</option>
+								<option value="Tayland">Tayland</option>
+								<option value="Tayvan">Tayvan</option>
+								<option value="Tunus">Tunus</option>
+								<option value="Turks ve Caicos Adaları">Turks ve Caicos Adaları</option>
+								<option value="Ukrayna">Ukrayna</option>
+								<option value="Umman">Umman</option>
+								<option value="Uruguay">Uruguay</option>
+								<option value="Ürdün">Ürdün</option>
+								<option value="Vanuatu">Vanuatu</option>
+								<option value="Venezuela">Venezuela</option>
+								<option value="Vietnam">Vietnam</option>
+								<option value="Yeni Zelanda">Yeni Zelanda</option>
+								<option value="Yunanistan">Yunanistan</option>
+							</select>
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Yaşadığın Şehir *</label>
+							<select class="form-control validate[required]" id="cu-city">
+								<option value="">Seçiniz</option>
+								<option value="Adana">Adana</option>
+								<option value="Adıyaman">Adıyaman</option>
+								<option value="Afyon">Afyon</option>
+								<option value="Ağrı">Ağrı</option>
+								<option value="Aksaray">Aksaray</option>
+								<option value="Amasya">Amasya</option>
+								<option value="Ankara">Ankara</option>
+								<option value="Antalya">Antalya</option>
+								<option value="Ardahan">Ardahan</option>
+								<option value="Artvin">Artvin</option>
+								<option value="Aydın">Aydın</option>
+								<option value="Balıkesir">Balıkesir</option>
+								<option value="Bartın">Bartın</option>
+								<option value="Batman">Batman</option>
+								<option value="Bayburt">Bayburt</option>
+								<option value="Bilecik">Bilecik</option>
+								<option value="Bingöl">Bingöl</option>
+								<option value="Bitlis">Bitlis</option>
+								<option value="Bolu">Bolu</option>
+								<option value="Burdur">Burdur</option>
+								<option value="Bursa">Bursa</option>
+								<option value="Çanakkale">Çanakkale</option>
+								<option value="Çankırı">Çankırı</option>
+								<option value="Çorum">Çorum</option>
+								<option value="Denizli">Denizli</option>
+								<option value="Diyarbakır">Diyarbakır</option>
+								<option value="Düzce">Düzce</option>
+								<option value="Edirne">Edirne</option>
+								<option value="Elazığ">Elazığ</option>
+								<option value="Erzincan">Erzincan</option>
+								<option value="Erzurum">Erzurum</option>
+								<option value="Eskişehir">Eskişehir</option>
+								<option value="Gaziantep">Gaziantep</option>
+								<option value="Giresun">Giresun</option>
+								<option value="Gümüşhane">Gümüşhane</option>
+								<option value="Hakkari">Hakkari</option>
+								<option value="Hatay">Hatay</option>
+								<option value="Iğdır">Iğdır</option>
+								<option value="Isparta">Isparta</option>
+								<option value="İçel">İçel</option>
+								<option value="İstanbul">İstanbul</option>
+								<option value="İzmir">İzmir</option>
+								<option value="Kahramanmaraş">Kahramanmaraş</option>
+								<option value="Karabük">Karabük</option>
+								<option value="Karaman">Karaman</option>
+								<option value="Kars">Kars</option>
+								<option value="Kastamonu">Kastamonu</option>
+								<option value="Kayseri">Kayseri</option>
+								<option value="Kırıkkale">Kırıkkale</option>
+								<option value="Kırklareli">Kırklareli</option>
+								<option value="Kırşehir">Kırşehir</option>
+								<option value="Kilis">Kilis</option>
+								<option value="Kilis">Kocaeli</option>
+								<option value="Konya">Konya</option>
+								<option value="Kütahya">Kütahya</option>
+								<option value="Malatya">Malatya</option>
+								<option value="Manisa">Manisa</option>
+								<option value="Mardin">Mardin</option>
+								<option value="Muğla">Muğla</option>
+								<option value="Muş">Muş</option>
+								<option value="Nevşehir">Nevşehir</option>
+								<option value="Niğde">Niğde</option>
+								<option value="Ordu">Ordu</option>
+								<option value="Osmaniye">Osmaniye</option>
+								<option value="Rize">Rize</option>
+								<option value="Sakarya">Sakarya</option>
+								<option value="Samsun">Samsun</option>
+								<option value="Siirt">Siirt</option>
+								<option value="Sinop">Sinop</option>
+								<option value="Sivas">Sivas</option>
+								<option value="Şanlıurfa">Şanlıurfa</option>
+								<option value="Şırnak">Şırnak</option>
+								<option value="Tekirdağ">Tekirdağ</option>
+								<option value="Tokat">Tokat</option>
+								<option value="Trabzon">Trabzon</option>
+								<option value="Tunceli">Tunceli</option>
+								<option value="Uşak">Uşak</option>
+								<option value="Van">Van</option>
+								<option value="Yalova">Yalova</option>
+								<option value="Yozgat">Yozgat</option>
+								<option value="Zonguldak">Zonguldak</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Cinsiyetin *</label>
+							<select class="form-control validate[required]" id="cu-gender">
+								<option value="">Seçin</option>
+								<option value="0">Kadın</option>
+								<option value="1">Erkek</option>
+							</select>
+						</div>
+
+						<div class="form-group margin-top-05">
+							<label class="colored">Şifre *</label>
+							<input class="form-control validate[required, minSize[6]]" name="cu-password" type="password" placeholder="" id="cu-password">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05">
+							<label class="colored">Şifre Tekrar *</label>
+							<input class="form-control validate[required, minSize[6], equals[cu-password]]" type="password" placeholder="" id="cu-password-again">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05">
+							<label class="colored">Avatar</label>
+							<div id="kv-avatar-errors-1" class="center-block"></div>
+							<div class="text-center">
+								<div class="kv-avatar center-block">
+									<input id="avatar-1" name="avatar-1" type="file" class="file-loading">
+								</div>
+								<!-- include other inputs if needed and include a form submit (save) button -->
+							</div>
+
+							<script>
+								$("#avatar-1").fileinput({
+									overwriteInitial: true,
+									maxFileSize: 1000,
+									showClose: false,
+									showCaption: false,
+									showRemove: false,
+									browseLabel: '',
+									removeLabel: '',
+									browseIcon: '<i class="fa fa-picture-o"></i>',
+									removeIcon: '<i class="fa fa-remove"></i>',
+									removeTitle: 'Avatarı Kaldır',
+									browseTitle: 'Avatar Seç',
+									elErrorContainer: '#kv-avatar-errors-1',
+									msgErrorClass: 'alert alert-block alert-danger',
+									defaultPreviewContent: '<img src="https://www.gamerpeople.com/html/assets/img/no-image-user.png" alt="Your Avatar">',
+									layoutTemplates: { main2: '{preview} {remove} {browse}' },
+									allowedFileExtensions: ["jpg", "png", "jpeg", "PNG", "JPG", "JPEG"]
+								});
+							</script>
+						</div>
+					</div>
+
+					<div class="col-sm-12">
+						<div class="form-group margin-top-05">
+							<p class="text-link">Kayıt işlemine devam ederek, <a href="#" data-toggle="modal" data-target="#conditions-dialog">Gamer People Kullanım Koşulları</a>'nı kabul etmiş oluyorsunuz.</p>
+						</div>
+
+						<div class="form-group no-margin no-padding">
+							<input type="submit" class="btn btn-success btn-raised btn-block no-margin" value="HESAP OLUŞTUR" />
+						</div>
+
+						<div class="form-group no-padding">
+							<a href="/kullanici/fb" class="btn btn-info btn-raised btn-block no-margin">Facebook'la Giriş Yap</a>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.modal-content -->
+		</div>
+	</div>
+</div><!-- /#register-dialog -->
+<div id="update-password-dialog" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">ŞİFRENİ GÜNCELLE</h4>
+			</div><!-- /.modal-header -->
+
+			<div class="modal-body">
+				<form id="update-password-form">
+					<div class="form-group no-margin">
+						<div class="col-md-12">
+							<div class="form-group margin-bottom-05 margin-top-05">
+								<label class="colored">Şifreniz</label>
+								<input class="form-control validate[required, minSize[6]]" autocomplete="off" type="password" placeholder="" id="up-oldPassword" maxlength="50">
+							</div>
+
+							<div class="form-group margin-bottom-05 margin-top-05">
+								<label class="colored">Yeni Şifreniz</label>
+								<input class="form-control validate[required, minSize[6]]" autocomplete="off" type="password" placeholder="" name="up-password" id="up-password" maxlength="50">
+							</div>
+
+							<div class="form-group margin-bottom-05 margin-top-05">
+								<label class="colored">Yeni Şifreniz (Tekrar)</label>
+								<input class="form-control validate[required, equals[up-password], minSize[6]]" autocomplete="off" type="password" placeholder="" id="up-password2" maxlength="50">
+							</div>
+
+							<div class="form-group no-margin no-padding">
+								<input type="submit" class="btn btn-success btn-raised btn-block no-margin" value="ŞİFRENİ GÜNCELLE" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.modal-body -->
+		</div>
+	</div>
+</div><!-- /#update-password-dialog -->
+<div id="update-user-dialog" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">VADİ HESABINI GÜNCELLE</h4>
+			</div><!-- /.modal-header -->
+
+			<div class="modal-body">
+				<form id="update-user-form">
+					<div class="col-sm-6">
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Adın</label>
+							<input class="form-control validate[required]" name="" type="text" value="" id="u-name" maxlength="50"/>
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Soyadın</label>
+							<input class="form-control validate[required]" type="text" value="" id="u-surname" maxlength="50">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Email Adresin</label>
+							<input class="form-control validate[required,email]" type="text" value="" disabled id="u-email" maxlength="100">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored full-width">Doğum Tarihin *</label>
+							<div class="clearfix"></div>
+							<select class="form-control validate[required]" id="u-birthday" style="width:33%; display:inline-block; margin-left:-1px;">
+								<option value="">Gün</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+							</select>
+
+							<select class="form-control validate[required]" id="u-birthdate" style="width:33%; display:inline-block; margin-left:-2px;">
+								<option value="">Ay</option>
+								<option value="">Ay</option>
+								<option value="1">Ocak</option>
+								<option value="2">Şubat</option>
+								<option value="3">Mart</option>
+								<option value="4">Nisan</option>
+								<option value="5">Mayıs</option>
+								<option value="6">Haziran</option>
+								<option value="7">Temmuz</option>
+								<option value="8">Ağustos</option>
+								<option value="9">Eylül</option>
+								<option value="10">Ekim</option>
+								<option value="11">Kasım</option>
+								<option value="12">Aralık</option>
+							</select>
+
+							<select class="form-control validate[required]" id="u-birthyear" style="width:33%; display:inline-block; margin-left:-3px;">
+								<option value="">Yıl</option>
+								<option value="2008">2008</option>
+								<option value="2007">2007</option>
+								<option value="2006">2006</option>
+								<option value="2005">2005</option>
+								<option value="2004">2004</option>
+								<option value="2003">2003</option>
+								<option value="2002">2002</option>
+								<option value="2001">2001</option>
+								<option value="2000">2000</option>
+								<option value="1999">1999</option>
+								<option value="1998">1998</option>
+								<option value="1997">1997</option>
+								<option value="1996">1996</option>
+								<option value="1995">1995</option>
+								<option value="1994">1994</option>
+								<option value="1993">1993</option>
+								<option value="1992">1992</option>
+								<option value="1991">1991</option>
+								<option value="1990">1990</option>
+								<option value="1989">1989</option>
+								<option value="1988">1988</option>
+								<option value="1987">1987</option>
+								<option value="1986">1986</option>
+								<option value="1985">1985</option>
+								<option value="1984">1984</option>
+								<option value="1983">1983</option>
+								<option value="1982">1982</option>
+								<option value="1981">1981</option>
+								<option value="1980">1980</option>
+								<option value="1979">1979</option>
+								<option value="1978">1978</option>
+								<option value="1977">1977</option>
+								<option value="1976">1976</option>
+								<option value="1975">1975</option>
+							</select>
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Telefon Numaran</label>
+							<input class="form-control validate[custom[phone]]" type="text" placeholder="" id="u-phone">
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Cinsiyetin *</label>
+							<select class="form-control validate[required]" id="u-gender">
+								<option value="">Seçin</option>
+								<option value="0">Kadın</option>
+								<option value="1">Erkek</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Yaşadığın Ülke *</label>
+							<select class="form-control validate[required]" id="u-country">
+								<option value="Türkiye" selected="selected">Türkiye</option>
+								<option value="ABD Virgin Adaları">ABD Virgin Adaları</option>
+								<option value="Almanya">Almanya</option>
+								<option value="Amerika Birleşik Devletleri">Amerika Birleşik Devletleri</option>
+								<option value="Andorra">Andorra</option>
+								<option value="Antigua ve Barbuda">Antigua ve Barbuda</option>
+								<option value="Arjantin">Arjantin</option>
+								<option value="Arnavutluk">Arnavutluk</option>
+								<option value="Aruba">Aruba</option>
+								<option value="Avustralya">Avustralya</option>
+								<option value="Avusturya">Avusturya</option>
+								<option value="Azerbaycan">Azerbaycan</option>
+								<option value="Bahama">Bahama</option>
+								<option value="Bahamas">Bahamas</option>
+								<option value="Bahreyn">Bahreyn</option>
+								<option value="Bangladeş">Bangladeş</option>
+								<option value="Barbados">Barbados</option>
+								<option value="Belçika">Belçika</option>
+								<option value="Belize">Belize</option>
+								<option value="Benin">Benin</option>
+								<option value="Beyaz Rusya">Beyaz Rusya</option>
+								<option value="Birleşik Arap Emirlikleri">Birleşik Arap Emirlikleri</option>
+								<option value="Bolivya">Bolivya</option>
+								<option value="Bosna Hersek">Bosna Hersek</option>
+								<option value="Brezilya">Brezilya</option>
+								<option value="Brunei">Brunei</option>
+								<option value="Bulgaristan">Bulgaristan</option>
+								<option value="Burma">Burma</option>
+								<option value="Cebelitarık">Cebelitarık</option>
+								<option value="Çek Cumhuriyeti">Çek Cumhuriyeti</option>
+								<option value="Çin">Çin</option>
+								<option value="Danimarka">Danimarka</option>
+								<option value="Dominik Cumhuriyeti">Dominik Cumhuriyeti</option>
+								<option value="Ekvator">Ekvator</option>
+								<option value="El Salvador">El Salvador</option>
+								<option value="Endonezya">Endonezya</option>
+								<option value="Eritre">Eritre</option>
+								<option value="Ermenistan">Ermenistan</option>
+								<option value="Estonya">Estonya</option>
+								<option value="Fas">Fas</option>
+								<option value="Fiji">Fiji</option>
+								<option value="Filipinler">Filipinler</option>
+								<option value="Finlandiya">Finlandiya</option>
+								<option value="Fransa">Fransa</option>
+								<option value="Fransız Polinezyası">Fransız Polinezyası</option>
+								<option value="Grenada">Grenada</option>
+								<option value="Guadalup">Guadalup</option>
+								<option value="Guam">Guam</option>
+								<option value="Guatemala">Guatemala</option>
+								<option value="Güney Afrika">Güney Afrika</option>
+								<option value="Gürcistan">Gürcistan</option>
+								<option value="Hırvatistan">Hırvatistan</option>
+								<option value="Hindistan">Hindistan</option>
+								<option value="Hollanda">Hollanda</option>
+								<option value="Hollanda Antilleri">Hollanda Antilleri</option>
+								<option value="Honduras">Honduras</option>
+								<option value="Hong Kong">Hong Kong</option>
+								<option value="İngiliz Virginia Adaları">İngiliz Virginia Adaları</option>
+								<option value="İngiltere">İngiltere</option>
+								<option value="İrlanda">İrlanda</option>
+								<option value="İspanya">İspanya</option>
+								<option value="İsrail">İsrail</option>
+								<option value="İsveç">İsveç</option>
+								<option value="İsviçre">İsviçre</option>
+								<option value="İtalya">İtalya</option>
+								<option value="İzlanda">İzlanda</option>
+								<option value="Jamaika">Jamaika</option>
+								<option value="Japonya">Japonya</option>
+								<option value="Kamboçya">Kamboçya</option>
+								<option value="Kanada">Kanada</option>
+								<option value="Katar">Katar</option>
+								<option value="Kayman Adaları">Kayman Adaları</option>
+								<option value="Kıbrıs">Kıbrıs</option>
+								<option value="Kolombiya">Kolombiya</option>
+								<option value="Kore">Kore</option>
+								<option value="Kosta Rika">Kosta Rika</option>
+								<option value="Kuveyt">Kuveyt</option>
+								<option value="Küba">Küba</option>
+								<option value="Letonya">Letonya</option>
+								<option value="Liechtenstein">Liechtenstein</option>
+								<option value="Litvanya">Litvanya</option>
+								<option value="Lübnan">Lübnan</option>
+								<option value="Lüksemburg">Lüksemburg</option>
+								<option value="Macaristan">Macaristan</option>
+								<option value="Makedonya">Makedonya</option>
+								<option value="Maldivler">Maldivler</option>
+								<option value="Malezya">Malezya</option>
+								<option value="Malta">Malta</option>
+								<option value="Mauritius">Mauritius</option>
+								<option value="Meksika">Meksika</option>
+								<option value="Mısır">Mısır</option>
+								<option value="Moldova">Moldova</option>
+								<option value="Monako">Monako</option>
+								<option value="Mozambik">Mozambik</option>
+								<option value="Nikaragua">Nikaragua</option>
+								<option value="Norveç">Norveç</option>
+								<option value="Özbekistan">Özbekistan</option>
+								<option value="Panama">Panama</option>
+								<option value="Paraguay">Paraguay</option>
+								<option value="Peru">Peru</option>
+								<option value="Polonya">Polonya</option>
+								<option value="Portekiz">Portekiz</option>
+								<option value="Porto Riko">Porto Riko</option>
+								<option value="Romanya">Romanya</option>
+								<option value="Rusya">Rusya</option>
+								<option value="Saint Kitts ve Nevis">Saint Kitts ve Nevis</option>
+								<option value="Saint Lucia">Saint Lucia</option>
+								<option value="San Marino">San Marino</option>
+								<option value="Senegal">Senegal</option>
+								<option value="Seyşel">Seyşel</option>
+								<option value="Singapur">Singapur</option>
+								<option value="Slovakya">Slovakya</option>
+								<option value="Slovenya">Slovenya</option>
+								<option value="Sri Lanka">Sri Lanka</option>
+								<option value="Suriye">Suriye</option>
+								<option value="Suudi Arabistan">Suudi Arabistan</option>
+								<option value="Şili">Şili</option>
+								<option value="Tayland">Tayland</option>
+								<option value="Tayvan">Tayvan</option>
+								<option value="Tunus">Tunus</option>
+								<option value="Turks ve Caicos Adaları">Turks ve Caicos Adaları</option>
+								<option value="Ukrayna">Ukrayna</option>
+								<option value="Umman">Umman</option>
+								<option value="Uruguay">Uruguay</option>
+								<option value="Ürdün">Ürdün</option>
+								<option value="Vanuatu">Vanuatu</option>
+								<option value="Venezuela">Venezuela</option>
+								<option value="Vietnam">Vietnam</option>
+								<option value="Yeni Zelanda">Yeni Zelanda</option>
+								<option value="Yunanistan">Yunanistan</option>
+							</select>
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05 no-padding">
+							<label class="colored">Yaşadığın Şehir *</label>
+							<select class="form-control validate[required]" id="u-city">
+								<option value="">Seçiniz</option>
+								<option value="Adana">Adana</option>
+								<option value="Adıyaman">Adıyaman</option>
+								<option value="Afyon">Afyon</option>
+								<option value="Ağrı">Ağrı</option>
+								<option value="Aksaray">Aksaray</option>
+								<option value="Amasya">Amasya</option>
+								<option value="Ankara">Ankara</option>
+								<option value="Antalya">Antalya</option>
+								<option value="Ardahan">Ardahan</option>
+								<option value="Artvin">Artvin</option>
+								<option value="Aydın">Aydın</option>
+								<option value="Balıkesir">Balıkesir</option>
+								<option value="Bartın">Bartın</option>
+								<option value="Batman">Batman</option>
+								<option value="Bayburt">Bayburt</option>
+								<option value="Bilecik">Bilecik</option>
+								<option value="Bingöl">Bingöl</option>
+								<option value="Bitlis">Bitlis</option>
+								<option value="Bolu">Bolu</option>
+								<option value="Burdur">Burdur</option>
+								<option value="Bursa">Bursa</option>
+								<option value="Çanakkale">Çanakkale</option>
+								<option value="Çankırı">Çankırı</option>
+								<option value="Çorum">Çorum</option>
+								<option value="Denizli">Denizli</option>
+								<option value="Diyarbakır">Diyarbakır</option>
+								<option value="Düzce">Düzce</option>
+								<option value="Edirne">Edirne</option>
+								<option value="Elazığ">Elazığ</option>
+								<option value="Erzincan">Erzincan</option>
+								<option value="Erzurum">Erzurum</option>
+								<option value="Eskişehir">Eskişehir</option>
+								<option value="Gaziantep">Gaziantep</option>
+								<option value="Giresun">Giresun</option>
+								<option value="Gümüşhane">Gümüşhane</option>
+								<option value="Hakkari">Hakkari</option>
+								<option value="Hatay">Hatay</option>
+								<option value="Iğdır">Iğdır</option>
+								<option value="Isparta">Isparta</option>
+								<option value="İçel">İçel</option>
+								<option value="İstanbul">İstanbul</option>
+								<option value="İzmir">İzmir</option>
+								<option value="Kahramanmaraş">Kahramanmaraş</option>
+								<option value="Karabük">Karabük</option>
+								<option value="Karaman">Karaman</option>
+								<option value="Kars">Kars</option>
+								<option value="Kastamonu">Kastamonu</option>
+								<option value="Kayseri">Kayseri</option>
+								<option value="Kırıkkale">Kırıkkale</option>
+								<option value="Kırklareli">Kırklareli</option>
+								<option value="Kırşehir">Kırşehir</option>
+								<option value="Kilis">Kilis</option>
+								<option value="Kilis">Kocaeli</option>
+								<option value="Konya">Konya</option>
+								<option value="Kütahya">Kütahya</option>
+								<option value="Malatya">Malatya</option>
+								<option value="Manisa">Manisa</option>
+								<option value="Mardin">Mardin</option>
+								<option value="Muğla">Muğla</option>
+								<option value="Muş">Muş</option>
+								<option value="Nevşehir">Nevşehir</option>
+								<option value="Niğde">Niğde</option>
+								<option value="Ordu">Ordu</option>
+								<option value="Osmaniye">Osmaniye</option>
+								<option value="Rize">Rize</option>
+								<option value="Sakarya">Sakarya</option>
+								<option value="Samsun">Samsun</option>
+								<option value="Siirt">Siirt</option>
+								<option value="Sinop">Sinop</option>
+								<option value="Sivas">Sivas</option>
+								<option value="Şanlıurfa">Şanlıurfa</option>
+								<option value="Şırnak">Şırnak</option>
+								<option value="Tekirdağ">Tekirdağ</option>
+								<option value="Tokat">Tokat</option>
+								<option value="Trabzon">Trabzon</option>
+								<option value="Tunceli">Tunceli</option>
+								<option value="Uşak">Uşak</option>
+								<option value="Van">Van</option>
+								<option value="Yalova">Yalova</option>
+								<option value="Yozgat">Yozgat</option>
+								<option value="Zonguldak">Zonguldak</option>
+							</select>
+						</div>
+
+						<div class="form-group margin-bottom-10 margin-top-05">
+							<label class="colored">Avatar</label>
+							<div id="kv-avatar-errors-2" class="center-block"></div>
+							<div class="text-center">
+								<div class="kv-avatar center-block">
+									<input id="avatar-2" name="avatar-2" type="file" class="file-loading">
+								</div>
+								<!-- include other inputs if needed and include a form submit (save) button -->
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="form-group no-margin no-padding">
+							<input type="submit" class="btn btn-success btn-raised btn-block no-margin" value="HESABINI GÜNCELLE" />
+						</div>
+					</div>
+
+				</form>
+			</div><!-- /.modal-content -->
+		</div>
+	</div>
+</div><!-- /#update-user-dialog -->
+<div id="conditions-dialog" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">KULLANIM KOŞULLARI</h4>
+			</div><!-- /.modal-header -->
+
+			<div class="modal-body">
+				<p>Bu internet sitesi ("web sitesi") size Rubytech Bilişim Trading LTD. Hz.Ömer Caddesi No:72 Ozankoy, Girne KKTC tarafından sunulmuştur.</p>
+				<p>Aşağıdaki kullanım şartları, sizin bu web sitesini kullanımınızı ve web sitesine erişiminizi düzenler. Aynı zamanda, bu web sitesinde bulunan ya da bu web sitesi aracılığıyla erişilebilen belirli içerik, veri, materyal ya da bilgiler ("İçerik") ve sizin web sitesine yükleyebileceğiniz, gönderebileceğiniz ve/veya web sitesinde yayınlayabileceğiniz belirli içerik, veri, materyal ya da bilgiler ("Kullanıcı İçeriği") veya işlemler için belirli koşul ve şartlar geçerli olabilir. Bu gibi özel koşullar, bu kullanım koşullarına eklenebilir veya yalnızca açıkça belirlenen kapsama göre bu kullanım koşullarının yerini alabilir.</p>
+				<h2>1. Kullanım Koşullarının Kabulü</h2>
+				<p>Bu Web Sitesi'ne erişim sağlamakla ve siteyi kullanmakla, aşağıdaki Kullanım Koşulları'nın ve Kullanım Koşulları'nda yer alan veya gönderme yapılan tüm hüküm ve koşulların ya da bu Web Sitesi'nde belirtilen ek hüküm ve koşulların sizi yasal olarak bağladığını kabul etmiş sayılırsınız. Bu şartların tümünü kabul ETMİYORSANIZ bu web sitesine ERİŞEMEZ veya bu web sitesini KULLANAMAZSINIZ.</p>
+				<h2>2. Şartların Değiştirilmesi</h2>
+				<p>Bu Kullanım Koşulları <strong>gamerpeople.com</strong> tarafından herhangi bir zamanda değiştirilebilir. Bu şekilde değiştirilmiş kullanım şartları, yayınlandıkları anda geçerli olurlar. Değişiklikler yayınlandıktan sonra web sitesini kullanmaya devam ederek, bu şekilde değiştirilmiş şartları kabul etmiş sayılırsınız. İlgili tüm koşul ve şartları düzenli olarak gözden geçirmeniz önerili.</p>
+				<p><strong>gamerpeople.com</strong>, web sitesinde ya da İçerikte herhangi bir zamanda, uyarı yapmaksızın değişiklik veya güncelleme yapma ya da kullanımı durdurma hakkını saklı tutar. <strong>gamerpeople.com</strong>, sadece kendi takdirine bağlı olarak, herhangi bir kişinin web sitesine veya bunun herhangi bir bölümüne erişimini herhangi bir zamanda ve herhangi bir nedenle, önceden bildirimde bulunmadan sınırlama, reddetme veya sonlandırma hakkını saklı tutar.</p>
+				<h2>3. Üyelik Bilgileri ile İlgili Gizlilik Politikası</h2>
+				<p>Web sitesi aracılığıyla ya da web sitesi ile bağlantılı olarak sağlanan ya da toplanan kişisel bilgiler, yalnızca <strong>gamerpeople.com</strong>'un gizlilik politikası uyarınca kullanılacaktır ve bu kullanım şartları, sitede yayınlandığı şekliyle gizlilik politikasına tabidir.</p>
+				<h2>4. Sorumluluğun Reddi</h2>
+				<p>SİTEDEKİ TÜM İÇERİKLER VE KULLANICI İÇERİKLERİ (SINIRLAMA OLMAKSIZIN METİNLER, RESİMLER, GRAFİKLER, BAĞLANTILAR VE DİĞER MATERYALLER DAHİL) "OLDUĞU GİBİ" VE "KULLANIMA SUNULDUĞU GİBİ" SAĞLANMAKTADIR. <strong>gamerpeople.com</strong> (i) bu web sitesinin ihtiyaçlarınızı karşılayacağı, (ii) web sitesinin kesintisiz, güncel, güvenli ya da hatasız olacağı veya (iii) web sitesinin kullanımından elde edilecek sonuçların (web sitesindeki bilgi ve materyaller dahil) doğru, tam, kesin, güvenilir ya da herhangi bir biçimde ihtiyaçlarınızı karşılayan sonuçlar olacağına yönelik hiçbir beyan ya da garantide bulunmaz.</p>
+				<p>Bu, halka açık bir web sitesidir. Bu web sitesine gönderdiğiniz Kullanıcı İçerikleri ile ilgili hiçbir gizlilik hükmü beklentisi içinde olamazsınız. Bu web sitesine gizli bilgi göndermeyin.</p>
+				<p><strong>gamerpeople.com</strong> Internet, ağ veya sunucu hizmetlerindeki kesintiler ya da ihmallere ilişkin hiçbir yükümlülüğü olmayacaktır ve web sitesinin veya bunun kullanılmasını sağlayan hizmetlerin ya da <strong>gamerpeople.com</strong> tarafından gönderilen elektronik iletişimin virüs ya da diğer zararlı unsurlar içermediğine ilişkin bir garanti vermezler.</p>
+				<p>Bu web sitesinden materyal yükleme ya da web sitesini kullanarak başka yollarla materyal ekleme ile ilgili riskler tamamen size aittir. Bu tür materyalin yüklenmesinden dolayı bilgisayar sisteminizde oluşabilecek her türlü hasar veya veri kaybı sizin sorumluluğunuzda olacaktır.</p>
+				<h2>5. Kayıt</h2>
+				<p>Web sitesinin belirli alanlarına erişmek, belirli işlevlerini veya özelliklerini kullanmak için bir katılımcı olarak kaydolmanız gerekebilir. Kayıt ücretsizdir.</p>
+				<p>Şifrenizin gizliliğinin sağlanması, sadece sizin sorumluluğunuzdadır. Kendi takdirimize bağlı olarak, müstehcen, yakışıksız, kötüleyici veya başka bir biçimde uygunsuz bir kullanıcı adı seçerseniz, kullanıcı adınızı değiştirme ya da web sitesine göndermiş olduğunuz içeriği silme veya kaydınızı reddetme ya da iptal etme hakkımızı saklı tutarız. Kendi takdirimize bağlı olarak, müstehcen, yakışıksız, kötüleyici veya başka bir biçimde uygunsuz bir gönderide bulunan kişinin üyeliğini askıya alma ya da bitirme hakkımız saklıdır. Yapacağınız ya da yapmayacağınız işlemler ya da ihmalinizden dolayı hesabınız, kullanıcı adınız ve/veya şifreniz altında gerçekleşen tüm etkinliklerin sorumluluğunu kabul edersiniz. Hesabınızla, kullanıcını adınızla ve/veya şifrenizle ilgili herhangi bir yetkisiz işlemden şüphelenir ya da bu tür bir durumun farkına varırsanız, bizimle derhal e-posta aracılığıyla temas kurmayı kabul edersiniz. </p>
+				<h2>6. Katılımcı</h2>
+				<p>Web sitesine Kullanıcı İçeriği göndererek, materyalin uygun, yapıcı ve ilgili olacağını ve (1) başka bir kişi veya kuruluş için küçük düşürücü ve rencide edici olabilecek, (2) herhangi bir kişi ya da mülke zarar verebilecek ya da başka bir biçimde bir kişi ya da kuruluşu aşağılayabilecek veya rahatsız edebilecek, (3) (gizlilik ya da kamuya açıklık hakları dahil) başka bir insanın yasal haklarını ihlal edecek, (4) pornografik, müstehcen, saygısız, kaba, ahlaksız olan veya tehdit içeren, (5) kültürel, etnik veya başka bir açıdan sakıncalı ya da (6) yasadışı etkinliğe telkin veya teşvik eden unsurlar dahil fakat bunlarla sınırlı olmaksızın, yasadışı olabilecek ya da başka bir sebepten yayınlanmaya uygun olmayan öğeler içermeyeceğini kabul edersiniz. Bir içeriğin yukarıda bahsedilen unsurlar dahilinde olup olmadığının kararı tamamen kendi takdirimize bağlıdır.</p>
+				<p>Herhangi bir materyal göndermeden önce, tüm virüsleri ve diğer bulaşıcı ya da zararlı özellikleri tarayıp kaldırmak için gerekli çabayı göstermeniz gerekmektedir. Web sitesi aracılığıyla zincirleme mektuplar, piramit şemalar, anketler ya da talepler iletemezsiniz. Aynı zamanda, web sitesi aracılığıyla iletilen herhangi bir İçeriğin ve/veya Kullanıcı İçeriğinin kaynağını gizlemek amacıyla ya da web sitesindeki varlığınızı değiştirmek amacıyla sahte başlık açamaz veya kimlikleri ya da diğer verileri değiştiremezsiniz. Web sitelerimizin, sunucularımızın veya ağlarımızın çalışmasına engel olamaz veya bozamazsınız ya da altyapımızı oransız ya da aşırı büyük yük altına sokacak işlemler yapamazsınız.</p>
+				<p>Web sitesine gönderilen Kullanıcı İçeriğinin, başkalarının telif hakkı, ticari marka veya patent ya da herhangi bir gizlilik yükümlülüğü dahil ancak sınırlı kalmaksızın hiçbir mülkiyet hakkını ihlal etmediğini onaylar, beyan ve garanti edersiniz.</p>
+				<p>Web sitesine tarafınızdan sağlanan ve fikri mülkiyet hakları korumasına tabi olmayan fikirlerin, gönderilerin veya tartışmaların bir başka katılımcı tarafından, karşılıksız veya yetkisiz olarak kullanılabileceğini onaylar ve kabul edersiniz.</p>
+				<p>Kendi Kullanıcı İçeriğinizden ve onu göndermenizin ve/veya yayınlamanızın sonuçlarından yalnızca siz sorumlu olacaksınız. <strong>gamerpeople.com</strong>, Kullanıcı İçeriğinin gönderilmesinden önce ve/veya sonra, içeriği inceleyebilir ve izleyebilir ancak bunu yapmaya mecbur değildir. Ancak, tüm Kullanıcı İçeriğini izlememizin ve incelememizin imkansız olduğunu kabul etmiş olursunuz. <strong>gamerpeople.com</strong> ve tedarikçileri web sitesine üçüncü taraflarca gönderilmiş Kullanıcı İçeriğinin kesinliği, tamlığı, kalitesi veya geçerliliğiyle ilgili olarak sorumlu tutulamazlar.</p>
+				<p><strong>gamerpeople.com</strong> hiçbir Kullanıcı İçeriğini ya da bunlarda ifade edilen fikir, öneri veya tavsiyelerle ilgili garanti vermez ve <strong>gamerpeople.com</strong>, Kullanıcı İçeriği ile ilgili tüm yükümlülüğünü açıkça reddeder.</p>
+				<p><strong>gamerpeople.com</strong> sakıncalı, uygunsuz veya başka bir biçimde bu kullanım şartlarını ihlal eden mesajları veya herhangi başka Kullanıcı İçeriğini, herhangi bir sebepten dolayı, herhangi bir zamanda, önceden bilgi vermeksizin ya da onay almaksızın, sadece kendi takdiri ile düzenleme ve/veya silme hak ve yetkisini saklı tutar. Gönderilen Kullanıcı İçeriğinin sakıncalı ya da uygunsuz olduğuna inanan her kullanıcı, derhal <strong>gamerpeople.com</strong> ile e-posta aracılığıyla irtibata geçmelidir. Bu tür bir bildirimin alınması üzerine, makul bir süre içinde, gerekli olduğunu düşündüğümüz önlemi almak için gereken tüm çabayı göstereceğiz. Bu elle yapılan bir işlem olduğu için belirli Kullanıcı İçeriğini derhal silemeyebileceğimizi veya düzenleyemeyebileceğimizi bildiririz.</p>
+				<h2>7. Sorumluluğun Sınırlandırılması</h2>
+				<p>WEB SİTESİNİN, İÇERİĞİN VEYA KULLANICI İÇERİĞİNİN KULLANIMI, ERİŞİMİ VEYA KULLANILAMAMASI, ERİŞİLEMEMESİNDEN DOĞAN YA DA BUNLARLA BAĞLANTILI, DOĞRUDAN, DOLAYLI, SONUÇTA MEYDANA GELEN, CEZAİ, TESADÜFİ YA DA DİĞER HASARLARDAN, BU TÜR HASARLARIN DOĞRUDAN VE TAMAMEN <strong>gamerpeople.com</strong>'UN SUİİSTİMALİ VEYA AĞIR İHMALİNDEN KAYNAKLANDIĞI DURUMLAR HARİÇ, <strong>gamerpeople.com</strong> BU TÜR HASAR OLASILIKLARI HAKKINDA ÖNCEDEN UYARILMIŞ OLSA DAHİ, HİÇBİR KOŞULDA SORUMLU TUTULAMAZ.</p>
+				<p>Yukarıdaki istisnalara veya sorumluluk sınırlandırmalarına veya yukarıda Bölüm 4'te açıklanan garanti sorumluluklarının reddiyle ilgili hükümlere izin verilmeyen bir ülke veya eyalette yaşıyorsanız, bu tür istisna ve sınırlamalardan, sadece kanunen izin verilmeyenler, sizin için geçerli olmayacaktır. Böyle bir durumda, bu tür istisnalar ve sınırlamalar, ilgili kanunun izin verdiği ölçüyle sınırlandırılacaktır.</p>
+				<h2>8. Üçüncü Taraf İçerikleri/Yazılımları</h2>
+				<p><strong>gamerpeople.com</strong>, bu tür bir Internet kısayolu ister web sitesi tarafından, ister kullanım şartları uyarınca üçüncü taraflarca sağlanmış olsun, web sitesi ile Internet kısayolu aracılığıyla bağlantılı olabilecek hiçbir üçüncü taraf sitesinin içeriğinden hiçbir şekilde sorumlu değildir. Web sitemizden bir başka web sitesine verilebilecek hiçbir bağlantı o web sitesinin onaylanması anlamına gelmez ve bağlantısı verilen web sitesinin doğruluğu, güncelliği ya da içeriğinin uygunluğu hakkında hiçbir hüküm ya da garantide bulunulmaz ve bunlarla ilgili olarak hiçbir sorumluluk kabul edilmez.</p>
+				<h2>9. Web Sitesinde Mülkiyet Hakları</h2>
+				<p>Bu web sitesi kamuya açıktır ve buraya gönderilen bilgilerin gizli olmadığı varsayılacaktır. Tarafınızdan sağlanan herhangi bir Kullanıcı İçeriği dahilinde herhangi bir buluşun gönderilmesinin, ilgili patent kanunları uyarınca, böyle bir buluşun "yayınlanması" anlamına geleceğini kabul edersiniz.</p>
+				<p>Web sitesine gönderilen ve/veya web sitesinde tartışılan tüm Kullanıcı İçeriklerinin, <strong>gamerpeople.com</strong>'un, bağlı kuruluşlarının, iştiraklerinin, ortaklarının ya da üçüncü tarafların patent, telif hakkı, ticari marka ve diğer fikri mülkiyet haklarına konu olabileceğini kabul edersiniz. Web sitesine gönderilen fikir, teklif, öneri, çözüm ya da diğer herhangi bir Kullanıcı İçeriğini kullanmayı düşünüyorsanız, herhangi bir kullanım öncesinde gerekli fikri mülkiyet yetkilerinin alınmasından siz sorumlusunuz.</p>
+				<h2>10. Sitenin Kapatılması</h2>
+				<p>Web sitesini ya da herhangi bir bölümünü, herhangi bir sebepten, herhangi bir zamanda önceden bildirimde bulunmadan veya izin almadan kapatma hakkımız saklıdır. Web sitesine gönderilmiş olan herhangi bir İçeriğin ve/veya Kullanıcı İçeriğinin depolanamaması ya da silinememesi ile ilgili hiçbir sorumluluk ya da yükümlülüğümüz bulunmamaktadır.</p>
+				<p><strong>gamerpeople.com</strong>’u kullandığınız ve Kullanım Koşullarına uyduğunuz için teşekkür ederiz.</p>
+			</div><!-- /.modal-content -->
+
+			<div class="modal-footer">
+				<input type="button" class="btn btn-success btn-raised btn-block no-margin" data-dismiss="modal" value="TAMAM" />
+			</div><!-- /.modal-footer -->
+		</div>
+	</div>
+</div><!-- register:end -->
+@*<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-588e08eba1f1eeac"></script>*@
+@*@Scripts.Render("~/web-scripts")*@
+</body>
+</html>
